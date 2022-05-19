@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { TextInput, HelperText } from 'react-native-paper';
 import { View, TouchableOpacity, Text, StyleSheet, Image, ScrollView, KeyboardAvoidingView } from 'react-native';
-import Colors from '../styles/Colors';
+import Colors from '../../styles/Colors';
 import { Icon } from 'react-native-elements'
 
 export default function LoginComponent({navigation}) {

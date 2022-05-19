@@ -1,10 +1,10 @@
 import * as React from "react";
-
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LinkingConfiguration from "./LinkingConfiguration";
-import LoginComponent from "../components/LoginComponent";
-import SingUpComponent from "../components/SingUpComponent";
+import Login from "../components/Login";
+import SignUp from "../components/SignUp";
+import Home from "../pages/Home"
 
 export default function Navigation() {
   return (
@@ -21,12 +21,16 @@ function Navigator() {
     <Stack.Navigator>
       <Stack.Screen
         name="Login"
-        component={LoginComponent}
+        component={Login}
         options={{ headerShown: false }}
       /> 
       <Stack.Screen
-        name="Singup"
-        component={SingUpComponent}
+        name="Cadastro"
+        component={SignUp}
+      />
+      <Stack.Screen
+        name="Home"
+        component={Home}
       />
     </Stack.Navigator>
   );

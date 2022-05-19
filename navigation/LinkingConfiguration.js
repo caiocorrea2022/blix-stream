@@ -5,7 +5,7 @@ const linking = {
     config: {
         screens: {
           Login: "Login",
-          Singup: "Singup",
+          SignUp: "Cadastro",
         },
     },
   };

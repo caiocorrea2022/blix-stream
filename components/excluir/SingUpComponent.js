@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, KeyboardAvoidingView, FlatList, Dimensions} from 'react-native';
 import {TextInputMask} from 'react-native-masked-text';
 import { HelperText, TextInput} from 'react-native-paper';
-import Colors from '../styles/Colors';
+import Colors from '../../styles/Colors';
 
 
 export default function SingUpComponent() {

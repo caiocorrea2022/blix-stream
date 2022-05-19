@@ -25,9 +25,9 @@
     "react-native-localize": "^2.2.1",
     "react-native-masked-text": "^1.13.0",
     "react-native-paper": "^4.12.1",
-    "react-native-safe-area-context": "^4.2.5",
     "react-native-screens": "^3.13.1",
     "react-native-web": "0.17.7",
+    "styled-components": "^5.3.5",
     "webpack-dev-server": "~3.11.0"
   },
   "devDependencies": {
