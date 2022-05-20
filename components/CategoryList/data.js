@@ -1,9 +1,9 @@
 import lol from '../../assets/yoga-logo.jpg';
-import valorant from '../../assets/yoga-logo.jpg';
-import csgo from '../../assets/yoga-logo.jpg';
+import valorant from '../../assets/foto2.jpg';
+import csgo from '../../assets/foto1.jpg';
 import fortnite from '../../assets/yoga-logo.jpg';
-import fallguys from '../../assets/yoga-logo.jpg';
-import apex from '../../assets/yoga-logo.jpg';
+import fallguys from '../../assets/foto2.jpg';
+import apex from '../../assets/foto1.jpg';
 
 export default [
   { name: 'League of Legends', source: lol },

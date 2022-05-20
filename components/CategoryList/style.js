@@ -1,10 +1,12 @@
 import styled from 'styled-components/native';
-import colors from '../../styles/colors';
+import theme from '../../global/theme';
+import { Dimensions } from 'react-native'
 
 export const List = styled.ScrollView.attrs({
   horizontal: true,
 })`
   padding: 8px 0 24px;
+  padding-left: 1rem;
 `;
 
 export const CategoryContainer = styled.TouchableOpacity`
@@ -13,14 +15,15 @@ export const CategoryContainer = styled.TouchableOpacity`
 `;
 
 export const CategoryImage = styled.Image`
-  width: 98px;
-  height: 130px;
+  width: ${Math.round((Dimensions.get('window').width * 35) / 100)}px;
+	height: 150px;
+  border-radius: 10px;
 `;
 
 export const CategoryName = styled.Text`
   margin-top: 5px;
   max-width: 98px;
-  color: ${colors.text};
+  color: ${theme.colors.text_900};
   /* font-family: roboto_700; */
   font-size: 13.5px;
 `;
@@ -31,7 +34,7 @@ export const CategoryStatus = styled.View`
 `;
 
 export const RedCircle = styled.View`
-  background: ${colors.primary};
+  background: ${theme.colors.primary_900};
   width: 9px;
   height: 9px;
   border-radius: 4.5px;
@@ -40,6 +43,6 @@ export const RedCircle = styled.View`
 export const Info = styled.Text`
   margin-left: 4px;
   padding-bottom: 1px;
-  color: ${colors.text};
+  color: ${theme.colors.text_900};
   /* font-family: roboto_500; */
 `;

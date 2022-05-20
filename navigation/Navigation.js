@@ -2,8 +2,8 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LinkingConfiguration from "./LinkingConfiguration";
-import Login from "../components/Login";
-import SignUp from "../components/SignUp";
+import Login from "../pages/Login";
+import SignUp from "../pages/SignUp";
 import Home from "../pages/Home"
 
 export default function Navigation() {
@@ -31,6 +31,7 @@ function Navigator() {
       <Stack.Screen
         name="Home"
         component={Home}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
