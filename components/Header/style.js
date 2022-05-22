@@ -9,9 +9,12 @@ export const Container = styled.View`
 `
 
 export const Avatar = styled.Image`
-width: 2.2rem;
-height: 2.2rem;
-border-radius: 50%;
+width: 2.2%;
+height: 2.2%;
+border-top-left-radius: 50px;
+border-top-right-radius: 50px;
+border-bottom-left-radius: 50px;
+border-bottom-right-radius: 50px;
 `
 
 export const HeaderIcons = styled.View`

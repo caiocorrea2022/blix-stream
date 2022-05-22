@@ -8,25 +8,28 @@ export const PriceCardContainer = styled.View`
   background:  ${theme.colors.background};
   color: ${theme.colors.primary_900};
   width: 100%;
-  width: 32.6rem;
+  width: 32.6%;
   box-shadow: 0px 20px 40px rgba(212, 210, 244, 0.5);
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   text-align: center;
-  padding: 3rem;
-  margin: 1.6rem 0;
+  padding: 3%;
+  margin: 1.6% 0;
 
   @media (min-width: 1060px) {
-    width: 35rem;
+    width: 35%;
     height: ${(props) =>
       props.planType === "professional" ? "501px" : "453px"};
     padding: ${(props) =>
-      props.planType === "professional" ? "4.5rem 0" : "2.0rem"};
+      props.planType === "professional" ? "4.5% 0" : "2.0%"};
   }
 `;
 
 export const PlanType = styled.Text`
-  font-size: 1.8rem;
-  line-height: 2.8rem;
+  font-size: 1.8%;
+  line-height: 2.8%;
   text-align: center;
   text-transform: capitalize;
 `;
@@ -35,28 +38,31 @@ export const Price = styled.Text`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 7.2rem;
-  line-height: 7.1rem;
+  font-size: 7.2%;
+  line-height: 7.1%;
   color: ${(props) => (props.plan === "professional" ? "white" : "#4a4d60")};
-  margin: 2.4rem 0;
+  margin: 2.4% 0;
 `;
 
 export const Currency = styled.Text`
-  font-size: 4rem;
-  line-height: 4.9rem;
-  margin-right: 0.6rem;
+  font-size: 4%;
+  line-height: 4.9%;
+  margin-right: 0.6%;
 `;
 
 export const SellingPoint = styled.Text`
   text-align: center;
-  padding: 1.2rem;
+  padding: 1.2%;
 `;
 
 export const ButtonContainer = styled.TouchableOpacity`
   width: 100%;
-  height: 4.4rem;
+  height: 4.4%;
   background: ${theme.colors.primary_900};
-  border-radius:10px;
+  border-top-left-radius: 10x;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   border: none;
   outline: none;
   color: ${theme.colors.background};
@@ -64,7 +70,7 @@ export const ButtonContainer = styled.TouchableOpacity`
   font-size: 13px;
   line-height: 16px;
   letter-spacing: 1.39286px;
-  margin-top: 3.2rem;
+  margin-top: 3.2%;
   cursor: pointer;
 
   &:hover {
@@ -74,8 +80,8 @@ export const ButtonContainer = styled.TouchableOpacity`
   }
 
   @media (min-width: 1060px) {
-    min-height: 4.4rem;
-    width: 28.8rem;
-    margin: 3.1rem 0;
+    min-height: 4.4%;
+    width: 28.8%;
+    margin: 3.1% 0;
   }
 `;

@@ -22,8 +22,8 @@ export const Poster = styled.ImageBackground`
 `;
 
 export const Main = styled.View`
-  margin-top: 0.8rem;
-  margin-bottom: 0.8rem;
+  margin-top: 0.8%;
+  margin-bottom: 0.8%;
 `;
 
 export const Gradient = styled(LinearGradient)`
@@ -34,6 +34,6 @@ export const CategoryText = styled.Text`
 	color: ${theme.colors.text_900};
 	font-family: ${theme.fontsFamily.text_Medium};
 	font-size: ${theme.fontsSize.medium};
-	margin-bottom: 0.1rem;
-  margin-left: 1rem;
+	margin-bottom: 0.1%;
+  margin-left: 1%;
 `

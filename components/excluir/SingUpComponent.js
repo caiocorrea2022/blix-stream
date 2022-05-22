@@ -219,7 +219,10 @@ const styles = StyleSheet.create({
       justifyContent: "center",
       alignItems: "center",
       backgroundColor: Colors.primary,
-      borderRadius: 15,
+      borderTopLeftRadius:15,
+      borderTopRightRadius:15,
+      borderBottomLeftRadius:15,
+      borderBottomRightRadius:15,
       marginVertical: 15,
       padding:10,
     },
@@ -246,7 +249,10 @@ const styles = StyleSheet.create({
       margin: 4,
       marginBottom:20,
       padding: 5,
-      borderRadius: 10,
+      borderTopLeftRadius:15,
+      borderTopRightRadius:15,
+      borderBottomLeftRadius:15,
+      borderBottomRightRadius:15,
       flexBasis:0
     },
     textPlano:{

@@ -25,7 +25,7 @@ const CustomDrawer = props => {
           style={{padding: 20}}>
           <Image
             source={require('../assets/images/user-profile.jpg')}
-            style={{height: 80, width: 80, borderRadius: 40, marginBottom: 10}}
+            style={{height: 80, width: 80, borderTopLeftRadius: 40, borderTopRightRadius: 40, borderBottomLeftRadius: 40, borderBottomRightRadius: 40, marginBottom: 10}}
           />
           <Text
             style={{

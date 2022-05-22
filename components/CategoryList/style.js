@@ -6,7 +6,7 @@ export const List = styled.ScrollView.attrs({
   horizontal: true,
 })`
   padding: 8px 0 24px;
-  padding-left: 1rem;
+  padding-left: 1%;
 `;
 
 export const CategoryContainer = styled.TouchableOpacity`
@@ -17,7 +17,10 @@ export const CategoryContainer = styled.TouchableOpacity`
 export const CategoryImage = styled.Image`
   width: ${Math.round((Dimensions.get('window').width * 35) / 100)}px;
 	height: 150px;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 `;
 
 export const CategoryName = styled.Text`
@@ -37,7 +40,10 @@ export const RedCircle = styled.View`
   background: ${theme.colors.primary_900};
   width: 9px;
   height: 9px;
-  border-radius: 4.5px;
+  border-top-left-radius: 4.5px;
+  border-top-right-radius: 4.5px;
+  border-bottom-left-radius: 4.5px;
+  border-bottom-right-radius: 4.5px;
 `;
 
 export const Info = styled.Text`

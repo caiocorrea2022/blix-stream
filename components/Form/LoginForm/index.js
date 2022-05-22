@@ -24,21 +24,25 @@ const LoginForm = ({navigation}) => {
         return;
       }
       navigation.navigate('Home');
-      setLoading(false);
-      // auth()
-      //   .signInWithEmailAndPassword(email, password)
-      //   .then(() => {
-      //     Alert.alert("Logado com sucesso!")
-      //     console.log('User account created & signed in!');
-      //   })
-      //   .catch((error) => {
-      //     console.error(error);
-      //   });
+      // setLoading(false);
+
+      auth()
+        .signInWithEmailAndPassword(email.value, password.value)
+        .then(() => {
+          Alert.alert("Logado com sucesso!")
+          console.log('User account created & signed in!');
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
   }
 
   const forgotPassword = () => {
     auth()
-      .sendPasswordResetEmail(email)
+      .sendPasswordResetEmail(email.value)
       .then(() =>
       Alert.alert("Enviamos um email para você")
       )
