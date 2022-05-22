@@ -4,7 +4,6 @@ import TextInput from '../../Controllers/TextInput';
 import Button from '../../Controllers/Button';
 import { Alert, TouchableOpacity } from 'react-native';
 import { emailValidator, passwordValidator} from '../../../utils';
-import auth from '@react-native-firebase/auth';
 import theme from '../../../global/theme';
 
 const LoginForm = ({navigation}) => {
@@ -26,18 +25,18 @@ const LoginForm = ({navigation}) => {
       navigation.navigate('Home');
       // setLoading(false);
 
-      auth()
-        .signInWithEmailAndPassword(email.value, password.value)
-        .then(() => {
-          Alert.alert("Logado com sucesso!")
-          console.log('User account created & signed in!');
-        })
-        .catch((error) => {
-          console.error(error);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+      // auth()
+      //   .signInWithEmailAndPassword(email.value, password.value)
+      //   .then(() => {
+      //     Alert.alert("Logado com sucesso!")
+      //     console.log('User account created & signed in!');
+      //   })
+      //   .catch((error) => {
+      //     console.error(error);
+      //   })
+      //   .finally(() => {
+      //     setLoading(false);
+      //   });
   }
 
   const forgotPassword = () => {
