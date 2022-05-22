@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "558703073281",
+    "project_id": "blix-stream",
+    "storage_bucket": "blix-stream.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558703073281:android:3976c9e5e156ee6d754800",
+        "android_client_info": {
+          "package_name": "com.blix.stream"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "558703073281-m9v56dh8t2loci2i1qhn016hd4hb3lf8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5lJ5pcm7OwVlpxixrEBxmvkVtrYE_qsQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "558703073281-m9v56dh8t2loci2i1qhn016hd4hb3lf8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

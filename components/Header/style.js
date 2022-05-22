@@ -1,7 +1,4 @@
 import styled from 'styled-components/native'
-import Constants from 'expo-constants';
-import { Platform } from 'react-native';
-import theme from '../../global/theme';
 
 export const Container = styled.View`
 	align-items: center;

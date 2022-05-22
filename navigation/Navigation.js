@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useEffect, useState} from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LinkingConfiguration from "./LinkingConfiguration";
@@ -6,10 +6,21 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Home from "../pages/Home"
 
+// import auth, {FirebaseAuthTypes} from "@react-native-firebase/auth"
+
 export default function Navigation() {
+
+  // const [user, setUser] = useState<FirebaseAuthTypes.User>(null);
+
+  // useEffect(() => {
+  //   const subscriber = auth().onAuthStateChanged(setUser);
+  //   return subscriber;
+  // }, []);
+
   return (
     <NavigationContainer linking={LinkingConfiguration}>
-      <Navigator />
+      <Navigator/>
+      {/* {user ? <Home /> : <Navigator />} */}
     </NavigationContainer>
   );
 }
@@ -27,6 +38,7 @@ function Navigator() {
       <Stack.Screen
         name="Cadastro"
         component={SignUp}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Home"

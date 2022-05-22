@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { TextInput as Input } from 'react-native-paper';
-import theme from '../../global/theme';
+import theme from '../../../global/theme';
 
 
 const TextInput = ({ ...props }) => (

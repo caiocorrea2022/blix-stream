@@ -10,7 +10,7 @@ import {
   Info,
 } from './style';
 
-import data from './data';
+import data from '../../global/data';
 
 const CategoryList = () => {
   const CategoryItem = ({ item }) => (
