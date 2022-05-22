@@ -4,7 +4,7 @@ import theme from '../../../global/theme'
 export const ToggleContainer = styled.View`
   display: flex;
   flex-direction: row;
-  padding: 2%;
+  padding: 2rem;
 `;
 
 export const ToggleOption = styled.Text`
@@ -16,14 +16,11 @@ export const ToggleOption = styled.Text`
 
 export const ToggleBack = styled.View`
   position: relative;
-  width: 5.6%;
-  height: 3.2%;
+  width: 5.6rem;
+  height: 3.2rem;
   background: ${theme.colors.background};
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  margin: 0 2.4%;
+  border-radius: 16px;
+  margin: 0 2.4rem;
   cursor: pointer;
 
   &:hover {
@@ -34,12 +31,9 @@ export const ToggleBack = styled.View`
 export const ToggleFront = styled.View`
   position: absolute;
   left: ${(props) => (props.option === "monthly" ? "24px" : "0")};
-  width: 2.4%;
-  height: 2.4%;
+  width: 2.4rem;
+  height: 2.4rem;
   background: ${theme.colors.background};
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
-  margin: 0.4%;
+  border-radius: 50%;
+  margin: 0.4rem;
 `;

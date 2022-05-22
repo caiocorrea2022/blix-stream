@@ -4,16 +4,13 @@ import theme from '../../../global/theme';
 export const Container = styled.TouchableOpacity`
   width: 80%;
   height: 50px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 10px;
   justify-content: center;
   align-items: center;
   align-self: center;
   background-color: ${theme.colors.primary_900};
-  margin-top: 2%;
-  margin-bottom: 1%;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 `;
 
 export const Title = styled.Text`

@@ -22,21 +22,17 @@ export const Title = styled.Text`
   text-align: center;
   font-Size: ${theme.fontsSize.big};
   font-family: ${theme.fontsFamily.text_Bold} ;
-  margin-top: 0.5%;
+  margin-top: 0.5rem;
 `;
 
 export const Header = styled.View`
   display:flex;
-  padding: 1%;
+  padding: 1rem;
 `;
 
 export const Image = styled.Image`
   align-self: center;
-  width: 150px;
-  height: 150px;
-  border-top-left-radius: 100px;
-  border-top-right-radius: 100px;
-  border-bottom-left-radius: 100px;
-  border-bottom-right-radius: 100px;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
 `;
-

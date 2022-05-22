@@ -3,10 +3,10 @@ import TextInput from '../../Controllers/TextInput';
 import Button from '../../Controllers/Button';
 import { Wrapper, Title } from './style';
 import { emailValidator, passwordValidator, nameValidator } from '../../../utils';
-import { Alert } from 'react-native';
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../../../firebase';
-
+import { sendEmailVerification, createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { setDoc, doc} from "firebase/firestore";
+import { auth, firestore } from '../../../firebase';
+import AlertBox from '../../Controllers/AlertBox'
 
 const SignUpForm = () => {
 
@@ -29,17 +29,45 @@ const SignUpForm = () => {
       return;
     }
 
-    createUserWithEmailAndPassword(auth, email.value, name.value, password.value)
-      .then(() => Alert.alert("Conta", "Cadastrada com sucesso!"))
-      .catch(error => {
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
-
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-        }
+    createUserWithEmailAndPassword(auth, email.value, password.value)
+      .then((userCredential) => {
+        console.log('user criado')
+        const user = userCredential.user;
+        const usersCollectionRef = doc(firestore, "users", user.uid);
+        const createUser = async () => {
+          await setDoc(usersCollectionRef, { 
+            Nome_Completo: name.value, 
+            Email: email.value,
+            });
+          <AlertBox title={'oi'} message={'Conta criada com sucesso'}/>
+          // alert("Conta", "Cadastrada com sucesso!")
+          // console.log('user criado')
+        };
+        createUser()
+        .then(() => {
+          sendEmailVerification(auth.currentUser)
+          .then(() => {
+            alert('Foi enviado um e-mail para:\n '+ email +' para verificação.');
+            signOut(auth)
+          });  
+        })
+      })
+      .catch((error) => {          
         console.error(error);
+        switch(error.code){
+          case 'auth/email-already-in-use':
+            alert("Erro:\nEste e-mail já está cadastrado.");
+            break;
+          case 'auth/weak-password':
+            alert('Erro:\nSenha deve conter pelo menos 6 caracteres');
+            break;
+          case 'auth/invalid-email':
+            alert('Erro:\nE-mail inválido');
+            break;
+          case 'auth/operation-not-allowed':
+            alert('Erro:\nProblemas ao cadastrar o usuário.');
+            break;
+        }   
       })
       .finally(() => setLoading(false));
   };
