@@ -7,7 +7,7 @@ import { emailValidator, passwordValidator} from '../../../utils';
 import auth from '@react-native-firebase/auth';
 import theme from '../../../global/theme';
 
-const LoginForm = () => {
+const LoginForm = ({navigation}) => {
     const [email, setEmail] = useState({ value: '', error: '' });
     const [password, setPassword] = useState({ value: '', error: '' });
     const [loading, setLoading] = useState(false);

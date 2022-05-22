@@ -13,7 +13,7 @@ export default function Login({navigation}){
             <Title>YOGA LUZ</Title>
           </Header>
         
-          <LoginForm />
+          <LoginForm navigation={navigation}/>
         </Content>
       </KeyboardAvoidingView>
     </Container>
