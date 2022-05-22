@@ -24,7 +24,7 @@ const LoginForm = ({navigation}) => {
         return;
       }
       navigation.navigate('Home');
-
+      setLoading(false);
       // auth()
       //   .signInWithEmailAndPassword(email, password)
       //   .then(() => {
