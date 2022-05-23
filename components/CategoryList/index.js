@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import {
   List,
   CategoryContainer,
@@ -7,27 +6,46 @@ import {
   CategoryName,
   CategoryStatus,
   RedCircle,
-  Info,
 } from './style';
+import { getDocs, collection, where, documentId } from "firebase/firestore";
+import { firestore } from '../../firebase';
 
 import data from '../../global/data';
+import { Text, TouchableOpacity } from 'react-native';
 
-const CategoryList = () => {
+const CategoryList = ({ categoryId, navigation }) => {
+
+  const [allCards, setAllCards] = useState([]);
+
+  useEffect(() => {
+    const findAllCategories = async () => {
+      const response = await getDocs(collection(firestore, `categories/${categoryId}/cards`));
+      let cards = [];
+      response.forEach((doc) => {
+        cards.push({ id: doc.id, ...doc.data() });
+      });
+      setAllCards(cards);
+    };
+
+    findAllCategories();
+  }, []);
+
   const CategoryItem = ({ item }) => (
     <CategoryContainer>
-      <CategoryImage source={item.source} />
-      <CategoryName numberOfLines={1}>{item.name}</CategoryName>
-      <CategoryStatus>
-        <RedCircle />
-        <Info>51.9K</Info>
-      </CategoryStatus>
+      <TouchableOpacity onPress={() => navigation.navigate('Playlist', { videos: item.videos })}>
+        <CategoryImage source={item.img} />
+        <CategoryName numberOfLines={1}>{item.title}</CategoryName>
+        <CategoryStatus>
+          <RedCircle />
+        </CategoryStatus>
+      </TouchableOpacity>
     </CategoryContainer>
   );
 
   return (
     <List>
-      {data.map((item) => (
-        <CategoryItem key={item.name} item={item} />
+      {allCards.map((item) => (
+        <CategoryItem key={item.title} item={item} />
       ))}
     </List>
   );

@@ -5,6 +5,7 @@ import LinkingConfiguration from "./LinkingConfiguration";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Home from "../pages/Home"
+import Playlist from "../pages/Playlist";
 
 // import auth, {FirebaseAuthTypes} from "@react-native-firebase/auth"
 
@@ -43,6 +44,11 @@ function Navigator() {
       <Stack.Screen
         name="Home"
         component={Home}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Playlist"
+        component={Playlist}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
