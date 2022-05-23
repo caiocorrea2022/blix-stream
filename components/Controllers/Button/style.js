@@ -17,7 +17,6 @@ export const Title = styled.Text`
   color: ${theme.colors.text_000};
   font-size: ${theme.fontsSize.medium};
   font-family: ${theme.fontsFamily.text_Bold};
-
 `;
 
 export const Load = styled.ActivityIndicator.attrs()`

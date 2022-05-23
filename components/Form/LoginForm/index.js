@@ -1,96 +1,103 @@
 import React, {useState} from 'react';
-import { Wrapper, Footer, Text} from './style';
+import { Wrapper} from './style';
 import TextInput from '../../Controllers/TextInput';
 import Button from '../../Controllers/Button';
-import { Alert, TouchableOpacity } from 'react-native';
+import AlertBox from '../../Controllers/AlertBox'
 import { emailValidator, passwordValidator} from '../../../utils';
-import theme from '../../../global/theme';
+import { auth } from '../../../firebase';
+import { signInWithEmailAndPassword, sendPasswordResetEmail} from "firebase/auth";
 
 const LoginForm = ({navigation}) => {
-    const [email, setEmail] = useState({ value: '', error: '' });
-    const [password, setPassword] = useState({ value: '', error: '' });
-    const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState({ value: '', error: '' });
+  const [password, setPassword] = useState({ value: '', error: '' });
+  const [loading, setLoading] = useState(false);
 
-    const onLoginPressed = () => {
-      const emailError = emailValidator(email.value);
-      const passwordError = passwordValidator(password.value);
+  const [visibleAlert, setVisibleAlert] = useState(false);
+  const [title, setTitle] = useState(null)
+  const [message, setMessege] = useState(null)
 
-      setLoading(true);
-      if (emailError || passwordError) {
-        setEmail({ ...email, error: emailError });
-        setPassword({ ...password, error: passwordError });
-        setLoading(false);
-        return;
-      }
-      navigation.navigate('Home');
-      // setLoading(false);
-
-      // auth()
-      //   .signInWithEmailAndPassword(email.value, password.value)
-      //   .then(() => {
-      //     Alert.alert("Logado com sucesso!")
-      //     console.log('User account created & signed in!');
-      //   })
-      //   .catch((error) => {
-      //     console.error(error);
-      //   })
-      //   .finally(() => {
-      //     setLoading(false);
-      //   });
+  const showAlert = (title, message) => {
+    setVisibleAlert(true)
+    setTitle(title)
+    setMessege(message)
   }
 
-  const forgotPassword = () => {
-    auth()
-      .sendPasswordResetEmail(email.value)
-      .then(() =>
-      Alert.alert("Enviamos um email para você")
-      )
-      .catch((error) => {
-        setLoading(false);
-        console.error(error);
-      });
+  const hideAlert = (status) => {
+    setVisibleAlert(status)
+  }
+
+  const onLoginPressed = () => {
+    const emailError = emailValidator(email.value);
+    const passwordError = passwordValidator(password.value);
+
+    setLoading(true);
+    if (emailError || passwordError) {
+      setEmail({ ...email, error: emailError });
+      setPassword({ ...password, error: passwordError });
+      setLoading(false);
+      return;
+    }
+    signInWithEmailAndPassword(auth, email.value, password.value)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      if (user.emailVerified===false) {
+        showAlert("Erro","E-mail não verificado. Confira sua caixa de entrada.");
+      } else {navigation.navigate('Home')}
+    })
+    .catch((error) => {
+    console.log(error.code)
+    switch(error.code){
+      case 'auth/user-not-found':
+        showAlert("Erro","Usuário não cadastrado.");
+        break;
+      case 'auth/wrong-password':
+        showAlert("Erro","Senha incorreta");
+        break;
+      case 'auth/invalid-email':
+        showAlert("Erro","E-mail inválido");
+        break;
+      case 'auth/user-disabled':
+        showAlert("Erro","Usuário desabilitado");
+        break;
+    }
+    })
+    .finally(() => {
+      setLoading(false);
+    });
   }
 
   return (
     <Wrapper>
-        <TextInput
-            label="Email"
-            placeholder="Digite seu email"
-            returnKeyType="next"
-            value={email.value}
-            onChangeText={text => setEmail({ value: text, error: '' })}
-            error={!!email.error}
-            errorText={email.error}
-            autoCapitalize="none"
-            autoCompleteType="email"
-            textContentType="emailAddress"
-            keyboardType="email-address"
-        />
-
-        <TextInput
-            label="Senha"
-            placeholder="Digite sua senha"
-            returnKeyType="done"
-            value={password.value}
-            onChangeText={text => setPassword({ value: text, error: '' })}
-            error={!!password.error}
-            errorText={password.error}
-            secureTextEntry={true}
-            autoCorrect={false}  
-        />
+      <TextInput
+        label="Email"
+        placeholder="Digite seu email"
+        returnKeyType="next"
+        value={email.value}
+        onChangeText={text => setEmail({ value: text, error: '' })}
+        error={!!email.error}
+        errorText={email.error}
+        autoCapitalize="none"
+        autoCompleteType="email"
+        textContentType="emailAddress"
+        keyboardType="email-address"
+      />
+      <TextInput
+        label="Senha"
+        placeholder="Digite sua senha"
+        returnKeyType="done"
+        value={password.value}
+        onChangeText={text => setPassword({ value: text, error: '' })}
+        error={!!password.error}
+        errorText={password.error}
+        secureTextEntry={true}
+        autoCorrect={false}  
+      />
         
-        <Button title={'ENTRAR'} isLoading={loading} onPress={onLoginPressed}></Button>
+      <Button title={'ENTRAR'} isLoading={loading} onPress={onLoginPressed}></Button>
 
-        <TouchableOpacity onPress={() => console.log('auuu')}>
-            <Text fontSize={theme.fontsSize.extrasmall} fontFamily={theme.fontsFamily.text_Regular} color={theme.colors.text_900}>RECUPERAR SENHA</Text>
-        </TouchableOpacity>
-
-        <Footer>
-            <Text fontSize={theme.fontsSize.small} fontFamily={theme.fontsFamily.text_Regular} color={theme.colors.text_900}>Novo por aqui? </Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
-                <Text fontSize={theme.fontsSize.small} fontFamily={theme.fontsFamily.text_Bold} color={theme.colors.primary_900}>Cadastre-se</Text>
-            </TouchableOpacity>
-        </Footer>
+      { visibleAlert && 
+      <AlertBox title={title} message={message} visible={visibleAlert} onClose={hideAlert}></AlertBox>
+      }
     </Wrapper>
   );
 }

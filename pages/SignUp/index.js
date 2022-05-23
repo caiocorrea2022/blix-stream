@@ -4,9 +4,11 @@ import { MaterialIcons } from '@expo/vector-icons';
 import SignUpForm from '../../components/Form/SignUpForm';
 import { Container, Content, BackButton, BackText } from './style';
 import theme from '../../global/theme';
+import { Provider } from 'react-native-paper';
 
 export default function SignUp({navigation}){
   return (
+    <Provider>
     <Container>
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <Content>
@@ -18,5 +20,6 @@ export default function SignUp({navigation}){
         </Content>
       </KeyboardAvoidingView>
     </Container>
+    </Provider>
   );
 }

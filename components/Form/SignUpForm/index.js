@@ -15,6 +15,20 @@ const SignUpForm = () => {
   const [password, setPassword] = useState({ value: '', error: '' });
   const [loading, setLoading] = useState(false);
 
+  const [visibleAlert, setVisibleAlert] = useState(false);
+  const [title, setTitle] = useState(null)
+  const [message, setMessege] = useState(null)
+
+  const showAlert = (title, message) => {
+    setVisibleAlert(true)
+    setTitle(title)
+    setMessege(message)
+  }
+
+  const hideAlert = (status) => {
+    setVisibleAlert(status)
+  }
+
   const onSignUpPressed = () => {
     setLoading(true);
     const nameError = nameValidator(name.value);
@@ -39,7 +53,6 @@ const SignUpForm = () => {
             Nome_Completo: name.value, 
             Email: email.value,
             });
-          <AlertBox title={'oi'} message={'Conta criada com sucesso'}/>
           // alert("Conta", "Cadastrada com sucesso!")
           // console.log('user criado')
         };
@@ -47,25 +60,26 @@ const SignUpForm = () => {
         .then(() => {
           sendEmailVerification(auth.currentUser)
           .then(() => {
-            alert('Foi enviado um e-mail para:\n '+ email +' para verificação.');
+            showAlert("Cadastro confirmado!","Foi enviado um e-mail para:\n '+ email +' para verificação.");
             signOut(auth)
           });  
         })
       })
-      .catch((error) => {          
+      .catch((error) => { 
+        setLoading(false)   
         console.error(error);
         switch(error.code){
           case 'auth/email-already-in-use':
-            alert("Erro:\nEste e-mail já está cadastrado.");
+            showAlert("Erro","Este e-mail já está cadastrado");
             break;
           case 'auth/weak-password':
-            alert('Erro:\nSenha deve conter pelo menos 6 caracteres');
+            showAlert("Erro","Senha deve conter pelo menos 6 caracteres");
             break;
           case 'auth/invalid-email':
-            alert('Erro:\nE-mail inválido');
+            showAlert("Erro","E-mail inválido");
             break;
           case 'auth/operation-not-allowed':
-            alert('Erro:\nProblemas ao cadastrar o usuário.');
+            showAlert("Erro","Problemas ao cadastrar o usuário.");
             break;
         }   
       })
@@ -76,7 +90,8 @@ const SignUpForm = () => {
     <Wrapper>
       <Title>Cadastrar</Title>
       <TextInput
-        label="Name"
+        label="Nome"
+        placeholder="Digite seu nome completo"
         returnKeyType="next"
         value={name.value}
         onChangeText={text => setName({ value: text, error: '' })}
@@ -86,6 +101,7 @@ const SignUpForm = () => {
 
       <TextInput
         label="Email"
+        placeholder="Digite seu email"
         returnKeyType="next"
         value={email.value}
         onChangeText={text => setEmail({ value: text, error: '' })}
@@ -98,7 +114,8 @@ const SignUpForm = () => {
       />
 
       <TextInput
-        label="Password"
+        label="Senha"
+        placeholder="Digite uma senha"
         returnKeyType="done"
         value={password.value}
         onChangeText={text => setPassword({ value: text, error: '' })}
@@ -108,6 +125,10 @@ const SignUpForm = () => {
       />
 
       <Button title={'CADASTRAR'} isLoading={loading} onPress={onSignUpPressed}></Button>
+
+      { visibleAlert && 
+      <AlertBox title={title} message={message} visible={visibleAlert} onClose={hideAlert}></AlertBox>
+      }
     </Wrapper>
   );
 }

@@ -1,29 +1,20 @@
 import * as React from 'react';
-import { View } from 'react-native';
-import { Button, Paragraph, Dialog, Portal, Provider } from 'react-native-paper';
+import { Button as PaperButton, Paragraph, Dialog, Portal } from 'react-native-paper';
 
-const AlertBox = ({title, message}) => {
-  const [visible, setVisible] = React.useState(true);
-  // const showDialog = () => setVisible(true);
-  const hideDialog = () => setVisible(false);
-
+const AlertBox = (props) => {
   return (
-    <Provider>
-      <View>
-        <Portal>
-          <Dialog visible={visible} onDismiss={hideDialog}>
-            <Dialog.Title>{title}</Dialog.Title>
-            <Dialog.Content>
-              <Paragraph>{message}</Paragraph>
-            </Dialog.Content>
-            <Dialog.Actions>
-              <Button onPress={hideDialog}>OK</Button>
-            </Dialog.Actions>
-          </Dialog>
-        </Portal>
-      </View>
-    </Provider>
-  );
-};
+    <Portal>
+      <Dialog visible={props.visible} onDismiss={() => props.onClose(false)}>
+        <Dialog.Title>{props.title}</Dialog.Title>
+        <Dialog.Content>
+          <Paragraph>{props.message}</Paragraph>
+        </Dialog.Content>
+        <Dialog.Actions>
+          <PaperButton onPress={() => props.onClose(false)}>OK</PaperButton>
+        </Dialog.Actions>
+      </Dialog>
+    </Portal>
+  )
+}
 
-export default AlertBox;
+export default AlertBox

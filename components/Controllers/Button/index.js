@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Container, Title, Load } from './style';
 
 const Button = ({ title, isLoading = false, ...rest }) => {
