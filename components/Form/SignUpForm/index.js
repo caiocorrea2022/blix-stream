@@ -7,6 +7,8 @@ import { sendEmailVerification, createUserWithEmailAndPassword, signOut } from "
 import { setDoc, doc} from "firebase/firestore";
 import { auth, firestore } from '../../../firebase';
 import AlertBox from '../../Controllers/AlertBox'
+import { dataStripeTrimestral } from '../../../global/data';
+import {createCheckoutSess} from '../../../stripe/createCheckoutSession'
 
 const SignUpForm = () => {
 
@@ -14,6 +16,11 @@ const SignUpForm = () => {
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
   const [loading, setLoading] = useState(false);
+  const [isSelected, setSelected] = useState(false);
+  const [priceStripe, setPriceStripe] = useState("");
+  const [plans, setPlans] = useState({});
+  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedId, setSelectedId] = useState(null);
 
   const [visibleAlert, setVisibleAlert] = useState(false);
   const [title, setTitle] = useState(null)
@@ -28,6 +35,10 @@ const SignUpForm = () => {
   const hideAlert = (status) => {
     setVisibleAlert(status)
   }
+  const showPlans = ( frequency ) => {
+      setSelectedOption(frequency);
+      setPlans(dataStripeTrimestral);
+  };
 
   const onSignUpPressed = () => {
     setLoading(true);
@@ -62,6 +73,7 @@ const SignUpForm = () => {
           .then(() => {
             showAlert("Cadastro confirmado!","Foi enviado um e-mail para:\n '+ email +' para verificação.");
             signOut(auth)
+            .then(() => {createCheckoutSess(user.uid)})
           });  
         })
       })
@@ -83,7 +95,6 @@ const SignUpForm = () => {
             break;
         }   
       })
-      .finally(() => setLoading(false));
   };
 
   return (

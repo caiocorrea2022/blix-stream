@@ -17,11 +17,11 @@ export const PriceFeatureContainer = styled.View`
 
 export const PriceCardContainer = styled.View`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-top: 2.8rem;
 
-  @media (min-width: 1060px) {
-    flex-direction: column;
+  @media (max-width: 500px) {
+    flex-direction: row;
     align-items: center;
   }
 `;

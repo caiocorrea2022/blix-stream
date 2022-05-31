@@ -14,6 +14,11 @@ export default [
   { name: 'Apex Legends', source: apex },
 ];
 
+export const dataStripeTrimestral = [
+  { id: "1", plano: 'Plano Unico', preco: 'R$500', price: 'price_1L4R1tCmcyIwF9rcOIWTn3YN'},
+  { id: "2", plano: 'Plano Parcelado', preco: 'R$180 por mes', price: 'price_1L4R1tCmcyIwF9rcNYDolA5P'},
+];
+
 export const plans = [
   {
     planType: "Plano A",
