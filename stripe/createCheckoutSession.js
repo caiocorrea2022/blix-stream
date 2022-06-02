@@ -4,7 +4,7 @@ import {firestore} from '../firebase'
 
 export async function createCheckoutSess(uid) {
   const checkoutSessionRef = await addDoc(collection(firestore, `users/${uid}/checkout_sessions`), {
-    price: 'price_1L57kuCmcyIwF9rcOy53GUmn',
+    price: 'price_1L5qw3CmcyIwF9rcW6VuPvSg',
     mode: "subscription",
     allow_promotion_codes: true,
     billing_address_collection: "auto",

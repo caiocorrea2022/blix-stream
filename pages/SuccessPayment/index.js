@@ -37,20 +37,67 @@ export default function Success({ navigation }) {
   //       });
   // }, []);
 
-  useEffect(() => {
-    const getSessionId = async () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const sessionId = urlParams.get("session_id");
+  const getSessionId = async () => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const sessionId = queryParams.get("session_id");
 
-      if (sessionId) {
-        const session = await fetch(
-          `/checkout-session?sessionId=${sessionId}`
-        ).then((r) => r.json());
-        console.log('oi', session);
-        var sessionJSON = JSON.stringify(session, null, 2);
-        console.log(sessionJSON);
+    console.log('lag', sessionId);
+
+    const session = await fetch(`https://api.stripe.com/v1/checkout/sessions/${sessionId}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer sk_test_51K1wAiCmcyIwF9rcDllUmRHt47Sf8pzFwglHfcrHN6Zy8GdSnl3RFPl8yoPoOJbFXs18LK8eCHavE9oQilLFqzbk00dR3pma24'
       }
-    };
+    })
+    .then((r) => r.json());
+
+    const subId = session.subscription;
+    
+    const schedule = await fetch(`https://api.stripe.com/v1/subscription_schedules`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer sk_test_51K1wAiCmcyIwF9rcDllUmRHt47Sf8pzFwglHfcrHN6Zy8GdSnl3RFPl8yoPoOJbFXs18LK8eCHavE9oQilLFqzbk00dR3pma24'
+      },
+      body: JSON.stringify({
+        from_subscription: `${subId}`,
+      })
+    })
+    .then((r) => r.json());
+
+    console.log('schedule', schedule);
+
+        
+    const iterations = await fetch(`https://api.stripe.com/v1/subscription_schedules`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer sk_test_51K1wAiCmcyIwF9rcDllUmRHt47Sf8pzFwglHfcrHN6Zy8GdSnl3RFPl8yoPoOJbFXs18LK8eCHavE9oQilLFqzbk00dR3pma24'
+      },
+      body: JSON.stringify({
+        from_subscription: `${subId}`,
+        //criar as phases
+      })
+    })
+    .then((r) => r.json());
+  }
+
+  useEffect(() => {
+
+
+    // const getSessionId = async () => {
+    //   const urlParams = new URLSearchParams(window.location.search);
+    //   const sessionId = urlParams.get("session_id");
+
+    //   if (sessionId) {
+    //     const session = await fetch(
+    //       `/checkout-session?sessionId=${sessionId}`
+    //     ).then((r) => r.json());
+    //     console.log('oi', session);
+    //     var sessionJSON = JSON.stringify(session, null, 2);
+    //     console.log(sessionJSON);
+    //   }
+    // };
     getSessionId();
   }, []);
 
