@@ -1,5 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import Navigation from './navigation/Navigation';
 import {ThemeProvider} from 'styled-components/native';
 import theme from './global/theme';
@@ -31,4 +29,3 @@ export default function App() {
   </ThemeProvider>
   );
 }
-

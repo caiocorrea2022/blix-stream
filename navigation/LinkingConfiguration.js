@@ -6,6 +6,8 @@ const linking = {
         screens: {
           Login: "Login",
           SignUp: "Cadastro",
+          Success: "Success"
+          
         },
     },
   };

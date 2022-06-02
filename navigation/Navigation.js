@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LinkingConfiguration from "./LinkingConfiguration";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
+import Success from "../pages/SuccessPayment";
 import Home from "../pages/Home"
 import Playlist from "../pages/Playlist";
 
@@ -50,6 +51,11 @@ function Navigator() {
         name="Playlist"
         component={Playlist}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+      name = "Success"
+      component = {Success}
+      options = {{headerShown: false}}
       />
     </Stack.Navigator>
   );
