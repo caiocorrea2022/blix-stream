@@ -1,10 +1,15 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { KeyboardAvoidingView, Platform } from 'react-native';
-import { Container, Content, Image, Header, Title} from './style';
-import LoginForm from '../../components/Form/LoginForm';
-import ResetPassword from '../../components/Form/ResetPassword';
-import TouchableText from '../../components/Controllers/TouchableText'
-import { Modal, Portal, Text, Button, Provider } from 'react-native-paper';
+import { Container, Content, Image, Header, Title, Wrapper} from './style';
+import ResetPassword from './ResetPassword';
+import TouchableText from '../../components/TouchableText'
+import { Modal, Portal, Provider } from 'react-native-paper';
+import TextInput from '../../components/TextInput';
+import Button from '../../components/Button';
+import AlertBox from '../../components/AlertBox'
+import { emailValidator, passwordValidator} from '../../utils';
+import { auth } from '../../firebase';
+import { signInWithEmailAndPassword} from "firebase/auth";
 
 
 export default function Login({navigation}){
@@ -12,6 +17,63 @@ export default function Login({navigation}){
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
   const containerStyle = {backgroundColor: 'white', margin: "2rem", padding: "1rem"};
+  const [email, setEmail] = useState({ value: '', error: '' });
+  const [password, setPassword] = useState({ value: '', error: '' });
+  const [loading, setLoading] = useState(false);
+
+  const [visibleAlert, setVisibleAlert] = useState(false);
+  const [title, setTitle] = useState(null)
+  const [message, setMessege] = useState(null)
+
+  const showAlert = (title, message) => {
+    setVisibleAlert(true)
+    setTitle(title)
+    setMessege(message)
+  }
+
+  const hideAlert = (status) => {
+    setVisibleAlert(status)
+  }
+
+  const onLoginPressed = () => {
+    const emailError = emailValidator(email.value);
+    const passwordError = passwordValidator(password.value);
+
+    setLoading(true);
+    if (emailError || passwordError) {
+      setEmail({ ...email, error: emailError });
+      setPassword({ ...password, error: passwordError });
+      setLoading(false);
+      return;
+    }
+    signInWithEmailAndPassword(auth, email.value, password.value)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      if (user.emailVerified===false) {
+        showAlert("Erro","E-mail não verificado. Confira sua caixa de entrada.");
+      } else {navigation.navigate('Home')}
+    })
+    .catch((error) => {
+    console.log(error.code)
+    switch(error.code){
+      case 'auth/user-not-found':
+        showAlert("Erro","Usuário não cadastrado.");
+        break;
+      case 'auth/wrong-password':
+        showAlert("Erro","Senha incorreta");
+        break;
+      case 'auth/invalid-email':
+        showAlert("Erro","E-mail inválido");
+        break;
+      case 'auth/user-disabled':
+        showAlert("Erro","Usuário desabilitado");
+        break;
+    }
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+  }
 
   return (
     <Provider>
@@ -22,9 +84,38 @@ export default function Login({navigation}){
               <Image source={require('./../../assets/yoga-logo.jpg')}></Image>
               <Title>YOGA LUZ</Title>
             </Header>
-          
-            <LoginForm navigation={navigation}/>
+            <Wrapper>
+              <TextInput
+                label="Email"
+                placeholder="Digite seu email"
+                returnKeyType="next"
+                value={email.value}
+                onChangeText={text => setEmail({ value: text, error: '' })}
+                error={!!email.error}
+                errorText={email.error}
+                autoCapitalize="none"
+                autoCompleteType="email"
+                textContentType="emailAddress"
+                keyboardType="email-address"
+              />
+              <TextInput
+                label="Senha"
+                placeholder="Digite sua senha"
+                returnKeyType="done"
+                value={password.value}
+                onChangeText={text => setPassword({ value: text, error: '' })}
+                error={!!password.error}
+                errorText={password.error}
+                secureTextEntry={true}
+                autoCorrect={false}  
+              />
+        
+              <Button title={'ENTRAR'} isLoading={loading} onPress={onLoginPressed}></Button>
 
+              { visibleAlert && 
+              <AlertBox title={title} message={message} visible={visibleAlert} onClose={hideAlert}></AlertBox>
+              }
+           </Wrapper>
             <TouchableText onPress={showModal} title={'RECUPERAR SENHA'}></TouchableText>
             <TouchableText onPress={() => navigation.navigate('Cadastro')} title={'Cadastre-se'}></TouchableText>
           </Content>

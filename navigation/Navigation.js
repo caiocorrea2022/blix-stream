@@ -1,16 +1,16 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LinkingConfiguration from "./LinkingConfiguration";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
-import Home from "../pages/Home"
+import Plans from "../components/Price/Plans";
+import Home from "../pages/Home";
 import Playlist from "../pages/Playlist";
 
 // import auth, {FirebaseAuthTypes} from "@react-native-firebase/auth"
 
 export default function Navigation() {
-
   // const [user, setUser] = useState<FirebaseAuthTypes.User>(null);
 
   // useEffect(() => {
@@ -20,7 +20,7 @@ export default function Navigation() {
 
   return (
     <NavigationContainer linking={LinkingConfiguration}>
-      <Navigator/>
+      <Navigator />
       {/* {user ? <Home /> : <Navigator />} */}
     </NavigationContainer>
   );
@@ -32,10 +32,15 @@ function Navigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen
+        name="Plans"
+        component={Plans}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
         name="Login"
         component={Login}
         options={{ headerShown: false }}
-      /> 
+      />
       <Stack.Screen
         name="Cadastro"
         component={SignUp}

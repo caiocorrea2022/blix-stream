@@ -36,3 +36,6 @@ export const Image = styled.Image`
   height: 10rem;
   border-radius: 50%;
 `;
+
+export const Wrapper = styled.View`
+`;

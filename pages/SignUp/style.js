@@ -30,3 +30,14 @@ export const BackText = styled.Text`
   color: ${theme.colors.primary_900};
   margin-left: 5px;
 `;
+
+export const Wrapper = styled.View`
+`;
+
+export const Title = styled.Text`
+  color: ${theme.colors.text_900};
+  align-self: flex-start;
+  font-Size: ${theme.fontsSize.big};
+  font-family: ${theme.fontsFamily.text_Bold};
+  margin-bottom: 24px;
+`;

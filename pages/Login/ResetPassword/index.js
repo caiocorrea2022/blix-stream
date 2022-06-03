@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import { Wrapper, Title, FormMessage} from './style';
-import { emailValidator} from '../../../utils';
-import TextInput from '../../Controllers/TextInput';
-import Button from '../../Controllers/Button';
+import { emailValidator } from '../../../utils';
+import TextInput from '../../../components/TextInput';
+import Button from '../../../components/Button';
 import { auth } from '../../../firebase';
 import { sendPasswordResetEmail} from "firebase/auth";
 
