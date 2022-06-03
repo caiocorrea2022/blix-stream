@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Plans from "../components/Price/Plans";
 import Home from "../pages/Home";
+import Success from "../pages/SuccessPayment";
 import Playlist from "../pages/Playlist";
 
 // import auth, {FirebaseAuthTypes} from "@react-native-firebase/auth"
@@ -55,6 +56,11 @@ function Navigator() {
         name="Playlist"
         component={Playlist}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+      name = "Success"
+      component = {Success}
+      options = {{headerShown: false}}
       />
     </Stack.Navigator>
   );
