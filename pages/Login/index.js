@@ -112,7 +112,6 @@ const LoginComponent = () => {
  
   return (
     <Provider>
-<<<<<<< HEAD
       <Container>
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <Content>
@@ -163,31 +162,6 @@ const LoginComponent = () => {
           </Portal>
         </KeyboardAvoidingView>
       </Container>
-=======
-    <Container>
-    <View>
-    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-    <Content>
-    <Header>
-      <Image source={require('./../../assets/yoga-logo.jpg')}></Image>
-      <Title>YOGA LUZ</Title>
-    </Header>
-    <LoginForm navigation={navigation}/>
-    <TouchableText onPress={showModal} title={'RECUPERAR SENHA'}></TouchableText>
-    <TouchableText onPress={() => navigation.navigate('Cadastro')} title={'Cadastre-se'}></TouchableText>
-    </Content>
-    <Portal>
-    <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-      <ResetPassword></ResetPassword>
-    </Modal>
-    </Portal>
-    </KeyboardAvoidingView>
-    </View>
-    <ViewportProvider>
-       <LoginComponent />
-    </ViewportProvider>
-    </Container>
->>>>>>> 2aa4e60118575ec3e349e6173ace46b6ff80e9fe
     </Provider>
   );
 }
