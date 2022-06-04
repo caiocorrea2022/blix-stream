@@ -1,5 +1,6 @@
 import styled from 'styled-components/native'
-import theme from '../../global/theme';
+import THEME from '../../config/theme';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
     position: absolute;
@@ -13,9 +14,9 @@ export const Tags = styled.View`
 `;
 
 export const Text = styled.Text`
-    color: ${theme.colors.text_000};
+    color: ${THEME.COLORS.TEXT_000};
     margin-bottom: 0.5rem;
-    font-Size: ${props => `${props.fontSize}`};
+    font-Size: ${props => `${props.fontSize}px`};
     font-family: ${props => `${props.fontFamily}`};
     text-align: start;
 `;
@@ -30,13 +31,13 @@ export const MenuHero = styled.View`
 `;
 
 export const TextButton = styled.Text`
-    color: ${theme.colors.text_000};
-    font-Size: ${theme.fontsSize.extrasmall};
-    font-family: ${theme.fontsFamily.text_Regular};
+    color: ${THEME.COLORS.TEXT_000};
+    font-Size: ${RFPercentage(1)}px; //extrasmall
+    font-family: ${THEME.FONTFAMILY.REGULAR};
 `;
 
 export const Button = styled.TouchableOpacity`
-    background-color: ${theme.colors.primary_900};
+    background-color: ${THEME.COLORS.PRIMARY_900};
     width: 142px;
     height: 32px;
     border-radius: 2px;

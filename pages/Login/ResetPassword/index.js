@@ -3,7 +3,7 @@ import { Wrapper, Title, FormMessage} from './style';
 import { emailValidator } from '../../../utils';
 import TextInput from '../../../components/TextInput';
 import Button from '../../../components/Button';
-import { auth } from '../../../firebase';
+import { auth } from '../../../services/firebase';
 import { sendPasswordResetEmail} from "firebase/auth";
 
 const ResetPassword = ({navigation}) => {

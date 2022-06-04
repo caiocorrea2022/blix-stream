@@ -9,7 +9,7 @@ import {
   Linking,
 } from "react-native";
 import { Icon } from "react-native-elements";
-import { firestore } from "../../firebase";
+import { firestore } from "../../services/firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { CommonActions } from "@react-navigation/native";
 

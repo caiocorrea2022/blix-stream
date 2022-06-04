@@ -8,7 +8,7 @@ import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import AlertBox from '../../components/AlertBox'
 import { emailValidator, passwordValidator} from '../../utils';
-import { auth } from '../../firebase';
+import { auth } from '../../services/firebase';
 import { signInWithEmailAndPassword} from "firebase/auth";
 
 

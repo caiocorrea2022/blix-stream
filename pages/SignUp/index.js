@@ -9,7 +9,7 @@ import {
   Wrapper,
   Title,
 } from "./style";
-import theme from "../../global/theme";
+import THEME from '../../config/theme';
 import { Provider } from "react-native-paper";
 import TextInput from "../../components/TextInput";
 import Button from "../../components/Button";
@@ -20,9 +20,9 @@ import {
   signOut,
 } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
-import { auth, firestore } from "../../firebase";
+import { auth, firestore } from '../../services/firebase';
 import AlertBox from "../../components/AlertBox";
-import { createCheckoutSess } from "../../stripe/createCheckoutSession";
+import { createCheckoutSess } from "../../services/stripe/createCheckoutSession";
 
 export default function SignUp({ navigation }) {
   const [name, setName] = useState({ value: "", error: "" });
@@ -165,7 +165,7 @@ export default function SignUp({ navigation }) {
               <MaterialIcons
                 name="arrow-back"
                 size={24}
-                color={theme.colors.primary_900}
+                color= {THEME.COLORS.PRIMARY_900}
               />
               <BackText>Eu já tenho uma conta</BackText>
             </BackButton>

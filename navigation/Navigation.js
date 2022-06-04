@@ -5,7 +5,7 @@ import LinkingConfiguration from "./LinkingConfiguration";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Plans from "../components/Price/Plans";
-import Home from "../pages/Home";
+import Main from "../pages/Main";
 import Success from "../pages/SuccessPayment";
 import Playlist from "../pages/Playlist";
 
@@ -48,8 +48,8 @@ function Navigator() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Home"
-        component={Home}
+        name="Main"
+        component={Main}
         options={{ headerShown: false }}
       />
       <Stack.Screen

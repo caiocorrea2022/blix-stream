@@ -1,14 +1,14 @@
 import React from 'react'
 import { Container, Tags, Text, MenuHero, Button, TextButton} from './style';
-import theme from '../../global/theme';
+import THEME from '../../config/theme';
 import { Feather, Ionicons } from '@expo/vector-icons'
 
 const Hero = () => {
 	return (
 		<Container>
 			<Tags>
-				<Text fontSize={theme.fontsSize.medium} fontFamily={theme.fontsFamily.text_Bold}>Seja Bem-Vindo(a)!</Text>
-                <Text fontSize={theme.fontsSize.extrasmall} fontFamily={theme.fontsFamily.text_Regular}>Aqui você irá imergir em autoconhecimento.</Text>
+				<Text fontSize={RFPercentage(2.5)} fontFamily={THEME.FONTFAMILY.BOLD}>Seja Bem-Vindo(a)!</Text>
+                <Text fontSize={RFPercentage(2.5)} fontFamily={THEME.FONTFAMILY.REGULAR}>Aqui você irá imergir em autoconhecimento.</Text>
 			</Tags>
 			<MenuHero>
 				<Button activeOpacity={0.5}>

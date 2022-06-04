@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, TouchableOpacity, Text, ScrollView } from "react-native";
 import { PricingCard } from "react-native-elements";
-import { plans } from "../../../global/data";
+import { plans } from "../../../config/data";
 
 function Plans({ navigation }) {
   const [option, setOption] = useState([monthlyPrice]);

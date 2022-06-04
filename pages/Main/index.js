@@ -5,9 +5,9 @@ import Header from '../../components/Header';
 import Hero from '../../components/Hero';
 import { Wrapper, Container, Poster, Gradient, Main, CategoryText } from './style';
 import { getDocs, collection } from "firebase/firestore";
-import { firestore } from '../../firebase';
+import { firestore } from '../../services/firebase';
 
-const Home = ({navigation}) => {
+const Main = ({navigation}) => {
 
   const [allCategories, setAllCategories] = useState([]);
 
@@ -62,4 +62,4 @@ const Home = ({navigation}) => {
   );
 };
 
-export default Home;
+export default Main;

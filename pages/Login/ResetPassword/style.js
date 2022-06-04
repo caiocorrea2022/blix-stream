@@ -1,21 +1,22 @@
 import styled from 'styled-components/native'
-import theme from '../../../global/theme';
+import THEME from '../../../config/theme';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 export const Wrapper = styled.View`
 `;
 
 export const Title = styled.Text`
-  color: ${theme.colors.text_900};
+  color: ${THEME.COLORS.TEXT_900};
   align-self: flex-start;
-  font-Size: ${theme.fontsSize.medium};
-  font-family: ${theme.fontsFamily.text_Bold};
+  font-Size: ${RFPercentage(2.5)}px; //extrasmallpx
+  font-family: ${THEME.FONTFAMILY.BOLD};
   margin-bottom: 24px;
 `;
 
 export const FormMessage = styled.Text`
 	color: ${({ error }) => (error ? 'red' : 'green')};
-  font-Size: ${theme.fontsSize.extrasmall};
-  font-family: ${theme.fontsFamily.text_Regular};
+  font-Size: ${RFPercentage(1)}px; //extrasmallpx
+  font-family: ${THEME.FONTFAMILY.REGULAR};
 	text-align: center;
 	margin-top: 1rem;
 `;

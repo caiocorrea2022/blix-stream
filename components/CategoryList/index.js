@@ -8,10 +8,8 @@ import {
   RedCircle,
 } from './style';
 import { getDocs, collection, where, documentId } from "firebase/firestore";
-import { firestore } from '../../firebase';
-
-import data from '../../global/data';
-import { Text, TouchableOpacity } from 'react-native';
+import { firestore } from '../../services/firebase';
+import { TouchableOpacity } from 'react-native';
 
 const CategoryList = ({ categoryId, navigation }) => {
 

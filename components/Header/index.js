@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, HeaderLeftSide, HeaderIcons, Avatar} from './style';
 import {Icon} from 'react-native-elements'
-import theme from '../../global/theme';
+import THEME from '../../config/theme';
 
 const Header = ({navigation}) => {
     return (
@@ -10,7 +10,7 @@ const Header = ({navigation}) => {
                 <Icon 
                     type = "material-community"
                     name = "menu"
-                    color = {theme.colors.text_000}
+                    color = {THEME.COLORS.TEXT_900}
                     size = {34}
                     onPress={() => {navigation.toggleDrawer()}}
                 />
