@@ -1,65 +1,63 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { FlatList, View } from 'react-native';
 import CategoryList from '../../components/CategoryList';
 import Header from '../../components/Header';
 import Hero from '../../components/Hero';
-import { Wrapper, Container, Poster, Gradient, Main, CategoryText } from './style';
+import { Wrapper, Container, Poster, Gradient, Content, CategoryText } from './style';
 import { getDocs, collection } from "firebase/firestore";
 import { firestore } from '../../services/firebase';
 
-const Main = ({navigation}) => {
+export default function Main({ navigation }) {
 
   const [allCategories, setAllCategories] = useState([]);
 
   useEffect(() => {
-  const findAllCategories = async () => {
-    const response = await getDocs(collection(firestore, "categories"));
-    let categories = [];
-    response.forEach((doc) => {categories.push({id: doc.id, ...doc.data()});});
-    setAllCategories(categories);
-  };
-  
-  findAllCategories();
+    const findAllCategories = async () => {
+      const response = await getDocs(collection(firestore, "categories"));
+      let categories = [];
+      response.forEach((doc) => { categories.push({ id: doc.id, ...doc.data() }); });
+      setAllCategories(categories);
+    };
+
+    findAllCategories();
   }, []);
 
 
   return (
-    <Wrapper>
-      <Container>
+    <Container>
+      <Wrapper>
         <Poster source={require('../../assets/foto2.jpg')}>
-            <Gradient
-              locations={[0, 0.2, 0.7, 1]}
-              colors={[
-                'rgba(0,0,0,0.5)',
-                'rgba(0,0,0,0.0)',
-                'rgba(0,0,0,0.1)',
-                '#fff'
-              ]}>
-              <Header/>
-              <Hero/>
-            </Gradient>
-          </Poster>
-        <Main>
+          <Gradient
+            locations={[0, 0.2, 0.7, 1]}
+            colors={[
+              'rgba(0,0,0,0.5)',
+              'rgba(0,0,0,0.0)',
+              'rgba(0,0,0,0.1)',
+              '#fff'
+            ]}>
+            <Header navigation = {navigation}/>
+            <Hero />
+          </Gradient>
+        </Poster>
+        <Content>
           <FlatList
             data={allCategories}
             showsHorizontalScrollIndicator={false}
             renderItem={({ item, index }) => (
               <View>
                 <CategoryText>{item.title}</CategoryText>
-                <CategoryList categoryId={item.id} navigation={navigation}></CategoryList>
+                <CategoryList categoryId={item.id} navigation={navigation} onPress={() => navigation.navigate("ClickClass")}></CategoryList>
               </View>
-              )}
-            keyExtractor={(item,index)=>index.toString()}
+            )}
+            keyExtractor={(item, index) => index.toString()}
             // TODO q porra é essa?
             // stickyHeaderIndices={(allCategories.map((el, index) => {return index;})}
             // Refresh Effect
-            onRefresh={() => {}}
+            onRefresh={() => { }}
             refreshing={false}
           />
-        </Main>
-      </Container>
-    </Wrapper>
+        </Content>
+      </Wrapper>
+    </Container>
   );
 };
-
-export default Main;

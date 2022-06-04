@@ -1,7 +1,6 @@
 import Navigation from './navigation/Navigation';
 import {ThemeProvider} from 'styled-components/native';
 import THEME from './config/theme';
-import AppLoading from 'expo-app-loading';
 import './constants/IMLocalize';
 import {
 	useFonts,
@@ -23,10 +22,7 @@ export default function App() {
     Montserrat_700Bold,
     Montserrat_800ExtraBold
   });
-  
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
+
 
   return (
   <ThemeProvider theme={THEME}>

@@ -8,12 +8,12 @@ import { LinearGradient } from 'expo-linear-gradient'
 const statusBarHeight =
   Platform.OS === 'android' ? Constants.statusBarHeight : 0;
 
-export const Wrapper = styled.SafeAreaView`
+export const Container = styled.SafeAreaView`
 	background: ${THEME.COLORS.BACKGROUND};
 	flex: 1;
 `;
 
-export const Container = styled.ScrollView`
+export const Wrapper = styled.ScrollView`
     flex: 1;
 `;
 
@@ -22,7 +22,7 @@ export const Poster = styled.ImageBackground`
     height: ${(Dimensions.get('window').height * 60) / 100}px;
 `;
 
-export const Main = styled.View`
+export const Content = styled.View`
 	margin-top: 0.8rem;
 	margin-bottom: 0.8rem;
 `;

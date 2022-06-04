@@ -10,9 +10,9 @@ const Header = ({navigation}) => {
                 <Icon 
                     type = "material-community"
                     name = "menu"
-                    color = {THEME.COLORS.TEXT_900}
+                    color = {THEME.COLORS.TEXT_000}
                     size = {34}
-                    onPress={() => {navigation.toggleDrawer()}}
+                    onPress={() => navigation.toggleDrawer()}
                 />
             </HeaderLeftSide>
             <HeaderIcons>

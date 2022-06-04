@@ -52,7 +52,7 @@ export default function Login({navigation}){
       const user = userCredential.user;
       if (user.emailVerified===false) {
         showAlert("Erro","E-mail não verificado. Confira sua caixa de entrada.");
-      } else {navigation.navigate('Home')}
+      } else {navigation.navigate('DrawerNavigator')}
     })
     .catch((error) => {
     console.log(error.code)
