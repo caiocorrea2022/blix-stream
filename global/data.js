@@ -14,47 +14,40 @@ export default [
   { name: 'Apex Legends', source: apex },
 ];
 
-export const dataStripeTrimestral = [
-  { id: "1", plano: 'Plano Unico', preco: 'R$500', price: 'price_1L4R1tCmcyIwF9rcOIWTn3YN'},
-  { id: "2", plano: 'Plano Parcelado', preco: 'R$180 por mes', price: 'price_1L4R1tCmcyIwF9rcNYDolA5P'},
+export const planFrequency = [
+  { id: "1", frequency: 'Mensal'},
+  { id: "2", frequency: 'Trimestral'},
+  { id: "3", frequency: 'Semestral'},
+  { id: "4", frequency: 'Anual'},
 ];
 
-export const plans = [
+export const planPrices = [["R$200,00/mês", "R$220,00/mês", "R$250,00/mês"],["R$400,00/trimestre", "R$420,00/trimestre", "R$450,00/trimestre"],["R$800,00/semestre", "R$820,00/semestre", "R$850,00/semestre"],["R$1200,00/ano", "R$1220,00/ano", "R$1250,00/ano"]];
+export const upsellPrices = [["", "", ""],["ou R$150/mês por 3 meses", "ou R$160/mês por 3 meses", "ou R$170/mês por 3 meses"],["ou R$150/mês por 6 meses", "ou R$160/mês por 6 meses", "ou R$170/mês por 6 meses"],["ou R$150/mês por 12 meses", "ou R$160/mês por 12 meses", "ou R$170/mês por 12 meses"]];
+
+export const planInfos = [
   {
     planType: "Plano A",
-    monthlyPrice: "R$39,99",
-    quaterlyPrice: "R$49,99",
-    semiannualPrice: "R$59,99",
-    annualPrice: "R69,99",
-    firstItem: "Aulas ao vivo 1x semanaAulas ao vivo 1x semanaAulas ao vivo 1x semana",
-    secondItem: "Meditações Guiadas",
-    thirdItem: "+de100 Aulas Gravadas",
-    fourthItem: "oi",
-    fiftItem: "oiii",
+    firstItem: "✔ Meditações guiadas",
+    secondItem: "✔ +50 Aulas gravadas",
+    thirdItem: "",
+    fourthItem: "",
+    fiftItem: "",
   },
   {
     planType: "Plano B",
-    monthlyPrice: "R$39,99",
-    quaterlyPrice: "R$49,99",
-    semiannualPrice: "R$59,99",
-    annualPrice: "R69,99",
-    firstItem: "Aulas ao vivo 1x semanaAulas ao vivo 1x semanaAulas ao vivo 1x semana",
-    secondItem: "Meditações Guiadas",
-    thirdItem: "+de100 Aulas Gravadas",
-    fourthItem: "oi",
-    fiftItem: "oiii",
+    firstItem: "✔ Tudo do Plano A",
+    secondItem: "✔ Acesso a aulas ao vivo",
+    thirdItem: "✔ Acesso a +100 Aulas gravadas",
+    fourthItem: "",
+    fiftItem: "",
   },
   {
     planType: "Plano C",
-    monthlyPrice: "R$39,99",
-    quaterlyPrice: "R$49,99",
-    semiannualPrice: "R$59,99",
-    annualPrice: "R69,99",
-    firstItem: "Aulas ao vivo 1x semana",
-    secondItem: "Meditações Guiadas",
-    thirdItem: "+de100 Aulas Gravadas",
-    fourthItem: "oi",
-    fiftItem: "oiii",
+    firstItem: "✔ Tudo do Plano B",
+    secondItem: "✔ Acesso a aulas ao vivo e Lives",
+    thirdItem: "✔ Acesso à Jornada do Yogi",
+    fourthItem: "✔ Acesso a todos os conteúdos",
+    fiftItem: "",
   },
 ];
 
