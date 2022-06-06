@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TouchableOpacity, Text, ScrollView, FlatList } from "react-native";
+import { TouchableOpacity, FlatList } from "react-native";
 import { PricingCard } from "react-native-elements";
 import {
   Container,
@@ -8,8 +8,9 @@ import {
   Subtitle,
   ItemName,
   ItemContainer,
+  HorizontalList,
 } from "./style";
-import theme from "../../../config/theme";
+import THEME from "../../../config/theme";
 import { planFrequency, planPrices, planInfos, upsellPrices } from "../../../config/data";
 
 function Plans({ navigation }) {
@@ -27,8 +28,8 @@ function Plans({ navigation }) {
 
   const renderItem = ({ item, index }) => {
     const backgroundColor =
-      item.id === selectedId ? theme.colors.primary_900 : "#f1f1f1";
-    const color = item.id === selectedId ? "white" : "#1e1e1e";
+      item.id === selectedId ? THEME.COLORS.PRIMARY_900 : "#f1f1f1";
+    const color = item.id === selectedId ? THEME.COLORS.BACKGROUND : "#1e1e1e";
     return (
       <Item
         item={item}
@@ -58,18 +59,13 @@ function Plans({ navigation }) {
           numColumns={planFrequency.length}
         />
       </SafeAreaView>
-      <ScrollView
-        contentContainerStyle={{
-          flexGrow: 1,
-          justifyContent: "center",
-          flexDirection: "row",
-        }}
+      <HorizontalList
         horizontal={true}
       >
         {planInfos.map((item, index) => (
           <PricingCard
             key={index}
-            color={theme.colors.dark_gray}
+            color={THEME.COLORS.TEXT_900}
             title={item.planType}
             price={option[index]}
             info={[
@@ -81,24 +77,24 @@ function Plans({ navigation }) {
               item.fiftItem,
             ]}
             titleStyle={{
-              fontSize: theme.fontsSize.medium,
+              fontSize: THEME.FONTSIZE.MEDIUM,
             }}
-            titleFont={theme.fontsFamily.text_Bold}
+            titleFont={THEME.FONTFAMILY.BOLD}
             infoStyle={{
-              color: theme.colors.dark_gray,
+              color: THEME.COLORS.TEXT_900,
             }}
             pricingStyle={{
-              fontSize: theme.fontsSize.big,
+              fontSize: THEME.FONTSIZE.BIG,
             }}
-            pricingFont={theme.fontsFamily.text_Medium}
-            infoFont={theme.fontsFamily.text_Light}
-            button={{ title: "ASSINAR PLANO", color: theme.colors.background, titleStyle:{color: theme.colors.dark_gray, fontFamily: theme.fontsFamily.text_Bold }, buttonStyle:{borderRadius: "10px" }}}
+            pricingFont={THEME.FONTFAMILY.MEDIUM}
+            infoFont={THEME.FONTFAMILY.LIGHT}
+            button={{ title: "ASSINAR PLANO", color: THEME.COLORS.BACKGROUND, titleStyle:{color: THEME.COLORS.TEXT_900, fontFamily: THEME.FONTFAMILY.BOLD }, buttonStyle:{borderRadius: "10px" }}}
             containerStyle={{
-              backgroundColor: theme.colors.primary_900,
+              backgroundColor: THEME.COLORS.PRIMARY_900,
               borderRadius: "15px",
               justifyContent: "center",
-              width: "300px",
-              height: "450px",
+              width: "18rem",
+              height: "28rem",
             }}
             wrapperStyle={{
               alignItems: "stretch",
@@ -109,7 +105,7 @@ function Plans({ navigation }) {
           />
 
         ))}
-      </ScrollView>
+      </HorizontalList>
     </Container>
   );
 }
