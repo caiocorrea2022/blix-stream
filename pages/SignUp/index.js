@@ -23,6 +23,7 @@ import { setDoc, doc } from "firebase/firestore";
 import { auth, firestore } from '../../services/firebase';
 import AlertBox from "../../components/AlertBox";
 import { createCheckoutSess } from "../../services/stripe/createCheckoutSession";
+import axios from 'axios';
 
 export default function SignUp({ navigation }) {
   const [name, setName] = useState({ value: "", error: "" });
@@ -32,6 +33,11 @@ export default function SignUp({ navigation }) {
   const [visibleAlert, setVisibleAlert] = useState(false);
   const [title, setTitle] = useState(null);
   const [message, setMessege] = useState(null);
+  const googleInfo = {
+    Nome: name.value,
+    Email: email.value,
+  };
+
 
   const showAlert = (title, message) => {
     setVisibleAlert(true);
@@ -100,6 +106,10 @@ export default function SignUp({ navigation }) {
             break;
         }
       });
+      axios.post('https://sheet.best/api/sheets/fa8b5f7a-031b-43be-b1c2-56d16d985edb', googleInfo)
+      .then(response => {
+        console.log(response);
+      })
   };
 
   return (

@@ -1,24 +1,23 @@
 import React, { useEffect } from "react";
 import {
-  View,
-  StyleSheet,
-  Dimensions,
-  TouchableOpacity,
-  Text,
-  userEmail,
-  Linking,
-} from "react-native";
+  Provider,
+  Container,
+  Title,
+  Subtitle,
+} from "./style";
 import { Icon } from "react-native-elements";
-import { firestore } from "../../services/firebase";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { CommonActions } from "@react-navigation/native";
-
-const WIDTH = Dimensions.get("window").width;
-const HEIGHT = Dimensions.get("window").height;
+import { getAuth } from "firebase/auth";
+import axios from 'axios';
+import THEME from '../../config/theme';
 
 const auth = getAuth();
 
 export default function Success({ navigation }) {
+
+  const googleInfo = {
+    Nome: 'Taís Teste',
+    Email: 'taiskro@hotmail.com',
+  };
 
   const getSessionId = async () => {
 
@@ -97,9 +96,25 @@ export default function Success({ navigation }) {
   useEffect(() => {
 
     getSessionId();
+    axios.post('https://sheet.best/api/sheets/fa8b5f7a-031b-43be-b1c2-56d16d985edb', googleInfo)
+    .then(response => {
+      console.log(response);
+    })
   }, []);
 
   return (
-    <View>{/* <Text>{sessionJSON}</Text> */}</View>
+<Provider>
+    <Container>
+      <Icon
+        type ="material-icons"
+        name = "check-circle-outline"
+        color= {THEME.COLORS.BACKGROUND}
+        size ={60}
+      />
+      <Title>Plano assinado com sucesso!</Title>
+      <Subtitle>Por favor, verifique seu e-mail e faça o seu primeiro login.</Subtitle>
+    </Container>
+  </Provider>  
   );
-}
+};
+
