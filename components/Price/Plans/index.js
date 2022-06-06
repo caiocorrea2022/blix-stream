@@ -81,12 +81,8 @@ function Plans({ navigation }) {
               title={item.planType}
               price={option[index]}
               info={[
-                option[index],
-                item.firstItem,
-                item.secondItem,
-                item.thirdItem,
-                item.fourthItem,
-                item.fiftItem,
+                upsell[index],
+                ...item.info
               ]}
               titleStyle={{
                 fontSize: THEME.FONTSIZE.MEDIUM,

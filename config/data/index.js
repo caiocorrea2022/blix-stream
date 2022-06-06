@@ -27,27 +27,15 @@ export const upsellPrices = [["", "", ""],["ou R$150/mês por 3 meses", "ou R$16
 export const planInfos = [
   {
     planType: "PLANO A",
-    firstItem: "✔ Meditações guiadas.Meditações guiadas.Meditações guiadas.Meditações guiadas",
-    secondItem: "✔ +50 Aulas gravadas",
-    thirdItem: "",
-    fourthItem: "",
-    fiftItem: "",
+    info: ["✔ Meditações guiadas.Meditações guiadas.Meditações guiadas.Meditações guiadas", "✔ +50 Aulas gravadas"]
   },
   {
     planType: "PLANO GANESHA",
-    firstItem: "✔ Tudo do Plano A",
-    secondItem: "✔ Acesso a aulas ao vivo",
-    thirdItem: "✔ Acesso a +100 Aulas gravadas",
-    fourthItem: "",
-    fiftItem: "",
+    info: ["✔ Tudo do Plano A", "✔ Acesso a aulas ao vivo", "✔ Acesso a +100 Aulas gravadas"]
   },
   {
     planType: "PLANO SHIVA",
-    firstItem: "✔ Tudo do Plano B",
-    secondItem: "✔ Acesso a aulas ao vivo e Lives",
-    thirdItem: "✔ Acesso à Jornada do Yogi",
-    fourthItem: "✔ Acesso a todos os conteúdos",
-    fiftItem: "",
+    info: ["✔ Tudo do Plano B", "✔ Acesso a aulas ao vivo e Lives", "✔ Acesso à Jornada do Yogi", "✔ Acesso a todos os conteúdos"]
   },
 ];
 
