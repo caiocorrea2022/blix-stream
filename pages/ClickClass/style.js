@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
 import THEME from '../../config/theme';
-import { RFPercentage } from "react-native-responsive-fontsize";
 
 const WIDTH = Dimensions.get('window').width;
 
@@ -29,7 +28,7 @@ export const ContentVideo = styled.View`
 export const Text = styled.Text`
 	color: ${THEME.COLORS.TEXT_900};
     font-family: ${THEME.FONTFAMILY.MEDIUM};
-    font-size: ${RFPercentage(3)}px; //medium
+    font-size: ${THEME.FONTSIZE.MEDIUM};
     margin-bottom: 0.1rem;
   	margin-left: 1rem;
     text-align: 'left';

@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
 import THEME from '../../config/theme';
-import { RFPercentage } from "react-native-responsive-fontsize";
 
 export const Container = styled.TouchableOpacity`
   width: 80%;
@@ -16,7 +15,7 @@ export const Container = styled.TouchableOpacity`
 
 export const Title = styled.Text`
   color: ${THEME.COLORS.TEXT_000};
-  font-size: ${RFPercentage(2.5)}px; //medium
+  font-size: ${THEME.FONTSIZE.MEDIUM};
   font-family: ${THEME.FONTFAMILY.BOLD};
 `;
 

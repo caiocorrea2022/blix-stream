@@ -1,6 +1,5 @@
 import styled from 'styled-components/native'
 import THEME from '../../config/theme';
-import { RFPercentage } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
     position: absolute;
@@ -16,7 +15,7 @@ export const Tags = styled.View`
 export const Text = styled.Text`
     color: ${THEME.COLORS.TEXT_000};
     margin-bottom: 0.5rem;
-    font-Size: ${RFPercentage(2.5)}px;
+    font-Size: ${THEME.FONTSIZE.MEDIUM};
     font-family: ${props => `${props.fontFamily}`};
     text-align: start;
 `;

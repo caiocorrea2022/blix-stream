@@ -2,7 +2,6 @@ import styled from 'styled-components/native';
 import Constants from 'expo-constants';
 import { Platform, Dimensions } from 'react-native';
 import THEME from '../../config/theme';
-import { RFPercentage } from "react-native-responsive-fontsize";
 import { LinearGradient } from 'expo-linear-gradient'
 
 const statusBarHeight =
@@ -34,7 +33,7 @@ export const Gradient = styled(LinearGradient)`
 export const CategoryText = styled.Text`
 	color: ${THEME.COLORS.TEXT_900};
     font-family: ${THEME.FONTFAMILY.MEDIUM};
-    font-size: ${RFPercentage(3)}px; //medium
+    font-size: ${THEME.FONTSIZE.MEDIUM};
     margin-bottom: 0.1rem;
   	margin-left: 1rem;
 `;

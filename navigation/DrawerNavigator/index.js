@@ -1,68 +1,63 @@
-import React from 'react';
+import * as React from 'react';
+import { View, Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import {Icon} from 'react-native-elements';
-import DrawerContent from '../../components/DrawerContent';
-// import About from '../../pages/About';
-// import EditProfile from '../../pages/EditProfile'
 import Main from '../../pages/Main'
+import About from '../../pages/About'
 import THEME from '../../config/theme';
+import DrawerContent from '../../components/DrawerContent';
 
-const Drawer = createDrawerNavigator()
 
-export default function DrawerNavigator(){          
-    return(
-        <Drawer.Navigator drawerContent  = {props =><DrawerContent {...props} />}>
-            <Drawer.Screen 
-                name = "Main"
-                component ={Main}
-                options = {{
-                    headerShown:false,
-                    drawerActiveBackgroundColor: THEME.COLORS.BACKGROUND,
-                    drawerActiveTintColor: THEME.COLORS.TEXT_800,
-                    drawerIcon: ({focused,size}) =>(
-                        <Icon 
-                            type = "material"
-                            name = "home"
-                            color = {focused ? THEME.COLORS.PRIMARY_800 : THEME.COLORS.TEXT_700}
-                            size = {size}
-                        />
-                    )
+function EditProfile() {
+    return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Article Screen</Text>
+        </View>
+    );
+}
+
+const Drawer = createDrawerNavigator();
+
+export default function MyDrawer() {
+    return (
+        <Drawer.Navigator
+            useLegacyImplementation
+            drawerContent  = {props =><DrawerContent {...props} />}
+                screenOptions={{
+                    drawerStyle: {
+                        backgroundColor: THEME.COLORS.BACKGROUND,
+                    },
                 }}
-            />
-            {/* <Drawer.Screen 
-            name = "About"
-            component ={About}
-            options = {{
-                 headerShown:false,
-                 drawerActiveBackgroundColor: THEME.COLORS.BACKGROUND,
-                 drawerActiveTintColor: THEME.COLORS.TEXT_800,
-                 drawerIcon: ({focused,size}) =>(
-                     <Icon 
-                         type = "material-community"
-                         name = "credit-card-outline"
-                         color = {focused ? THEME.COLORS.PRIMARY_800 : THEME.COLORS.TEXT_700}
-                         size = {size}
-                     />
-                 )
-            }}
-            />
-            <Drawer.Screen 
-                name = "EditProfile"
-                component ={EditProfile}
-                options = {{
-                    headerShown:false,
-                    drawerActiveBackgroundColor: THEME.COLORS.BACKGROUND,
-                    drawerActiveTintColor: THEME.COLORS.TEXT_800,
-                    drawerIcon: ({focused,size}) =>(
-                        <Icon 
-                            type = "material"
-                            name = "person"
-                            color = {focused ? THEME.COLORS.PRIMARY_800 : THEME.COLORS.TEXT_700}
-                            size = {size}
-                        />
-                    )
-                }}
-            /> */}
-        </Drawer.Navigator>
-    )
+            >
+                <Drawer.Screen
+                    name="Tela Principal"
+                    component={Main}
+                    options={{
+                        headerShown: false,
+                        drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
+                        drawerActiveTintColor: THEME.COLORS.TEXT_900,
+                        drawerInactiveTintColor: THEME.COLORS.TEXT_900,
+                        drawerLabelStyle: {fontSize: THEME.FONTSIZE.MEDIUM, fontFamily: THEME.FONTFAMILY.REGULAR }
+                    }} />
+                <Drawer.Screen
+                    name="Sobre nós"
+                    component={About}
+                    options={{
+                        headerShown: false,
+                        drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
+                        drawerActiveTintColor: THEME.COLORS.TEXT_900,
+                        drawerInactiveTintColor: THEME.COLORS.TEXT_900,
+                        drawerLabelStyle: {fontSize: THEME.FONTSIZE.MEDIUM, fontFamily: THEME.FONTFAMILY.REGULAR }
+                    }} />
+                <Drawer.Screen
+                    name="Editar Perfil"
+                    component={EditProfile}
+                    options={{
+                        // headerShown: false,
+                        drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
+                        drawerActiveTintColor: THEME.COLORS.TEXT_900,
+                        drawerInactiveTintColor: THEME.COLORS.TEXT_900,
+                        drawerLabelStyle: {fontSize: THEME.FONTSIZE.MEDIUM, fontFamily: THEME.FONTFAMILY.REGULAR }
+                    }} />
+            </Drawer.Navigator>
+    );
 }

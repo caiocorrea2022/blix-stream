@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
-import { RFPercentage } from "react-native-responsive-fontsize";
 import THEME from '../../config/theme';
 
 export const Container = styled.View`
@@ -26,7 +25,7 @@ export const BackButton = styled.TouchableOpacity`
 `;
 
 export const BackText = styled.Text`
-  font-size: ${RFPercentage(2.5)}px; //14px
+  font-size: ${THEME.FONTSIZE.MEDIUM};
   font-family: ${THEME.FONTFAMILY.MEDIUM};
   color: ${THEME.COLORS.PRIMARY_900};
   margin-left: 5px;
@@ -38,7 +37,7 @@ export const Wrapper = styled.View`
 export const Title = styled.Text`
   color: ${THEME.COLORS.TEXT_900};
   align-self: flex-start;
-  font-Size: ${RFPercentage(5)}px; //big
+  font-Size: ${THEME.FONTSIZE.EXTRABIG};
   font-family: ${THEME.FONTFAMILY.BOLD};
   margin-bottom: 24px;
 `;
