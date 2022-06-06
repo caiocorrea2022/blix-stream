@@ -6,11 +6,11 @@ export default {
     TEXT_800: '#323644',
     TEXT_700: '#8F94A3',
     TEXT_000: '#F1F1F1',
-    ALERT: "#ec1414", //red   
-    BACKGROUND: "#ffffff", //white
-    PRIMARY_900: "#759A5B", //green
-    PRIMARY_800: "#C8E3B4", //light-green
-    PRIMARY_700: "#C8E3B4", //light-green
+    ALERT: "#ec1414",
+    BACKGROUND: "#ffffff",
+    PRIMARY_900: "#759A5B",
+    PRIMARY_800: "#C8E3B4",
+    PRIMARY_700: "#C8E3B4",
   },
 
   FONTFAMILY:{
@@ -23,8 +23,9 @@ export default {
   },
 
   FONTSIZE:{
-    BIG: RFPercentage(3.0),
-    MEDIUM: RFPercentage(2.2),
+    EXTRABIG: RFPercentage(4),
+    BIG: RFPercentage(2.8),
+    MEDIUM: RFPercentage(2.0),
     SMALL: RFPercentage(1.5), 
     EXTRASMALL: RFPercentage(1.0),
   }

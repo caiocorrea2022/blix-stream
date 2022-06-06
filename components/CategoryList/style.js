@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
 import THEME from '../../config/theme';
 import { Dimensions } from 'react-native'
-import { RFPercentage } from "react-native-responsive-fontsize";
 
 export const List = styled.ScrollView.attrs({
   horizontal: true,
@@ -24,7 +23,7 @@ export const CategoryName = styled.Text`
   margin-top: 5px;
   max-width: 98px;
   color: ${THEME.COLORS.TEXT_900};
-  font-Size: ${RFPercentage(3)}px; //medium
+  font-Size: ${THEME.FONTSIZE.MEDIUM};
   font-family: ${THEME.FONTFAMILY.BOLD};
 `;
 

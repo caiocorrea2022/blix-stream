@@ -1,12 +1,14 @@
 import React from 'React';
-
+import { Text } from 'react-native';
+import Header from '../../components/Header';
 import {Container} from './style';
 
-const About = ({navigation}) => {
+
+export default function About({ navigation }) {
     return (
-        <Container>
-        </Container>
+      <Container>
+        <Header goBack={navigation.goBack}/>
+        <Text>Article Screen</Text>
+      </Container>
     );
-  };
-  
-  export default About;
+  }

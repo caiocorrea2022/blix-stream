@@ -8,9 +8,8 @@ const TextInput = ({ ...props }) => (
       style={{backgroundColor:THEME.COLORS.BACKGROUND, fontFamily:THEME.FONTFAMILY.REGULAR}}
       underlineColor={THEME.COLORS.PRIMARY_800}
       activeUnderlineColor={THEME.COLORS.PRIMARY_900}
-      outlineColor={THEME.COLORS.TEXT_900}
-      activeOutlineColor={THEME.COLORS.PRIMARY_900}
-      selectionColor={THEME.COLORS.TEXT_900}
+      placeholderTextColor={THEME.COLORS.TEXT_700}
+      theme={{ colors: THEME.COLORS.TEXT_800}}
       {...props}
     />
 );

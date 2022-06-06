@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { KeyboardAvoidingView, Platform } from 'react-native';
-import { Container, Content, Image, Header, Title, Wrapper} from './style';
+import { Container, Content, Image, ViewImage, Title, Wrapper, ViewHeader} from './style';
 import ResetPassword from './ResetPassword';
 import TouchableText from '../../components/TouchableText'
 import { Modal, Portal, Provider } from 'react-native-paper';
@@ -10,6 +10,7 @@ import AlertBox from '../../components/AlertBox'
 import { emailValidator, passwordValidator} from '../../utils';
 import { auth } from '../../services/firebase';
 import { signInWithEmailAndPassword} from "firebase/auth";
+import Header from '../../components/Header';
 
 
 export default function Login({navigation}){
@@ -112,16 +113,19 @@ const LoginComponent = () => {
  
   return (
     <Provider>
-      <Container>
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+      <ViewHeader>
+      <Header goBack={navigation.goBack}/>
+      </ViewHeader>
+      <Container>      
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>     
         <Content>
-            <Header>
+            <ViewImage>
               <Image source={require('./../../assets/yoga-logo.jpg')}></Image>
               <Title>YOGA LUZ</Title>
-            </Header>
+            </ViewImage>
             <Wrapper>
               <TextInput
-                label="Email"
+                label='Email'
                 placeholder="Digite seu email"
                 returnKeyType="next"
                 value={email.value}
@@ -162,6 +166,7 @@ const LoginComponent = () => {
           </Portal>
         </KeyboardAvoidingView>
       </Container>
+
     </Provider>
   );
 }
