@@ -7,7 +7,7 @@ export const Container = styled.TouchableOpacity`
 
 export const Title = styled.Text`
     color: ${THEME.COLORS.TEXT_900};
-    font-size: ${THEME.FONTSIZE.SMALL};
+    font-size: ${THEME.FONTSIZE.MEDIUM};
     font-family: ${THEME.FONTFAMILY.REGULAR};
     align-self: center;
 `;

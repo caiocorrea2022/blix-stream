@@ -3,17 +3,9 @@ import { View, Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Main from '../../pages/Main'
 import About from '../../pages/About'
+import EditProfile from '../../pages/EditProfile';
 import THEME from '../../config/theme';
-import DrawerContent from '../../components/DrawerContent';
-
-
-function EditProfile() {
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Article Screen</Text>
-        </View>
-    );
-}
+import DrawerContent from '../DrawerContent';
 
 const Drawer = createDrawerNavigator();
 
@@ -49,10 +41,10 @@ export default function MyDrawer() {
                         drawerLabelStyle: {fontSize: THEME.FONTSIZE.MEDIUM, fontFamily: THEME.FONTFAMILY.REGULAR }
                     }} />
                 <Drawer.Screen
-                    name="Editar Perfil"
+                    name="EditProfile"
                     component={EditProfile}
                     options={{
-                        // headerShown: false,
+                        headerShown: false,
                         drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
                         drawerActiveTintColor: THEME.COLORS.TEXT_900,
                         drawerInactiveTintColor: THEME.COLORS.TEXT_900,

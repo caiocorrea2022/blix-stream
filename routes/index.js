@@ -6,23 +6,18 @@ import LinkingConfiguration from "./LinkingConfiguration";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Plans from "../components/Price/Plans";
-import MyDrawer from "./DrawerNavigator";
+import MyDrawer from "../components/DrawerNavigator";
 import Success from "../pages/SuccessPayment";
 import ClickClass from "../pages/ClickClass";
+import AuthProvider from '../hooks/auth';
 
-// import auth, {FirebaseAuthTypes} from "@react-native-firebase/auth"
 
 export default function Navigation() {
-  // const [user, setUser] = useState<FirebaseAuthTypes.User>(null);
-
-  // useEffect(() => {
-  //   const subscriber = auth().onAuthStateChanged(setUser);
-  //   return subscriber;
-  // }, []);
-
   return (
     <NavigationContainer linking={LinkingConfiguration}>
-      <Navigator />
+      <AuthProvider>
+        <Navigator/>
+      </AuthProvider>
     </NavigationContainer>
   );
 }
@@ -52,16 +47,15 @@ function Navigator() {
         component={SignUp}
         options={{ headerShown: false }}
       />
-
       <Stack.Screen
         name="ClickClass"
         component={ClickClass}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-      name = "Success"
-      component = {Success}
-      options = {{headerShown: false}}
+        name="Success"
+        component={Success}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

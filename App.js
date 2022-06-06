@@ -1,4 +1,4 @@
-import Navigation from './navigation/Navigation';
+import Navigation from './routes';
 import {ThemeProvider} from 'styled-components/native';
 import THEME from './config/theme';
 import './constants/IMLocalize';

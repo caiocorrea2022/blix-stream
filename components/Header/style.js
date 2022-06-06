@@ -7,6 +7,7 @@ export const Container = styled.View`
     justify-content: space-between;
     padding: 1rem 0.8rem 0 0.8rem;
     width: 100%;
+    background-color: ${props => `${props.backgroundColor}`};
 `;
 
 export const Avatar = styled.Image`
