@@ -9,6 +9,8 @@ export default {
     PRIMARY_900: "#759A5B", //green
     PRIMARY_800: "#C8E3B4", //light-green
     PRIMARY_700: "#C8E3B4", //light-green
+    light_gray: "#f1f1f1", //light-gray
+    dark_gray: "#1e1e1e", //dark-gray
   },
 
   FONTFAMILY:{
