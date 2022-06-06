@@ -9,8 +9,8 @@ import {
   ItemName,
   ItemContainer,
 } from "./style";
-import theme from "../../../global/theme";
-import { planFrequency, planPrices, planInfos, upsellPrices } from "../../../global/data";
+import theme from "../../../config/theme";
+import { planFrequency, planPrices, planInfos, upsellPrices } from "../../../config/data";
 
 function Plans({ navigation }) {
   const [selectedId, setSelectedId] = useState(null);

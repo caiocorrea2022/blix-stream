@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
-import theme from '../../global/theme';
+import THEME from '../../config/theme';
 import { Dimensions } from 'react-native'
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 export const List = styled.ScrollView.attrs({
   horizontal: true,
@@ -10,7 +11,6 @@ export const List = styled.ScrollView.attrs({
 `;
 
 export const CategoryContainer = styled.TouchableOpacity`
-  /* background: purple; */
   margin-right: 10px;
 `;
 
@@ -23,9 +23,9 @@ export const CategoryImage = styled.Image`
 export const CategoryName = styled.Text`
   margin-top: 5px;
   max-width: 98px;
-  color: ${theme.colors.text_900};
-  font-Size: ${theme.fontsSize.medium};
-  font-family: ${theme.fontsFamily.text_Bold} ;
+  color: ${THEME.COLORS.TEXT_900};
+  font-Size: ${RFPercentage(3)}px; //medium
+  font-family: ${THEME.FONTFAMILY.BOLD};
 `;
 
 export const CategoryStatus = styled.View`
@@ -34,7 +34,7 @@ export const CategoryStatus = styled.View`
 `;
 
 export const RedCircle = styled.View`
-  background: ${theme.colors.primary_900};
+  background: ${THEME.COLORS.PRIMARY_900};
   width: 9px;
   height: 9px;
   border-radius: 4.5px;
@@ -43,5 +43,5 @@ export const RedCircle = styled.View`
 export const Info = styled.Text`
   margin-left: 4px;
   padding-bottom: 1px;
-  color: ${theme.colors.text_900};
+  color: ${THEME.COLORS.TEXT_900};
 `;

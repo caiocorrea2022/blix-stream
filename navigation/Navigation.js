@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import 'react-native-gesture-handler'
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LinkingConfiguration from "./LinkingConfiguration";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Plans from "../components/Price/Plans";
-import Home from "../pages/Home";
+import DrawerNavigator from "./DrawerNavigator";
 import Success from "../pages/SuccessPayment";
-import Playlist from "../pages/Playlist";
+import ClickClass from "../pages/ClickClass";
 
 // import auth, {FirebaseAuthTypes} from "@react-native-firebase/auth"
 
@@ -22,7 +23,6 @@ export default function Navigation() {
   return (
     <NavigationContainer linking={LinkingConfiguration}>
       <Navigator />
-      {/* {user ? <Home /> : <Navigator />} */}
     </NavigationContainer>
   );
 }
@@ -32,6 +32,11 @@ const Stack = createNativeStackNavigator();
 function Navigator() {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name="DrawerNavigator"
+        component={DrawerNavigator}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="Plans"
         component={Plans}
@@ -47,14 +52,10 @@ function Navigator() {
         component={SignUp}
         options={{ headerShown: false }}
       />
+
       <Stack.Screen
-        name="Home"
-        component={Home}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="Playlist"
-        component={Playlist}
+        name="ClickClass"
+        component={ClickClass}
         options={{ headerShown: false }}
       />
       <Stack.Screen

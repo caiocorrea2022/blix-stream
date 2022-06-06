@@ -1,10 +1,11 @@
 import styled from 'styled-components/native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
-import theme from '../../global/theme';
+import THEME from '../../config/theme';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${theme.colors.background};
+  background-color: ${THEME.COLORS.BACKGROUND};
   padding: 24px;
   justify-content: center;
   flex-direction: row;
@@ -20,10 +21,10 @@ export const Content = styled.ScrollView.attrs({
 `;
 
 export const Title = styled.Text`
-  color: ${theme.colors.text_900};
+  color: ${THEME.COLORS.TEXT_900};
   text-align: center;
-  font-Size: ${theme.fontsSize.big};
-  font-family: ${theme.fontsFamily.text_Bold} ;
+  font-Size: ${RFPercentage(4.5)}px;
+  font-family: ${THEME.FONTFAMILY.BOLD};
   margin-top: 0.5rem;
 `;
 

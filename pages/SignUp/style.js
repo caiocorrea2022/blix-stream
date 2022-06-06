@@ -1,10 +1,11 @@
 import styled from 'styled-components/native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
-import theme from '../../global/theme';
+import { RFPercentage } from "react-native-responsive-fontsize";
+import THEME from '../../config/theme';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${theme.colors.background};
+  background-color: ${THEME.COLORS.BACKGROUND};
   padding: 24px;
 `;
 
@@ -25,9 +26,9 @@ export const BackButton = styled.TouchableOpacity`
 `;
 
 export const BackText = styled.Text`
-  font-size: 14px;
-  font-family: ${theme.fontsFamily.text_Medium};
-  color: ${theme.colors.primary_900};
+  font-size: ${RFPercentage(2.5)}px; //14px
+  font-family: ${THEME.FONTFAMILY.MEDIUM};
+  color: ${THEME.COLORS.PRIMARY_900};
   margin-left: 5px;
 `;
 
@@ -35,9 +36,9 @@ export const Wrapper = styled.View`
 `;
 
 export const Title = styled.Text`
-  color: ${theme.colors.text_900};
+  color: ${THEME.COLORS.TEXT_900};
   align-self: flex-start;
-  font-Size: ${theme.fontsSize.big};
-  font-family: ${theme.fontsFamily.text_Bold};
+  font-Size: ${RFPercentage(5)}px; //big
+  font-family: ${THEME.FONTFAMILY.BOLD};
   margin-bottom: 24px;
 `;

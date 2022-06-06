@@ -8,7 +8,7 @@ import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import AlertBox from '../../components/AlertBox'
 import { emailValidator, passwordValidator} from '../../utils';
-import { auth } from '../../firebase';
+import { auth } from '../../services/firebase';
 import { signInWithEmailAndPassword} from "firebase/auth";
 
 
@@ -52,7 +52,7 @@ export default function Login({navigation}){
       const user = userCredential.user;
       if (user.emailVerified===false) {
         showAlert("Erro","E-mail não verificado. Confira sua caixa de entrada.");
-      } else {navigation.navigate('Home')}
+      } else {navigation.navigate('DrawerNavigator')}
     })
     .catch((error) => {
     console.log(error.code)

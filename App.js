@@ -1,6 +1,6 @@
 import Navigation from './navigation/Navigation';
 import {ThemeProvider} from 'styled-components/native';
-import theme from './global/theme';
+import THEME from './config/theme';
 import './constants/IMLocalize';
 import {
 	useFonts,
@@ -23,8 +23,9 @@ export default function App() {
     Montserrat_800ExtraBold
   });
 
+
   return (
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={THEME}>
     <Navigation />
   </ThemeProvider>
   );

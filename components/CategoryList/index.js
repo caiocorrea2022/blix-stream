@@ -8,10 +8,8 @@ import {
   RedCircle,
 } from './style';
 import { getDocs, collection, where, documentId } from "firebase/firestore";
-import { firestore } from '../../firebase';
-
-import data from '../../global/data';
-import { Text, TouchableOpacity } from 'react-native';
+import { firestore } from '../../services/firebase';
+import { TouchableOpacity } from 'react-native';
 
 const CategoryList = ({ categoryId, navigation }) => {
 
@@ -32,7 +30,7 @@ const CategoryList = ({ categoryId, navigation }) => {
 
   const CategoryItem = ({ item }) => (
     <CategoryContainer>
-      <TouchableOpacity onPress={() => navigation.navigate('Playlist', { videos: item.videos })}>
+      <TouchableOpacity onPress={() => navigation.navigate('ClickClass', { videos: item.videos })}>
         <CategoryImage source={item.img} />
         <CategoryName numberOfLines={1}>{item.title}</CategoryName>
         <CategoryStatus>
