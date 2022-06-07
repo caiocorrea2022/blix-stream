@@ -1,4 +1,4 @@
-import { RFPercentage } from "react-native-responsive-fontsize";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
 export default {
   COLORS:{
@@ -23,10 +23,10 @@ export default {
   },
 
   FONTSIZE:{
-    EXTRABIG: RFPercentage(4),
-    BIG: RFPercentage(2.8),
-    MEDIUM: RFPercentage(2.0),
-    SMALL: RFPercentage(1.5), 
-    EXTRASMALL: RFPercentage(1.0),
+    EXTRABIG: RFValue(20, 680),
+    BIG: RFValue(16, 680),
+    MEDIUM: RFValue(12, 680),
+    SMALL: RFValue(10, 680), 
+    EXTRASMALL: RFValue(8, 680),
   }
 };

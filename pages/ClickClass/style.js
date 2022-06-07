@@ -10,8 +10,8 @@ export const Container = styled.View`
 
 export const Wrapper = styled.View`
  background-Color: red;
- margin: 5;
- padding: 5;
+ margin: 5px;
+ padding: 5px;
  height: 140;
  justify-content: 'center';
  flex-direction: "row";

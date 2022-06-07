@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { KeyboardAvoidingView, Platform } from "react-native";
+import { View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import {
   Container,
@@ -8,6 +8,8 @@ import {
   BackText,
   Wrapper,
   Title,
+  ContainerSideView,
+  SideView,
 } from "./style";
 import THEME from '../../config/theme';
 import { Provider } from "react-native-paper";
@@ -24,7 +26,8 @@ import { auth, firestore } from '../../services/firebase';
 import AlertBox from "../../components/AlertBox";
 import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
 import axios from 'axios';
-import {TextInputMask} from 'react-native-masked-text';
+import ViewPortProvider from '../../components/MobileOrDesktop/ViewPortProvider';
+import useViewport from '../../components/MobileOrDesktop/useViewport';
 
 export default function SignUp({ navigation }) {
   const [name, setName] = useState({ value: "", error: "" });
@@ -120,8 +123,19 @@ export default function SignUp({ navigation }) {
       })
   };
 
+  const MobileOrDesktopComponent = () => {
+    const { width } = useViewport();
+    const breakpoint = 620;
+ 
+    return width < breakpoint ? <View></View> : <SideView></SideView>;
+  };
+
+
   return (
     <Provider>
+      <ViewPortProvider>
+       <ContainerSideView>
+         <MobileOrDesktopComponent></MobileOrDesktopComponent>
       <Container>
               <Title>Cadastrar</Title>
               <TextInput
@@ -206,6 +220,9 @@ export default function SignUp({ navigation }) {
               <BackText>Eu já tenho uma conta</BackText>
             </BackButton>
       </Container>
+      <MobileOrDesktopComponent></MobileOrDesktopComponent>
+      </ContainerSideView>
+      </ViewPortProvider>
     </Provider>
   );
 }

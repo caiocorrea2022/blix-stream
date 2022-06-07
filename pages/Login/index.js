@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Modal, Portal, Provider } from 'react-native-paper';
-import { KeyboardAvoidingView, Platform } from 'react-native';
-import { Container, Content, Image, ViewImage, Title, ViewHeader } from './style';
+import { View } from 'react-native';
+import { Container, SideView, Content, Image, ViewImage, Title, ViewHeader, ContainerSideView } from './style';
 import { emailValidator, passwordValidator } from '../../utils';
 import { auth } from '../../services/firebase';
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -13,7 +13,8 @@ import Button from '../../components/Button';
 import AlertBox from '../../components/AlertBox'
 import Header from '../../components/Header';
 import theme from '../../config/theme';
-import { ThemeProvider } from 'styled-components';
+import ViewPortProvider from '../../components/MobileOrDesktop/ViewPortProvider';
+import useViewport from '../../components/MobileOrDesktop/useViewport';
 
 export default function Login({ navigation }) {
 
@@ -84,42 +85,18 @@ export default function Login({ navigation }) {
       });
   }
 
-  const viewportContext = React.createContext({});
-
-  const ViewportProvider = ({ children }) => {
-    const [width, setWidth] = React.useState(window.innerWidth);
-    const [height, setHeight] = React.useState(window.innerHeight);
-    const handleWindowResize = () => {
-      setWidth(window.innerWidth);
-      setHeight(window.innerHeight);
-    };
-
-    React.useEffect(() => {
-      window.addEventListener("resize", handleWindowResize);
-      return () => window.removeEventListener("resize", handleWindowResize);
-    }, []);
-
-    return (
-      <viewportContext.Provider value={{ width, height }}>
-        {children}
-      </viewportContext.Provider>
-    );
-  };
-
-  const useViewport = () => {
-    const { width, height } = React.useContext(viewportContext);
-    return { width, height };
-  };
-
-  const LoginComponent = () => {
+  const MobileOrDesktopComponent = () => {
     const { width } = useViewport();
     const breakpoint = 620;
-
-    return width < breakpoint ? <View /> : <View style={{ backgroundColor: "blue", flex: 0.5 }} />;
+ 
+    return width < breakpoint ? <View></View> : <SideView></SideView>;
   };
 
   return (
     <Provider>
+     <ViewPortProvider>
+       <ContainerSideView>
+         <MobileOrDesktopComponent></MobileOrDesktopComponent>
       <Container>
         <ViewHeader>
           <Header goBack={navigation.goBack} />
@@ -168,7 +145,6 @@ export default function Login({ navigation }) {
             <AlertBox title={title} message={message} visible={visibleAlert} onClose={hideAlert}></AlertBox>
           }
           <TouchableText onPress={showModal} title={'RECUPERAR SENHA'}></TouchableText>
-          <TouchableText onPress={() => navigation.navigate('Cadastro')} title={'Cadastre-se'}></TouchableText>
         </Content>
 
         <Portal>
@@ -177,6 +153,9 @@ export default function Login({ navigation }) {
           </Modal>
         </Portal>
       </Container>
+      <MobileOrDesktopComponent></MobileOrDesktopComponent>
+      </ContainerSideView>
+      </ViewPortProvider>
     </Provider>
   );
 }
