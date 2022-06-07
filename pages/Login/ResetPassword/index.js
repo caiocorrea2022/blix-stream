@@ -5,12 +5,18 @@ import TextInput from '../../../components/TextInput';
 import Button from '../../../components/Button';
 import { auth } from '../../../services/firebase';
 import { sendPasswordResetEmail } from "firebase/auth";
+import { HelperText} from 'react-native-paper';
 
-export default function ResetPassword({ navigation }) {
+export default function ResetPassword() {
   const [email, setEmail] = useState({ value: '', error: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [result, setResult] = useState(null);
+
+  const messageVariants = {
+		hidden: { y: 30, opacity: 0 },
+		animate: { y: 0, opacity: 1, transition: { delay: 0.2, duration: 0.4 } },
+	};
 
   const onResetPressed = () => {
     const emailError = emailValidator(email.value);
@@ -28,7 +34,7 @@ export default function ResetPassword({ navigation }) {
         console.log(e);
         switch (e.code) {
           case 'auth/user-not-found':
-            setError('Usuário não cadastrado.');
+            setError('Usuário não cadastrado. Verifique se o email está correto.');
             break;
           case 'auth/invalid-email':
             setError('E-mail inválido');
@@ -53,12 +59,12 @@ export default function ResetPassword({ navigation }) {
         value={email.value}
         onChangeText={text => setEmail({ value: text, error: '' })}
         error={!!email.error}
-        errorText={email.error}
         autoCapitalize="none"
         autoCompleteType="email"
         textContentType="emailAddress"
         keyboardType="email-address"
       />
+      <HelperText type="error" visible={email.error}>{email.error}</HelperText>
 
       <Button title={'ENVIAR'} isLoading={loading} onPress={onResetPressed}></Button>
 
