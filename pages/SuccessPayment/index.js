@@ -114,7 +114,12 @@ export default function Success({ navigation }) {
       />
       <Title>Plano assinado com sucesso!</Title>
       <Subtitle>Por favor, verifique seu e-mail e faça o seu primeiro login.</Subtitle>
-      {/* <Button title={'Entrar no aplicativo'} isLoading={loading} onPress={() => navigation.navigate('Login')}></Button> */}
+      {/* <Button
+          title={"Fazer Login"}
+          onPress={() => navigation.navigate("Login")}
+          colortitle ={THEME.COLORS.TEXT_900}
+          colorbutton={THEME.COLORS.BACKGROUND}
+        ></Button> */}
     </Container>
   </Provider>  
   );

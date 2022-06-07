@@ -185,6 +185,8 @@ export default function SignUp({ navigation }) {
                 title={"Prosseguir para pagamento"}
                 isLoading={loading}
                 onPress={onSignUpPressed}
+                colorbutton={THEME.COLORS.PRIMARY_900}
+                colortitle={THEME.COLORS.TEXT_000}
               ></Button>
 
               {visibleAlert && (

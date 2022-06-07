@@ -1,10 +1,15 @@
 import React from 'react';
 import { Container, Title, Load } from './style';
 
-const Button = ({ title, isLoading = false, ...rest }) => {
+const Button = ({ colortitle, colorbutton, title, isLoading = false, ...rest }) => {
   return (
-    <Container enabled={!isLoading} {...rest}>
-      {isLoading ? <Load /> : <Title>{title}</Title>}
+    <Container 
+    enabled={!isLoading} {...rest}
+    style={{backgroundColor:colorbutton}}
+    >
+      {isLoading ? <Load /> : <Title
+      style={{color:colortitle}}
+      >{title}</Title>}
     </Container>
   )
 }

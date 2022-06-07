@@ -8,13 +8,11 @@ export const Container = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   align-self: center;
-  background-color: ${THEME.COLORS.PRIMARY_900};
   margin-top: 2rem;
   margin-bottom: 1rem;
 `;
 
 export const Title = styled.Text`
-  color: ${THEME.COLORS.TEXT_000};
   font-size: ${THEME.FONTSIZE.BIG};
   font-family: ${THEME.FONTFAMILY.BOLD};
 `;

@@ -12,6 +12,8 @@ import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import AlertBox from '../../components/AlertBox'
 import Header from '../../components/Header';
+import theme from '../../config/theme';
+import { ThemeProvider } from 'styled-components';
 
 export default function Login({ navigation }) {
 
@@ -154,7 +156,13 @@ export default function Login({ navigation }) {
             autoCorrect={false}
           />
 
-          <Button title={'ENTRAR'} isLoading={loading} onPress={onLoginPressed}></Button>
+          <Button 
+          title={'ENTRAR'} 
+          isLoading={loading} 
+          onPress={onLoginPressed}
+          colorbutton={theme.COLORS.PRIMARY_900}
+          colortitle={theme.COLORS.TEXT_000}
+          ></Button>
 
           {visibleAlert &&
             <AlertBox title={title} message={message} visible={visibleAlert} onClose={hideAlert}></AlertBox>
