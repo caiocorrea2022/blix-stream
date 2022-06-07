@@ -117,7 +117,7 @@ function Plans({ navigation }) {
                 justifyContent: "space-around",
                 flex: 1,
               }}
-              onButtonPress={() => navigation.navigate("Cadastro")}
+              onButtonPress={() => navigation.navigate("SignUp")}
             />
           ))}
         </HorizontalList>

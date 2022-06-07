@@ -12,11 +12,10 @@ import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import AlertBox from '../../components/AlertBox'
 import Header from '../../components/Header';
-import theme from '../../config/theme';
+import THEME from '../../config/theme';
 import ViewPortProvider from '../../components/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../components/MobileOrDesktop/useViewport';
 import { HelperText} from 'react-native-paper';
-import THEME from '../../config/theme';
 
 export default function Login({ navigation }) {
 
@@ -60,9 +59,9 @@ export default function Login({ navigation }) {
     signInWithEmailAndPassword(auth, email.value, password.value)
       .then((userCredential) => {
         const user = userCredential.user;
-        if (user.emailVerified===false) {
-          showAlert("Erro","E-mail não verificado. Confira sua caixa de entrada.");
-        } else {navigation.navigate('DrawerNavigator')}
+        // if (user.emailVerified===false) {
+        //   showAlert("Erro","E-mail não verificado. Confira sua caixa de entrada.")} else 
+        navigation.navigate('MyDrawer')
       })
       .catch((error) => {
         console.log(error.code)
@@ -136,8 +135,8 @@ export default function Login({ navigation }) {
           title={'ENTRAR'} 
           isLoading={loading} 
           onPress={onLoginPressed}
-          colorbutton={theme.COLORS.PRIMARY_900}
-          colortitle={theme.COLORS.TEXT_000}
+          colorbutton={THEME.COLORS.PRIMARY_900}
+          colortitle={THEME.COLORS.TEXT_000}
           ></Button>
 
           {visibleAlert &&

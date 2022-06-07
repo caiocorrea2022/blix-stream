@@ -7,8 +7,8 @@ const linking = {
           Login: "Login",
           SignUp: "SignUp",
           Success: "Success",
-          Plans: "Plans"
-          
+          Plans: "Plans",
+          MyDrawer: "MyDrawer",
         },
     },
   };
