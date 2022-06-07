@@ -1,8 +1,7 @@
 import { collection, addDoc, onSnapshot } from "firebase/firestore"; 
 import {firestore} from '../firebase'
-// import getStripe from "./initializeStripe";
 
-export async function createCheckoutSess(uid) {
+export async function createCheckoutSession(uid) {
   const checkoutSessionRef = await addDoc(collection(firestore, `users/${uid}/checkout_sessions`), {
     price: 'price_1L5qw3CmcyIwF9rcW6VuPvSg',
     mode: "subscription",
