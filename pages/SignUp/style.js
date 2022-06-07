@@ -14,6 +14,17 @@ export const Content = styled.View`
   margin: 0rem 2rem;
 `;
 
+export const ContainerSideView = styled.View`
+  flex:1;
+  flex-Direction: row;
+`;
+
+export const SideView = styled.View`
+  background-color: ${THEME.COLORS.PRIMARY_900};
+  flex:0.9;
+  flex-Direction: column;
+`;
+
 export const BackButton = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
