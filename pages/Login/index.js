@@ -12,6 +12,7 @@ import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import AlertBox from '../../components/AlertBox'
 import Header from '../../components/Header';
+import theme from '../../config/theme';
 import ViewPortProvider from '../../components/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../components/MobileOrDesktop/useViewport';
 import { HelperText} from 'react-native-paper';
@@ -131,7 +132,13 @@ export default function Login({ navigation }) {
           />
           <HelperText type="error" visible={password.error}>{password.error}</HelperText>
 
-          <Button title={'ENTRAR'} isLoading={loading} onPress={onLoginPressed}></Button>
+          <Button 
+          title={'ENTRAR'} 
+          isLoading={loading} 
+          onPress={onLoginPressed}
+          colorbutton={theme.COLORS.PRIMARY_900}
+          colortitle={theme.COLORS.TEXT_000}
+          ></Button>
 
           {visibleAlert &&
             <AlertBox title={title} message={message} visible={visibleAlert} onClose={hideAlert}></AlertBox>

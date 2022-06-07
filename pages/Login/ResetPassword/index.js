@@ -66,7 +66,13 @@ export default function ResetPassword() {
       />
       <HelperText type="error" visible={email.error}>{email.error}</HelperText>
 
-      <Button title={'ENVIAR'} isLoading={loading} onPress={onResetPressed}></Button>
+      <Button 
+      title={'ENVIAR'} 
+      isLoading={loading} 
+      onPress={onResetPressed}
+      colorbutton={theme.COLORS.PRIMARY_900}
+      colortitle={theme.COLORS.TEXT_000}
+      ></Button>
 
       {error && (
         <FormMessage
