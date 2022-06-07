@@ -1,20 +1,17 @@
 import styled from 'styled-components/native';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
 import THEME from '../../config/theme';
 
 export const Container = styled.View`
-  flex: 1;
+  padding: 1.5rem;
   background-color: ${THEME.COLORS.BACKGROUND};
-  padding: 24px;
+  flex:1;
+  flex-Direction: column;
 `;
 
-export const Content = styled.ScrollView.attrs({
-  showsVerticalScrollIndicator: false,
-  contentContainerStyle: {
-    paddingBottom: getBottomSpace() + 48
-  },
-})`
-  width: 100%;
+export const Content = styled.View`
+  flex: 4;
+  justify-content: center;
+  margin: 0rem 2rem;
 `;
 
 export const BackButton = styled.TouchableOpacity`
