@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LinkingConfiguration from "./LinkingConfiguration";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
-import Plans from "../components/Price/Plans";
+import Plans from "../pages/Plans"
 import MyDrawer from "../components/DrawerNavigator";
 import Success from "../pages/SuccessPayment";
 import ClickClass from "../pages/ClickClass";
