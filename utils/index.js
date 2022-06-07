@@ -1,5 +1,5 @@
 export const emailValidator = (email) => {
-    const re = /\S+@\S+\.\S+/;
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!email || email.length <= 0) return 'Por favor, preencha seu email.';
     if (!re.test(email)) return 'Ooops! Nós precisamos de um email que seja válido.';
     return '';
@@ -16,6 +16,6 @@ export const emailValidator = (email) => {
   };
 
   export const cellphoneValidator = (cellphone) => {
-    if (cellphone.length <= 13) return 'Por favor, preencha seu celular corretamente.';
+    if (cellphone.length <= 11) return 'Por favor, preencha seu celular com DDD.';
     return '';
   }

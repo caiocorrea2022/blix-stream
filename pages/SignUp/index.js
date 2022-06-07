@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import { View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import Header from '../../components/Header';
 import {
   Container,
   Content,
   BackButton,
   BackText,
-  Wrapper,
   Title,
   ContainerSideView,
   SideView,
+  Footer,
+  ViewHeader
 } from "./style";
 import THEME from '../../config/theme';
 import { Provider } from "react-native-paper";
 import TextInput from "../../components/TextInput";
+import CheckBox from "../../components/CheckBox";
 import Button from "../../components/Button";
 import { emailValidator, passwordValidator, nameValidator, cellphoneValidator } from "../../utils";
 import {
@@ -28,6 +31,7 @@ import { createCheckoutSession } from "../../services/stripe/createCheckoutSessi
 import axios from 'axios';
 import ViewPortProvider from '../../components/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../components/MobileOrDesktop/useViewport';
+import { HelperText} from 'react-native-paper';
 
 export default function SignUp({ navigation }) {
   const [name, setName] = useState({ value: "", error: "" });
@@ -35,6 +39,7 @@ export default function SignUp({ navigation }) {
   const [password, setPassword] = useState({ value: "", error: "" });
   const [cellphone, setCellPhone] = useState({ value: "", error: "" });
   const [loading, setLoading] = useState(false);
+  const [isSelected, setSelected] = useState(false);
   const [visibleAlert, setVisibleAlert] = useState(false);
   const [title, setTitle] = useState(null);
   const [message, setMessege] = useState(null);
@@ -59,7 +64,7 @@ export default function SignUp({ navigation }) {
     const nameError = nameValidator(name.value);
     const emailError = emailValidator(email.value);
     const passwordError = passwordValidator(password.value);
-    const cellphoneError = passwordValidator(cellphone.value);
+    const cellphoneError = cellphoneValidator(cellphone.value);
 
     if (emailError || passwordError || nameError || cellphoneError) {
       setName({ ...name, error: nameError });
@@ -126,7 +131,7 @@ export default function SignUp({ navigation }) {
   const MobileOrDesktopComponent = () => {
     const { width } = useViewport();
     const breakpoint = 620;
- 
+
     return width < breakpoint ? <View></View> : <SideView></SideView>;
   };
 
@@ -134,9 +139,13 @@ export default function SignUp({ navigation }) {
   return (
     <Provider>
       <ViewPortProvider>
-       <ContainerSideView>
-         <MobileOrDesktopComponent></MobileOrDesktopComponent>
-      <Container>
+        <ContainerSideView>
+          <MobileOrDesktopComponent></MobileOrDesktopComponent>
+          <Container>
+            <ViewHeader>
+              <Header goBack={navigation.goBack} />
+            </ViewHeader>
+            <Content>
               <Title>Cadastrar</Title>
               <TextInput
                 label="Nome"
@@ -145,8 +154,8 @@ export default function SignUp({ navigation }) {
                 value={name.value}
                 onChangeText={(text) => setName({ value: text, error: "" })}
                 error={!!name.error}
-                errorText={name.error}
               />
+              <HelperText type="error" visible={name.error}>{name.error}</HelperText>
 
               <TextInput
                 label="Email"
@@ -155,12 +164,12 @@ export default function SignUp({ navigation }) {
                 value={email.value}
                 onChangeText={(text) => setEmail({ value: text, error: "" })}
                 error={!!email.error}
-                errorText={email.error}
                 autoCapitalize="none"
                 autoCompleteType="email"
                 textContentType="emailAddress"
                 keyboardType="email-address"
               />
+              <HelperText type="error" visible={email.error}>{email.error}</HelperText>
 
               <TextInput
                 label="Senha"
@@ -169,37 +178,36 @@ export default function SignUp({ navigation }) {
                 value={password.value}
                 onChangeText={(text) => setPassword({ value: text, error: "" })}
                 error={!!password.error}
-                errorText={password.error}
                 secureTextEntry
               />
+              <HelperText type="error" visible={password.error}>{password.error}</HelperText>
 
               <TextInput
                 label="Celular"
                 placeholder="(DDD) 99999-9999"
                 returnKeyType="done"
-                // render={(props) => (
-                //   <TextInputMask
-                //     {...props}
-                //     value={cellphone}
-                //     type={'cel-phone'}
-                //     options={{
-                //       maskType: 'BRL',
-                //       withDDD: true,
-                //       dddMask: '(99) '
-                //     }}
-                //     keyboardType="phone-pad"
-                //     returnKeyType='next'
-                //     onChangeText={(text) => setCellPhone({ value: text, error: "" })}
-                //     onEndEditing={()=>this.passTextInput.focus()}
-                //   />
-                // )}
+                value={cellphone.value}
+                onChangeText={(text) => setCellPhone({ value: text, error: "" })}
+                error={!!cellphone.error}
+                keyboardType="phone-pad"
               />
+              <HelperText type="error" visible={cellphone.error}>{cellphone.error}</HelperText>
 
-              <Button
-                title={"Prosseguir para pagamento"}
-                isLoading={loading}
-                onPress={onSignUpPressed}
-              ></Button>
+              <CheckBox
+                title="Clicando nesta caixa você concorda com os Termos de Uso e Política de Privacidade."
+                center={false}
+                checked={isSelected}
+                onPress={() => setSelected(!isSelected)}
+              />
+              {isSelected &&
+                <Button
+                  title={"Prosseguir para pagamento"}
+                  isLoading={loading}
+                  onPress={onSignUpPressed}
+                  colorbutton={THEME.COLORS.PRIMARY_900}
+                  colortitle={THEME.COLORS.TEXT_000}
+                ></Button>
+              }
 
               {visibleAlert && (
                 <AlertBox
@@ -209,17 +217,21 @@ export default function SignUp({ navigation }) {
                   onClose={hideAlert}
                 ></AlertBox>
               )}
-            <BackButton onPress={() => navigation.goBack()}>
-              <MaterialIcons
-                name="arrow-back"
-                size={24}
-                color={THEME.COLORS.PRIMARY_900}
-              />
-              <BackText>Eu já tenho uma conta</BackText>
-            </BackButton>
-      </Container>
-      <MobileOrDesktopComponent></MobileOrDesktopComponent>
-      </ContainerSideView>
+            </Content>
+
+            <Footer>
+              <BackButton onPress={() => navigation.navigate("Login")}>
+                <MaterialIcons
+                  name="arrow-back"
+                  size={24}
+                  color={THEME.COLORS.PRIMARY_900}
+                />
+                <BackText>Eu já tenho uma conta</BackText>
+              </BackButton>
+            </Footer>
+          </Container>
+          <MobileOrDesktopComponent></MobileOrDesktopComponent>
+        </ContainerSideView>
       </ViewPortProvider>
     </Provider>
   );

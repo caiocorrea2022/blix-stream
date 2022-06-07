@@ -43,7 +43,7 @@ function Navigator() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Cadastro"
+        name="SignUp"
         component={SignUp}
         options={{ headerShown: false }}
       />
