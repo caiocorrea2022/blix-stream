@@ -2,13 +2,15 @@ import { collection, addDoc, onSnapshot } from "firebase/firestore";
 import {firestore} from '../firebase'
 // import getStripe from "./initializeStripe";
 
-export async function createCheckoutSess(uid) {
+
+//iterations == 0 no iterations will be made (monthly payment)
+export async function createCheckoutSession(uid, priceId, mode, iterations) {
   const checkoutSessionRef = await addDoc(collection(firestore, `users/${uid}/checkout_sessions`), {
-    price: 'price_1L5qw3CmcyIwF9rcW6VuPvSg',
-    mode: "subscription",
+    price: priceId,
+    mode: mode,
     allow_promotion_codes: true,
     billing_address_collection: "auto",
-    success_url: 'http://localhost:19006/Success?session_id={CHECKOUT_SESSION_ID}',
+    success_url: `http://localhost:19006/Success?session_id={CHECKOUT_SESSION_ID}&price_id=${priceId}&mode=${mode}&iterations=${iterations}`,
     // success_url: window.location.origin,
     cancel_url: window.location.origin,
   }); 

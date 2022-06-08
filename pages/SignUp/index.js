@@ -22,7 +22,7 @@ import {
 import { setDoc, doc } from "firebase/firestore";
 import { auth, firestore } from '../../services/firebase';
 import AlertBox from "../../components/AlertBox";
-import { createCheckoutSess } from "../../services/stripe/createCheckoutSession";
+import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
 import axios from 'axios';
 
 export default function SignUp({ navigation }) {
@@ -83,7 +83,7 @@ export default function SignUp({ navigation }) {
               "Foi enviado um e-mail para:\n '+ email +' para verificação."
             );
             signOut(auth).then(() => {
-              createCheckoutSess(user.uid);
+              createCheckoutSession(user.uid, "price_1L5qw3CmcyIwF9rcW6VuPvSg", "subscription", 6);
             });
           });
         });
