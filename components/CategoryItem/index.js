@@ -12,7 +12,7 @@ const CategoryItem = ({ item }) => {
     const navigation = useNavigation();
 
     const onCardPress = () => {
-        navigation.navigate('ClickClass', { videos: item.videos })
+        navigation.navigate('ClickClass', { videos: item.videos, name: item.title, description: item.description })
     }
 
     return (
@@ -23,14 +23,13 @@ const CategoryItem = ({ item }) => {
                     name="lock"
                     size={24}
                     iconStyle={{
-                        color:THEME.COLORS.TEXT_000,
+                        color: THEME.COLORS.TEXT_000,
                     }}
-                    containerStyle={{flex:1, alignSelf: "flex-end", justifyContent: "flex-end", padding: "0.1rem"}}
+                    containerStyle={{ flex: 1, alignSelf: "flex-end", justifyContent: "flex-end", padding: "0.2rem" }}
                     onPress={() => navigation.toggleDrawer()}
                 />
             </Image>
-
-            <Text numberOfLines={1} style={{ maxWidth: 230, fontSize: THEME.FONTSIZE.MEDIUM, fontFamily: THEME.FONTFAMILY.MEDIUM }}>{item.title}</Text>
+            <Text numberOfLines={2} style={{ maxWidth: 230, fontSize: THEME.FONTSIZE.MEDIUM, fontFamily: THEME.FONTFAMILY.MEDIUM }}>{item.title}</Text>
         </Container>
     )
 }
