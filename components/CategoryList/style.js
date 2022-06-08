@@ -14,8 +14,9 @@ export const CategoryContainer = styled.TouchableOpacity`
 `;
 
 export const CategoryImage = styled.Image`
-  width: ${Math.round((Dimensions.get('window').width * 35) / 100)}px;
-  height: 150px;
+  /* width: ${Math.round((Dimensions.get('window').width * 35) / 100)}px; */
+  width: 10rem;
+  height: 6rem;
   border-radius: 10px;
 `;
 
@@ -25,18 +26,6 @@ export const CategoryName = styled.Text`
   color: ${THEME.COLORS.TEXT_900};
   font-Size: ${THEME.FONTSIZE.MEDIUM};
   font-family: ${THEME.FONTFAMILY.BOLD};
-`;
-
-export const CategoryStatus = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const RedCircle = styled.View`
-  background: ${THEME.COLORS.PRIMARY_900};
-  width: 9px;
-  height: 9px;
-  border-radius: 4.5px;
 `;
 
 export const Info = styled.Text`

@@ -4,8 +4,6 @@ import {
   CategoryContainer,
   CategoryImage,
   CategoryName,
-  CategoryStatus,
-  RedCircle,
 } from './style';
 import { getDocs, collection, where, documentId } from "firebase/firestore";
 import { firestore } from '../../services/firebase';
@@ -33,9 +31,6 @@ const CategoryList = ({ categoryId, navigation }) => {
       <TouchableOpacity onPress={() => navigation.navigate('ClickClass', { videos: item.videos })}>
         <CategoryImage source={item.img} />
         <CategoryName numberOfLines={1}>{item.title}</CategoryName>
-        <CategoryStatus>
-          <RedCircle />
-        </CategoryStatus>
       </TouchableOpacity>
     </CategoryContainer>
   );

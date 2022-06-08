@@ -34,6 +34,5 @@ export const CategoryText = styled.Text`
 	color: ${THEME.COLORS.TEXT_900};
     font-family: ${THEME.FONTFAMILY.MEDIUM};
     font-size: ${THEME.FONTSIZE.MEDIUM};
-    margin-bottom: 0.1rem;
-  	margin-left: 1rem;
+    margin: 0rem 0rem 0.2rem 1rem;
 `;
