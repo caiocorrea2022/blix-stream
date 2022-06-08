@@ -13,8 +13,8 @@ import Button from '../../components/Button';
 import AlertBox from '../../components/AlertBox'
 import Header from '../../components/Header';
 import THEME from '../../config/theme';
-import ViewPortProvider from '../../components/MobileOrDesktop/ViewPortProvider';
-import useViewport from '../../components/MobileOrDesktop/useViewport';
+import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
+import useViewport from '../../hooks/MobileOrDesktop/useViewport';
 import { HelperText} from 'react-native-paper';
 
 export default function Login({ navigation }) {
