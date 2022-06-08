@@ -26,7 +26,6 @@ const CategoryItem = ({ item }) => {
                         color: THEME.COLORS.TEXT_000,
                     }}
                     containerStyle={{ flex: 1, alignSelf: "flex-end", justifyContent: "flex-end", padding: "0.2rem" }}
-                    onPress={() => navigation.toggleDrawer()}
                 />
             </Image>
             <Text numberOfLines={2} style={{ maxWidth: 230, fontSize: THEME.FONTSIZE.MEDIUM, fontFamily: THEME.FONTFAMILY.MEDIUM }}>{item.title}</Text>
