@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { FlatList, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { FlatList } from 'react-native';
+import { View } from '../../components/Themed';
+import styles from './style';
 import CategoryList from '../../components/CategoryList';
-import Header from '../../components/Header';
-import Hero from '../../components/Hero';
-import { Wrapper, Container, Poster, Gradient, Content, CategoryText } from './style';
 import { getDocs, collection } from "firebase/firestore";
 import { firestore } from '../../services/firebase';
 
-export default function Main({ navigation }) {
 
+const Main = () => {
   const [allCategories, setAllCategories] = useState([]);
 
   useEffect(() => {
@@ -17,47 +16,22 @@ export default function Main({ navigation }) {
       let categories = [];
       response.forEach((doc) => { categories.push({ id: doc.id, ...doc.data() }); });
       setAllCategories(categories);
+      
     };
 
     findAllCategories();
+    console.log(allCategories);
   }, []);
 
-
   return (
-    <Container>
-      <Wrapper>
-        <Poster source={require('../../assets/foto2.jpg')}>
-          <Gradient
-            locations={[0, 0.2, 0.7, 1]}
-            colors={[
-              'rgba(0,0,0,0.5)',
-              'rgba(0,0,0,0.0)',
-              'rgba(0,0,0,0.1)',
-              '#fff'
-            ]}>
-            <Header navigation = {navigation}/>
-            <Hero />
-          </Gradient>
-        </Poster>
-        <Content>
-          <FlatList
+    <View style={styles.container}>
+        {/* List of categories */}
+        <FlatList
             data={allCategories}
-            showsHorizontalScrollIndicator={false}
-            renderItem={({ item, index }) => (
-              <View>
-                <CategoryText>{item.title}</CategoryText>
-                <CategoryList categoryId={item.id} navigation={navigation}></CategoryList>
-              </View>
-            )}
-            keyExtractor={(item, index) => index.toString()}
-            // TODO q porra é essa?
-            // stickyHeaderIndices={(allCategories.map((el, index) => {return index;})}
-            // Refresh Effect
-            onRefresh={() => { }}
-            refreshing={false}
-          />
-        </Content>
-      </Wrapper>
-    </Container>
+            renderItem={({item}) => <CategoryList category={item} />}
+        />
+    </View>
   );
-};
+}
+
+export default Main;

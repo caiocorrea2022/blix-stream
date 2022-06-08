@@ -92,7 +92,7 @@ import VideoPlayer from "../../components/VideoPlayer";
 import Header from "../../components/Header";
 import PlayList from "../../components/PlayList";
 
-const ClickClass = ({ route }) => {
+const ClickClass = ({ route, navigation }) => {
   const { videos } = route.params;
   const [video, setVideo] = useState(videos[0]);
   const plot =
@@ -110,6 +110,7 @@ const ClickClass = ({ route }) => {
         renderItem={({ item, index }) => (
             <TouchableOpacity
             onPress={() => { setVideo(videos[index]) }}
+            style={{ margin: 10 }}
         >
             <PlayList {...item}
             ></PlayList>
