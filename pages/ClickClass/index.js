@@ -6,8 +6,8 @@ import styles from "./style";
 import VideoPlayer from "../../components/VideoPlayer";
 import Header from "../../components/Header";
 import PlayList from "../../components/PlayList";
-import ViewPortProvider from "../../components/MobileOrDesktop/ViewPortProvider";
-import useViewport from "../../components/MobileOrDesktop/useViewport";
+import ViewPortProvider from "../../hooks/MobileOrDesktop/ViewPortProvider";
+import useViewport from "../../hooks/MobileOrDesktop/useViewport";
 
 const ClickClass = ({ route, navigation }) => {
   const { videos } = route.params;
