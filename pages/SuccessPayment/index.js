@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Provider,
   Container,
@@ -22,21 +22,32 @@ export default function Success({ navigation }) {
   // Teste do roberto
 
   const getUsers = async (user) => {
-    const docRef = doc(db, "users", user);
+    const docRef = doc(firestore, "users", user);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
     console.log("GetUser-Document data:", docSnap.data());
-    } else {
+    const userProfile = {
+      // id: docSnap.id,
+      name: docSnap.data().Nome_Completo,
+      email: docSnap.data().Email,
+    }; 
+    setgoogleInfo({ Nome: userProfile.name, Email: userProfile.email })
+    console.log(userProfile)}
+    else {
     console.log("GetUser-Document data: No such document!");
     }
 }
 
-// fim do teste
-  const googleInfo = {
-    Nome: 'Taís Teste',
-    Email: 'taiskro@hotmail.com',
-  };
+const postGoogle = () => {
+  axios.post('https://sheet.best/api/sheets/fa8b5f7a-031b-43be-b1c2-56d16d985edb', googleInfo)
+  .then(response => {
+    console.log(response);
+  })
+}
 
+const [googleInfo, setgoogleInfo] = useState({ Nome: "", Email: "" });
+
+  // fim do teste
   const getSessionId = async () => {
 
     //TODO remove token and add everything as URL parameters iterations, priceid and verify upsell
@@ -122,26 +133,15 @@ export default function Success({ navigation }) {
   }
 
   useEffect(() => {
-
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        getUsers(user.uid);
+      }
+      console.log(user.uid)
+    });
     getSessionId();
-    axios.post('https://sheet.best/api/sheets/fa8b5f7a-031b-43be-b1c2-56d16d985edb', googleInfo)
-      .then(response => {
-        console.log(response);
-      })
   }, []);
 
-  
-  //Teste roberto 
-  useEffect(()=>{
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-          getUsers(user.uid);
-        }
-        console.log(user.uid)
-      });
-}, []);
-
-   //FIM do teste
   return (
 <Provider>
     <Container>
@@ -155,7 +155,7 @@ export default function Success({ navigation }) {
       <Subtitle>Por favor, verifique seu e-mail e faça o seu primeiro login.</Subtitle>
       <Button
           title={"Fazer Login"}
-          onPress={() => navigation.navigate("Login")}
+          onPress={() => {navigation.navigate("Login"), postGoogle()}}
           colortitle ={THEME.COLORS.TEXT_900}
           colorbutton={THEME.COLORS.BACKGROUND}
         ></Button>
