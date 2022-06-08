@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TouchableOpacity, FlatList } from "react-native";
 import { PricingCard } from "react-native-elements";
+import Header from '../../components/Header';
 import {
   Container,
   Title,
@@ -10,6 +11,7 @@ import {
   ItemContainer,
   HorizontalList,
   HorizontalListView,
+  ViewHeader
 } from "./style";
 import THEME from "../../config/theme";
 import {
@@ -54,6 +56,9 @@ function Plans({ navigation }) {
 
   return (
     <Container>
+      <ViewHeader>
+        <Header goBack={navigation.goBack} />
+      </ViewHeader>
       <TitleView>
         <Title>PLANOS</Title>
         <Subtitle>
@@ -69,9 +74,10 @@ function Plans({ navigation }) {
           extraData={selectedId}
           numColumns={planFrequency.length}
           columnWrapperStyle={{ justifyContent: "center" }}
-          style={{ flexGrow: 0 }}
+          style={{ flexGrow: 0}}
         />
       </TitleView>
+      
       <HorizontalListView>
         <HorizontalList horizontal={true}>
           {planInfos.map((item, index) => (
@@ -85,15 +91,15 @@ function Plans({ navigation }) {
                 ...item.info
               ]}
               titleStyle={{
-                fontSize: THEME.FONTSIZE.MEDIUM,
+                fontSize: THEME.FONTSIZE.BIG,
               }}
               titleFont={THEME.FONTFAMILY.BOLD}
               infoStyle={{
                 color: THEME.COLORS.TEXT_900,
-                fontSize: THEME.FONTSIZE.EXTRASMALL,
+                fontSize: THEME.FONTSIZE.SMALL,
               }}
               pricingStyle={{
-                fontSize: THEME.FONTSIZE.SMALL,
+                fontSize: THEME.FONTSIZE.BIG,
               }}
               pricingFont={THEME.FONTFAMILY.MEDIUM}
               infoFont={THEME.FONTFAMILY.LIGHT}
@@ -103,15 +109,15 @@ function Plans({ navigation }) {
                 titleStyle: {
                   color: THEME.COLORS.TEXT_900,
                   fontFamily: THEME.FONTFAMILY.BOLD,
+                  fontSize: THEME.FONTSIZE.MEDIUM,
                 },
                 buttonStyle: { borderRadius: "10px" },
               }}
               containerStyle={{
                 backgroundColor: THEME.COLORS.PRIMARY_900,
                 borderRadius: "15px",
-                justifyContent: "center",
-                width: "300px",
-                height: "85%",
+                width: "20rem",
+                height: "20rem",
               }}
               wrapperStyle={{
                 justifyContent: "space-around",

@@ -99,7 +99,7 @@ export default function SignUp({ navigation }) {
               );
               signOut(auth)
                 .then(() => {
-                  createCheckoutSession(user.uid);
+                  createCheckoutSession(user.uid, "price_1L5qw3CmcyIwF9rcW6VuPvSg", "subscription", 6);
                 });
             });
         });
