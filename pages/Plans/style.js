@@ -1,6 +1,6 @@
 import { FlatList } from "react-native";
 import styled from "styled-components/native";
-import THEME from "../../../config/theme";
+import THEME from "../../config/theme";
 
 export const Container = styled.View`
   flex:1;
@@ -19,8 +19,8 @@ export const HorizontalList = styled.ScrollView.attrs(props => ({
 export const ItemContainer = styled.View`
   background-color: ${THEME.COLORS.TEXT_000};
   border-radius: 5px;
-  padding: 0.15rem 0.6rem;
-  margin: 0.25rem;
+  padding: 0.4rem 1rem;
+  margin: 0.3rem;
 `;
 
 export const Title = styled.Text`
@@ -44,11 +44,12 @@ export const Subtitle = styled.Text`
 
 export const HorizontalListView = styled.View`
   flex:2;
+  
 `;
 
 export const ItemName = styled.Text`
   font-size: ${THEME.FONTSIZE.SMALL};
   font-family: ${THEME.FONTFAMILY.REGULAR};
-  align-self: center;
+  text-align: center;
 `;
 

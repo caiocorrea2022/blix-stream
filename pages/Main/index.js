@@ -46,7 +46,7 @@ export default function Main({ navigation }) {
             renderItem={({ item, index }) => (
               <View>
                 <CategoryText>{item.title}</CategoryText>
-                <CategoryList categoryId={item.id} navigation={navigation} onPress={() => navigation.navigate("ClickClass")}></CategoryList>
+                <CategoryList categoryId={item.id} navigation={navigation}></CategoryList>
               </View>
             )}
             keyExtractor={(item, index) => index.toString()}

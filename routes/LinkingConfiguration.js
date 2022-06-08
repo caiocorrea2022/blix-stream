@@ -5,10 +5,10 @@ const linking = {
     config: {
         screens: {
           Login: "Login",
-          SignUp: "Cadastro",
+          SignUp: "SignUp",
           Success: "Success",
-          Plans: "Plans"
-          
+          Plans: "Plans",
+          MyDrawer: "MyDrawer",
         },
     },
   };

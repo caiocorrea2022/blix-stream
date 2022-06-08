@@ -1,6 +1,5 @@
 import { collection, addDoc, onSnapshot } from "firebase/firestore"; 
 import {firestore} from '../firebase'
-// import getStripe from "./initializeStripe";
 
 
 //iterations == 0 no iterations will be made (monthly payment)

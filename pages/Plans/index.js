@@ -11,13 +11,13 @@ import {
   HorizontalList,
   HorizontalListView,
 } from "./style";
-import THEME from "../../../config/theme";
+import THEME from "../../config/theme";
 import {
   planFrequency,
   planPrices,
   planInfos,
   upsellPrices,
-} from "../../../config/data";
+} from "../../config/data";
 
 function Plans({ navigation }) {
   const [selectedId, setSelectedId] = useState("1");
@@ -90,6 +90,7 @@ function Plans({ navigation }) {
               titleFont={THEME.FONTFAMILY.BOLD}
               infoStyle={{
                 color: THEME.COLORS.TEXT_900,
+                fontSize: THEME.FONTSIZE.EXTRASMALL,
               }}
               pricingStyle={{
                 fontSize: THEME.FONTSIZE.SMALL,
@@ -112,11 +113,11 @@ function Plans({ navigation }) {
                 width: "300px",
                 height: "85%",
               }}
-              columnWrapperStyle={{
-                justifyContent: "flex-start",
+              wrapperStyle={{
+                justifyContent: "space-around",
                 flex: 1,
               }}
-              onButtonPress={() => navigation.navigate("Cadastro")}
+              onButtonPress={() => navigation.navigate("SignUp")}
             />
           ))}
         </HorizontalList>

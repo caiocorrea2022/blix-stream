@@ -8,18 +8,24 @@ export const Container = styled.View`
   flex-Direction: column;
 `;
 
+export const SideView = styled.View`
+  background-color: ${THEME.COLORS.PRIMARY_900};
+  flex:0.5;
+  flex-Direction: column;
+`;
+
+export const ContainerSideView = styled.View`
+  flex:1;
+  flex-Direction: row;
+`;
+
 export const ViewHeader = styled.View`
   flex: 1;
 `;
 
-export const ViewImage = styled.View`
-  flex: 2.5;
-  justify-content: center;
-`;
-
 export const Content = styled.View`
-  flex: 4;
-  justify-content: center;
+  flex: 6.5;
+  justify-content: flex-start;
   margin: 0rem 2rem;
 `;
 

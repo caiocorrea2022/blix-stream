@@ -9,6 +9,7 @@ import { Icon } from "react-native-elements";
 import { getAuth } from "firebase/auth";
 import axios from 'axios';
 import THEME from '../../config/theme';
+// import Button from '../../components/Button';
 
 const auth = getAuth();
 
@@ -113,18 +114,24 @@ export default function Success({ navigation }) {
   }, []);
 
   return (
-    <Provider>
-      <Container>
-        <Icon
-          type="material-icons"
-          name="check-circle-outline"
-          color={THEME.COLORS.BACKGROUND}
-          size={60}
-        />
-        <Title>Plano assinado com sucesso!</Title>
-        <Subtitle>Por favor, verifique seu e-mail e faça o seu primeiro login.</Subtitle>
-      </Container>
-    </Provider>
+<Provider>
+    <Container>
+      <Icon
+        type ="material-icons"
+        name = "check-circle-outline"
+        color= {THEME.COLORS.BACKGROUND}
+        size ={60}
+      />
+      <Title>Plano assinado com sucesso!</Title>
+      <Subtitle>Por favor, verifique seu e-mail e faça o seu primeiro login.</Subtitle>
+      {/* <Button
+          title={"Fazer Login"}
+          onPress={() => navigation.navigate("Login")}
+          colortitle ={THEME.COLORS.TEXT_900}
+          colorbutton={THEME.COLORS.BACKGROUND}
+        ></Button> */}
+    </Container>
+  </Provider>  
   );
 };
 
