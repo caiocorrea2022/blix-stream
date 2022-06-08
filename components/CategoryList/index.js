@@ -1,52 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import {
-  List,
-  CategoryContainer,
-  CategoryImage,
-  CategoryName,
-  CategoryStatus,
-  RedCircle,
-} from './style';
-import { getDocs, collection, where, documentId } from "firebase/firestore";
+import React, { useEffect, useState } from 'react';
+import { FlatList } from 'react-native';
+import { Text } from '../../components/Themed';
+import CategoryItem from '../CategoryItem';
+import styles from './style';
+import { getDocs, collection } from "firebase/firestore";
 import { firestore } from '../../services/firebase';
-import { TouchableOpacity } from 'react-native';
 
-const CategoryList = ({ categoryId, navigation }) => {
+const CategoryList = (props) => {
+    const { category, navigation } = props;
 
-  const [allCards, setAllCards] = useState([]);
+    const [allCards, setAllCards] = useState([]);
 
-  useEffect(() => {
-    const findAllCategories = async () => {
-      const response = await getDocs(collection(firestore, `categories/${categoryId}/cards`));
-      let cards = [];
-      response.forEach((doc) => {
-        cards.push({ id: doc.id, ...doc.data() });
-      });
-      setAllCards(cards);
-    };
+    useEffect(() => {
+        const findAllCategories = async () => {
+          const response = await getDocs(collection(firestore, `categories/${category.id}/cards`));
+          let cards = [];
+          response.forEach((doc) => {
+            cards.push({ id: doc.id, ...doc.data() });
+          });
+          setAllCards(cards);
+        };
+    
+        findAllCategories();
+      }, []);
 
-    findAllCategories();
-  }, []);
-
-  const CategoryItem = ({ item }) => (
-    <CategoryContainer>
-      <TouchableOpacity onPress={() => navigation.navigate('ClickClass', { videos: item.videos })}>
-        <CategoryImage source={item.img} />
-        <CategoryName numberOfLines={1}>{item.title}</CategoryName>
-        <CategoryStatus>
-          <RedCircle />
-        </CategoryStatus>
-      </TouchableOpacity>
-    </CategoryContainer>
-  );
-
-  return (
-    <List>
-      {allCards.map((item) => (
-        <CategoryItem key={item.title} item={item} />
-      ))}
-    </List>
-  );
-};
+    return (
+        <>
+            <Text style={styles.title}>{category.title}</Text>
+            <FlatList
+                data={allCards}
+                renderItem={({item}) => <CategoryItem item={item} />}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+            />
+        </>
+    );
+}
 
 export default CategoryList;

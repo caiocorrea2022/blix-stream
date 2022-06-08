@@ -1,34 +1,16 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Video } from 'expo-av'
+import { Video } from 'expo-av';
 
 const VideoPlayer = ({video}) => {
     return (
-        <View style={styles.container}>
         <Video
-        source={{uri: video.link}}
+        source={{uri: video}}
         useNativeControls
-        style={styles.video}
+        style={{width: '100%', aspectRatio: 16/9,}}
         resizeMode="contain"
         />
-        </View>
     )
 
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: 'black',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    video: {
-      flex: 1,
-      alignSelf: 'stretch'
-    },
-
-});
-
 
 export default VideoPlayer;
