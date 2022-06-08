@@ -29,8 +29,8 @@ import { auth, firestore } from '../../services/firebase';
 import AlertBox from "../../components/AlertBox";
 import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
 import axios from 'axios';
-import ViewPortProvider from '../../components/MobileOrDesktop/ViewPortProvider';
-import useViewport from '../../components/MobileOrDesktop/useViewport';
+import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
+import useViewport from '../../hooks/MobileOrDesktop/useViewport';
 import { HelperText} from 'react-native-paper';
 
 export default function SignUp({ navigation }) {

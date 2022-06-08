@@ -1,22 +1,22 @@
-import { StyleSheet } from 'react-native';
-import { screensEnabled } from 'react-native-screens';
+import styled from 'styled-components/native';
+import THEME from '../../config/theme';
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-    },
-    image: {
-        width: 230,
-        aspectRatio: 16 / 9,
-        resizeMode: "cover",
-        borderRadius: 3,
-        margin: 5,
-    },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    }
-});
+export const Container = styled.TouchableOpacity`
 
-export default styles;
+`;
+
+export const Image = styled.ImageBackground`
+  height: 150px;
+  border-radius: 10px;
+  width: 230px;
+  aspect-Ratio: 16 / 9;
+  margin: 1rem 1rem 0.5rem 0rem;
+`;
+
+export const Text = styled.Text`
+  margin-top: 5px;
+  max-width: 98px;
+  color: ${THEME.COLORS.TEXT_900};
+  font-Size: ${THEME.FONTSIZE.MEDIUM};
+  font-family: ${THEME.FONTFAMILY.BOLD};
+`;
