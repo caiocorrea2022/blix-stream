@@ -6,15 +6,31 @@ import {
   Subtitle,
 } from "./style";
 import { Icon } from "react-native-elements";
-import { getAuth } from "firebase/auth";
+import { getAuth,onAuthStateChanged} from "firebase/auth";
 import axios from 'axios';
 import THEME from '../../config/theme';
+import { doc, getDoc } from "firebase/firestore";
+import { firestore } from '../../services/firebase/index';
+
 // import Button from '../../components/Button';
 
 const auth = getAuth();
 
 export default function Success({ navigation }) {
 
+  // Teste do roberto
+
+  const getUsers = async (user) => {
+    const docRef = doc(db, "users", user);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+    console.log("GetUser-Document data:", docSnap.data());
+    } else {
+    console.log("GetUser-Document data: No such document!");
+    }
+}
+
+// fim do teste
   const googleInfo = {
     Nome: 'Taís Teste',
     Email: 'taiskro@hotmail.com',
@@ -103,6 +119,18 @@ export default function Success({ navigation }) {
     })
   }, []);
 
+  
+  //Teste roberto 
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+          getUsers(user.uid);
+        }
+        console.log(user.uid)
+      });
+}, []);
+
+   //FIM do teste
   return (
 <Provider>
     <Container>
