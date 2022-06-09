@@ -31,22 +31,20 @@ import { createCheckoutSession } from "../../services/stripe/createCheckoutSessi
 import axios from 'axios';
 import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../hooks/MobileOrDesktop/useViewport';
-import { HelperText} from 'react-native-paper';
+import { HelperText } from 'react-native-paper';
 
 export default function SignUp({ navigation }) {
   const [name, setName] = useState({ value: "", error: "" });
   const [email, setEmail] = useState({ value: "", error: "" });
   const [password, setPassword] = useState({ value: "", error: "" });
+  const [confirmPassword, setConfirmPassword] = useState({ value: "", error: "" });
   const [cellphone, setCellPhone] = useState({ value: "", error: "" });
   const [loading, setLoading] = useState(false);
   const [isSelected, setSelected] = useState(false);
   const [visibleAlert, setVisibleAlert] = useState(false);
   const [title, setTitle] = useState(null);
   const [message, setMessege] = useState(null);
-  const googleInfo = {
-    Nome: name.value,
-    Email: email.value,
-  };
+  const googleInfo = { Nome: name.value, Email: email.value };
 
 
   const showAlert = (title, message) => {
@@ -64,17 +62,22 @@ export default function SignUp({ navigation }) {
     const nameError = nameValidator(name.value);
     const emailError = emailValidator(email.value);
     const passwordError = passwordValidator(password.value);
+    const confirmPasswordError = passwordValidator(confirmPassword.value);
     const cellphoneError = cellphoneValidator(cellphone.value);
 
-    if (emailError || passwordError || nameError || cellphoneError || isSelected) {
+    if (emailError || passwordError || nameError || cellphoneError) {
       setName({ ...name, error: nameError });
       setEmail({ ...email, error: emailError });
       setPassword({ ...password, error: passwordError });
+      setConfirmPassword({ ...confirmPassword, error: confirmPasswordError });
       setCellPhone({ ...cellphone, error: cellphoneError });
       setLoading(false);
       return;
     }
-
+    if (password===confirmPassword ){
+      if (isSelected===""){
+        showAlert("Erro", "Por favor, confirme os Termos de Uso e Política de Privacidade.");
+      }
     createUserWithEmailAndPassword(auth, email.value, password.value, cellphone.value)
       .then((userCredential) => {
         console.log("user criado");
@@ -86,7 +89,6 @@ export default function SignUp({ navigation }) {
             Email: email.value,
             Celular: cellphone.value
           });
-          // alert("Conta", "Cadastrada com sucesso!")
           console.log('user criado')
           console.log(user)
         };
@@ -122,10 +124,16 @@ export default function SignUp({ navigation }) {
             break;
         }
       });
+    }
+    else {
+      showAlert("Erro", "As senhas são diferentes");
+      setLoading(false);
+    }  
     axios.post('https://sheet.best/api/sheets/fa8b5f7a-031b-43be-b1c2-56d16d985edb', googleInfo)
       .then(response => {
         console.log(response);
       })
+    
   };
 
   const MobileOrDesktopComponent = () => {
@@ -183,6 +191,17 @@ export default function SignUp({ navigation }) {
               <HelperText type="error" visible={password.error}>{password.error}</HelperText>
 
               <TextInput
+                label="Confirmar Senha"
+                placeholder="Digite novamente a senha"
+                returnKeyType="next"
+                value={confirmPassword.value}
+                onChangeText={(text) => setConfirmPassword({ value: text, error: "" })}
+                error={!!confirmPassword.error}
+                secureTextEntry
+              />
+              <HelperText type="error" visible={confirmPassword.error}>{confirmPassword.error}</HelperText>
+
+              <TextInput
                 label="Celular"
                 placeholder="(DDD) 99999-9999"
                 returnKeyType="done"
@@ -199,13 +218,13 @@ export default function SignUp({ navigation }) {
                 checked={isSelected}
                 onPress={() => setSelected(!isSelected)}
               />
-                <Button
-                  title={"Prosseguir para pagamento"}
-                  isLoading={loading}
-                  onPress={onSignUpPressed}
-                  colorbutton={THEME.COLORS.PRIMARY_900}
-                  colortitle={THEME.COLORS.TEXT_000}
-                ></Button>
+              <Button
+                title={"Prosseguir para pagamento"}
+                isLoading={loading}
+                onPress={onSignUpPressed}
+                colorbutton={THEME.COLORS.PRIMARY_900}
+                colortitle={THEME.COLORS.TEXT_000}
+              ></Button>
 
               {visibleAlert && (
                 <AlertBox

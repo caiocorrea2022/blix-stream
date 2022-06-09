@@ -1,22 +1,26 @@
 import React from 'React';
 import Header from '../../components/Header';
-import {Container, HorizontalList, Title} from './style';
 import {
-  coursesInfo,
-} from "../../config/data";
+  Container,
+  Title,
+  PricingView,
+  CardView
+} from "./style";
 import CardInfo from '../../components/Card';
+import Pricing from '../../components/Pricing';
 
 export default function About({ navigation }) {
-    return (
-      <Container>
-        <Header goBack={navigation.goBack}/>
-        <Title>CURSOS</Title>
+  return (
+    <Container>
+      <Header goBack={navigation.goBack} />
+      <Title>CURSOS</Title>
+      <CardView>
         <CardInfo></CardInfo>
-        {/* <HorizontalList horizontal={true}>
-          {coursesInfo.map((item, index) => (
-            <CardInfo item={item}/>
-          ))}
-        </HorizontalList> */}
-      </Container>
-    );
-  }
+      </CardView>
+      <PricingView>
+        <Pricing navigation={navigation}></Pricing>
+      </PricingView>
+
+    </Container>
+  );
+}
