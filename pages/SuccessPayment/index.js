@@ -28,23 +28,21 @@ export default function Success({ navigation }) {
     if (docSnap.exists()) {
     console.log("GetUser-Document data:", docSnap.data());
     const userProfile = {
-      // id: docSnap.id,
       name: docSnap.data().Nome_Completo,
       email: docSnap.data().Email,
     }; 
     setgoogleInfo({ Nome: userProfile.name, Email: userProfile.email })
-    await postGoogle(googleInfo);
+    axios.post('https://sheet.best/api/sheets/fa8b5f7a-031b-43be-b1c2-56d16d985edb', googleInfo)
+    .then(response => {
+      console.log(response);
+    })
     console.log(userProfile)}
     else {
     console.log("GetUser-Document data: No such document!");
     }
 }
 
-const postGoogle = async (googleInfo) => {
-  axios.post('https://sheet.best/api/sheets/fa8b5f7a-031b-43be-b1c2-56d16d985edb', googleInfo)
-}
-
-
+ 
   // fim do teste
   const getSessionId = async () => {
 
@@ -54,6 +52,7 @@ const postGoogle = async (googleInfo) => {
     const queryParams = new URLSearchParams(window.location.search);
     const sessionId = queryParams.get("session_id");
     const priceId = queryParams.get("price_id");
+    const uid = queryParams.get("uid");
     const mode = queryParams.get("mode");
     const iterationsCount = queryParams.get("iterations")
 
@@ -125,18 +124,12 @@ const postGoogle = async (googleInfo) => {
         body: schedFormBody
       })
         .then((r) => r.json());
-
+      
     }
-
+    getUsers(uid)
   }
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        getUsers(user.uid);
-      }
-      console.log(user)
-    });
     getSessionId();
   }, []);
 

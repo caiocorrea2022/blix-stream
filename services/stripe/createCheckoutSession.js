@@ -9,7 +9,7 @@ export async function createCheckoutSession(uid, priceId, mode, iterations) {
     mode: mode,
     allow_promotion_codes: true,
     billing_address_collection: "auto",
-    success_url: `http://localhost:19006/Success?session_id={CHECKOUT_SESSION_ID}&price_id=${priceId}&mode=${mode}&iterations=${iterations}`,
+    success_url: `http://localhost:19006/Success?session_id={CHECKOUT_SESSION_ID}&price_id=${priceId}&mode=${mode}&iterations=${iterations}&uid=${uid}`,
     // success_url: window.location.origin,
     cancel_url: window.location.origin,
   }); 

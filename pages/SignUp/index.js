@@ -28,7 +28,6 @@ import { setDoc, doc } from "firebase/firestore";
 import { auth, firestore } from '../../services/firebase';
 import AlertBox from "../../components/AlertBox";
 import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
-import axios from 'axios';
 import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../hooks/MobileOrDesktop/useViewport';
 import { HelperText } from 'react-native-paper';
@@ -44,7 +43,6 @@ export default function SignUp({ navigation }) {
   const [visibleAlert, setVisibleAlert] = useState(false);
   const [title, setTitle] = useState(null);
   const [message, setMessege] = useState(null);
-  const googleInfo = { Nome: name.value, Email: email.value };
 
 
   const showAlert = (title, message) => {
@@ -57,8 +55,8 @@ export default function SignUp({ navigation }) {
     setVisibleAlert(status);
   };
 
-  const onSignUpPressed = () => {
-    setLoading(true);
+
+  const validation = () => {
     const nameError = nameValidator(name.value);
     const emailError = emailValidator(email.value);
     const passwordError = passwordValidator(password.value);
@@ -74,67 +72,70 @@ export default function SignUp({ navigation }) {
       setLoading(false);
       return;
     }
-    if (password===confirmPassword ){
-      if (isSelected===""){
-        showAlert("Erro", "Por favor, confirme os Termos de Uso e Política de Privacidade.");
-      }
-    createUserWithEmailAndPassword(auth, email.value, password.value, cellphone.value)
-      .then((userCredential) => {
-        console.log("user criado");
-        const user = userCredential.user;
-        const usersCollectionRef = doc(firestore, "users", user.uid);
-        const createUser = async () => {
-          await setDoc(usersCollectionRef, {
-            Nome_Completo: name.value,
-            Email: email.value,
-            Celular: cellphone.value
-          });
-          console.log('user criado')
-          console.log(user)
-        };
-        createUser().then(() => {
-          sendEmailVerification(auth.currentUser)
-            .then(() => {
-              showAlert(
-                "Cadastro confirmado!",
-                "Confira sua caixa de entrada para verificar seu email."
-              );
-              signOut(auth)
-                .then(() => {
-                  createCheckoutSession(user.uid, "price_1L5qw3CmcyIwF9rcW6VuPvSg", "subscription", 6);
-                });
-            });
-        });
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.error(error);
-        switch (error.code) {
-          case "auth/email-already-in-use":
-            showAlert("Erro", "Este email já está cadastrado");
-            break;
-          case "auth/weak-password":
-            showAlert("Erro", "Senha deve conter pelo menos 6 caracteres");
-            break;
-          case "auth/invalid-email":
-            showAlert("Erro", "Email inválido");
-            break;
-          case "auth/operation-not-allowed":
-            showAlert("Erro", "Problemas ao cadastrar o usuário.");
-            break;
-        }
-      });
-    }
-    else {
-      showAlert("Erro", "As senhas são diferentes");
-      setLoading(false);
-    }  
-    axios.post('https://sheet.best/api/sheets/fa8b5f7a-031b-43be-b1c2-56d16d985edb', googleInfo)
-      .then(response => {
-        console.log(response);
-      })
-    
+
   };
+
+  const onSignUpPressed = () => {
+      validation();
+      if (password.value===confirmPassword.value){
+        console.log(isSelected)
+        if (isSelected===false){
+            showAlert("Erro", "Por favor, confirme os Termos de Uso e Política de Privacidade.");
+        }
+        else{
+        setLoading(true);
+        createUserWithEmailAndPassword(auth, email.value, password.value, cellphone.value)
+        .then((currentUser) => {
+            console.log("user criado");
+            const user = currentUser.user;
+            const usersCollectionRef = doc(firestore, "users", user.uid);
+            const createUser = async () => {
+              await setDoc(usersCollectionRef, {
+                Nome_Completo: name.value,
+                Email: email.value,
+                Celular: cellphone.value
+              });
+              console.log('user criado')
+              console.log(user)
+            };
+            createUser().then(() => {
+                sendEmailVerification(auth.currentUser)
+                  .then(() => {
+                    showAlert(
+                      "Cadastro confirmado!",
+                      "Confira sua caixa de entrada para verificar seu email."
+                    );
+                    signOut(auth)
+                      .then(() => {
+                        createCheckoutSession(user.uid, "price_1L5qw3CmcyIwF9rcW6VuPvSg", "subscription", 6);
+                      });
+                  });
+              });
+        })
+        .catch((error) => {
+            setLoading(false);
+            console.error(error);
+            switch (error.code) {
+              case "auth/email-already-in-use":
+                showAlert("Erro", "Este email já está cadastrado");
+                break;
+              case "auth/weak-password":
+                showAlert("Erro", "Senha deve conter pelo menos 6 caracteres");
+                break;
+              case "auth/invalid-email":
+                showAlert("Erro", "Email inválido");
+                break;
+              case "auth/operation-not-allowed":
+                showAlert("Erro", "Problemas ao cadastrar o usuário.");
+                break;
+            }
+          });
+        }}
+        else {
+          showAlert("Erro", "As senhas não correspondem");
+          setLoading(false);
+        }    
+    }
 
   const MobileOrDesktopComponent = () => {
     const { width } = useViewport();
