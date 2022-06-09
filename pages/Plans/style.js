@@ -12,10 +12,9 @@ export const HorizontalList = styled.ScrollView.attrs({
   contentContainerStyle: {
     flexDirection: "row",
     flexGrowth: 1,
+    backgroundColor: "green",
   },
 })`
-  width: 100%;
-
 `;
 
 export const ViewHeader = styled.View`

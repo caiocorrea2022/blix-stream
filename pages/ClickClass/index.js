@@ -9,12 +9,12 @@ import useViewport from "../../hooks/MobileOrDesktop/useViewport";
 import ListHeader from "../../components/ListHeader";
 
 const ClickClass = ({ route, navigation }) => {
-  const { videos, name, description } = route.params;
+  const { videos, name, description, pdf, url } = route.params;
   const [video, setVideo] = useState(videos[0]);
 
   const OutsideView = () => {
     const { width } = useViewport();
-    const breakpoint = 620;
+    const breakpoint = 1080;
 
     return width < breakpoint ? (
       <View>
@@ -31,7 +31,7 @@ const ClickClass = ({ route, navigation }) => {
 
   const ViewVideo = () => {
     const { width } = useViewport();
-    const breakpoint = 620;
+    const breakpoint = 1080;
 
     return width < breakpoint ? (
       <View>
@@ -48,7 +48,7 @@ const ClickClass = ({ route, navigation }) => {
 
   const ViewFlatlist = () => {
     const { width } = useViewport();
-    const breakpoint = 620;
+    const breakpoint = 1080;
 
     return width < breakpoint ? (
       <View>
@@ -65,7 +65,7 @@ const ClickClass = ({ route, navigation }) => {
             </TouchableOpacity>
           )}
           style={{ marginBottom: "1rem", flexGrow: 0 }}
-          ListHeaderComponent={<ListHeader title={name} description={description}></ListHeader>}
+          ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url}></ListHeader>}
         />
       </View>
     ) : (
@@ -90,7 +90,7 @@ const ClickClass = ({ route, navigation }) => {
             </TouchableOpacity>
           )}
           style={{ marginBottom: "1rem", flexGrow: 0 }}
-          ListHeaderComponent={<ListHeader title={name} description={description}></ListHeader>}
+          ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url}></ListHeader>}
         />
       </View>
     );

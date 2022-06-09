@@ -130,7 +130,7 @@ export default function SignUp({ navigation }) {
 
   const MobileOrDesktopComponent = () => {
     const { width } = useViewport();
-    const breakpoint = 620;
+    const breakpoint = 1080;
 
     return width < breakpoint ? <View></View> : <SideView></SideView>;
   };

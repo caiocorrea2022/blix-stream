@@ -117,7 +117,7 @@ function Plans({ navigation }) {
                 backgroundColor: THEME.COLORS.PRIMARY_900,
                 borderRadius: "15px",
                 width: "20rem",
-                height: "20rem",
+                height: "85%",
               }}
               wrapperStyle={{
                 justifyContent: "space-around",
