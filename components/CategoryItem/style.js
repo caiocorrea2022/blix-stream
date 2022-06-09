@@ -2,15 +2,14 @@ import styled from 'styled-components/native';
 import THEME from '../../config/theme';
 
 export const Container = styled.TouchableOpacity`
-
 `;
 
 export const Image = styled.ImageBackground`
-  height: 150px;
-  border-radius: 10px;
-  width: 230px;
+  width: 10rem;
   aspect-Ratio: 16 / 9;
   margin: 1rem 1rem 0.5rem 0rem;
+  border-radius: 10px;
+  overflow: hidden;
 `;
 
 export const Text = styled.Text`

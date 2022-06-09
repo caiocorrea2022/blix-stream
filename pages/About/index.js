@@ -1,14 +1,26 @@
 import React from 'React';
-import { Text } from 'react-native';
 import Header from '../../components/Header';
-import {Container} from './style';
-
+import {
+  Container,
+  Title,
+  PricingView,
+  CardView
+} from "./style";
+import CardInfo from '../../components/Card';
+import Pricing from '../../components/Pricing';
 
 export default function About({ navigation }) {
-    return (
-      <Container>
-        <Header goBack={navigation.goBack}/>
-        <Text>Article Screen</Text>
-      </Container>
-    );
-  }
+  return (
+    <Container>
+      <Header goBack={navigation.goBack} />
+      <Title>CURSOS</Title>
+      <CardView>
+        <CardInfo></CardInfo>
+      </CardView>
+      <PricingView>
+        <Pricing navigation={navigation}></Pricing>
+      </PricingView>
+
+    </Container>
+  );
+}
