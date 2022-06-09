@@ -19,6 +19,7 @@ const auth = getAuth();
 
 export default function Success({ navigation }) {
 
+  const [googleInfo, setgoogleInfo] = useState({ Nome: "", Email: "" });
   // Teste do roberto
 
   const getUsers = async (user) => {
@@ -32,20 +33,17 @@ export default function Success({ navigation }) {
       email: docSnap.data().Email,
     }; 
     setgoogleInfo({ Nome: userProfile.name, Email: userProfile.email })
+    await postGoogle(googleInfo);
     console.log(userProfile)}
     else {
     console.log("GetUser-Document data: No such document!");
     }
 }
 
-const postGoogle = () => {
+const postGoogle = async (googleInfo) => {
   axios.post('https://sheet.best/api/sheets/fa8b5f7a-031b-43be-b1c2-56d16d985edb', googleInfo)
-  .then(response => {
-    console.log(response);
-  })
 }
 
-const [googleInfo, setgoogleInfo] = useState({ Nome: "", Email: "" });
 
   // fim do teste
   const getSessionId = async () => {
@@ -137,7 +135,7 @@ const [googleInfo, setgoogleInfo] = useState({ Nome: "", Email: "" });
       if (user) {
         getUsers(user.uid);
       }
-      console.log(user.uid)
+      console.log(user)
     });
     getSessionId();
   }, []);

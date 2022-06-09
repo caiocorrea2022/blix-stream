@@ -12,7 +12,7 @@ const CategoryItem = ({ item }) => {
     const navigation = useNavigation();
 
     const onCardPress = () => {
-        navigation.navigate('ClickClass', { videos: item.videos, name: item.title, description: item.description })
+        navigation.navigate('ClickClass', { videos: item.videos, name: item.title, description: item.description, pdf: item.pdf, url: item.url })
     }
 
     return (
