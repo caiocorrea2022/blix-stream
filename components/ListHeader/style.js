@@ -1,10 +1,11 @@
-import { StyleSheet } from 'react-native';
+import styled from "styled-components/native";
 
-const styles = StyleSheet.create({
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold'
-    },
-})
+export const Container = styled.View`
+  flex-direction: row;
+  margin: 1rem 1rem;
+`;
 
-export default styles;
+export const ContentIcon = styled.View`
+  align-items: center;
+  margin: 0rem 1rem;
+`;

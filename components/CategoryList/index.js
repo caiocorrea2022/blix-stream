@@ -22,10 +22,10 @@ const CategoryList = ({ category }) => {
 
   const handleRightArrow = () => {
     let x = scrollX - Math.round(window.innerWidth / 2);
-    let listW = allCards.length * 160; //230 eh o tamanho de cada card
-    if ((window.innerWidth - listW) > x) {
-      x = (window.innerWidth - listW);
-    }
+    // let listW = allCards.length * 160; //230 eh o tamanho de cada card
+    // if ((window.innerWidth - listW) > x) {
+    //   x = (window.innerWidth - listW);
+    // }
     setScrollX(x);
   }
 

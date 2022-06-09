@@ -1,19 +1,17 @@
 import React from 'react';
-import {Text, View} from "../../components/Themed";
-import { Image } from 'react-native';
-import styles from './style';
+import { Text, View } from "../../components/Themed";
+import { Container, Content, Avatar } from './style';
 
-const PlayList = ({title, image}) => {
-    return(
-                 <View style={styles.row}>
-                     <Image style={styles.image} source={{ uri: image}} />
-     
-                     <View style={styles.titleContainer}>
-                         <Text style={styles.title}>{title}</Text>
-                     </View>
-     
-                 </View>
-         )
-  }
-
-  export default PlayList;
+const PlayList = ({ title, image }) => {
+    return (
+        <View>
+            <Container>
+                <Avatar resizeMode='cover' source={{ uri: image }} />
+                <Content>
+                    <Text>{title}</Text>
+                </Content>
+            </Container>
+        </View>
+    )
+}
+export default PlayList;
