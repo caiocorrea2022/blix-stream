@@ -22,5 +22,5 @@ height:${windowHeight * 0.95};
 `;
 
 export const CardView = styled.View`
-height:${windowHeight * 0.95};
+height:${windowHeight * 0.70};
 `;

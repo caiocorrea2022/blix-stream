@@ -24,7 +24,6 @@ export const planInfos = [
   },
 ];
 
-<<<<<<< HEAD
 export const privacyData = [
       {
           subtitle: 'SEÇÃO 1 - INFORMAÇÕES GERAIS',
@@ -198,26 +197,20 @@ export const privacyData = [
           ]
       }
   ]
-=======
-export const coursesInfo = [
-  {
-    title: "Workshop Yoga Terapia",
-    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
-    price: "R$ 100,00"
-  },
-  {
-    title: "Curso de Meditação",
-    info: "lit repudiandae et atque praesentium.",
-    price: "R$ 120,00"
-  },
-  {
-    title: "Retiro",
-    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
-    price: "R$ 450,00"
-  },
-];
-
-
-
-
->>>>>>> 724eb77d192e6dd605de611f4eb529a5e62a6907
+  export const coursesInfo = [
+    {
+      title: "Workshop Yoga Terapia",
+      info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
+      price: "R$ 100,00"
+    },
+    {
+      title: "Curso de Meditação",
+      info: "lit repudiandae et atque praesentium.",
+      price: "R$ 120,00"
+    },
+    {
+      title: "Retiro",
+      info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
+      price: "R$ 450,00"
+    },
+  ];

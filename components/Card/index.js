@@ -17,7 +17,7 @@ const CardInfo = ({ item }) => {
         <HorizontalListView>
             <HorizontalList horizontal={true}>
                 {coursesInfo.map((item, index) => (
-                    <Card key={index} style={{ width: "20rem", height: "85%", margin: "1rem", justifyContent:"space-between",}}>
+                    <Card key={index} style={{ width: "20rem", margin: "1rem", backgroundColor:"red", justifyContent:"space-evenly"}}>
                         <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
                         <Card.Content>
                             <Text fontFamily={THEME.FONTFAMILY.BOLD} fontSize={THEME.FONTSIZE.SMALL} color={THEME.COLORS.TEXT_900}>{item.title}</Text>
