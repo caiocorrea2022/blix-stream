@@ -1,4 +1,3 @@
-import { FlatList } from "react-native";
 import styled from "styled-components/native";
 import THEME from "../../config/theme";
 

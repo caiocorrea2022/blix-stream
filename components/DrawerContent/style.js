@@ -7,14 +7,14 @@ export const Container = styled.View`
 
 export const Text = styled.Text`
     color: ${THEME.COLORS.TEXT_900};
-    font-Size: ${THEME.FONTSIZE.MEDIUM};
+    font-Size: ${THEME.FONTSIZE.SMALL};
     font-family: ${THEME.FONTFAMILY.REGULAR};
 `;
 
 export const FooterText = styled.Text`
     color: ${THEME.COLORS.TEXT_900};
     padding: 0 0.5rem;
-    font-Size: ${THEME.FONTSIZE.MEDIUM};
+    font-Size: ${THEME.FONTSIZE.EXTRASMALL};
     font-family: ${props => `${props.fontFamily}`};
     text-align: center;
 `;

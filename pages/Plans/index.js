@@ -91,7 +91,7 @@ function Plans({ navigation }) {
                 ...item.info
               ]}
               titleStyle={{
-                fontSize: THEME.FONTSIZE.BIG,
+                fontSize: THEME.FONTSIZE.MEDIUM,
               }}
               titleFont={THEME.FONTFAMILY.BOLD}
               infoStyle={{
@@ -99,7 +99,7 @@ function Plans({ navigation }) {
                 fontSize: THEME.FONTSIZE.SMALL,
               }}
               pricingStyle={{
-                fontSize: THEME.FONTSIZE.BIG,
+                fontSize: THEME.FONTSIZE.MEDIUM,
               }}
               pricingFont={THEME.FONTFAMILY.MEDIUM}
               infoFont={THEME.FONTFAMILY.LIGHT}
@@ -117,7 +117,7 @@ function Plans({ navigation }) {
                 backgroundColor: THEME.COLORS.PRIMARY_900,
                 borderRadius: "15px",
                 width: "20rem",
-                height: "20rem",
+                height: "85%",
               }}
               wrapperStyle={{
                 justifyContent: "space-around",

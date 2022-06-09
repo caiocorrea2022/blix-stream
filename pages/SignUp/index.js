@@ -66,7 +66,7 @@ export default function SignUp({ navigation }) {
     const passwordError = passwordValidator(password.value);
     const cellphoneError = cellphoneValidator(cellphone.value);
 
-    if (emailError || passwordError || nameError || cellphoneError) {
+    if (emailError || passwordError || nameError || cellphoneError || isSelected) {
       setName({ ...name, error: nameError });
       setEmail({ ...email, error: emailError });
       setPassword({ ...password, error: passwordError });
@@ -199,7 +199,6 @@ export default function SignUp({ navigation }) {
                 checked={isSelected}
                 onPress={() => setSelected(!isSelected)}
               />
-              {isSelected &&
                 <Button
                   title={"Prosseguir para pagamento"}
                   isLoading={loading}
@@ -207,7 +206,6 @@ export default function SignUp({ navigation }) {
                   colorbutton={THEME.COLORS.PRIMARY_900}
                   colortitle={THEME.COLORS.TEXT_000}
                 ></Button>
-              }
 
               {visibleAlert && (
                 <AlertBox

@@ -28,7 +28,7 @@ export default function MyDrawer() {
                     drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
                     drawerActiveTintColor: THEME.COLORS.TEXT_900,
                     drawerInactiveTintColor: THEME.COLORS.TEXT_900,
-                    drawerLabelStyle: { fontSize: THEME.FONTSIZE.MEDIUM, fontFamily: THEME.FONTFAMILY.REGULAR }
+                    drawerLabelStyle: { fontSize: THEME.FONTSIZE.SMALL, fontFamily: THEME.FONTFAMILY.REGULAR }
                 }} />
             <Drawer.Screen
                 name="Sobre nós"
@@ -38,7 +38,7 @@ export default function MyDrawer() {
                     drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
                     drawerActiveTintColor: THEME.COLORS.TEXT_900,
                     drawerInactiveTintColor: THEME.COLORS.TEXT_900,
-                    drawerLabelStyle: { fontSize: THEME.FONTSIZE.MEDIUM, fontFamily: THEME.FONTFAMILY.REGULAR }
+                    drawerLabelStyle: { fontSize: THEME.FONTSIZE.SMALL, fontFamily: THEME.FONTFAMILY.REGULAR }
                 }} />
             <Drawer.Screen
                 name="Editar Perfil"
@@ -48,7 +48,7 @@ export default function MyDrawer() {
                     drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
                     drawerActiveTintColor: THEME.COLORS.TEXT_900,
                     drawerInactiveTintColor: THEME.COLORS.TEXT_900,
-                    drawerLabelStyle: { fontSize: THEME.FONTSIZE.MEDIUM, fontFamily: THEME.FONTFAMILY.REGULAR }
+                    drawerLabelStyle: { fontSize: THEME.FONTSIZE.SMALL, fontFamily: THEME.FONTFAMILY.REGULAR }
                 }} />
             <Drawer.Screen
                 name="Planos e Preços"
@@ -58,7 +58,7 @@ export default function MyDrawer() {
                     drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
                     drawerActiveTintColor: THEME.COLORS.TEXT_900,
                     drawerInactiveTintColor: THEME.COLORS.TEXT_900,
-                    drawerLabelStyle: { fontSize: THEME.FONTSIZE.MEDIUM, fontFamily: THEME.FONTFAMILY.REGULAR }
+                    drawerLabelStyle: { fontSize: THEME.FONTSIZE.SMALL, fontFamily: THEME.FONTFAMILY.REGULAR }
                 }} />
         </Drawer.Navigator>
     );

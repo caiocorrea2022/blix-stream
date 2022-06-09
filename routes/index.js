@@ -9,6 +9,7 @@ import Plans from "../pages/Plans"
 import MyDrawer from "../components/DrawerNavigator";
 import Success from "../pages/SuccessPayment";
 import ClickClass from "../pages/ClickClass";
+import ClickCourse from "../pages/ClickCourse";
 import AuthProvider from '../hooks/auth';
 
 
@@ -16,7 +17,7 @@ export default function Navigation() {
   return (
     <NavigationContainer linking={LinkingConfiguration}>
       <AuthProvider>
-        <Navigator/>
+        <Navigator />
       </AuthProvider>
     </NavigationContainer>
   );
@@ -50,6 +51,11 @@ function Navigator() {
       <Stack.Screen
         name="ClickClass"
         component={ClickClass}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ClickCourse"
+        component={ClickCourse}
         options={{ headerShown: false }}
       />
       <Stack.Screen

@@ -22,7 +22,7 @@ const CategoryList = ({ category }) => {
 
   const handleRightArrow = () => {
     let x = scrollX - Math.round(window.innerWidth / 2);
-    let listW = allCards.lenght * 230; //230 eh o tamanho de cada card
+    let listW = allCards.length * 160; //230 eh o tamanho de cada card
     if ((window.innerWidth - listW) > x) {
       x = (window.innerWidth - listW);
     }
@@ -53,8 +53,15 @@ const CategoryList = ({ category }) => {
           iconStyle={{
             color: THEME.COLORS.TEXT_000,
           }}
-          containerStyle={{ position:"absolute", backgroundColor:"rgba(0,0,0,0.7)", left:0, zIndex:99, height:"160px", flex:1, justifyContent:"center", overflow:"hidden" }}
+          containerStyle={{ position: "absolute", backgroundColor: "rgba(0,0,0,0.7)", left: 0, zIndex: 99, height: "7rem", flex: 1, justifyContent: "center", overflow: "hidden" }}
           onPress={handleLeftArrow}
+        />
+        <FlatList
+          data={allCards}
+          style={{ marginLeft: scrollX }}
+          renderItem={({ item }) => <CategoryItem item={item} />}
+          horizontal
+          showsHorizontalScrollIndicator={false}
         />
         <Icon
           type="material-community"
@@ -63,15 +70,8 @@ const CategoryList = ({ category }) => {
           iconStyle={{
             color: THEME.COLORS.TEXT_000,
           }}
-          containerStyle={{ position:"absolute", backgroundColor:"rgba(0,0,0,0.7)", right:0, zIndex:99, height:"160px", flex:1, justifyContent:"center", overflow:"hidden" }}
+          containerStyle={{ position: "absolute", backgroundColor: "rgba(0,0,0,0.7)", right: 0, zIndex: 99, height: "7rem", flex: 1, justifyContent: "center", overflow: "hidden" }}
           onPress={handleRightArrow}
-        />
-        <FlatList
-          data={allCards}
-          style={{ marginLeft: scrollX }}
-          renderItem={({ item }) => <CategoryItem item={item} />}
-          horizontal
-          showsHorizontalScrollIndicator={false}
         />
       </Content>
     </Container>

@@ -2,8 +2,8 @@ import styled from 'styled-components/native';
 import THEME from '../../config/theme';
 
 export const Container = styled.TouchableOpacity`
-  width: 80%;
-  padding: 1rem 0rem;
+  width: 100%;
+  padding: 0.6rem 0rem;
   border-radius: 10px;
   justify-content: center;
   align-self: center;
