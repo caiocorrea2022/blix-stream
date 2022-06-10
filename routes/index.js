@@ -11,6 +11,8 @@ import Success from "../pages/SuccessPayment";
 import ClickClass from "../pages/ClickClass";
 import ClickCourse from "../pages/ClickCourse";
 import AuthProvider from '../hooks/auth';
+import TermsofUse from '../pages/TermsofUse';
+import Main from '../pages/Main';
 
 
 export default function Navigation() {
@@ -31,6 +33,11 @@ function Navigator() {
       <Stack.Screen
         name="MyDrawer"
         component={MyDrawer}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Main"
+        component={Main}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -56,6 +63,11 @@ function Navigator() {
       <Stack.Screen
         name="ClickCourse"
         component={ClickCourse}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="TermsofUse"
+        component={TermsofUse}
         options={{ headerShown: false }}
       />
       <Stack.Screen

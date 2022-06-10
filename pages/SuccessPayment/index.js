@@ -19,7 +19,7 @@ const auth = getAuth();
 
 export default function Success({ navigation }) {
 
-  const [googleInfo, setgoogleInfo] = useState({ Nome: "", Email: "" });
+  const [googleInfo, setGoogleInfo] = useState({Nome: "i", Email: "oi"});
   // Teste do roberto
 
   const getUsers = async (user) => {
@@ -31,18 +31,20 @@ export default function Success({ navigation }) {
       name: docSnap.data().Nome_Completo,
       email: docSnap.data().Email,
     }; 
-    setgoogleInfo({ Nome: userProfile.name, Email: userProfile.email })
-    axios.post('https://sheet.best/api/sheets/fa8b5f7a-031b-43be-b1c2-56d16d985edb', googleInfo)
-    .then(response => {
-      console.log(response);
-    })
+    setGoogleInfo({Nome: userProfile.name, Email: userProfile.email})
+    googlePost(googleInfo);
     console.log(userProfile)}
     else {
     console.log("GetUser-Document data: No such document!");
     }
 }
 
- 
+const googlePost = async (google) => {
+  axios.post('https://sheet.best/api/sheets/ea18f0f1-e07a-438b-8ec5-ac2c44b1c9ab', google)
+  .then(response => {
+  console.log(response);
+});
+}
   // fim do teste
   const getSessionId = async () => {
 

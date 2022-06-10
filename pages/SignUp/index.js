@@ -11,7 +11,12 @@ import {
   ContainerSideView,
   SideView,
   Footer,
-  ViewHeader
+  ViewTextInput,
+  ViewButton,
+  ViewCheckBox,
+  ViewText,
+  ViewHelper,
+  ViewTitle
 } from "./style";
 import THEME from '../../config/theme';
 import { Provider } from "react-native-paper";
@@ -78,11 +83,10 @@ export default function SignUp({ navigation }) {
   const onSignUpPressed = () => {
       validation();
       if (password.value===confirmPassword.value){
-        console.log(isSelected)
         if (isSelected===false){
-            showAlert("Erro", "Por favor, confirme os Termos de Uso e Política de Privacidade.");
+            showAlert("Erro", "Para prosseguir você precisa estar de acordo com os Termos de Uso e a Política de Privacidade.");
         }
-        else{
+        else if (email.value && password.value && name.value && cellphone.value){
         setLoading(true);
         createUserWithEmailAndPassword(auth, email.value, password.value, cellphone.value)
         .then((currentUser) => {
@@ -101,10 +105,6 @@ export default function SignUp({ navigation }) {
             createUser().then(() => {
                 sendEmailVerification(auth.currentUser)
                   .then(() => {
-                    showAlert(
-                      "Cadastro confirmado!",
-                      "Confira sua caixa de entrada para verificar seu email."
-                    );
                     signOut(auth)
                       .then(() => {
                         createCheckoutSession(user.uid, "price_1L5qw3CmcyIwF9rcW6VuPvSg", "subscription", 6);
@@ -151,11 +151,13 @@ export default function SignUp({ navigation }) {
         <ContainerSideView>
           <MobileOrDesktopComponent></MobileOrDesktopComponent>
           <Container>
-            <ViewHeader>
               <Header goBack={navigation.goBack} />
-            </ViewHeader>
-            <Content>
+              <ViewTitle>
               <Title>Cadastrar</Title>
+              </ViewTitle>
+              <Content>
+              <ViewTextInput>
+                <ViewText>
               <TextInput
                 label="Nome"
                 placeholder="Digite seu nome completo"
@@ -164,8 +166,13 @@ export default function SignUp({ navigation }) {
                 onChangeText={(text) => setName({ value: text, error: "" })}
                 error={!!name.error}
               />
+              </ViewText>
+              <ViewHelper>
               <HelperText type="error" visible={name.error}>{name.error}</HelperText>
-
+              </ViewHelper>
+              </ViewTextInput>
+              <ViewTextInput>
+                <ViewText>
               <TextInput
                 label="Email"
                 placeholder="Digite seu email"
@@ -178,30 +185,13 @@ export default function SignUp({ navigation }) {
                 textContentType="emailAddress"
                 keyboardType="email-address"
               />
+              </ViewText>
+              <ViewHelper>
               <HelperText type="error" visible={email.error}>{email.error}</HelperText>
-
-              <TextInput
-                label="Senha"
-                placeholder="Digite uma senha"
-                returnKeyType="next"
-                value={password.value}
-                onChangeText={(text) => setPassword({ value: text, error: "" })}
-                error={!!password.error}
-                secureTextEntry
-              />
-              <HelperText type="error" visible={password.error}>{password.error}</HelperText>
-
-              <TextInput
-                label="Confirmar Senha"
-                placeholder="Digite novamente a senha"
-                returnKeyType="next"
-                value={confirmPassword.value}
-                onChangeText={(text) => setConfirmPassword({ value: text, error: "" })}
-                error={!!confirmPassword.error}
-                secureTextEntry
-              />
-              <HelperText type="error" visible={confirmPassword.error}>{confirmPassword.error}</HelperText>
-
+              </ViewHelper>
+              </ViewTextInput>
+              <ViewTextInput>
+                <ViewText>
               <TextInput
                 label="Celular"
                 placeholder="(DDD) 99999-9999"
@@ -211,14 +201,54 @@ export default function SignUp({ navigation }) {
                 error={!!cellphone.error}
                 keyboardType="phone-pad"
               />
+              </ViewText>
+              <ViewHelper>
               <HelperText type="error" visible={cellphone.error}>{cellphone.error}</HelperText>
+              </ViewHelper>
+              </ViewTextInput>
+              <ViewTextInput>
+                <ViewText>
+              <TextInput
+                label="Senha"
+                placeholder="Digite uma senha"
+                returnKeyType="next"
+                value={password.value}
+                onChangeText={(text) => setPassword({ value: text, error: "" })}
+                error={!!password.error}
+                secureTextEntry
+              />
+              </ViewText>
+              <ViewHelper>
+              <HelperText type="error" visible={password.error}>{password.error}</HelperText>
+              </ViewHelper>
+              </ViewTextInput>
+              <ViewTextInput>
+                <ViewText>
+              <TextInput
+                label="Confirmar Senha"
+                placeholder="Digite novamente a senha"
+                returnKeyType="next"
+                value={confirmPassword.value}
+                onChangeText={(text) => setConfirmPassword({ value: text, error: "" })}
+                error={!!confirmPassword.error}
+                secureTextEntry
+              />
+              </ViewText>
+              <ViewHelper>
+              <HelperText type="error" visible={confirmPassword.error}>{confirmPassword.error}</HelperText>
+              </ViewHelper>
+              </ViewTextInput>
 
+              </Content>
+              <ViewCheckBox>
               <CheckBox
                 title="Clicando nesta caixa você concorda com os Termos de Uso e Política de Privacidade."
                 center={false}
                 checked={isSelected}
                 onPress={() => setSelected(!isSelected)}
               />
+              </ViewCheckBox>
+              <ViewButton>
               <Button
                 title={"Prosseguir para pagamento"}
                 isLoading={loading}
@@ -226,7 +256,7 @@ export default function SignUp({ navigation }) {
                 colorbutton={THEME.COLORS.PRIMARY_900}
                 colortitle={THEME.COLORS.TEXT_000}
               ></Button>
-
+              </ViewButton>
               {visibleAlert && (
                 <AlertBox
                   title={title}
@@ -235,8 +265,6 @@ export default function SignUp({ navigation }) {
                   onClose={hideAlert}
                 ></AlertBox>
               )}
-            </Content>
-
             <Footer>
               <BackButton onPress={() => navigation.navigate("Login")}>
                 <MaterialIcons
@@ -244,8 +272,8 @@ export default function SignUp({ navigation }) {
                   size={24}
                   color={THEME.COLORS.PRIMARY_900}
                 />
+                </BackButton>
                 <BackText>Eu já tenho uma conta</BackText>
-              </BackButton>
             </Footer>
           </Container>
           <MobileOrDesktopComponent></MobileOrDesktopComponent>
