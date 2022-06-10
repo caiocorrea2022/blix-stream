@@ -44,7 +44,7 @@ const CategoryList = ({ category }) => {
 
   return (
     <Container>
-      <Text numberOfLines={1} style={{ maxWidth: 230, fontSize: THEME.FONTSIZE.BIG, fontFamily: THEME.FONTFAMILY.BOLD }}>{category.title}</Text>
+      <Text numberOfLines={1} style={{ maxWidth: 230, fontSize: THEME.FONTSIZE.MEDIUM, fontFamily: THEME.FONTFAMILY.BOLD }}>{category.title}</Text>
       <Content>
         <Icon
           type="material-community"
@@ -53,7 +53,7 @@ const CategoryList = ({ category }) => {
           iconStyle={{
             color: THEME.COLORS.TEXT_000,
           }}
-          containerStyle={{ position: "absolute", backgroundColor: "rgba(0,0,0,0.7)", left: 0, zIndex: 99, height: "7rem", flex: 1, justifyContent: "center", overflow: "hidden" }}
+          containerStyle={{ position: "absolute", backgroundColor: "rgba(0,0,0,0.7)", left: 0, zIndex: 99, height: "10rem", flex: 1, justifyContent: "center", overflow: "hidden" }}
           onPress={handleLeftArrow}
         />
         <FlatList
@@ -70,7 +70,7 @@ const CategoryList = ({ category }) => {
           iconStyle={{
             color: THEME.COLORS.TEXT_000,
           }}
-          containerStyle={{ position: "absolute", backgroundColor: "rgba(0,0,0,0.7)", right: 0, zIndex: 99, height: "7rem", flex: 1, justifyContent: "center", overflow: "hidden" }}
+          containerStyle={{ position: "absolute", backgroundColor: "rgba(0,0,0,0.7)", right: 0, zIndex: 99, height: "10rem", flex: 1, justifyContent: "center", overflow: "hidden" }}
           onPress={handleRightArrow}
         />
       </Content>
