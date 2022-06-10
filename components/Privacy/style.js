@@ -2,11 +2,10 @@ import styled from 'styled-components/native';
 import THEME from '../../config/theme';
 
 export const TextWrapper = styled.View`
-	padding: 10px 10px;
+	padding: 1rem 3rem 1rem 3rem;
 	justify-content: center;
 	flex-direction: column;
 	gap: 1rem;
-	background-color: green;
 `;
 
 export const InfoName = styled.Text`
