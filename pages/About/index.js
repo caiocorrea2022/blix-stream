@@ -8,6 +8,7 @@ import {
 } from "./style";
 import CardInfo from '../../components/Card';
 import Pricing from '../../components/Pricing';
+import { categoriesInfo, coursesInfo } from '../../config/data';
 
 export default function About({ navigation }) {
   return (
@@ -15,7 +16,7 @@ export default function About({ navigation }) {
       <Header goBack={navigation.goBack} />
       <Title>CURSOS</Title>
       <CardView>
-        <CardInfo></CardInfo>
+        <CardInfo array={coursesInfo} navigation={navigation}></CardInfo>
       </CardView>
       <PricingView>
         <Pricing navigation={navigation}></Pricing>

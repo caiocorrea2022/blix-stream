@@ -1,36 +1,25 @@
 import React from 'react';
-import { Card } from 'react-native-paper';
-import { useNavigation } from '@react-navigation/native';
-import Button from '../Button';
+import { Card, Button } from 'react-native-paper';
 import { HorizontalListView, Text, HorizontalList } from './style';
 import THEME from '../../config/theme';
-import { coursesInfo } from '../../config/data';
 
-const CardInfo = ({ item }) => {
-    const navigation = useNavigation();
-
+const CardInfo = ({ array, buttonVisible = true, priceVisible = true, navigation }) => {
     const onCardPress = () => {
-        navigation.navigate('Login', { name: item.title, info: item.info, price: item.price })
+        navigation.navigate('Login', console.log(array))
     }
-
     return (
         <HorizontalListView>
             <HorizontalList horizontal={true}>
-                {coursesInfo.map((item, index) => (
-                    <Card key={index} style={{ width: "20rem", margin: "1rem", backgroundColor:"red", justifyContent:"space-evenly"}}>
+                {array.map((item, index) => (
+                    <Card key={index} style={{ width: "20rem", margin: "1rem" }}>
                         <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
-                        <Card.Content>
+                        <Card.Content style={{ height: "50%" }}>
                             <Text fontFamily={THEME.FONTFAMILY.BOLD} fontSize={THEME.FONTSIZE.SMALL} color={THEME.COLORS.TEXT_900}>{item.title}</Text>
-                            <Text fontFamily={THEME.FONTFAMILY.REGULAR} fontSize={THEME.FONTSIZE.EXTRASMALL} color={THEME.COLORS.TEXT_800} >{item.info}</Text>
-                            <Text fontFamily={THEME.FONTFAMILY.BOLD} fontSize={THEME.FONTSIZE.MEDIUM} color={THEME.COLORS.TEXT_900}>{item.price}</Text>
+                            <Text fontFamily={THEME.FONTFAMILY.REGULAR} fontSize={THEME.FONTSIZE.EXTRASMALL} color={THEME.COLORS.TEXT_800}>{item.info}</Text>
+                            {priceVisible ? <Text fontFamily={THEME.FONTFAMILY.BOLD} fontSize={THEME.FONTSIZE.MEDIUM} color={THEME.COLORS.TEXT_900}>{item.price}</Text> : null}
                         </Card.Content>
                         <Card.Actions>
-                            <Button
-                                title={'Saiba mais >'}
-                                colorbutton={THEME.COLORS.PRIMARY_900}
-                                colortitle={THEME.COLORS.TEXT_000}
-                            // onPress={onCardPress}
-                            ></Button>
+                            {buttonVisible ? <Button onPress={onCardPress}>Saiba mais</Button> : null}
                         </Card.Actions>
                     </Card>
                 ))}
