@@ -5,7 +5,7 @@ import THEME from '../../config/theme';
 
 const TextInput = ({ ...props }) => (
     <Input
-      style={{backgroundColor:THEME.COLORS.BACKGROUND, fontFamily:THEME.FONTFAMILY.REGULAR}}
+      style={{backgroundColor:THEME.COLORS.BACKGROUND, fontFamily:THEME.FONTFAMILY.REGULAR, fontSize: THEME.FONTSIZE.MEDIUM, flex: 1}}
       underlineColor={THEME.COLORS.PRIMARY_800}
       outlineColor={THEME.COLORS.TEXT_900}
       selectionColor={THEME.COLORS.TEXT_900}

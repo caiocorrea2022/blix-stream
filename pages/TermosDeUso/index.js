@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ScrollView, Alert, Modal, StyleSheet, Pressable, View, Text } from "react-native";
 import Privacy from "../../components/Privacy";
 import {ViewText, ViewPressable, ViewVerticalScroll, VerticalScroll, Title} from './style';
 
  function TermosDeUso({ navigation }) {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(true);
+
+  useEffect(() => {
+    setModalVisible(true);
+  }, []);
+
   return (
     <View style={styles.centeredView}>
       <Modal styles={{flex:1, flexDirection:"column"}}
@@ -14,6 +19,7 @@ import {ViewText, ViewPressable, ViewVerticalScroll, VerticalScroll, Title} from
         onRequestClose={() => {
           Alert.alert("Modal has been closed.");
           setModalVisible(!modalVisible);
+          // navigation.navigate("Login");
         }}
       >
         <ViewText>
@@ -33,12 +39,6 @@ import {ViewText, ViewPressable, ViewVerticalScroll, VerticalScroll, Title} from
             </Pressable>
             </ViewPressable>
       </Modal>
-      <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}
-      >
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </Pressable>
     </View>
   );
 };
