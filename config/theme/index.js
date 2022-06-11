@@ -25,6 +25,7 @@ export default {
   FONTSIZE:{
     EXTRABIG: RFValue(22, 1080),
     BIG: RFValue(18, 1080),
+    EXTRAMEDIUM: RFValue(16, 1080),
     MEDIUM: RFValue(14, 1080),
     SMALL: RFValue(12, 1080), 
     EXTRASMALL: RFValue(10, 1080),

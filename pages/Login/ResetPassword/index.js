@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Title, FormMessage } from './style';
+import { Container, Title, FormMessage, ViewTitle, ViewHelper, ViewText, ViewTextInput } from './style';
 import { emailValidator } from '../../../utils';
 import TextInput from '../../../components/TextInput';
 import Button from '../../../components/Button';
@@ -53,7 +53,7 @@ export default function ResetPassword() {
 
   return (
     <Container>
-      <Title>Redefina sua senha</Title>
+              <Title>Redefina a sua senha:</Title>
       <TextInput
         label="Email"
         returnKeyType="next"

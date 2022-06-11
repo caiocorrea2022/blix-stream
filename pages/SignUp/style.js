@@ -14,14 +14,14 @@ export const Container = styled.View`
 
 export const ViewButton = styled.View`
   flex: 0.5;
-  padding: 0.5rem 0rem 0.5rem 0rem;
+  padding: 0.5rem 0rem;
   justify-content:center;
   align-items: center;
 `;
 
 export const ViewTextInput = styled.View`
-  padding: 0rem 0.5rem 0rem 0.5rem;
-  flex: 1;
+  height: 5rem;
+  padding: 0.5rem 1rem;
 `;
 
 export const ViewText = styled.View`
@@ -38,7 +38,7 @@ export const ViewCheckBox = styled.View`
   flex: 0.5;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem 0rem 0.5rem 0rem;
+  padding: 0.5rem 0rem;
 `;
 
 export const ViewTitle = styled.View`
@@ -50,13 +50,13 @@ export const ViewTitle = styled.View`
 export const Content = styled.View`
   flex: 5;
   justify-content: flex-start;
-  padding: 1rem 0rem 1rem 0rem;
+  padding: 1rem 0rem;
 `;
 
 export const Footer = styled.View`
   flex: 0.5;
   flex-direction: row;
-  padding: 0.5rem 0rem 0.5rem 0rem;
+  padding: 0.5rem 0rem;
   justify-content:center;
   align-items: center;
 `;
@@ -72,7 +72,7 @@ export const BackButton = styled.TouchableOpacity`
 `;
 
 export const BackText = styled.Text`
-  font-size: ${THEME.FONTSIZE.MEDIUM};
+  font-size: ${THEME.FONTSIZE.SMALL};
   font-family: ${THEME.FONTFAMILY.MEDIUM};
   color: ${THEME.COLORS.PRIMARY_900};
 `;
