@@ -6,7 +6,7 @@ import {
   Subtitle,
 } from "./style";
 import { Icon } from "react-native-elements";
-import { getAuth,onAuthStateChanged} from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import axios from 'axios';
 import THEME from '../../config/theme';
 import { doc, getDoc } from "firebase/firestore";
@@ -19,33 +19,25 @@ const auth = getAuth();
 
 export default function Success({ navigation }) {
 
-  const [googleInfo, setGoogleInfo] = useState({Nome: "i", Email: "oi"});
-  // Teste do roberto
 
   const getUsers = async (user) => {
     const docRef = doc(firestore, "users", user);
     const docSnap = await getDoc(docRef);
+    
     if (docSnap.exists()) {
-    console.log("GetUser-Document data:", docSnap.data());
-    const userProfile = {
-      name: docSnap.data().Nome_Completo,
-      email: docSnap.data().Email,
-    }; 
-    setGoogleInfo({Nome: userProfile.name, Email: userProfile.email})
-    googlePost(googleInfo);
-    console.log(userProfile)}
-    else {
-    console.log("GetUser-Document data: No such document!");
-    }
-}
+      const userProfile = {
+        Nome: docSnap.data().Nome_Completo,
+        Email: docSnap.data().Email,
+      };
 
-const googlePost = async (google) => {
-  axios.post('https://sheet.best/api/sheets/ea18f0f1-e07a-438b-8ec5-ac2c44b1c9ab', google)
-  .then(response => {
-  console.log(response);
-});
-}
-  // fim do teste
+      return axios.post('https://sheet.best/api/sheets/ea18f0f1-e07a-438b-8ec5-ac2c44b1c9ab', userProfile);
+
+    } else {
+      console.log("GetUser-Document data: No such document!");
+    }
+  }
+
+
   const getSessionId = async () => {
 
     //TODO remove token and add everything as URL parameters iterations, priceid and verify upsell
@@ -126,9 +118,10 @@ const googlePost = async (google) => {
         body: schedFormBody
       })
         .then((r) => r.json());
-      
+
     }
-    getUsers(uid)
+    console.log('aqui eu cheguei')
+    await getUsers(uid);
   }
 
   useEffect(() => {
@@ -136,24 +129,24 @@ const googlePost = async (google) => {
   }, []);
 
   return (
-<Provider>
-    <Container>
-      <Icon
-        type ="material-icons"
-        name = "check-circle-outline"
-        color= {THEME.COLORS.BACKGROUND}
-        size ={60}
-      />
-      <Title>Plano assinado com sucesso!</Title>
-      <Subtitle>Por favor, verifique seu e-mail e faça o seu primeiro login.</Subtitle>
-      <Button
+    <Provider>
+      <Container>
+        <Icon
+          type="material-icons"
+          name="check-circle-outline"
+          color={THEME.COLORS.BACKGROUND}
+          size={60}
+        />
+        <Title>Plano assinado com sucesso!</Title>
+        <Subtitle>Por favor, verifique seu e-mail e faça o seu primeiro login.</Subtitle>
+        <Button
           title={"Fazer Login"}
-          onPress={() => {navigation.navigate("Login"), postGoogle()}}
-          colortitle ={THEME.COLORS.TEXT_900}
+          onPress={() => { navigation.navigate("Login"), postGoogle() }}
+          colortitle={THEME.COLORS.TEXT_900}
           colorbutton={THEME.COLORS.BACKGROUND}
         ></Button>
-    </Container>
-  </Provider>  
+      </Container>
+    </Provider>
   );
 };
 
