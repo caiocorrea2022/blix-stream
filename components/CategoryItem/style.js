@@ -13,9 +13,9 @@ export const Image = styled.ImageBackground`
 `;
 
 export const Text = styled.Text`
-  margin-top: 5px;
-  max-width: 98px;
+  flex-direction: row;
+  max-width: 230;
+  font-size: ${THEME.FONTSIZE.MEDIUM};
+  font-family: ${THEME.FONTFAMILY.MEDIUM};
   color: ${THEME.COLORS.TEXT_900};
-  font-Size: ${THEME.FONTSIZE.MEDIUM};
-  font-family: ${THEME.FONTFAMILY.BOLD};
 `;

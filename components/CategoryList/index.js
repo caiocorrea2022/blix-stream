@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
-import { Text } from '../../components/Themed';
 import CategoryItem from '../CategoryItem';
-import { Container, Content } from './style';
+import { Container, Content, Text } from './style';
 import { getDocs, collection } from "firebase/firestore";
 import { firestore } from '../../services/firebase';
 import THEME from '../../config/theme';
@@ -44,7 +43,7 @@ const CategoryList = ({ category }) => {
 
   return (
     <Container>
-      <Text numberOfLines={1} style={{ maxWidth: 230, fontSize: THEME.FONTSIZE.MEDIUM, fontFamily: THEME.FONTFAMILY.BOLD }}>{category.title}</Text>
+      <Text numberOfLines={1}>{category.title}</Text>
       <Content>
         <Icon
           type="material-community"

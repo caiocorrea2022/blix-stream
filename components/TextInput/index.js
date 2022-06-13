@@ -10,7 +10,7 @@ const TextInput = ({ ...props }) => (
       outlineColor={THEME.COLORS.TEXT_900}
       selectionColor={THEME.COLORS.TEXT_900}
       activeUnderlineColor={THEME.COLORS.PRIMARY_900}
-      placeholderTextColor={THEME.COLORS.TEXT_700}
+      placeholderTextColor={THEME.COLORS.TEXT_800}
       theme={{ colors: {placeholder: THEME.COLORS.TEXT_700, text: THEME.COLORS.TEXT_900}}}
       {...props}
     />

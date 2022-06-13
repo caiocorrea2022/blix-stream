@@ -4,7 +4,7 @@ import { Button as PaperButton, Paragraph, Dialog, Portal } from 'react-native-p
 const AlertBox = (props) => {
   return (
     <Portal>
-      <Dialog visible={props.visible} onDismiss={() => props.onClose(false)} style={{maxWidth:"40rem", padding: "0.5rem", margin: "2rem", alignSelf:"center"}}>
+      <Dialog visible={props.visible} onDismiss={() => props.onClose(false)} style={{ padding: "0.5rem", margin: "2rem", alignSelf:"center"}}>
         <Dialog.Title>{props.title}</Dialog.Title>
         <Dialog.Content>
           <Paragraph>{props.message}</Paragraph>

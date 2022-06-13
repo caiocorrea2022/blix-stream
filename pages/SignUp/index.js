@@ -258,14 +258,14 @@ export default function SignUp({ navigation }) {
                 colortitle={THEME.COLORS.TEXT_000}
               ></Button>
             </ViewButton>
-            {visibleAlert && (
+            {visibleAlert &&
               <AlertBox
                 title={title}
                 message={message}
                 visible={visibleAlert}
                 onClose={hideAlert}
               ></AlertBox>
-            )}
+            }
             <Footer>
               <BackButton onPress={() => navigation.navigate("Login")}>
                 <MaterialIcons

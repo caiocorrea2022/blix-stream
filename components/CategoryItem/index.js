@@ -3,8 +3,8 @@ import { useNavigation } from '@react-navigation/native';
 import {
     Container,
     Image,
+    Text
 } from './style';
-import { Text } from '../../components/Themed';
 import THEME from '../../config/theme';
 import { Icon } from 'react-native-elements'
 
@@ -28,7 +28,7 @@ const CategoryItem = ({ item }) => {
                     containerStyle={{ flex: 1, alignSelf: "flex-end", justifyContent: "flex-end", padding: "0.2rem" }}
                 />
             </Image>
-            <Text numberOfLines={2} style={{ maxWidth: 230, fontSize: THEME.FONTSIZE.MEDIUM, fontFamily: THEME.FONTFAMILY.MEDIUM }}>{item.title}</Text>
+            <Text numberOfLines={2}>{item.title}</Text>
         </Container>
     )
 }
