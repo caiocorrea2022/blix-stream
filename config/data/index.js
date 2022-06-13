@@ -197,24 +197,35 @@ export const privacyData = [
           ]
       }
   ]
-export const coursesInfo = [
-  {
-    title: "Workshop Yoga Terapia",
-    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
-    price: "R$ 100,00"
-  },
-  {
-    title: "Curso de Meditação",
-    info: "lit repudiandae et atque praesentium.",
-    price: "R$ 120,00"
-  },
-  {
-    title: "Retiro",
-    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
-    price: "R$ 450,00"
-  },
-];
+  export const coursesInfo = [
+    {
+      title: "Workshop Yoga Terapia",
+      info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
+      price: "R$ 100,00"
+    },
+    {
+      title: "Curso de Meditação",
+      info: "lit repudiandae et atque praesentium.",
+      price: "R$ 120,00"
+    },
+    {
+      title: "Retiro",
+      info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
+      price: "R$ 450,00"
+    },
+  ];
 
-
-
-
+  export const categoriesInfo = [
+    {
+      title: "Hatha",
+      info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
+    },
+    {
+      title: "Curso de Meditação",
+      info: "lit repudiandae et atque praesentium.",
+    },
+    {
+      title: "Retiro",
+      info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
+    },
+  ];

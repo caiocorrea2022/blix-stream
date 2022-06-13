@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
-import { Text } from '../../components/Themed';
 import CategoryItem from '../CategoryItem';
-import { Container, Content } from './style';
+import { Container, Content, Text } from './style';
 import { getDocs, collection } from "firebase/firestore";
 import { firestore } from '../../services/firebase';
 import THEME from '../../config/theme';
@@ -45,7 +44,7 @@ const CategoryList = ({ category, plan, courses }) => {
 
   return (
     <Container>
-      <Text numberOfLines={1} style={{ maxWidth: 230, fontSize: THEME.FONTSIZE.BIG, fontFamily: THEME.FONTFAMILY.BOLD }}>{category.title}</Text>
+      <Text numberOfLines={1}>{category.title}</Text>
       <Content>
         <Icon
           type="material-community"
@@ -54,7 +53,7 @@ const CategoryList = ({ category, plan, courses }) => {
           iconStyle={{
             color: THEME.COLORS.TEXT_000,
           }}
-          containerStyle={{ position: "absolute", backgroundColor: "rgba(0,0,0,0.7)", left: 0, zIndex: 99, height: "7rem", flex: 1, justifyContent: "center", overflow: "hidden" }}
+          containerStyle={{ position: "absolute", backgroundColor: "rgba(0,0,0,0.7)", left: 0, zIndex: 99, height: "10rem", flex: 1, justifyContent: "center", overflow: "hidden" }}
           onPress={handleLeftArrow}
         />
         <FlatList
@@ -71,7 +70,7 @@ const CategoryList = ({ category, plan, courses }) => {
           iconStyle={{
             color: THEME.COLORS.TEXT_000,
           }}
-          containerStyle={{ position: "absolute", backgroundColor: "rgba(0,0,0,0.7)", right: 0, zIndex: 99, height: "7rem", flex: 1, justifyContent: "center", overflow: "hidden" }}
+          containerStyle={{ position: "absolute", backgroundColor: "rgba(0,0,0,0.7)", right: 0, zIndex: 99, height: "10rem", flex: 1, justifyContent: "center", overflow: "hidden" }}
           onPress={handleRightArrow}
         />
       </Content>

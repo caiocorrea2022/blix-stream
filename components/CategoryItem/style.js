@@ -5,7 +5,7 @@ export const Container = styled.TouchableOpacity`
 `;
 
 export const Image = styled.ImageBackground`
-  width: 10rem;
+  width: 15rem;
   aspect-Ratio: 16 / 9;
   margin: 1rem 1rem 0.5rem 0rem;
   border-radius: 10px;
@@ -13,9 +13,9 @@ export const Image = styled.ImageBackground`
 `;
 
 export const Text = styled.Text`
-  margin-top: 5px;
-  max-width: 98px;
+  flex-direction: row;
+  max-width: 230;
+  font-size: ${THEME.FONTSIZE.MEDIUM};
+  font-family: ${THEME.FONTFAMILY.MEDIUM};
   color: ${THEME.COLORS.TEXT_900};
-  font-Size: ${THEME.FONTSIZE.MEDIUM};
-  font-family: ${THEME.FONTFAMILY.BOLD};
 `;

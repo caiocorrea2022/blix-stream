@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { Linking } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import { Icon } from 'react-native-elements'
@@ -8,7 +9,7 @@ import {auth} from '../../services/firebase'
 import { signOut } from "firebase/auth";
 
 export default function DrawerContent(props) {
-  
+  const navigation = useNavigation();
   const logout = () =>{
     signOut(auth).then(() => {
         window.location.assign('../Main');
@@ -32,7 +33,7 @@ export default function DrawerContent(props) {
       </DrawerContentScrollView>
       <DrawerItem
         label={() => (<Text>Termos de Uso e Privacidade</Text>)}
-        onPress={() => Linking.openURL('https://dl.airtable.com/.attachments/431cb1fef90c5e6496c37f0b9e41088e/5cae0c6f/TERMOSDEUSOEPRIVACIDADEdelivery.pdf')}
+        onPress={() => navigation.navigate("TermsofUse") }
         icon={({ color}) => (
           <Icon
             type="material-community"

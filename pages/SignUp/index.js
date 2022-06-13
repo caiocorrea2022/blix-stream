@@ -11,7 +11,12 @@ import {
   ContainerSideView,
   SideView,
   Footer,
-  ViewHeader
+  ViewTextInput,
+  ViewButton,
+  ViewCheckBox,
+  ViewText,
+  ViewHelper,
+  ViewTitle
 } from "./style";
 import THEME from '../../config/theme';
 import { Provider } from "react-native-paper";
@@ -76,16 +81,15 @@ export default function SignUp({ navigation }) {
   };
 
   const onSignUpPressed = () => {
-      validation();
-      if (password.value===confirmPassword.value){
-        console.log(isSelected)
-        if (isSelected===false){
-            showAlert("Erro", "Por favor, confirme os Termos de Uso e Política de Privacidade.");
-        }
-        else{
+    validation();
+    if (password.value === confirmPassword.value) {
+      if (isSelected === false) {
+        showAlert("Erro", "Para prosseguir você precisa estar de acordo com os Termos de Uso e a Política de Privacidade.");
+      }
+      else if (email.value && password.value && name.value && cellphone.value) {
         setLoading(true);
         createUserWithEmailAndPassword(auth, email.value, password.value, cellphone.value)
-        .then((currentUser) => {
+          .then((currentUser) => {
             console.log("user criado");
             const user = currentUser.user;
             const usersCollectionRef = doc(firestore, "users", user.uid);
@@ -99,20 +103,16 @@ export default function SignUp({ navigation }) {
               console.log(user)
             };
             createUser().then(() => {
-                sendEmailVerification(auth.currentUser)
-                  .then(() => {
-                    showAlert(
-                      "Cadastro confirmado!",
-                      "Confira sua caixa de entrada para verificar seu email."
-                    );
-                    signOut(auth)
-                      .then(() => {
-                        createCheckoutSession(user.uid, "price_1L5qw3CmcyIwF9rcW6VuPvSg", "subscription", 6);
-                      });
-                  });
-              });
-        })
-        .catch((error) => {
+              sendEmailVerification(auth.currentUser)
+                .then(() => {
+                  signOut(auth)
+                    .then(() => {
+                      createCheckoutSession(user.uid, "price_1L5qw3CmcyIwF9rcW6VuPvSg", "subscription", 6);
+                    });
+                });
+            });
+          })
+          .catch((error) => {
             setLoading(false);
             console.error(error);
             switch (error.code) {
@@ -130,12 +130,13 @@ export default function SignUp({ navigation }) {
                 break;
             }
           });
-        }}
-        else {
-          showAlert("Erro", "As senhas não correspondem");
-          setLoading(false);
-        }    
+      }
     }
+    else {
+      showAlert("Erro", "As senhas não correspondem");
+      setLoading(false);
+    }
+  }
 
   const MobileOrDesktopComponent = () => {
     const { width } = useViewport();
@@ -151,74 +152,104 @@ export default function SignUp({ navigation }) {
         <ContainerSideView>
           <MobileOrDesktopComponent></MobileOrDesktopComponent>
           <Container>
-            <ViewHeader>
-              <Header goBack={navigation.goBack} />
-            </ViewHeader>
-            <Content>
+            <Header goBack={navigation.goBack} />
+            <ViewTitle>
               <Title>Cadastrar</Title>
-              <TextInput
-                label="Nome"
-                placeholder="Digite seu nome completo"
-                returnKeyType="next"
-                value={name.value}
-                onChangeText={(text) => setName({ value: text, error: "" })}
-                error={!!name.error}
-              />
-              <HelperText type="error" visible={name.error}>{name.error}</HelperText>
+            </ViewTitle>
+            <Content>
+              <ViewTextInput>
+                <ViewText>
+                  <TextInput
+                    label="Nome"
+                    placeholder="Digite seu nome completo"
+                    returnKeyType="next"
+                    value={name.value}
+                    onChangeText={(text) => setName({ value: text, error: "" })}
+                    error={!!name.error}
+                  />
+                </ViewText>
+                <ViewHelper>
+                  <HelperText type="error" visible={name.error}>{name.error}</HelperText>
+                </ViewHelper>
+              </ViewTextInput>
+              <ViewTextInput>
+                <ViewText>
+                  <TextInput
+                    label="Email"
+                    placeholder="Digite seu email"
+                    returnKeyType="next"
+                    value={email.value}
+                    onChangeText={(text) => setEmail({ value: text, error: "" })}
+                    error={!!email.error}
+                    autoCapitalize="none"
+                    autoCompleteType="email"
+                    textContentType="emailAddress"
+                    keyboardType="email-address"
+                  />
+                </ViewText>
+                <ViewHelper>
+                  <HelperText type="error" visible={email.error}>{email.error}</HelperText>
+                </ViewHelper>
+              </ViewTextInput>
+              <ViewTextInput>
+                <ViewText>
+                  <TextInput
+                    label="Celular"
+                    placeholder="(DDD) 99999-9999"
+                    returnKeyType="done"
+                    value={cellphone.value}
+                    onChangeText={(text) => setCellPhone({ value: text, error: "" })}
+                    error={!!cellphone.error}
+                    keyboardType="phone-pad"
+                  />
+                </ViewText>
+                <ViewHelper>
+                  <HelperText type="error" visible={cellphone.error}>{cellphone.error}</HelperText>
+                </ViewHelper>
+              </ViewTextInput>
+              <ViewTextInput>
+                <ViewText>
+                  <TextInput
+                    label="Senha"
+                    placeholder="Digite uma senha"
+                    returnKeyType="next"
+                    value={password.value}
+                    onChangeText={(text) => setPassword({ value: text, error: "" })}
+                    error={!!password.error}
+                    secureTextEntry
+                  />
+                </ViewText>
+                <ViewHelper>
+                  <HelperText type="error" visible={password.error}>{password.error}</HelperText>
+                </ViewHelper>
+              </ViewTextInput>
+              <ViewTextInput>
+                <ViewText>
+                  <TextInput
+                    label="Confirmar Senha"
+                    placeholder="Digite novamente a senha"
+                    returnKeyType="next"
+                    value={confirmPassword.value}
+                    onChangeText={(text) => setConfirmPassword({ value: text, error: "" })}
+                    error={!!confirmPassword.error}
+                    secureTextEntry
+                  />
+                </ViewText>
+                <ViewHelper>
+                  <HelperText type="error" visible={confirmPassword.error}>{confirmPassword.error}</HelperText>
+                </ViewHelper>
+              </ViewTextInput>
 
-              <TextInput
-                label="Email"
-                placeholder="Digite seu email"
-                returnKeyType="next"
-                value={email.value}
-                onChangeText={(text) => setEmail({ value: text, error: "" })}
-                error={!!email.error}
-                autoCapitalize="none"
-                autoCompleteType="email"
-                textContentType="emailAddress"
-                keyboardType="email-address"
-              />
-              <HelperText type="error" visible={email.error}>{email.error}</HelperText>
-
-              <TextInput
-                label="Senha"
-                placeholder="Digite uma senha"
-                returnKeyType="next"
-                value={password.value}
-                onChangeText={(text) => setPassword({ value: text, error: "" })}
-                error={!!password.error}
-                secureTextEntry
-              />
-              <HelperText type="error" visible={password.error}>{password.error}</HelperText>
-
-              <TextInput
-                label="Confirmar Senha"
-                placeholder="Digite novamente a senha"
-                returnKeyType="next"
-                value={confirmPassword.value}
-                onChangeText={(text) => setConfirmPassword({ value: text, error: "" })}
-                error={!!confirmPassword.error}
-                secureTextEntry
-              />
-              <HelperText type="error" visible={confirmPassword.error}>{confirmPassword.error}</HelperText>
-
-              <TextInput
-                label="Celular"
-                placeholder="(DDD) 99999-9999"
-                returnKeyType="done"
-                value={cellphone.value}
-                onChangeText={(text) => setCellPhone({ value: text, error: "" })}
-                error={!!cellphone.error}
-                keyboardType="phone-pad"
-              />
-              <HelperText type="error" visible={cellphone.error}>{cellphone.error}</HelperText>
-
+            </Content>
+            <ViewCheckBox>
               <CheckBox
                 title="Clicando nesta caixa você concorda com os Termos de Uso e Política de Privacidade."
                 center={false}
                 checked={isSelected}
                 onPress={() => setSelected(!isSelected)}
               />
+            </ViewCheckBox>
+            <ViewButton>
               <Button
                 title={"Prosseguir para pagamento"}
                 isLoading={loading}
@@ -226,17 +257,15 @@ export default function SignUp({ navigation }) {
                 colorbutton={THEME.COLORS.PRIMARY_900}
                 colortitle={THEME.COLORS.TEXT_000}
               ></Button>
-
-              {visibleAlert && (
-                <AlertBox
-                  title={title}
-                  message={message}
-                  visible={visibleAlert}
-                  onClose={hideAlert}
-                ></AlertBox>
-              )}
-            </Content>
-
+            </ViewButton>
+            {visibleAlert &&
+              <AlertBox
+                title={title}
+                message={message}
+                visible={visibleAlert}
+                onClose={hideAlert}
+              ></AlertBox>
+            }
             <Footer>
               <BackButton onPress={() => navigation.navigate("Login")}>
                 <MaterialIcons
@@ -244,8 +273,8 @@ export default function SignUp({ navigation }) {
                   size={24}
                   color={THEME.COLORS.PRIMARY_900}
                 />
-                <BackText>Eu já tenho uma conta</BackText>
               </BackButton>
+              <BackText>Eu já tenho uma conta</BackText>
             </Footer>
           </Container>
           <MobileOrDesktopComponent></MobileOrDesktopComponent>

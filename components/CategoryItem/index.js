@@ -3,8 +3,8 @@ import { useNavigation } from '@react-navigation/native';
 import {
     Container,
     Image,
+    Text
 } from './style';
-import { Text } from '../../components/Themed';
 import THEME from '../../config/theme';
 import { Icon } from 'react-native-elements'
 
@@ -12,10 +12,7 @@ const CategoryItem = ({ item, plan, courses }) => {
     const navigation = useNavigation();
 
     const onCardPress = () => {
-        console.log('item',item);
-        console.log(plan)
-        console.log(courses)
-        // navigation.navigate('ClickClass', { videos: item.videos, name: item.title, description: item.description, pdf: item.pdf, url: item.url })
+        navigation.navigate('ClickClass', { videos: item.videos, name: item.title, description: item.description, pdf: item.pdf, url: item.url })
     }
 
     return (
@@ -35,7 +32,7 @@ const CategoryItem = ({ item, plan, courses }) => {
               />
                 }
             </Image>
-            <Text numberOfLines={2} style={{ maxWidth: 230, fontSize: THEME.FONTSIZE.MEDIUM, fontFamily: THEME.FONTFAMILY.MEDIUM }}>{item.title}</Text>
+            <Text numberOfLines={2}>{item.title}</Text>
         </Container>
     )
 }

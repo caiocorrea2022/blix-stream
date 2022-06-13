@@ -7,8 +7,8 @@ const CheckBox = ({ ...props }) => (
     <Check
       checkedColor={THEME.COLORS.PRIMARY_900}
       uncheckedColor={THEME.COLORS.TEXT_900}
-      textStyle={{color:THEME.COLORS.TEXT_900, fontFamily:THEME.FONTFAMILY.EXTRALIGHT, fontSize:THEME.FONTSIZE.EXTRASMALL}}
-      containerStyle={{backgroundColor:THEME.COLORS.BACKGROUND, margin:"1rem"}}
+      textStyle={{color:THEME.COLORS.TEXT_900, fontFamily:THEME.FONTFAMILY.EXTRALIGHT, fontSize:THEME.FONTSIZE.SMALL}}
+      containerStyle={{backgroundColor:THEME.COLORS.BACKGROUND, width: "90%", height: "100%", justifyContent: "center"}}
       {...props}
     />
 );

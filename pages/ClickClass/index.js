@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FlatList, TouchableOpacity } from "react-native";
-import { View } from "../../components/Themed";
+import { View } from "react-native";
+import { Container, ContentVideo, ContentList } from './style';
 import VideoPlayer from "../../components/VideoPlayer";
 import Header from "../../components/Header";
 import PlayList from "../../components/PlayList";
@@ -38,11 +39,9 @@ const ClickClass = ({ route, navigation }) => {
         <VideoPlayer video={video.link} />
       </View>
     ) : (
-      <View
-        style={{ flexDirection: "column", alignSelf: "center", width: "60%" }}
-      >
+      <ContentVideo>
         <VideoPlayer video={video.link} />
-      </View>
+      </ContentVideo>
     );
   };
 
@@ -69,14 +68,7 @@ const ClickClass = ({ route, navigation }) => {
         />
       </View>
     ) : (
-      <View
-        style={{
-          flexDirection: "column",
-          alignSelf: "center",
-          width: "30%",
-          height: "76%",
-        }}
-      >
+      <ContentList>
         <FlatList
           data={videos}
           renderItem={({ item, index }) => (
@@ -92,16 +84,16 @@ const ClickClass = ({ route, navigation }) => {
           style={{ marginBottom: "1rem", flexGrow: 0 }}
           ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url}></ListHeader>}
         />
-      </View>
+      </ContentList>
     );
   };
 
   return (
     <ViewPortProvider>
-      <View style={{ flexDirection: "column", flex: 1 }}>
+      <Container>
         <Header goBack={navigation.goBack} />
         <OutsideView></OutsideView>
-      </View>
+      </Container>
     </ViewPortProvider>
   );
 };
