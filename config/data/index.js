@@ -24,7 +24,6 @@ export const planInfos = [
   },
 ];
 
-<<<<<<< HEAD
 export const privacyData = [
       {
           subtitle: 'SEÇÃO 1 - INFORMAÇÕES GERAIS',
@@ -198,7 +197,6 @@ export const privacyData = [
           ]
       }
   ]
-=======
 export const coursesInfo = [
   {
     title: "Workshop Yoga Terapia",
@@ -220,4 +218,3 @@ export const coursesInfo = [
 
 
 
->>>>>>> 724eb77d192e6dd605de611f4eb529a5e62a6907
