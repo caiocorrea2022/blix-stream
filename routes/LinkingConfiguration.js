@@ -9,6 +9,7 @@ const linking = {
           Success: "Success",
           Plans: "Plans",
           MyDrawer: "MyDrawer",
+          ClickCourse: "ClickCourse",
         },
     },
   };

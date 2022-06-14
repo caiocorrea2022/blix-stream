@@ -4,8 +4,12 @@ import { HorizontalListView, Text, HorizontalList } from './style';
 import THEME from '../../config/theme';
 
 const CardInfo = ({ array, buttonVisible = true, priceVisible = true, navigation }) => {
-    const onCardPress = () => {
-        navigation.navigate('Login', console.log(array))
+
+    // const onCardPress = () => {
+    //     navigation.navigate('ClickCourse', { videos: item.videos, title: array.title, description: array.info, price: array.price })
+    // }
+    const onCardPress = (num) => {
+        console.log(num)
     }
     return (
         <HorizontalListView>
@@ -13,7 +17,7 @@ const CardInfo = ({ array, buttonVisible = true, priceVisible = true, navigation
                 {array.map((item, index) => (
                     <Card key={index} style={{ width: "20rem", margin: "1rem" }}>
                         <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
-                        <Card.Content style={{ height: "50%" }}>
+                        <Card.Content style={{ height: "45%" }}>
                             <Text fontFamily={THEME.FONTFAMILY.BOLD} fontSize={THEME.FONTSIZE.SMALL} color={THEME.COLORS.TEXT_900}>{item.title}</Text>
                             <Text fontFamily={THEME.FONTFAMILY.REGULAR} fontSize={THEME.FONTSIZE.EXTRASMALL} color={THEME.COLORS.TEXT_800}>{item.info}</Text>
                             {priceVisible ? <Text fontFamily={THEME.FONTFAMILY.BOLD} fontSize={THEME.FONTSIZE.MEDIUM} color={THEME.COLORS.TEXT_900}>{item.price}</Text> : null}

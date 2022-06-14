@@ -6,12 +6,15 @@ export const HorizontalList = styled.ScrollView.attrs({
     flexGrow: 1,
     justifyContent: "center",
     flexDirection: "row",
+    backgroundColor:"yellow"
   },
 })`
 `;
 
 export const HorizontalListView = styled.View`
-  flex: 1;
+  flex:1;
+  padding: 1rem 0rem;
+  background-color: black;
 `;
 
 export const Text = styled.Text`
