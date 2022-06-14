@@ -14,6 +14,7 @@ const auth = getAuth();
 export default function Main({ navigation }) {
   const [allCategories, setAllCategories] = useState([]);
   const [plan, setPlan] = useState("");
+  const [login, setLogin] = useState(false);
   const [courses, setCourses] = useState([]);
 
   const getUsers = async (userId) => {
@@ -39,6 +40,7 @@ export default function Main({ navigation }) {
       console.log('user',user)
       if (user) {
         getUsers(user.uid);
+        setLogin(true);
       }
     });
     findAllCategories();
@@ -56,7 +58,7 @@ export default function Main({ navigation }) {
             'rgba(0,0,0,0.5)',
             'rgba(0,0,0,1)',
           ]}>
-          <Header navigation={navigation} />
+          <Header goBack={navigation.goBack} login={login} main={true} about={false} />
           <Hero />
         </Gradient>
       </Poster>

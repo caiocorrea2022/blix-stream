@@ -7,7 +7,7 @@ function Plans({ navigation }) {
 
   return (
     <Container>
-        <Header goBack={navigation.goBack} />
+        <Header goBack={navigation.goBack} login={true} main={false} about={false} />
       <Pricing navigation={navigation}></Pricing>
     </Container>
   );

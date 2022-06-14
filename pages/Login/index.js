@@ -16,9 +16,7 @@ import {
   ViewTitle
 } from './style';
 import { emailValidator, passwordValidator } from '../../utils';
-import { auth } from '../../services/firebase';
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { AuthContext } from '../../hooks/auth';
+import { getAuth, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } from "firebase/auth";
 import ResetPassword from './ResetPassword';
 import TouchableText from '../../components/TouchableText'
 import TextInput from '../../components/TextInput';
@@ -29,6 +27,8 @@ import THEME from '../../config/theme';
 import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../hooks/MobileOrDesktop/useViewport';
 import { HelperText } from 'react-native-paper';
+
+const auth = getAuth();
 
 export default function Login({ navigation }) {
 
@@ -42,7 +42,6 @@ export default function Login({ navigation }) {
   const [visibleAlert, setVisibleAlert] = useState(false);
   const [title, setTitle] = useState(null)
   const [message, setMessege] = useState(null)
-  const { signIn } = useContext(AuthContext);
 
   const showAlert = (title, message) => {
     setVisibleAlert(true)
@@ -65,7 +64,8 @@ export default function Login({ navigation }) {
       setLoading(false);
       return;
     }
-
+    setPersistence(auth, browserLocalPersistence)
+    .then(() => {
     signInWithEmailAndPassword(auth, email.value, password.value)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -74,6 +74,7 @@ export default function Login({ navigation }) {
         } else
           navigation.navigate('MyDrawer')
       })
+    })
       .catch((error) => {
         console.log(error.code)
         switch (error.code) {

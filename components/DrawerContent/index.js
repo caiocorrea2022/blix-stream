@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Linking } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
@@ -7,9 +7,13 @@ import { Container, FooterText, Footer, Text } from './style';
 import THEME from '../../config/theme';
 import {auth} from '../../services/firebase'
 import { signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default function DrawerContent(props) {
+
   const navigation = useNavigation();
+  const [login, setLogin] = useState(false);
+
   const logout = () =>{
     signOut(auth).then(() => {
         window.location.assign('../Main');
@@ -17,6 +21,15 @@ export default function DrawerContent(props) {
         // An error happened.
       });
     }
+
+    useEffect(() => {
+      onAuthStateChanged(auth, (user) => {
+        console.log('user',user)
+        if (user) {
+          setLogin(true);
+        }
+      });
+    }, []);
 
   return (
     <Container>
@@ -43,18 +56,22 @@ export default function DrawerContent(props) {
           />
         )}
       />
-      <DrawerItem
-        label={() => (<Text>Sair</Text>)}
-        icon={({ color}) => (
-          <Icon
-            type="material-community"
-            name="logout-variant"
-            color={color}
-            size={20}
-            onPress={logout}
+      {login?
+            <DrawerItem
+            label={() => (<Text>Sair</Text>)}
+            icon={({ color}) => (
+              <Icon
+                type="material-community"
+                name="logout-variant"
+                color={color}
+                size={20}
+                onPress={logout}
+              />
+            )}
           />
-        )}
-      />
+    : 
+      <></>
+    }
       <Footer>
         <FooterText fontFamily={THEME.FONTFAMILY.REGULAR} onPress={() => Linking.openURL('https://www.instagram.com/blix.aplicativos/')}>developed by</FooterText>
         <FooterText fontFamily={THEME.FONTFAMILY.BOLD} onPress={() => Linking.openURL('https://www.instagram.com/blix.aplicativos/')}>BLIX</FooterText>
