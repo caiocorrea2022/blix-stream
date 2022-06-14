@@ -7,7 +7,7 @@ import { firestore } from '../../services/firebase';
 import THEME from '../../config/theme';
 import { Icon } from 'react-native-elements'
 
-const CategoryList = ({ category }) => {
+const CategoryList = ({ category, plan, courses }) => {
   const [allCards, setAllCards] = useState([]);
   const [scrollX, setScrollX] = useState(0);
 
@@ -38,6 +38,7 @@ const CategoryList = ({ category }) => {
       });
       setAllCards(cards);
     };
+    console.log('categorylist',plan)
     findAllCategories();
   }, []);
 
@@ -58,7 +59,7 @@ const CategoryList = ({ category }) => {
         <FlatList
           data={allCards}
           style={{ marginLeft: scrollX }}
-          renderItem={({ item }) => <CategoryItem item={item} />}
+          renderItem={({ item }) => <CategoryItem item={item} plan={plan} courses={courses} />}
           horizontal
           showsHorizontalScrollIndicator={false}
         />

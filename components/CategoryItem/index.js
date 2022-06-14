@@ -8,7 +8,7 @@ import {
 import THEME from '../../config/theme';
 import { Icon } from 'react-native-elements'
 
-const CategoryItem = ({ item }) => {
+const CategoryItem = ({ item, plan, courses }) => {
     const navigation = useNavigation();
 
     const onCardPress = () => {
@@ -18,15 +18,19 @@ const CategoryItem = ({ item }) => {
     return (
         <Container onPress={onCardPress}>
             <Image source={{ uri: item.img }}>
+            {plan === item.plan || courses?.includes(item.courseId) ? 
+                <div></div>     
+                :
                 <Icon
-                    type="material-community"
-                    name="lock"
-                    size={24}
-                    iconStyle={{
-                        color: THEME.COLORS.TEXT_000,
-                    }}
-                    containerStyle={{ flex: 1, alignSelf: "flex-end", justifyContent: "flex-end", padding: "0.2rem" }}
-                />
+                  type="material-community"
+                  name="lock"
+                  size={24}
+                  iconStyle={{
+                      color: THEME.COLORS.TEXT_000,
+                  }}
+                  containerStyle={{ flex: 1, alignSelf: "flex-end", justifyContent: "flex-end", padding: "0.2rem" }}
+              />
+                }
             </Image>
             <Text numberOfLines={2}>{item.title}</Text>
         </Container>

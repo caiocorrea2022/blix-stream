@@ -6,6 +6,8 @@ import Button from "../../components/Button";
 import ViewPortProvider from "../../hooks/MobileOrDesktop/ViewPortProvider";
 import useViewport from "../../hooks/MobileOrDesktop/useViewport";
 import THEME from '../../config/theme';
+import ListHeader from "../../components/ListHeader";
+import ClickClass from "../ClickClass";
 
 const ClickCourse = ({ navigation }) => {
   // const { title, description, price } = route.params;
