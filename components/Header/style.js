@@ -23,7 +23,7 @@ export const Text = styled.Text`
     font-family: ${THEME.FONTFAMILY.REGULAR};
 `;
 
-export const HeaderIcons = styled.View`
+export const HeaderRightSide = styled.View`
     flex-direction: row;
     justify-content: center;
     align-items: center;

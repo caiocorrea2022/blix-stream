@@ -32,14 +32,16 @@ export default function About({ navigation }) {
 
   return (
     <Container>
-    <Header navigation={navigation} login={login} main={false} about={true} />
-    <Title>CURSOS</Title>
-    <CardView>
-      <CardInfo array={coursesInfo} navigation={navigation}></CardInfo>
-    </CardView>
-    <PricingView>
-      <Pricing navigation={navigation}></Pricing>
-    </PricingView>
-  </Container>
+      <Header></Header>
+      <Section>
+        <TitleView>
+          <Title>CURSOS</Title>
+        </TitleView>
+        <CardInfo array={coursesInfo} navigation={navigation}></CardInfo>
+      </Section>
+      <Section height={windowHeight * 0.9}>
+        <Pricing navigation={navigation}></Pricing>
+      </Section>
+    </Container>
   );
 }
