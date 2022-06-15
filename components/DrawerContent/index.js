@@ -16,10 +16,11 @@ export default function DrawerContent(props) {
 
   const logout = () => {
     signOut(auth).then(() => {
-      navigation.navigate("DrawerNavigatorScreen")
+      window.location.reload()
     }).catch((error) => {
-      // An error happened.
+      console.log('deu erro',error)
     });
+
   }
 
   useEffect(() => {
@@ -58,14 +59,16 @@ export default function DrawerContent(props) {
       />
       {login ?
         <DrawerItem
-          label={() => (<Text onPress={() => {logout}}>Sair</Text>)}
+          label={() => (<Text 
+            onPress={logout}
+           >Sair</Text>)}
           icon={({ color }) => (
             <Icon
               type="material-community"
               name="logout-variant"
               color={color}
               size={20}
-              onPress={() => {logout}}
+              onPress={logout}
             />
           )}
         />
