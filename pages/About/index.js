@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   Container,
   Title,
+  TitleView,
   PricingView,
   CardView
 } from "./style";
@@ -10,6 +11,7 @@ import CardInfo from '../../components/Card';
 import Pricing from '../../components/Pricing';
 import { coursesInfo } from '../../config/data';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { Section } from '../../config/theme/globalStyles';
 
 const auth = getAuth();
 
@@ -32,14 +34,14 @@ export default function About({ navigation }) {
 
   return (
     <Container>
-      <Header></Header>
+      <Header navigation={navigation} login={login} main={false} about={true} />
       <Section>
         <TitleView>
           <Title>CURSOS</Title>
         </TitleView>
         <CardInfo array={coursesInfo} navigation={navigation}></CardInfo>
       </Section>
-      <Section height={windowHeight * 0.9}>
+      <Section>
         <Pricing navigation={navigation}></Pricing>
       </Section>
     </Container>

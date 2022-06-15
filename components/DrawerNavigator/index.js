@@ -6,12 +6,15 @@ import Plans from "../../pages/Plans";
 import EditProfile from "../../pages/EditProfile";
 import THEME from "../../config/theme";
 import DrawerContent from "../DrawerContent";
+import { auth } from '../../services/firebase'
+import { onAuthStateChanged } from "firebase/auth";
 
-const Drawer = createDrawerNavigator();
+const DrawerNavigator = createDrawerNavigator();
 
-export default function MyDrawer({ navigation }) {
+export default function DrawerNavigatorScreen({ navigation }) {
   // const [firstName, setFirstName] = useState("Aulas");
   // const [secondName, setSecondName] = useState("Tela Inicial");
+   const [login, setLogin] = useState(false);
 
   // const FirstComponent = (usuario) => {
   //   return usuario ? <Main></Main> : <About></About>;
@@ -21,32 +24,31 @@ export default function MyDrawer({ navigation }) {
   //   return userId ? <About></About>: <Main></Main>;
   // };
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   onAuthStateChanged(auth, (user) => {
-  //     console.log('user',user)
-  //     if (user) {
-  //      console.log(user.uid);
-  //      setUser(user.uid);
-  //      setFirstName("Aulas");
-  //     } else {
-  //       setFirstName("Tela Inicial");
-  //     }
-  //   });
+    onAuthStateChanged(auth, (user) => {
+      console.log('user',user)
+      if (user) {
+       console.log(user.uid);
+       setLogin(true);
+      } 
+    });
 
-  // }, []);
+  }, []);
 
   return (
-    <Drawer.Navigator
+    <DrawerNavigator.Navigator
       useLegacyImplementation
+      id="DrawerNavigator"
       drawerContent={(props) => <DrawerContent {...props} />}
       screenOptions={{
+        drawerPosition: 'left',
         drawerStyle: {
           backgroundColor: THEME.COLORS.BACKGROUND,
         },
       }}
     >
-      <Drawer.Screen
+      <DrawerNavigator.Screen
         name={"Tela Inicial"}
         component={About}
         options={{
@@ -60,7 +62,7 @@ export default function MyDrawer({ navigation }) {
           },
         }}
       />
-      <Drawer.Screen
+      <DrawerNavigator.Screen
         name={"Aulas"}
         component={Main}
         options={{
@@ -74,7 +76,8 @@ export default function MyDrawer({ navigation }) {
           },
         }}
       />
-      <Drawer.Screen
+      {login?
+      <DrawerNavigator.Screen
         name="Editar Perfil"
         component={EditProfile}
         options={{
@@ -88,7 +91,10 @@ export default function MyDrawer({ navigation }) {
           },
         }}
       />
-      <Drawer.Screen
+        :
+      <></>
+      }
+      <DrawerNavigator.Screen
         name="Planos e Preços"
         component={Plans}
         options={{
@@ -102,6 +108,6 @@ export default function MyDrawer({ navigation }) {
           },
         }}
       />
-    </Drawer.Navigator>
+    </DrawerNavigator.Navigator>
   );
 }

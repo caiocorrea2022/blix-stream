@@ -72,7 +72,7 @@ export default function Login({ navigation }) {
         if (user.emailVerified === false) {
           showAlert("Erro", "E-mail não verificado. Confira sua caixa de entrada.")
         } else
-          navigation.navigate('MyDrawer')
+          navigation.navigate('DrawerNavigatorScreen')
       })
     })
       .catch((error) => {

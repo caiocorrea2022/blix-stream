@@ -6,7 +6,7 @@ import LinkingConfiguration from "./LinkingConfiguration";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Plans from "../pages/Plans"
-import MyDrawer from "../components/DrawerNavigator";
+import DrawerNavigatorScreen from "../components/DrawerNavigator";
 import Success from "../pages/SuccessPayment";
 import ClickClass from "../pages/ClickClass";
 import ClickCourse from "../pages/ClickCourse";
@@ -32,8 +32,8 @@ function Navigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="MyDrawer"
-        component={MyDrawer}
+        name="DrawerNavigatorScreen"
+        component={DrawerNavigatorScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen

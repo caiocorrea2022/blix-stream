@@ -41,7 +41,7 @@ function TermsofUse({ navigation }) {
         visible={modalVisible}
         onRequestClose={() => {
           setModalVisible(!modalVisible);
-          navigation.navigate("MyDrawer");
+          navigation.navigate("DrawerNavigatorScreen");
         }}
       >
         <ViewHeading>
@@ -51,7 +51,7 @@ function TermsofUse({ navigation }) {
         <ViewPressable>
           <Pressable
             onPress={() => {
-              setModalVisible(!modalVisible), navigation.navigate("MyDrawer");
+              setModalVisible(!modalVisible), navigation.navigate("DrawerNavigatorScreen");
             }}
           >
             <Close></Close>
