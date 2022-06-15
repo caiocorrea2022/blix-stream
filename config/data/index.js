@@ -265,7 +265,19 @@ export const categoriesInfo = [
     info: "lit repudiandae et atque praesentium.",
   },
   {
-    title: "Retiro",
+    title: "Retiro Sensacional",
+    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
+  },
+  {
+    title: "Lorem",
+    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
+  },
+  {
+    title: "Top 10 do mês",
+    info: "lit repudiandae et atque praesentium.",
+  },
+  {
+    title: "Oiiiiii",
     info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
   },
 ];

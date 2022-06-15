@@ -25,7 +25,6 @@ export const Title = styled.Text`
 
 export const TitleView = styled.View`
 height: 10%;
-background-color: red;
 justify-content: center;
 align-items: center;
 `;

@@ -6,7 +6,7 @@ export const HorizontalList = styled.ScrollView.attrs({
     flexGrow: 1,
     justifyContent: "center",
     flexDirection: "row",
-    backgroundColor:"yellow"
+    backgroundColor:"white"
   },
 })`
 `;
@@ -14,7 +14,7 @@ export const HorizontalList = styled.ScrollView.attrs({
 export const HorizontalListView = styled.View`
   flex:1;
   padding: 1rem 0rem;
-  background-color: black;
+  background-color: white;
 `;
 
 export const Text = styled.Text`
