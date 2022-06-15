@@ -1,11 +1,11 @@
 import styled from 'styled-components/native';
 import THEME from "../../config/theme";
-
 import { Dimensions } from 'react-native';
+
 const windowHeight = Dimensions.get('window').height;
 
 export const Container = styled.ScrollView.attrs({
-  showsVerticalScrollIndicator: false,
+  showsVerticalScrollIndicator: true,
   contentContainerStyle: {
     flex:1,
   },

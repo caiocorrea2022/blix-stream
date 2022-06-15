@@ -2,14 +2,18 @@ import React, { useEffect, useState } from 'react';
 import {
   Container,
   Title,
+  TitleView,
   PricingView,
-  CardView
+  CardView,
 } from "./style";
+import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import CardInfo from '../../components/Card';
+import { HorizontalListView} from '../../components/Card/style';
 import Pricing from '../../components/Pricing';
 import { coursesInfo } from '../../config/data';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { Section } from '../../config/theme/globalStyles';
 
 const auth = getAuth();
 
@@ -31,17 +35,21 @@ export default function About({ navigation }) {
   }, []);
 
   return (
+    <>
+    <Header></Header>
     <Container>
-      <Header></Header>
       <Section>
         <TitleView>
           <Title>CURSOS</Title>
         </TitleView>
         <CardInfo array={coursesInfo} navigation={navigation}></CardInfo>
       </Section>
-      <Section height={windowHeight * 0.9}>
+      <Section >
         <Pricing navigation={navigation}></Pricing>
       </Section>
+      <Footer></Footer>
     </Container>
+    
+    </>
   );
 }

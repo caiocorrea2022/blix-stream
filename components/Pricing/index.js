@@ -76,15 +76,16 @@ const Pricing = ({ navigation }) => {
                 ...item.info
               ]}
               titleStyle={{
-                fontSize: THEME.FONTSIZE.MEDIUM,
+                fontSize: THEME.FONTSIZE.EXTRAMEDIUM,
               }}
               titleFont={THEME.FONTFAMILY.BOLD}
               infoStyle={{
                 color: THEME.COLORS.TEXT_900,
-                fontSize: THEME.FONTSIZE.EXTRASMALL,
+                fontSize: THEME.FONTSIZE.MEDIUM,
+                textAlign: 'center',
               }}
               pricingStyle={{
-                fontSize: THEME.FONTSIZE.MEDIUM,
+                fontSize: THEME.FONTSIZE.EXTRAMEDIUM,
                 justifyContent:"flex-start"
               }}
               pricingFont={THEME.FONTFAMILY.MEDIUM}
