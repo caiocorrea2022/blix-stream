@@ -28,7 +28,7 @@ function TermsofUse({ navigation }) {
   const Close = () => {
     return (
       <ContentIcon>
-        <Icon type="material-icons" name="close" size={THEME.FONTSIZE.BIG} color={"black"} />
+        <Icon type="material-icons" name="close" size={THEME.FONTSIZE.BIG} color={THEME.COLORS.PRIMARY_900} />
       </ContentIcon>
     );
   };

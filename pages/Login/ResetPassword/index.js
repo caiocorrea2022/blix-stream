@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Title, FormMessage, ViewTitle, ViewHelper, ViewText, ViewTextInput } from './style';
+import { Container, FormMessage } from './style';
 import { emailValidator } from '../../../utils';
 import TextInput from '../../../components/TextInput';
 import Button from '../../../components/Button';
@@ -7,6 +7,7 @@ import { auth } from '../../../services/firebase';
 import { sendPasswordResetEmail } from "firebase/auth";
 import { HelperText } from 'react-native-paper';
 import THEME from '../../../config/theme';
+import { SubTitle } from '../../../config/theme/globalStyles';
 
 export default function ResetPassword() {
   const [email, setEmail] = useState({ value: '', error: '' });
@@ -53,7 +54,7 @@ export default function ResetPassword() {
 
   return (
     <Container>
-              <Title>Redefina a sua senha:</Title>
+      <SubTitle textAlign="flex-start" margin="0rem 0rem 2rem 0rem">Redefina a sua senha:</SubTitle>
       <TextInput
         label="Email"
         returnKeyType="next"

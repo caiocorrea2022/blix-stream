@@ -1,12 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Modal, Portal, Provider } from 'react-native-paper';
 import { View } from 'react-native';
 import {
-  Container,
   SideView,
   Content,
   Image,
-  Title,
   ContainerSideView,
   ViewTextInput,
   ViewButton,
@@ -23,11 +21,11 @@ import TouchableText from '../../components/TouchableText'
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import AlertBox from '../../components/AlertBox'
-import Header from '../../components/Header';
 import THEME from '../../config/theme';
 import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../hooks/MobileOrDesktop/useViewport';
 import { HelperText } from 'react-native-paper';
+import { MainTitle, Container } from '../../config/theme/globalStyles';
 
 const auth = getAuth();
 
@@ -36,7 +34,7 @@ export default function Login({ navigation }) {
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  const containerStyle = { backgroundColor: 'white', padding: "2rem", margin: "2rem", alignSelf:"center"};
+  const containerStyle = { backgroundColor: THEME.COLORS.BACKGROUND, padding: "2rem", margin: "2rem", alignSelf:"center"};
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
   const [loading, setLoading] = useState(false);
@@ -113,7 +111,7 @@ export default function Login({ navigation }) {
               <Image source={require('./../../assets/logo.png')}></Image>
             </ViewImage>
             <ViewTitle>
-              <Title>YOGA LUZ</Title>
+              <MainTitle>YOGA LUZ</MainTitle>
             </ViewTitle>
             <Content>
               <ViewTextInput>
@@ -158,7 +156,7 @@ export default function Login({ navigation }) {
                   isLoading={loading}
                   onPress={onLoginPressed}
                   colorbutton={THEME.COLORS.PRIMARY_900}
-                  colortitle={THEME.COLORS.TEXT_000}
+                  colortitle={THEME.COLORS.TEXT_BUTTON}
                 ></Button>
               </ViewButton>
               {visibleAlert &&

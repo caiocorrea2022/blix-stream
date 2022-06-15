@@ -1,9 +1,8 @@
 import styled from 'styled-components/native';
-import THEME from '../../config/theme';
 
 export const Poster = styled.ImageBackground`
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 `;
 
 export const SideView = styled.View`
@@ -14,12 +13,6 @@ export const SideView = styled.View`
 export const ContainerSideView = styled.View`
   flex:1;
   flex-Direction: row;
-`;
-
-export const Container = styled.View`
-  background-color: ${THEME.COLORS.BACKGROUND};
-  justify-content: center;
-  flex:1;
 `;
 
 export const ViewImage = styled.View`
@@ -40,16 +33,10 @@ export const ViewTitle = styled.View`
   justify-content: center;
 `;
 
-export const Title = styled.Text`
-  color: ${THEME.COLORS.TEXT_900};
-  font-Size: ${THEME.FONTSIZE.EXTRABIG};
-  font-family: ${THEME.FONTFAMILY.BOLD};
-`;
-
 export const Content = styled.View`
   flex: 5;
   justify-content: flex-start;
-  padding: 1rem 0rem;
+  padding: 1rem 2rem;
 `;
 
 export const ViewTextInput = styled.View`

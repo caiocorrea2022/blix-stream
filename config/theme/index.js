@@ -7,10 +7,36 @@ export default {
     TEXT_700: '#8F94A3',
     TEXT_000: '#F1F1F1',
     ALERT: "#ec1414",
-    BACKGROUND: "#ffffff",
-    PRIMARY_900: "#759A5B",
+
+    BACKGROUND: "#ffffff", //MESMA COR DO DRAWER
+    BACKGROUND_HEADER: "#ffffff",
+    BACKGROUND_FOOTER: "#ffffff",
+    BACKGROUND_CLICK: "#ffffff",
+
+    ICON_HEADER: "#ffffff",
+    ICON_DRAWER: "#ffffff",
+    ICON_GOBACK: "#C8E3B4",
+    ICON_CLICK: "#1E1E1E",
+
+    MAIN_TITLE: '#1E1E1E',
+    TITLE: '#323644',
+    SUB_TITLE: '#323644',
+    DESCRIPTION: '#8F94A3',
+    SMALL_TEXT: '#323644',
+    FOOTER_TEXT: '#323644',
+
+    TEXT_BUTTON: "#ffffff",
+
+    PRIMARY_900: "#759A5B", //CORES DOS BOTÕES, CLICK DO DRAWER
     PRIMARY_800: "#C8E3B4",
     PRIMARY_700: "#C8E3B4",
+
+    GRADIENT:[
+      'rgba(0,0,0,0.5)',
+      'rgba(0,0,0,0.0)',
+      'rgba(0,0,0,0.5)',
+      'rgba(0,0,0,1)',
+    ]
   },
 
   FONTFAMILY:{
