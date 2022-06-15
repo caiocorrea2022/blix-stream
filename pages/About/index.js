@@ -3,8 +3,7 @@ import {
   Container,
   Title,
   TitleView,
-  PricingView,
-  CardView,
+  Poster,
 } from "./style";
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
@@ -13,8 +12,10 @@ import CardInfo from '../../components/Card';
 import { HorizontalListView} from '../../components/Card/style';
 import Pricing from '../../components/Pricing';
 import { coursesInfo } from '../../config/data';
+import { doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Section } from '../../config/theme/globalStyles';
+import { firestore } from '../../services/firebase/index';
 
 const auth = getAuth();
 
@@ -47,8 +48,6 @@ export default function About({ navigation }) {
   }, []);
 
   return (
-    <>
-    <Header></Header>
     <Container>
       <Section>
       <Poster source={require('../../assets/FotoAbout.jpg')}>
@@ -72,7 +71,5 @@ export default function About({ navigation }) {
       </Section>
       <Footer></Footer>
     </Container>
-    
-    </>
   );
 }
