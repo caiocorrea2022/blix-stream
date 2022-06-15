@@ -12,6 +12,7 @@ import { firestore } from '../../services/firebase/index';
 import { View } from 'react-native'
 import THEME from '../../config/theme';
 import Button from '../../components/Button';
+import CookieConsentFunction from '../../components/CookieConsent/index';
 
 const auth = getAuth();
 
@@ -75,6 +76,7 @@ export default function About({ navigation }) {
         <CardInfo subtitleFontFamily={THEME.FONTFAMILY.REGULAR} subtitleFontSize={THEME.FONTSIZE.EXTRASMALL} subtitleColor={THEME.COLORS.SMALL_TEXT} subtitleNumberOfLines={4} titleFontFamily={THEME.FONTFAMILY.BOLD} titleFontSize={THEME.FONTSIZE.SMALL} titleColor={THEME.COLORS.SMALL} cardStyle={{ width: "20rem", margin: "1rem", flex: 1 }} cardCoverStyle={{ width: "100%", height: "40%" }} array={coursesInfo} navigation={navigation}></CardInfo>
       </Section>
       <Footer></Footer>
+      <CookieConsentFunction></CookieConsentFunction>
     </Container>
   );
 }
