@@ -1,16 +1,4 @@
 import styled from 'styled-components/native';
-import THEME from '../../config/theme';
-
-export const ContainerSideView = styled.View`
-  flex:1;
-  flex-Direction: row;
-`;
-
-export const Container = styled.View`
-  background-color: ${THEME.COLORS.BACKGROUND};
-  justify-content: center;
-  flex:1;
-`;
 
 export const ViewButton = styled.View`
   flex: 0.5;
@@ -61,26 +49,6 @@ export const Footer = styled.View`
   align-items: center;
 `;
 
-export const SideView = styled.View`
-  background-color: ${THEME.COLORS.PRIMARY_900};
-  flex:0.9;
-  flex-Direction: column;
-`;
-
 export const BackButton = styled.TouchableOpacity`
 
-`;
-
-export const BackText = styled.Text`
-  font-size: ${THEME.FONTSIZE.SMALL};
-  font-family: ${THEME.FONTFAMILY.MEDIUM};
-  color: ${THEME.COLORS.PRIMARY_900};
-`;
-
-export const Title = styled.Text`
-  color: ${THEME.COLORS.TEXT_900};
-  padding-left: 1rem;
-  align-self: flex-start;
-  font-Size: ${THEME.FONTSIZE.EXTRABIG};
-  font-family: ${THEME.FONTFAMILY.BOLD};
 `;

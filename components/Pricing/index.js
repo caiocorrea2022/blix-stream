@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { PricingCard } from "react-native-elements";
 import { FlatList, TouchableOpacity } from 'react-native';
 import {
-  Title,
   Container,
   TitleView,
   Subtitle,
-  ItemName,
   ItemContainer,
   HorizontalList,
   HorizontalListView,
@@ -14,6 +12,7 @@ import {
 import THEME from '../../config/theme';
 import { planFrequency, planPrices, planInfos, upsellPrices, subtitlePlan } from '../../config/data';
 import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
+import { Title, SmallText, StandardText } from '../../config/theme/globalStyles';
 
 const Pricing = ({ navigation, userId }) => {
   const [selectedId, setSelectedId] = useState("1");
@@ -24,16 +23,16 @@ const Pricing = ({ navigation, userId }) => {
   const Item = ({ item, onPress, backgroundColor, textColor }) => (
     <ItemContainer style={[backgroundColor]}>
       <TouchableOpacity onPress={onPress}>
-        <ItemName style={[textColor]}>{item.frequency}</ItemName>
+        <SmallText color={[textColor]}>{item.frequency}</SmallText>
       </TouchableOpacity>
     </ItemContainer>
   );
 
   const renderItem = ({ item, index }) => {
     const backgroundColor =
-      item.id === selectedId ? THEME.COLORS.PRIMARY_900 : THEME.COLORS.TEXT_000;
+      item.id === selectedId ? THEME.COLORS.PRIMARY_900 : THEME.COLORS.BACKGROUND;
     const color =
-      item.id === selectedId ? THEME.COLORS.BACKGROUND : THEME.COLORS.TEXT_900;
+      item.id === selectedId ? THEME.COLORS.BACKGROUND : THEME.COLORS.STANDARD;
     return (
       <Item
         item={item}
@@ -52,7 +51,7 @@ const Pricing = ({ navigation, userId }) => {
     <Container>
       <TitleView>
         <Title>PLANOS</Title>
-        <Subtitle>{subtitlePlan}</Subtitle>
+        <StandardText margin="0rem 1rem">{subtitlePlan}</StandardText>
         <FlatList
           data={planFrequency}
           renderItem={renderItem}
@@ -66,10 +65,10 @@ const Pricing = ({ navigation, userId }) => {
       </TitleView>
       <HorizontalListView>
         <HorizontalList horizontal={true}>
-        {planInfos.map((item, index) => (
+          {planInfos.map((item, index) => (
             <PricingCard
               key={index}
-              color={THEME.COLORS.TEXT_900}
+              color={THEME.COLORS.SUB_TITLE}
               title={item.planType}
               price={option[index]}
               info={[
@@ -81,13 +80,13 @@ const Pricing = ({ navigation, userId }) => {
               }}
               titleFont={THEME.FONTFAMILY.BOLD}
               infoStyle={{
-                color: THEME.COLORS.TEXT_900,
+                color: THEME.COLORS.STANDARD,
                 fontSize: THEME.FONTSIZE.MEDIUM,
                 textAlign: 'center',
               }}
               pricingStyle={{
                 fontSize: THEME.FONTSIZE.EXTRAMEDIUM,
-                justifyContent:"flex-start"
+                justifyContent: "flex-start"
               }}
               pricingFont={THEME.FONTFAMILY.MEDIUM}
               infoFont={THEME.FONTFAMILY.LIGHT}
@@ -95,7 +94,7 @@ const Pricing = ({ navigation, userId }) => {
                 title: "ASSINAR PLANO",
                 color: THEME.COLORS.BACKGROUND,
                 titleStyle: {
-                  color: THEME.COLORS.TEXT_900,
+                  color: THEME.COLORS.STANDARD,
                   fontFamily: THEME.FONTFAMILY.BOLD,
                   fontSize: THEME.FONTSIZE.MEDIUM,
                 },
@@ -108,13 +107,13 @@ const Pricing = ({ navigation, userId }) => {
                 height: "85%",
               }}
               wrapperStyle={{
-                justifyContent:"space-between",
+                justifyContent: "space-between",
                 flex: 1,
               }}
-              onButtonPress={() => 
-                userId?                 
-                createCheckoutSession(userId, "price_1L5qw3CmcyIwF9rcW6VuPvSg", "subscription", 6):
-                navigation.navigate("SignUp")
+              onButtonPress={() =>
+                userId ?
+                  createCheckoutSession(userId, "price_1L5qw3CmcyIwF9rcW6VuPvSg", "subscription", 6) :
+                  navigation.navigate("SignUp")
               }
             />
           ))}

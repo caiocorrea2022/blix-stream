@@ -3,14 +3,14 @@ import { useNavigation } from '@react-navigation/native';
 import { Linking } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import { Icon } from 'react-native-elements'
-import { Container, FooterText, Footer, Text } from './style';
-import THEME from '../../config/theme';
-import { auth } from '../../services/firebase'
+import { Footer } from './style';
+import THEME from '../../../config/theme';
+import { auth } from '../../../services/firebase'
 import { signOut } from "firebase/auth";
 import { onAuthStateChanged } from "firebase/auth";
+import { SmallText, FooterText, Container } from '../../../config/theme/globalStyles';
 
 export default function DrawerContent(props) {
-
   const navigation = useNavigation();
   const [login, setLogin] = useState(false);
 
@@ -18,9 +18,8 @@ export default function DrawerContent(props) {
     signOut(auth).then(() => {
       window.location.reload()
     }).catch((error) => {
-      console.log('deu erro',error)
+      console.log('deu erro', error)
     });
-
   }
 
   useEffect(() => {
@@ -37,16 +36,16 @@ export default function DrawerContent(props) {
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
         <DrawerItem
-          label={() => (<Text>Acesse o e-commerce</Text>)}
+          label={() => (<SmallText textAlign="flex-start">Acesse o e-commerce</SmallText>)}
           onPress={() => Linking.openURL('https://www.google.com')}
         />
         <DrawerItem
-          label={() => (<Text>Fale comigo</Text>)}
+          label={() => (<SmallText textAlign="flex-start">Fale comigo</SmallText>)}
           onPress={() => Linking.openURL('https://www.google.com')}
         />
       </DrawerContentScrollView>
       <DrawerItem
-        label={() => (<Text>Termos de Uso e Privacidade</Text>)}
+        label={() => (<SmallText textAlign="flex-start">Termos de Uso e Privacidade</SmallText>)}
         onPress={() => navigation.navigate("TermsofUse")}
         icon={({ color }) => (
           <Icon
@@ -59,9 +58,7 @@ export default function DrawerContent(props) {
       />
       {login ?
         <DrawerItem
-          label={() => (<Text 
-            onPress={logout}
-           >Sair</Text>)}
+          label={() => (<SmallText textAlign="flex-start" onPress={logout}>Sair</SmallText>)}
           icon={({ color }) => (
             <Icon
               type="material-community"

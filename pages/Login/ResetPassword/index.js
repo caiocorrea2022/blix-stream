@@ -73,7 +73,7 @@ export default function ResetPassword() {
         isLoading={loading}
         onPress={onResetPressed}
         colorbutton={THEME.COLORS.PRIMARY_900}
-        colortitle={THEME.COLORS.TEXT_000}>
+        colortitle={THEME.COLORS.BACKGROUND}>
       </Button>
 
       {error && (

@@ -5,16 +5,6 @@ export const Poster = styled.ImageBackground`
   height: 100%;
 `;
 
-export const SideView = styled.View`
-  flex:1.2;
-  flex-Direction: column;
-`;
-
-export const ContainerSideView = styled.View`
-  flex:1;
-  flex-Direction: row;
-`;
-
 export const ViewImage = styled.View`
   flex: 3;
   align-items: center;

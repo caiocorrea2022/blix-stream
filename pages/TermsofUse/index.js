@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Modal,
-  Pressable,
-  View,
-} from "react-native";
+import { Modal, Pressable, View } from "react-native";
 import { Icon } from "react-native-elements";
 import Privacy from "../../components/Privacy";
 import {
@@ -13,10 +9,10 @@ import {
   VerticalScroll,
   ViewHeading,
   ContentIcon,
-  Title,
 } from "./style";
 import THEME from '../../config/theme';
 import { DrawerActions } from '@react-navigation/native';
+import { Title } from "../../config/theme/globalStyles"
 
 function TermsofUse({ navigation }) {
   const [modalVisible, setModalVisible] = useState(true);
@@ -28,7 +24,11 @@ function TermsofUse({ navigation }) {
   const Close = () => {
     return (
       <ContentIcon>
-        <Icon type="material-icons" name="close" size={THEME.FONTSIZE.BIG} color={THEME.COLORS.PRIMARY_900} />
+        <Icon
+          type="material-icons"
+          name="close"
+          size={24}
+          color={THEME.COLORS.ICON_DRAWER} />
       </ContentIcon>
     );
   };
@@ -46,18 +46,15 @@ function TermsofUse({ navigation }) {
         }}
       >
         <ViewHeading>
-        <ViewText>
-          <Title>TERMOS DE USO E POLÍTICA DE PRIVACIDADE</Title>
-        </ViewText>
-        <ViewPressable>
-          <Pressable
-            onPress={() => {
-              setModalVisible(!modalVisible), navigation.navigate("DrawerNavigatorScreen"), navigation.dispatch(DrawerActions.closeDrawer());;
-            }}
-          >
-            <Close></Close>
-          </Pressable>
-        </ViewPressable>
+          <ViewText>
+            <Title>TERMOS DE USO E POLÍTICA DE PRIVACIDADE</Title>
+          </ViewText>
+          <ViewPressable>
+            <Pressable
+              onPress={() => {setModalVisible(!modalVisible), navigation.navigate("DrawerNavigatorScreen"), navigation.dispatch(DrawerActions.closeDrawer())}}>
+              <Close></Close>
+            </Pressable>
+          </ViewPressable>
         </ViewHeading>
         <ViewVerticalScroll>
           <VerticalScroll>

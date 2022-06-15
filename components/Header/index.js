@@ -1,13 +1,12 @@
 import React from "react";
-import { HeaderLeftSide, HeaderRightSide, Avatar, Text } from "./style";
+import { HeaderLeftSide, HeaderRightSide, Avatar } from "./style";
 import { Icon } from "react-native-elements";
 import THEME from "../../config/theme";
-import { auth } from "../../services/firebase";
 import { HeaderContainer } from "../../config/theme/globalStyles";
 import { DrawerActions } from '@react-navigation/native';
+import { StandardText } from "../../config/theme/globalStyles";
 
 const Header = ({ login, goBack, navigation, about, background }) => {
-
   const jumpToAction = DrawerActions.jumpTo('Aulas');
 
   return (
@@ -26,7 +25,7 @@ const Header = ({ login, goBack, navigation, about, background }) => {
             <Icon
               type="material-community"
               name="menu"
-              color={THEME.COLORS.TEXT_900}
+              color={THEME.COLORS.ICON_HEADER}
               size={32}
               onPress={() => navigation.toggleDrawer()}
             />
@@ -34,20 +33,14 @@ const Header = ({ login, goBack, navigation, about, background }) => {
         </HeaderLeftSide>
 
         <HeaderRightSide>
-          {about ? 
-          <>
-            <Text onPress={() => navigation.dispatch(jumpToAction)}>ACESSAR AULAS</Text>
-            <Avatar
-              resizeMode="contain"
-              source={require("../../assets/logo.png")}
-            />
-          </>
-            :
-            <Avatar
-              resizeMode="contain"
-              source={require("../../assets/logo.png")}
-            />
-          }
+          {about ? (
+            <>
+              <StandardText margin="0rem 1rem" onPress={() => navigation.dispatch(jumpToAction)}>ACESSAR AULAS</StandardText>
+              <Avatar resizeMode="contain" source={require("../../assets/logo.png")} />
+            </>
+          ) : (
+            <Avatar resizeMode="contain" source={require("../../assets/logo.png")} />
+          )}
         </HeaderRightSide>
       </HeaderContainer>
     ) : (
@@ -65,7 +58,7 @@ const Header = ({ login, goBack, navigation, about, background }) => {
             <Icon
               type="material-community"
               name="menu"
-              color={THEME.COLORS.TEXT_000}
+              color={THEME.COLORS.ICON_HEADER}
               size={32}
               onPress={() => navigation.toggleDrawer()}
             />
@@ -73,20 +66,14 @@ const Header = ({ login, goBack, navigation, about, background }) => {
         </HeaderLeftSide>
 
         <HeaderRightSide>
-          {about ?
+          {about ? (
             <>
-              <Text onPress={() => navigation.navigate("Login")}>LOGIN</Text>
-              <Avatar
-                resizeMode="contain"
-                source={require("../../assets/logo.png")} 
-              />
+              <StandardText margin="0rem 1rem" onPress={() => navigation.navigate("Login")}>LOGIN</StandardText>
+              <Avatar resizeMode="contain" source={require("../../assets/logo.png")} />
             </>
-            :
-            <Avatar
-              resizeMode="contain"
-              source={require("../../assets/logo.png")}
-            />
-          }
+          ) : (
+            <Avatar resizeMode="contain" source={require("../../assets/logo.png")} />
+          )}
         </HeaderRightSide>
       </HeaderContainer>
     )

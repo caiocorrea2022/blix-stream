@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { FlatList } from "react-native";
 import CategoryItem from "../CategoryItem";
-import { Container, Content, Text } from "./style";
+import { Container, Content } from "./style";
 import { getDocs, collection } from "firebase/firestore";
 import { firestore } from "../../services/firebase";
 import THEME from "../../config/theme";
 import { Icon } from "react-native-elements";
 import ViewPortProvider from "../../hooks/MobileOrDesktop/ViewPortProvider";
 import useViewport from "../../hooks/MobileOrDesktop/useViewport";
+import { StandardText } from "../../config/theme/globalStyles";
 
 const CategoryList = ({ category, plan, courses }) => {
   const [allCards, setAllCards] = useState([]);
@@ -22,17 +23,17 @@ const CategoryList = ({ category, plan, courses }) => {
       <Icon
         type="material-community"
         name="chevron-left"
-        size={24}
+        size={30}
         iconStyle={{
-          color: THEME.COLORS.TEXT_000,
+          color: THEME.COLORS.ICON_DRAWER,
+          backgroundColor: "rgba(255,255,255,0.3)",
+          borderRadius: "5px"
         }}
         containerStyle={{
           position: "absolute",
-          backgroundColor: "rgba(0,0,0,0.7)",
           left: 0,
           zIndex: 99,
           height: "10rem",
-          flex: 1,
           justifyContent: "center",
           overflow: "hidden",
         }}
@@ -48,24 +49,24 @@ const CategoryList = ({ category, plan, courses }) => {
       <></>
     ) : (
       <Icon
-          type="material-community"
-          name="chevron-right"
-          size={24}
-          iconStyle={{
-            color: THEME.COLORS.TEXT_000,
-          }}
-          containerStyle={{
-            position: "absolute",
-            backgroundColor: "rgba(0,0,0,0.7)",
-            right: 0,
-            zIndex: 99,
-            height: "10rem",
-            flex: 1,
-            justifyContent: "center",
-            overflow: "hidden",
-          }}
-          onPress={handleRightArrow}
-        />
+        type="material-community"
+        name="chevron-right"
+        size={24}
+        iconStyle={{
+          color: THEME.COLORS.ICON_DRAWER,
+          backgroundColor: "rgba(255,255,255,0.3)",
+          borderRadius: "5px"
+        }}
+        containerStyle={{
+          position: "absolute",
+          right: 0,
+          zIndex: 99,
+          height: "10rem",
+          justifyContent: "center",
+          overflow: "hidden",
+        }}
+        onPress={handleRightArrow}
+      />
     );
   };
 
@@ -103,22 +104,22 @@ const CategoryList = ({ category, plan, courses }) => {
 
   return (
     <ViewPortProvider>
-    <Container>
-      <Text numberOfLines={1}>{category.title}</Text>
-      <Content>
-        <MobileOrDesktopLeftArrow></MobileOrDesktopLeftArrow>
-        <FlatList
-          data={allCards}
-          style={{ marginLeft: scrollX }}
-          renderItem={({ item }) => (
-            <CategoryItem item={item} plan={plan} courses={courses} />
-          )}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-        />
-        <MobileOrDesktopRightArrow></MobileOrDesktopRightArrow>
-      </Content>
-    </Container>
+      <Container>
+        <StandardText maxWidth="230" textAlign="flex-start" numberOfLines={1}>{category.title}</StandardText>
+        <Content>
+          <MobileOrDesktopLeftArrow></MobileOrDesktopLeftArrow>
+          <FlatList
+            data={allCards}
+            style={{ marginLeft: scrollX }}
+            renderItem={({ item }) => (
+              <CategoryItem item={item} plan={plan} courses={courses} />
+            )}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+          />
+          <MobileOrDesktopRightArrow></MobileOrDesktopRightArrow>
+        </Content>
+      </Container>
     </ViewPortProvider>
   );
 };

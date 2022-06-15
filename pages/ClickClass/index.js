@@ -91,7 +91,7 @@ const ClickClass = ({ route, navigation }) => {
   return (
     <ViewPortProvider>
       <Container>
-        <Header goBack={navigation.goBack} />
+        <Header goBack={navigation.goBack} background={THEME} />
         <OutsideView></OutsideView>
       </Container>
     </ViewPortProvider>

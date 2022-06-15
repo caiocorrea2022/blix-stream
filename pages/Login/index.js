@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { Modal, Portal, Provider } from 'react-native-paper';
 import { View } from 'react-native';
 import {
-  SideView,
   Content,
   Image,
-  ContainerSideView,
   ViewTextInput,
   ViewButton,
   ViewImage,
@@ -25,7 +23,7 @@ import THEME from '../../config/theme';
 import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../hooks/MobileOrDesktop/useViewport';
 import { HelperText } from 'react-native-paper';
-import { MainTitle, Container } from '../../config/theme/globalStyles';
+import { MainTitle, Container, ContainerSideView, SideView } from '../../config/theme/globalStyles';
 
 const auth = getAuth();
 
@@ -99,7 +97,7 @@ export default function Login({ navigation }) {
   const MobileOrDesktopComponent = () => {
     const { width } = useViewport();
     const breakpoint = 1080;
-    return width < breakpoint ? <View></View> : <SideView><Poster source={require('../../assets/FotoLogin.jpg')}></Poster></SideView>;
+    return width < breakpoint ? <View></View> : <SideView flex="1.2"><Poster source={require('../../assets/FotoLogin.jpg')}></Poster></SideView>;
   };
 
   return (

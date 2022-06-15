@@ -2,10 +2,6 @@ import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
 export default {
   COLORS:{
-    TEXT_900: '#1E1E1E',
-    TEXT_800: '#323644',
-    TEXT_700: '#8F94A3',
-    TEXT_000: '#F1F1F1',
     ALERT: "#ec1414",
 
     BACKGROUND: "#ffffff", //MESMA COR DO DRAWER
@@ -14,14 +10,14 @@ export default {
     BACKGROUND_CLICK: "#ffffff",
 
     ICON_HEADER: "#ffffff",
-    ICON_DRAWER: "#ffffff",
+    ICON_DRAWER: "#1E1E1E",
     ICON_GOBACK: "#C8E3B4",
     ICON_CLICK: "#1E1E1E",
 
     MAIN_TITLE: '#1E1E1E',
     TITLE: '#323644',
     SUB_TITLE: '#323644',
-    DESCRIPTION: '#8F94A3',
+    STANDARD: '#323644',
     SMALL_TEXT: '#323644',
     FOOTER_TEXT: '#323644',
 

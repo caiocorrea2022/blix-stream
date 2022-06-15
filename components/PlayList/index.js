@@ -1,12 +1,13 @@
 import React from 'react';
-import { Container, Content, Avatar, Text} from './style';
+import { StandardText } from '../../config/theme/globalStyles';
+import { Container, Content, Avatar } from './style';
 
 const PlayList = ({ title, image }) => {
     return (
         <Container>
             <Avatar resizeMode='cover' source={{ uri: image }} />
             <Content>
-                <Text>{title}</Text>
+                <StandardText textAlign="flex-start">{title}</StandardText>
             </Content>
         </Container>
     )

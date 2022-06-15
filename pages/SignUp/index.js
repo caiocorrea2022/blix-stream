@@ -3,13 +3,8 @@ import { View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import Header from '../../components/Header';
 import {
-  Container,
   Content,
   BackButton,
-  BackText,
-  Title,
-  ContainerSideView,
-  SideView,
   Footer,
   ViewTextInput,
   ViewButton,
@@ -36,6 +31,7 @@ import { createCheckoutSession } from "../../services/stripe/createCheckoutSessi
 import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../hooks/MobileOrDesktop/useViewport';
 import { HelperText } from 'react-native-paper';
+import { Container, ContainerSideView, SideView, SmallText, Title } from '../../config/theme/globalStyles';
 
 export default function SignUp({ navigation }) {
   const [name, setName] = useState({ value: "", error: "" });
@@ -142,7 +138,7 @@ export default function SignUp({ navigation }) {
     const { width } = useViewport();
     const breakpoint = 1080;
 
-    return width < breakpoint ? <View></View> : <SideView></SideView>;
+    return width < breakpoint ? <View></View> : <SideView flex="0.9"></SideView>;
   };
 
 
@@ -153,7 +149,7 @@ export default function SignUp({ navigation }) {
           <Container>
             <Header goBack={navigation.goBack} />
             <ViewTitle>
-              <Title>Cadastrar</Title>
+              <Title textAlign="flex-start" padding="0rem 0rem 0rem 1rem">Cadastrar</Title>
             </ViewTitle>
             <Content>
               <ViewTextInput>
@@ -254,7 +250,7 @@ export default function SignUp({ navigation }) {
                 isLoading={loading}
                 onPress={onSignUpPressed}
                 colorbutton={THEME.COLORS.PRIMARY_900}
-                colortitle={THEME.COLORS.TEXT_000}
+                colortitle={THEME.COLORS.BACKGROUND}
               ></Button>
             </ViewButton>
             {visibleAlert &&
@@ -273,7 +269,7 @@ export default function SignUp({ navigation }) {
                   color={THEME.COLORS.PRIMARY_900}
                 />
               </BackButton>
-              <BackText>Eu já tenho uma conta</BackText>
+              <SmallText color={THEME.COLORS.PRIMARY_900}>Eu já tenho uma conta</SmallText>
             </Footer>
           </Container>
           <MobileOrDesktopComponent></MobileOrDesktopComponent>

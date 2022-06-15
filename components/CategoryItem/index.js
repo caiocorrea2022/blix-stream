@@ -1,39 +1,35 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
-import {
-    Container,
-    Image,
-    Text
-} from './style';
+import { Image, Touchable } from './style';
 import THEME from '../../config/theme';
 import { Icon } from 'react-native-elements'
+import { SmallText } from '../../config/theme/globalStyles';
 
 const CategoryItem = ({ item, plan, courses }) => {
     const navigation = useNavigation();
-
     const onCardPress = () => {
         navigation.navigate('ClickClass', { videos: item.videos, name: item.title, description: item.description, pdf: item.pdf, url: item.url })
     }
 
     return (
-        <Container onPress={onCardPress}>
+        <Touchable onPress={onCardPress}>
             <Image source={{ uri: item.img }}>
-            {plan === item.plan || courses?.includes(item.courseId) ? 
-                <div></div>     
-                :
-                <Icon
-                  type="material-community"
-                  name="lock"
-                  size={24}
-                  iconStyle={{
-                      color: THEME.COLORS.TEXT_000,
-                  }}
-                  containerStyle={{ flex: 1, alignSelf: "flex-end", justifyContent: "flex-end", padding: "0.2rem" }}
-              />
+                {plan === item.plan || courses?.includes(item.courseId) ?
+                    <div></div>
+                    :
+                    <Icon
+                        type="material-community"
+                        name="lock"
+                        size={24}
+                        iconStyle={{
+                            color: THEME.COLORS.ICON_CLICK,
+                        }}
+                        containerStyle={{ flex: 1, alignSelf: "flex-end", justifyContent: "flex-end", padding: "0.2rem" }}
+                    />
                 }
             </Image>
-            <Text numberOfLines={2}>{item.title}</Text>
-        </Container>
+            <SmallText maxWidth="230" textAlign="flex-start" numberOfLines={1}>{item.title}</SmallText>
+        </Touchable>
     )
 }
 

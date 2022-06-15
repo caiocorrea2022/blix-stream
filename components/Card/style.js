@@ -18,9 +18,9 @@ export const HorizontalListView = styled.View`
 `;
 
 export const Text = styled.Text`
-    color: ${props => `${props.color}`};
-    font-size: ${props => `${props.fontSize}`};
-    font-family: ${props => `${props.fontFamily}`};
-    padding: 0.3rem 0rem;
-    text-align: start;
+  color: ${props => `${props.color}`};
+  font-size: ${props => `${props.fontSize}`};
+  font-family: ${props => `${props.fontFamily}`};
+  padding: 0.3rem 0rem;
+  text-align: start;
 `;

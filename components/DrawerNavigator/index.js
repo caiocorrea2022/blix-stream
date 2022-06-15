@@ -4,7 +4,7 @@ import Main from "../../pages/Main";
 import About from "../../pages/About";
 import EditProfile from "../../pages/EditProfile";
 import THEME from "../../config/theme";
-import DrawerContent from "../DrawerContent";
+import DrawerContent from "./DrawerContent";
 import { auth } from '../../services/firebase'
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -53,11 +53,11 @@ export default function DrawerNavigatorScreen({ navigation }) {
         options={{
           headerShown: false,
           drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
-          drawerActiveTintColor: THEME.COLORS.TEXT_900,
-          drawerInactiveTintColor: THEME.COLORS.TEXT_900,
+          drawerActiveTintColor: THEME.COLORS.SMALL_TEXT,
+          drawerInactiveTintColor: THEME.COLORS.SMALL_TEXT,
           drawerLabelStyle: {
             fontSize: THEME.FONTSIZE.SMALL,
-            fontFamily: THEME.FONTFAMILY.REGULAR,
+            fontFamily: THEME.FONTFAMILY.LIGHT,
           },
         }}
       />
@@ -67,11 +67,11 @@ export default function DrawerNavigatorScreen({ navigation }) {
         options={{
           headerShown: false,
           drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
-          drawerActiveTintColor: THEME.COLORS.TEXT_900,
-          drawerInactiveTintColor: THEME.COLORS.TEXT_900,
+          drawerActiveTintColor: THEME.COLORS.SMALL_TEXT,
+          drawerInactiveTintColor: THEME.COLORS.SMALL_TEXT,
           drawerLabelStyle: {
             fontSize: THEME.FONTSIZE.SMALL,
-            fontFamily: THEME.FONTFAMILY.REGULAR,
+            fontFamily: THEME.FONTFAMILY.LIGHT,
           },
         }}
       />
@@ -82,11 +82,11 @@ export default function DrawerNavigatorScreen({ navigation }) {
         options={{
           headerShown: false,
           drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
-          drawerActiveTintColor: THEME.COLORS.TEXT_900,
-          drawerInactiveTintColor: THEME.COLORS.TEXT_900,
+          drawerActiveTintColor: THEME.COLORS.STANDARD,
+          drawerInactiveTintColor: THEME.COLORS.STANDARD,
           drawerLabelStyle: {
             fontSize: THEME.FONTSIZE.SMALL,
-            fontFamily: THEME.FONTFAMILY.REGULAR,
+            fontFamily: THEME.FONTFAMILY.LIGHT,
           },
         }}
       />

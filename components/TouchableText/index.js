@@ -1,11 +1,12 @@
 import React from 'react';
-import { Container, Title } from './style';
+import { SmallText } from '../../config/theme/globalStyles';
+import { Touchable } from './style';
 
 const TouchableText = ({ title, icon, ...rest }) => {
     return (
-        <Container {...rest}>
-            <Title>{title}</Title>
-        </Container>
+        <Touchable {...rest}>
+            <SmallText>{title}</SmallText>
+        </Touchable>
     )
 }
 

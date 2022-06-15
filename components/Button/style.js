@@ -11,12 +11,5 @@ export const Container = styled.TouchableOpacity`
   background-color: ${THEME.COLORS.PRIMARY_900};
 `;
 
-export const Title = styled.Text`
-  color: ${THEME.COLORS.TEXT_000};
-  font-size: ${THEME.FONTSIZE.MEDIUM};
-  font-family: ${THEME.FONTFAMILY.BOLD};
-  text-align: center;
-`;
-
-export const Load = styled.ActivityIndicator.attrs({ color: THEME.COLORS.TEXT_000 })`
+export const Load = styled.ActivityIndicator.attrs({ color: THEME.COLORS.BACKGROUND })`
 `;
