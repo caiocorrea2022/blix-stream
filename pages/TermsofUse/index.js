@@ -16,6 +16,7 @@ import {
   Title,
 } from "./style";
 import THEME from '../../config/theme';
+import { DrawerActions } from '@react-navigation/native';
 
 function TermsofUse({ navigation }) {
   const [modalVisible, setModalVisible] = useState(true);
@@ -51,7 +52,7 @@ function TermsofUse({ navigation }) {
         <ViewPressable>
           <Pressable
             onPress={() => {
-              setModalVisible(!modalVisible), navigation.navigate("DrawerNavigatorScreen");
+              setModalVisible(!modalVisible), navigation.navigate("DrawerNavigatorScreen"), navigation.dispatch(DrawerActions.closeDrawer());;
             }}
           >
             <Close></Close>

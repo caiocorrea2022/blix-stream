@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Main from "../../pages/Main";
 import About from "../../pages/About";
-import Plans from "../../pages/Plans";
 import EditProfile from "../../pages/EditProfile";
 import THEME from "../../config/theme";
 import DrawerContent from "../DrawerContent";
@@ -94,20 +93,6 @@ export default function DrawerNavigatorScreen({ navigation }) {
         :
       <></>
       }
-      <DrawerNavigator.Screen
-        name="Planos e Preços"
-        component={Plans}
-        options={{
-          headerShown: false,
-          drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
-          drawerActiveTintColor: THEME.COLORS.TEXT_900,
-          drawerInactiveTintColor: THEME.COLORS.TEXT_900,
-          drawerLabelStyle: {
-            fontSize: THEME.FONTSIZE.SMALL,
-            fontFamily: THEME.FONTFAMILY.REGULAR,
-          },
-        }}
-      />
     </DrawerNavigator.Navigator>
   );
 }

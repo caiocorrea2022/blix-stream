@@ -13,7 +13,8 @@ import {
   ViewImage,
   ViewText,
   ViewHelper,
-  ViewTitle
+  ViewTitle,
+  Poster,
 } from './style';
 import { emailValidator, passwordValidator } from '../../utils';
 import { getAuth, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } from "firebase/auth";
@@ -100,18 +101,16 @@ export default function Login({ navigation }) {
   const MobileOrDesktopComponent = () => {
     const { width } = useViewport();
     const breakpoint = 1080;
-    return width < breakpoint ? <View></View> : <SideView></SideView>;
+    return width < breakpoint ? <View></View> : <SideView><Poster source={require('../../assets/FotoLogin.jpg')}></Poster></SideView>;
   };
 
   return (
     <Provider>
       <ViewPortProvider>
         <ContainerSideView>
-          <MobileOrDesktopComponent></MobileOrDesktopComponent>
           <Container>
-            <Header goBack={navigation.goBack} />
             <ViewImage>
-              <Image source={require('./../../assets/yoga-logo.jpg')}></Image>
+              <Image source={require('./../../assets/logo.png')}></Image>
             </ViewImage>
             <ViewTitle>
               <Title>YOGA LUZ</Title>
