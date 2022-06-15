@@ -36,7 +36,7 @@ const Header = ({ login, goBack, navigation, about, background }) => {
         <HeaderRightSide>
           {about ? 
           <>
-            <Text onPress={() => navigation.dispatch(jumpToAction)}>MINHAS AULAS</Text>
+            <Text onPress={() => navigation.dispatch(jumpToAction)}>ACESSAR AULAS</Text>
             <Avatar
               resizeMode="contain"
               source={require("../../assets/logo.png")}

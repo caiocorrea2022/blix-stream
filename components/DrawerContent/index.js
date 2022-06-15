@@ -58,14 +58,14 @@ export default function DrawerContent(props) {
       />
       {login ?
         <DrawerItem
-          label={() => (<Text>Sair</Text>)}
+          label={() => (<Text onPress={() => {logout}}>Sair</Text>)}
           icon={({ color }) => (
             <Icon
               type="material-community"
               name="logout-variant"
               color={color}
               size={20}
-              onPress={logout}
+              onPress={() => {logout}}
             />
           )}
         />
