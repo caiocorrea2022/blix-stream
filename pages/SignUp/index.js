@@ -150,7 +150,6 @@ export default function SignUp({ navigation }) {
     <Provider>
       <ViewPortProvider>
         <ContainerSideView>
-          <MobileOrDesktopComponent></MobileOrDesktopComponent>
           <Container>
             <Header goBack={navigation.goBack} />
             <ViewTitle>

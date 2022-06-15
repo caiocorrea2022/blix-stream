@@ -60,7 +60,7 @@ export default function Main({ navigation, route  }) {
             'rgba(0,0,0,1)',
           ]}>
           <Header background="none" navigation={navigation} login={login} main={true} about={false} />
-          <Hero />
+          <Hero button={false} />
         </Gradient>
       </Poster>
       <Content>
