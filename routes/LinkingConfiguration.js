@@ -8,8 +8,9 @@ const linking = {
           SignUp: "SignUp",
           Success: "Success",
           Plans: "Plans",
-          MyDrawer: "MyDrawer",
+          DrawerNavigatorScreen: "DrawerNavigatorScreen",
           ClickCourse: "ClickCourse",
+          Main: "DrawerNavigatorScreen/Aulas"
         },
     },
   };

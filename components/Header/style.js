@@ -17,7 +17,7 @@ export const Avatar = styled.Image`
 `;
 
 export const Text = styled.Text`
-    color: ${THEME.COLORS.TEXT_000};
+    color: ${THEME.COLORS.TEXT_900};
     margin-right: 0.8rem;
     font-Size: ${THEME.FONTSIZE.MEDIUM};
     font-family: ${THEME.FONTFAMILY.REGULAR};

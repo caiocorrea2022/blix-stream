@@ -12,6 +12,11 @@ export const Container = styled.ScrollView.attrs({
 })`  
 `;
 
+export const Poster = styled.ImageBackground`
+    width: 100%;
+    height: 100%;
+`;
+
 export const Title = styled.Text`
   color: ${THEME.COLORS.TEXT_900};
   font-size: ${THEME.FONTSIZE.BIG};

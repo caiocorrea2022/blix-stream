@@ -63,7 +63,7 @@ export const Footer = styled.View`
 
 export const SideView = styled.View`
   background-color: ${THEME.COLORS.PRIMARY_900};
-  flex:0.5;
+  flex:0.9;
   flex-Direction: column;
 `;
 

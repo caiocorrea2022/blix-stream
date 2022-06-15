@@ -1,9 +1,13 @@
 import styled from 'styled-components/native';
 import THEME from '../../config/theme';
 
+export const Poster = styled.ImageBackground`
+    width: 100%;
+    height: 100%;
+`;
+
 export const SideView = styled.View`
-  background-color: ${THEME.COLORS.PRIMARY_900};
-  flex:0.5;
+  flex:1.2;
   flex-Direction: column;
 `;
 
@@ -19,9 +23,9 @@ export const Container = styled.View`
 `;
 
 export const ViewImage = styled.View`
-  flex: 2;
+  flex: 3;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 `;
 
 export const Image = styled.Image`
@@ -31,7 +35,7 @@ export const Image = styled.Image`
 `;
 
 export const ViewTitle = styled.View`
-  flex: 0.5;
+  flex: 1;
   align-items: center;
   justify-content: center;
 `;

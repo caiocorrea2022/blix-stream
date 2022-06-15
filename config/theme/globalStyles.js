@@ -12,6 +12,14 @@ flex:1;
 background-color: pink;
 `;
 
+export const HeaderContainer = styled.View`
+background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND)};
+flex-direction: row;
+justify-content: space-between;
+width: 100%;
+padding: 1rem;
+`;
+
 export const MainTitle = styled.Text`
 	font-size: ${({ fontSize }) => (fontSize ? fontSize : THEME.FONTSIZE.EXTRABIG)};
     font-family: ${({ fontFamily }) => (fontFamily ? fontFamily : THEME.FONTFAMILY.BOLD)};

@@ -13,8 +13,9 @@ import {
 } from "./style";
 import THEME from '../../config/theme';
 import { planFrequency, planPrices, planInfos, upsellPrices, subtitlePlan } from '../../config/data';
+import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
 
-const Pricing = ({ navigation }) => {
+const Pricing = ({ navigation, userId }) => {
   const [selectedId, setSelectedId] = useState("1");
   const [option, setOption] = useState(planPrices[0]);
   const [upsell, setUpsell] = useState(upsellPrices[0]);
@@ -110,7 +111,11 @@ const Pricing = ({ navigation }) => {
                 justifyContent:"space-between",
                 flex: 1,
               }}
-              onButtonPress={() => navigation.navigate("SignUp")}
+              onButtonPress={() => 
+                userId?                 
+                createCheckoutSession(userId, "price_1L5qw3CmcyIwF9rcW6VuPvSg", "subscription", 6):
+                navigation.navigate("SignUp")
+              }
             />
           ))}
         </HorizontalList>

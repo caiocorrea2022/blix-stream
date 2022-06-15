@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Button } from 'react-native';
 import { Container, Poster, Gradient, Content } from './style';
 import Header from '../../components/Header';
 import Hero from '../../components/Hero';
@@ -8,10 +8,11 @@ import { getDocs, collection } from "firebase/firestore";
 import { firestore } from "../../services/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { DrawerActions } from '@react-navigation/drawer';
 
 const auth = getAuth();
 
-export default function Main({ navigation }) {
+export default function Main({ navigation, route  }) {
   const [allCategories, setAllCategories] = useState([]);
   const [plan, setPlan] = useState("");
   const [login, setLogin] = useState(false);
@@ -58,8 +59,8 @@ export default function Main({ navigation }) {
             'rgba(0,0,0,0.5)',
             'rgba(0,0,0,1)',
           ]}>
-          <Header goBack={navigation.goBack} login={login} main={true} about={false} />
-          <Hero />
+          <Header background="none" navigation={navigation} login={login} main={true} about={false} />
+          <Hero button={false} />
         </Gradient>
       </Poster>
       <Content>
