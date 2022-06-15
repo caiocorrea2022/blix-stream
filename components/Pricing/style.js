@@ -24,7 +24,7 @@ export const ItemContainer = styled.View`
 
 export const Title = styled.Text`
   color: ${THEME.COLORS.TEXT_900};
-  font-size: ${THEME.FONTSIZE.BIG};
+  font-size: ${THEME.FONTSIZE.EXTRABIG};
   font-family: ${THEME.FONTFAMILY.BOLD};
 `;
 

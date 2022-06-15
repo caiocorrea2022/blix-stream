@@ -3,17 +3,27 @@ import {
   Container,
   Title,
   TitleView,
+<<<<<<< HEAD
+  PricingView,
+  CardView,
+=======
   Poster,
+>>>>>>> fcf16d67b1571592e9cd8bbcbd40c6585e31cf67
 } from "./style";
+import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Hero from '../../components/Hero';
 import CardInfo from '../../components/Card';
+import { HorizontalListView} from '../../components/Card/style';
 import Pricing from '../../components/Pricing';
 import { coursesInfo } from '../../config/data';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Section } from '../../config/theme/globalStyles';
+<<<<<<< HEAD
+=======
 import { firestore } from '../../services/firebase';
 import { doc, getDoc} from "firebase/firestore";
+>>>>>>> fcf16d67b1571592e9cd8bbcbd40c6585e31cf67
 
 const auth = getAuth();
 
@@ -46,6 +56,8 @@ export default function About({ navigation }) {
   }, []);
 
   return (
+    <>
+    <Header></Header>
     <Container>
       <Section>
       <Poster source={require('../../assets/FotoAbout.jpg')}>
@@ -64,9 +76,16 @@ export default function About({ navigation }) {
         </TitleView>
         <CardInfo array={coursesInfo} navigation={navigation}></CardInfo>
       </Section>
+<<<<<<< HEAD
+      <Section >
+=======
       <Section>
+>>>>>>> fcf16d67b1571592e9cd8bbcbd40c6585e31cf67
         <Pricing navigation={navigation}></Pricing>
       </Section>
+      <Footer></Footer>
     </Container>
+    
+    </>
   );
 }
