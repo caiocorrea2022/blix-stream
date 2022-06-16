@@ -7,9 +7,13 @@ import ViewPortProvider from "../../hooks/MobileOrDesktop/ViewPortProvider";
 import useViewport from "../../hooks/MobileOrDesktop/useViewport";
 import THEME from '../../config/theme';
 import { FooterText, SmallText, Title, Container } from "../../config/theme/globalStyles";
+import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
+import { auth } from '../../services/firebase'
+import { onAuthStateChanged } from "firebase/auth";
 
-const ClickCourse = ({ navigation }) => {
-  // const { title, description, price } = route.params;
+const ClickCourse = ({ navigation, route }) => {
+  const {item} = route.params;
+  const [userId, setUserId] = useState("");
 
   const OutsideView = () => {
     const { width } = useViewport();
@@ -34,15 +38,15 @@ const ClickCourse = ({ navigation }) => {
 
     return width < breakpoint ? (
       <ContentMobile>
-        <Image source={{ uri: 'https://picsum.photos/700' }} />
-        <Title textAlign="flex-start" margin="0.5rem 0rem">Titulo do texto</Title>
-        <SmallText textAlign="justify">Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.</SmallText>
+        <Image source={{ uri: item.Image }} />
+        <Title textAlign="flex-start" margin="0.5rem 0rem">{item.title}</Title>
+        <SmallText textAlign="justify">{item.description}</SmallText>
       </ContentMobile>
     ) : (
       <ContentDesktop>
-        <Image source={{ uri: 'https://picsum.photos/700' }} />
-        <Title textAlign="flex-start" margin="0.5rem 0rem">Titulo do texto</Title>
-        <SmallText textAlign="justify">Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium. </SmallText>
+        <Image source={{ uri: item.image }} />
+        <Title textAlign="flex-start" margin="0.5rem 0rem">{item.title}</Title>
+        <SmallText textAlign="justify">{item.description}</SmallText>
       </ContentDesktop>
     );
   };
@@ -54,7 +58,7 @@ const ClickCourse = ({ navigation }) => {
     return width < breakpoint ? (
       <View>
         <View style={{ width: "70%", alignSelf: "center" }}>
-          <Title textAlign="flex-start" margin="0.5rem 0rem">R$ 1.450,00</Title>
+          <Title textAlign="flex-start" margin="0.5rem 0rem">{item.price}</Title>
           <FooterText textAlign="justify">parcelado em até 12x</FooterText>
           <SmallText textAlign="justify">✔ Garantia de 7 dias</SmallText>
         </View>
@@ -63,13 +67,14 @@ const ClickCourse = ({ navigation }) => {
           colorbutton={THEME.COLORS.PRIMARY_900}
           colortitle={THEME.COLORS.TEXT_BUTTON}
           borderRadius="30px"
+          onPress={()=> createCheckoutSession(user.uid, item.priceId, "payment", 0)}
           >
         </Button>
       </View>
     ) : (
       <ContentList>
         <View style={{ width: "70%", alignSelf: "center" }}>
-          <Title textAlign="flex-start" margin="0.5rem 0rem">R$ 1.450,00</Title>
+          <Title textAlign="flex-start" margin="0.5rem 0rem">{item.price}</Title>
           <FooterText textAlign="justify">parcelado em até 12x</FooterText>
           <SmallText textAlign="justify">✔ Garantia de 7 dias</SmallText>
         </View>
@@ -83,6 +88,16 @@ const ClickCourse = ({ navigation }) => {
       </ContentList>
     );
   };
+
+  useEffect(() => {
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+       setUserId(user.uid);
+      } 
+    });
+
+  }, []);
 
   return (
     <ViewPortProvider>

@@ -6,13 +6,7 @@ import { StandardText } from '../../config/theme/globalStyles';
 
 const CardInfo = ({ array, buttonVisible = true, priceVisible = true, navigation, cardStyle, cardCoverStyle, titleFontFamily, titleFontSize, titleColor, subtitleFontFamily, subtitleFontSize, subtitleColor, subtitleNumberOfLines }) => {
 
-    // const onCardPress = () => {
-    //     navigation.navigate('ClickCourse', { videos: item.videos, title: array.title, description: array.info, price: array.price })
-    // }
-    const onCardPress = (num) => {
-        console.log(num)
-    }
-    return (
+     return (
         <HorizontalListView>
             <HorizontalList horizontal={true}>
                 {array.map((item, index) => (
@@ -24,7 +18,7 @@ const CardInfo = ({ array, buttonVisible = true, priceVisible = true, navigation
                             {priceVisible ? <StandardText fontFamily={THEME.FONTFAMILY.BOLD} textAlign="flex-start" margin="1rem 0rem">{item.price}</StandardText> : null}
                         </Card.Content>
                         <Card.Actions>
-                            {buttonVisible ? <Button onPress={onCardPress}>Saiba mais</Button> : null}
+                            {buttonVisible ? <Button onPress={()=>navigation.navigate('ClickCourse', { item })}>Saiba mais</Button> : null}
                         </Card.Actions>
                     </Card>
                 ))}

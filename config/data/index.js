@@ -13,11 +13,12 @@ export const planFrequency = [
 export const subtitlePlan = "Teste grátis por 7 dias. Pagamento automático no boleto ou no cartão de crédito. Pode cancelar quando desejar.";
 
 export const planPrices = [
-  ["R$200,00/mês", "R$220,00/mês", "R$250,00/mês"],
-  ["R$400,00/trimestre", "R$420,00/trimestre", "R$450,00/trimestre"],
-  ["R$800,00/semestre", "R$820,00/semestre", "R$850,00/semestre"],
-  ["R$1200,00/ano", "R$1220,00/ano", "R$1250,00/ano"],
+  [{price: "R$200,00/mês", priceId: "", iterations: 0}, {price: "R$220,00/mês", priceId: "", iterations: 0}, {price: "R$250,00/mês", priceId: "", iterations: 0}],
+  [{price: "R$400,00/trimestre", priceId: "", iterations: 3}, {price: "R$420,00/trimestre", priceId: "", iterations: 3}, {price: "R$450,00/trimestre", priceId: "", iterations: 3}],
+  [{price: "R$800,00/semestre", priceId: "", iterations: 6}, {price: "R$820,00/semestre", priceId: "", iterations: 6}, {price: "R$850,00/semestre", priceId: "", iterations: 6}],
+  [{price: "R$1200,00/ano", priceId: "", iterations: 12}, {price: "R$1220,00/ano", priceId: "", iterations: 12}, {price: "R$1250,00/ano", priceId: "", iterations: 12}],
 ];
+
 export const upsellPrices = [
   ["", "", ""],
   [
@@ -246,18 +247,21 @@ export const coursesInfo = [
     info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
     price: "R$ 100,00",
     image: require("./../../assets/FotoCurso1.jpg"),
+    priceId: "price_1LB4HuCmcyIwF9rcPpxAcgvz",
   },
   {
     title: "Curso de Meditação",
     info: "lit repudiandae et atque praesentium.",
     price: "R$ 120,00",
     image: require("./../../assets/FotoCurso2.jpg"),
+    priceId: "price_1LB4HuCmcyIwF9rcPpxAcgvz",
   },
   {
     title: "Retiro",
     info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
     price: "R$ 450,00",
     image: require("./../../assets/FotoCurso3.jpg"),
+    priceId: "price_1LB4HuCmcyIwF9rcPpxAcgvz",
   },
 ];
 
