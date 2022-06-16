@@ -14,7 +14,6 @@ export const ViewTextInput = styled.View`
 
 export const ViewText = styled.View`
   height: 60%;
-  width: 80%;
 `;
 
 export const ViewDescription = styled.View`

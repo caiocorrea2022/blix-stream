@@ -88,7 +88,7 @@ export default function EditProfile({ navigation }) {
             Celular: cellphone,
         }, { merge: true })
             .then(() => {
-                showAlert("Concluído! Seus dados salvos com sucesso.")
+                showAlert("Concluído! Seus dados foram salvos com sucesso!")
             })
             .catch((e) => {
                 console.log('EditProfile, salvar: ' + e);
