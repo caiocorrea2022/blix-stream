@@ -11,6 +11,7 @@ export const Section = styled.View`
 export const ContainerSideView = styled.View`
     flex: ${({ flex }) => (flex ? flex : '1')};
     flex-Direction: ${({ flexDirection }) => (flexDirection ? flexDirection: 'row')};
+    background-color: red;
 `;
 
 export const SideView = styled.View`
