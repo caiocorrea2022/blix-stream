@@ -80,10 +80,17 @@ const CategoryList = ({ category, plan, courses }) => {
 
   const handleRightArrow = () => {
     let x = scrollX - Math.round(window.innerWidth / 2);
-    // let listW = allCards.length * 160; //230 eh o tamanho de cada card
-    // if ((window.innerWidth - listW) > x) {
-    //   x = (window.innerWidth - listW);
-    // }
+    let listW = allCards.length * 240; //230 eh o tamanho de cada card
+    if ((window.innerWidth > listW)){
+      x=0;
+    } else if (((window.innerWidth - listW) > x)){
+      x = (window.innerWidth - listW) - (23 * allCards.length);
+    }
+    console.log(x);
+    console.log(scrollX);
+    console.log(listW);
+    console.log(window.innerWidth);
+    console.log(allCards.length);
     setScrollX(x);
   };
 

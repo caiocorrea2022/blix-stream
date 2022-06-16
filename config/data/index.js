@@ -292,6 +292,36 @@ export const categoriesInfo = [
     info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste!",
     image: require("./../../assets/FotoCategoria6.jpg"),
   },
+  {
+    title: "Hath Yoga",
+    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos.",
+    image: require("./../../assets/FotoCategoria1.jpg"),
+  },
+  {
+    title: "Meditações",
+    info: "lit repudiandae et atque praesentium.",
+    image: require("./../../assets/FotoCategoria2.jpg"),
+  },
+  {
+    title: "Aulas ao Vivo",
+    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit!",
+    image: require("./../../assets/FotoCategoria3.jpg"),
+  },
+  {
+    title: "Tutoriais",
+    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumend.",
+    image: require("./../../assets/FotoCategoria4.jpg"),
+  },
+  {
+    title: "Relaxamento",
+    info: "lit repudiandae et atque praesentium.",
+    image: require("./../../assets/FotoCategoria5.jpg"),
+  },
+  {
+    title: "Jornadas",
+    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste!",
+    image: require("./../../assets/FotoCategoria6.jpg"),
+  },
 ];
 
 export const footerSocialData = [
