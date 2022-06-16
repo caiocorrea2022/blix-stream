@@ -76,15 +76,22 @@ const CategoryList = ({ category, plan, courses }) => {
       x = 0;
     }
     setScrollX(x);
+    console.log('x esquerda',x);
+    console.log('scrollx esquerda',scrollX);
   };
 
   const handleRightArrow = () => {
     let x = scrollX - Math.round(window.innerWidth / 2);
-    // let listW = allCards.length * 160; //230 eh o tamanho de cada card
-    // if ((window.innerWidth - listW) > x) {
-    //   x = (window.innerWidth - listW);
-    // }
+    let listW = allCards.length * 240; //230 eh o tamanho de cada card
+    if ((window.innerWidth > listW)){
+      x=0;
+    } else if (((window.innerWidth - listW) > x)){
+      x = (window.innerWidth - listW) - (23 * allCards.length);
+    }
     setScrollX(x);
+    console.log('x direita',x);
+    console.log('lista inteira', listW);
+    console.log('scrollx direita',scrollX);
   };
 
   useEffect(() => {
