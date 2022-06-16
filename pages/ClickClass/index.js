@@ -145,7 +145,7 @@ const ClickClass = ({ route, navigation }) => {
               </TouchableOpacity>
             ))}
           style={{ marginBottom: "1rem", flexGrow: 0 }}
-          ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url}></ListHeader>}
+          ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url} navigation={navigation}></ListHeader>}
         />
       </View>
     ) : (

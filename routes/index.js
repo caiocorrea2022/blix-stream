@@ -14,6 +14,7 @@ import AuthProvider from '../hooks/auth';
 import TermsofUse from '../pages/TermsofUse';
 import Main from '../pages/Main';
 import About from '../pages/About';
+import PDFView from '../pages/PDFView';
 
 
 export default function Navigation() {
@@ -74,6 +75,11 @@ function Navigator() {
       <Stack.Screen
         name="TermsofUse"
         component={TermsofUse}
+        options={{ headerShown: false }}
+      />
+            <Stack.Screen
+        name="PDFView"
+        component={PDFView}
         options={{ headerShown: false }}
       />
       <Stack.Screen
