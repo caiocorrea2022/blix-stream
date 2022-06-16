@@ -3,24 +3,20 @@ import { Dimensions } from 'react-native';
 
 const windowHeight = Dimensions.get('window').height;
 
-export const Container = styled.ScrollView.attrs({
-  showsVerticalScrollIndicator: true,
-  contentContainerStyle: {
-    flex:1,
-    backgroundColor: "white",
-  },
-})`  
+export const ViewAboutMe = styled.View`
+  padding: 2rem 0rem 2rem 0rem;
 `;
 
-export const ViewAboutMe = styled.View`
+export const Container = styled.View`
   background-color: white;
+  flex:1;
 `;
 
 export const ViewTitleAboutMe = styled.View`
   flex-basis: auto;
   align-items: center;
   justify-content: center;
-  padding: 1rem 0rem 1rem 0rem;
+  padding: 0rem 0rem 1rem 0rem;
 `;
 
 
@@ -43,5 +39,4 @@ export const TitleView = styled.View`
 export const Banner = styled.View`
   height:${windowHeight * 0.70};
   width: 90%;
-  background-color: yellow;
 `;

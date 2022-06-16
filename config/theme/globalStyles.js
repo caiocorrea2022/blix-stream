@@ -5,6 +5,7 @@ const windowHeight = Dimensions.get('window').height;
 
 export const Section = styled.View`
     height: ${({ height }) => (height ? height : windowHeight*0.98)};
+    background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND)};
 `;
 
 export const ContainerSideView = styled.View`

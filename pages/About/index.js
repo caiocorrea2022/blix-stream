@@ -4,6 +4,7 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Hero from '../../components/Hero';
 import CardInfo from '../../components/Card';
+import Pricing from '../../components/Pricing';
 import { coursesInfo, categoriesInfo } from '../../config/data';
 import {View} from 'react-native';
 import { doc, getDoc } from "firebase/firestore";
@@ -64,9 +65,8 @@ export default function About({ navigation }) {
           </ViewSubtitleAboutMe>
         </ViewAboutMe> 
       <Section>
-        <View style={{ flex: 3 }}>
-          <CardInfo subtitleFontFamily={THEME.FONTFAMILY.REGULAR} subtitleFontSize={THEME.FONTSIZE.EXTRASMALL} subtitleColor={"red"} subtitleNumberOfLines={4} titleFontFamily={THEME.FONTFAMILY.BOLD} titleFontSize={THEME.FONTSIZE.EXTRASMALL} titleColor={THEME.COLORS.EXTRASMALL} cardStyle={{ width: "12rem", margin: "1rem", height: "90%" }} cardCoverStyle={{ width: "100%", height: "30%", borderRadius: "8px" }} array={categoriesInfo} navigation={navigation} buttonVisible={false} priceVisible={false}></CardInfo>
-        </View>
+      <ViewTitleAboutMe><Title>CONTEÚDO DISPONÍVEL NO APP</Title></ViewTitleAboutMe>
+          <CardInfo subtitleFontFamily={THEME.FONTFAMILY.REGULAR} subtitleFontSize={THEME.FONTSIZE.EXTRASMALL} subtitleColor={THEME.COLORS.FOOTER_TEXT} titleFontFamily={THEME.FONTFAMILY.BOLD} titleFontSize={THEME.FONTSIZE.EXTRASMALL} titleColor={THEME.COLORS.EXTRASMALL} cardStyle={{ width: "12rem", margin: "1rem"}} cardCoverStyle={{ width: "100%", height: "8rem", borderRadius: "8px" }} array={categoriesInfo} navigation={navigation} buttonVisible={false} priceVisible={false}></CardInfo>
         <View style={{ flex: 1 }}>
           <Button
             title={'Ver todas as aulas'}
@@ -80,9 +80,12 @@ export default function About({ navigation }) {
       </Section>
       <Section>
         <TitleView>
-          <Title>CURSOS</Title>
+          <Title>CURSOS DISPONÍVEIS</Title>
         </TitleView>
-        <CardInfo subtitleFontFamily={THEME.FONTFAMILY.REGULAR} subtitleFontSize={THEME.FONTSIZE.EXTRASMALL} subtitleColor={THEME.COLORS.SMALL_TEXT} subtitleNumberOfLines={4} titleFontFamily={THEME.FONTFAMILY.BOLD} titleFontSize={THEME.FONTSIZE.SMALL} titleColor={THEME.COLORS.SMALL} cardStyle={{ width: "20rem", margin: "1rem", flex: 1 }} cardCoverStyle={{ width: "100%", height: "40%" }} array={coursesInfo} navigation={navigation}></CardInfo>
+        <CardInfo subtitleFontFamily={THEME.FONTFAMILY.REGULAR} subtitleFontSize={THEME.FONTSIZE.EXTRASMALL} subtitleColor={THEME.COLORS.SMALL_TEXT} subtitleNumberOfLines={4} titleFontFamily={THEME.FONTFAMILY.BOLD} titleFontSize={THEME.FONTSIZE.SMALL} titleColor={THEME.COLORS.SMALL} cardStyle={{ width: "18rem", margin: "1rem"}} cardCoverStyle={{ width: "100%", height: "15rem", borderRadius: "8px" }} array={coursesInfo} navigation={navigation}></CardInfo>
+      </Section>
+      <Section background={THEME.COLORS.PRIMARY_700}>
+        <Pricing></Pricing>
       </Section>
       <Footer></Footer>
       {/* <CookieConsentFunction></CookieConsentFunction> */}

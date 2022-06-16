@@ -50,7 +50,7 @@ const Pricing = ({ navigation, userId }) => {
   return (
     <Container>
       <TitleView>
-        <Title>PLANOS</Title>
+        <Title>PLANOS DE ASSINATURA</Title>
         <StandardText margin="0rem 1rem">{subtitlePlan}</StandardText>
         <FlatList
           data={planFrequency}

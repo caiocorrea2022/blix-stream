@@ -17,8 +17,8 @@ const CardInfo = ({ array, buttonVisible = true, priceVisible = true, navigation
             <HorizontalList horizontal={true}>
                 {array.map((item, index) => (
                     <Card key={index} style={cardStyle}>
-                        <Card.Cover source={{ uri: 'https://picsum.photos/700' }} style={cardCoverStyle} />
-                        <Card.Content style={{ height: "50%" }}>
+                        <Card.Cover source={{ uri: item.image }} style={cardCoverStyle} />
+                        <Card.Content style={{ height: "40%" }}>
                             <Text fontFamily={titleFontFamily} fontSize={titleFontSize} color={titleColor}>{item.title}</Text>
                             <Text fontFamily={subtitleFontFamily} fontSize={subtitleFontSize} color={subtitleColor} numberOfLines={subtitleNumberOfLines}>{item.info}</Text>
                             {priceVisible ? <StandardText fontFamily={THEME.FONTFAMILY.BOLD} textAlign="flex-start" margin="1rem 0rem">{item.price}</StandardText> : null}
