@@ -15,3 +15,8 @@ export const HeaderRightSide = styled.View`
 export const HeaderLeftSide = styled.View`
     flex-direction: row;
 `;
+
+export const Row = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;

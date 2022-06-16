@@ -61,7 +61,9 @@ const ClickCourse = ({ navigation }) => {
         <Button
           title={'Comprar agora'}
           colorbutton={THEME.COLORS.PRIMARY_900}
-          colortitle={THEME.COLORS.BACKGROUND}>
+          colortitle={THEME.COLORS.TEXT_BUTTON}
+          borderRadius="30px"
+          >
         </Button>
       </View>
     ) : (
@@ -74,7 +76,9 @@ const ClickCourse = ({ navigation }) => {
         <Button
           title={'Comprar agora'}
           colorbutton={THEME.COLORS.PRIMARY_900}
-          colortitle={THEME.COLORS.BACKGROUND}>
+          colortitle={THEME.COLORS.TEXT_BUTTON}
+          borderRadius="30px"
+          >
         </Button>
       </ContentList>
     );

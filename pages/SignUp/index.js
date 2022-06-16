@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
 import Header from '../../components/Header';
 import {
   Content,
@@ -32,6 +31,7 @@ import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../hooks/MobileOrDesktop/useViewport';
 import { HelperText } from 'react-native-paper';
 import { Container, ContainerSideView, SideView, SmallText, Title } from '../../config/theme/globalStyles';
+import TouchableText from '../../components/TouchableText';
 
 export default function SignUp({ navigation }) {
   const [name, setName] = useState({ value: "", error: "" });
@@ -246,11 +246,12 @@ export default function SignUp({ navigation }) {
             </ViewCheckBox>
             <ViewButton>
               <Button
-                title={"Prosseguir para pagamento"}
+                title={"Ir para pagamento"}
                 isLoading={loading}
                 onPress={onSignUpPressed}
                 colorbutton={THEME.COLORS.PRIMARY_900}
-                colortitle={THEME.COLORS.BACKGROUND}
+                colortitle={THEME.COLORS.TEXT_BUTTON}
+                borderRadius="30px"
               ></Button>
             </ViewButton>
             {visibleAlert &&
@@ -262,14 +263,7 @@ export default function SignUp({ navigation }) {
               ></AlertBox>
             }
             <Footer>
-              <BackButton onPress={() => navigation.navigate("Login")}>
-                <MaterialIcons
-                  name="arrow-back"
-                  size={24}
-                  color={THEME.COLORS.PRIMARY_900}
-                />
-              </BackButton>
-              <SmallText color={THEME.COLORS.PRIMARY_900}>Eu já tenho uma conta</SmallText>
+              <TouchableText textDecoration="underline" onPress={() => navigation.navigate("Login")} title={'Já possuo uma conta'} color={THEME.COLORS.PRIMARY_900}></TouchableText>
             </Footer>
           </Container>
           <MobileOrDesktopComponent></MobileOrDesktopComponent>

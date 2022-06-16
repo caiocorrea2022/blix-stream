@@ -9,7 +9,7 @@ const ListHeader = ({ title, description, pdf, url }) => {
   const Pdf = () => {
     return (
       <ContentIcon>
-        <Icon type="material-icons" name="picture-as-pdf" size={24} color={THEME.COLORS.ICON_CLICK} />
+        <Icon type="material-icons" name="picture-as-pdf" size={THEME.FONTSIZE.BIG} color={THEME.COLORS.ICON_CLICK} />
         <SmallText margin="1rem 0rem">Material em PDF</SmallText>
       </ContentIcon>
     )
@@ -18,7 +18,7 @@ const ListHeader = ({ title, description, pdf, url }) => {
   const Live = () => {
     return (
       <ContentIcon>
-        <Icon type="material-icons" name="link" size={24} color={THEME.COLORS.ICON_CLICK} />
+        <Icon type="material-icons" name="link" size={THEME.FONTSIZE.BIG} color={THEME.COLORS.ICON_CLICK} />
         <SmallText margin="1rem 0rem">Acessar aula ao vivo</SmallText>
       </ContentIcon>
     )

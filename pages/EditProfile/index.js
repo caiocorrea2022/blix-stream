@@ -1,37 +1,40 @@
-// import React, { useContext } from 'React';
-// import { Text } from 'react-native';
-// import Header from '../../components/Header';
-// import {Container} from './style';
-// // import {AuthContext} from '../../hooks/auth';
-
-// export default function EditProfile({ navigation }) {
-//   // const {user} = useContext(AuthContext)
-//     return (
-//       <Container>
-//         <Header goBack={navigation.goBack}/>
-//         {/* <Text>Article Screen{user.email}</Text> */}
-//       </Container>
-//     );
-//   }
-
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import { Provider } from 'react-native-paper';
 import Header from '../../components/Header';
-import { StyleSheet, Text, View, TouchableOpacity, KeyboardAvoidingView, ScrollView} from 'react-native'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { TextInput} from 'react-native-paper';
-import { doc, setDoc, getDoc} from "firebase/firestore";
-import {firestore} from '../../services/firebase'
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { firestore } from '../../services/firebase'
 import 'firebase/functions';
 import { getFunctions, httpsCallable } from "firebase/functions";
+import { ViewTitle, Content, ViewText, ViewTextInput, ViewDescription, ViewButton, ViewPlan } from './style';
+import { Container, SmallText, Title, SubTitle, StandardText, FooterText } from '../../config/theme/globalStyles';
+import TextInput from "../../components/TextInput";
+import Button from '../../components/Button';
+import THEME from '../../config/theme';
+import AlertBox from '../../components/AlertBox'
 
 const auth = getAuth();
 const functions = getFunctions();
 
-export default function EditProfile ({navigation}) {
+export default function EditProfile({ navigation }) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [cellphone, setCellPhone] = useState("");
+    const [cellphone, setCellPhone] = useState('');
+    const [cpf, setCpf] = useState('');
     const [user, setUser] = useState(auth.currentUser);
+    const [loadingPlan, setLoadingPlan] = useState(false);
+    const [loadingSave, setLoadingSave] = useState(false);
+    const [visibleAlert, setVisibleAlert] = useState(false);
+    const [message, setMessege] = useState(null)
+
+    const showAlert = (message) => {
+        setVisibleAlert(true)
+        setMessege(message)
+    }
+
+    const hideAlert = (status) => {
+        setVisibleAlert(status)
+    }
 
     const getUsers = async (user) => {
         const docRef = doc(firestore, "users", user);
@@ -40,177 +43,147 @@ export default function EditProfile ({navigation}) {
             console.log("Document data:", docSnap.data());
             const userProfile = {
                 id: docSnap.id,
-                name: docSnap.data().NomeCompleto,
+                name: docSnap.data().Nome_Completo,
                 email: docSnap.data().Email,
                 cellphone: docSnap.data().Celular,
+                cpf: docSnap.data().CPF,
             }
             setName(userProfile.name);
             setEmail(userProfile.email);
             setCellPhone(userProfile.cellphone);
-            } else {
-                console.log("No such document!");
-            }
+            setCpf(userProfile.cpf)
+        } else {
+            console.log("No such document!");
+        }
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
-              getUsers(user.uid);
-              setUser(user.uid);
+                getUsers(user.uid);
+                setUser(user.uid);
             }
-          });
+        });
     }, []);
 
-    async function sendToCustomerPortal () {
-        const functionRef = httpsCallable(functions,'ext-firestore-stripe-payments-createPortalLink');
-            const { data } = await functionRef({
+    async function sendToCustomerPortal() {
+        const functionRef = httpsCallable(functions, 'ext-firestore-stripe-payments-createPortalLink');
+        setLoadingPlan(true);
+        const { data } = await functionRef({
             returnUrl: 'http://loupaz-ec0b1.firebaseapp.com/meuperfil',
-            locale: "auto"});
-            window.location.assign(data.url);
-    }    
+            locale: "auto"
+        })
+        .finally(() => {
+            setLoadingPlan(false);
+          });
+        window.location.assign(data.url)
+
+    }
 
     const salvar = () => {
         const userRef = doc(firestore, "users", user);
-        setDoc(userRef, { 
+        setLoadingSave(true)
+        setDoc(userRef, {
             NomeCompleto: name,
             Celular: cellphone,
         }, { merge: true })
-        .then(()=>{
-            alert('Dados salvos com sucesso.')
-        })
-        .catch((e)=> {
-            console.log('EditProfile, salvar: ' + e);
-        });
-    }
+            .then(() => {
+                showAlert("Concluído! Seus dados salvos com sucesso.")
+            })
+            .catch((e) => {
+                console.log('EditProfile, salvar: ' + e);
+            })
+            .finally(() => {
+                setLoadingSave(false);
+              });
+          }
     return (
-        <KeyboardAvoidingView style={styles.container}>
-          <ScrollView style={{flex: 1}}>
-          <Header goBack={navigation.goBack}/>
-            <View style={styles.divSup}>
-                <Text style={styles.titleTop}>Meu Perfil</Text>
-            </View>
-            <View style={styles.divInf}>
+        <Provider>
+        <Container>
+            <Header goBack={navigation.goBack}/>
+            <ViewPlan>
+                <StandardText padding="0rem 0rem 0.5rem 0rem" textAlign="flex-start">DETALHES DO PLANO:</StandardText>
+                <ViewButton>
+                    <Button
+                        title={'Editar meu plano'}
+                        isLoading={loadingPlan}
+                        onPress={sendToCustomerPortal}
+                        borderRadius="5px"
+                        colorbutton={THEME.COLORS.PRIMARY_700}
+                        colortitle={THEME.COLORS.STANDARD}
+                    ></Button>
+                </ViewButton>
+            </ViewPlan>
 
-            <View style={styles.box}>
-                <Text style={styles.textTitle}>Detalhes do Plano:</Text>
-                <TouchableOpacity 
-                style={styles.textEditar}
-                onPress={sendToCustomerPortal}>
-                    <Text>Alterar ou Cancelar meu plano</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.box}>
-            <Text style={styles.textTitle}>Alterar informações:</Text>
-            <Text style={styles.input}>Não esqueça de salvar suas alterações!</Text>
-                <Text style={styles.text}>Nome Completo:</Text>
-                <TextInput
-                    style={styles.input}
-                    activeUnderlineColor={"green"}
-                    placeholder="Nome"
-                    keyboardType='default'
-                    returnKeyType='go'
-                    onChangeText={(t) => setName(t)}
-                    value={name}
-                />
-                <Text style={styles.text}>Email:</Text>
-                <TextInput
-                    style={styles.input}
-                    activeUnderlineColor={"green"}
-                    placeholder="Email"
-                    keyboardType='email-address'
-                    editable={false}
-                    value={email}
-                />
-                <Text style={styles.text}>Celular:</Text>
-                <TextInput
-                    style={styles.input}
-                    activeUnderlineColor={"green"}
-                    placeholder="(DDD)99999-9999"
-                    keyboardType='default'
-                    returnKeyType='go'
-                    onChangeText={(t) => setCellPhone(t)}
-                    value={cellphone}
-                />
-            </View>
-            <View>
-                <TouchableOpacity 
-                    style={styles.buttonSave}
-                    onPress={salvar}>
-                    <Text>Salvar alterações</Text>
-                </TouchableOpacity>
-            </View>  
-            </View>
-        </ScrollView>
-        </KeyboardAvoidingView>
+            <Content>
+                <StandardText padding="1rem 0rem" textAlign="flex-start">EDITAR INFORMAÇÕES DO CADASTRO:</StandardText>
+                <ViewTextInput>
+                    <ViewDescription>
+                        <SmallText textAlign="flex-start">Nome Completo:</SmallText>
+                    </ViewDescription>
+                    <ViewText>
+                        <TextInput
+                            placeholder="Nome"
+                            keyboardType='default'
+                            returnKeyType='go'
+                            value={name}
+                            onChangeText={(text) => setName(text)}
+                        />
+                    </ViewText>
+                </ViewTextInput>
+                <ViewTextInput>
+                    <ViewDescription>
+                        <SmallText textAlign="flex-start">Email:</SmallText>
+                    </ViewDescription>
+                    <ViewText>
+                        <TextInput
+                            value={email}
+                            editable={false}
+                        />
+                    </ViewText>
+                </ViewTextInput>
+                <ViewTextInput>
+                    <ViewDescription>
+                        <SmallText textAlign="flex-start">Celular:</SmallText>
+                    </ViewDescription>
+                    <ViewText>
+                        <TextInput
+                            placeholder="(DDD)99999-9999"
+                            keyboardType='default'
+                            returnKeyType='go'
+                            value={cellphone}
+                            onChangeText={(text) => setCellPhone(text)}
+                        />
+                    </ViewText>
+                </ViewTextInput>
+                <ViewTextInput>
+                    <ViewDescription>
+                        <SmallText textAlign="flex-start">CPF:</SmallText>
+                    </ViewDescription>
+                    <ViewText>
+                        <TextInput
+                            value={cpf}
+                            editable={false}
+                        />
+                    </ViewText>
+                </ViewTextInput>
+                {visibleAlert &&
+                <AlertBox message={message} visible={visibleAlert} onClose={hideAlert}></AlertBox>
+              }
+                <ViewButton>
+                    <Button
+                        title={'SALVAR'}
+                        isLoading={loadingSave}
+                        onPress={salvar}
+                        borderRadius="5px"
+                        colorbutton={THEME.COLORS.PRIMARY_700}
+                        colortitle={THEME.COLORS.STANDARD}
+                    ></Button>
+                </ViewButton>
+            </Content>
+
+
+        </Container>
+        </Provider>
     );
 };
-
-const styles = StyleSheet.create({
-container:{
-    flex:1,
-    justifyContent:'center',
-    backgroundColor:"white",
-},
-divSup:{
-    backgroundColor:"white",
-    alignItems: 'center',
-    justifyContent:'center',
-    padding:10,
-},
-divInf:{
-    flex:1,
-    alignItems: 'center',
-},
-box:{
-    backgroundColor:"white",
-    borderRadius:15, 
-    paddingHorizontal:10, 
-    marginVertical:10,
-    paddingVertical:10,
-    width:'95%'
-    },
-titleTop:{
-    paddingHorizontal:2,
-    textAlign:'center',
-    fontSize:18,
-    color:"gray"
-    },
-text:{
-    fontSize:14,
-    alignSelf:'flex-start',
-    color: "gray",
-    fontWeight:'bold', 
-    marginTop:8
-},
-textTitle:{
-    fontSize:15,
-    alignSelf:'flex-start',
-    color: "gray",
-    fontWeight:'bold', 
-    marginTop:8
-},
-input:{
-    width: "100%",
-    backgroundColor: "white",
-    height: 40,
-    fontSize:14,
-    color: "gray",
-    alignSelf:'flex-start',
-},
-buttonSave:{
-    backgroundColor: "green",
-    borderRadius:15,
-    flex:1,
-    padding: 10,
-    marginBottom: 20,
-    alignItems:'center',
-    justifyContent:'center'
-},
-textEditar:{
-    fontSize:14,
-    alignItems:'flex-start',
-    marginVertical:8,
-    color: "gray",
-    textDecorationLine:'underline',
-},
-})

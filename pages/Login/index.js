@@ -153,6 +153,7 @@ export default function Login({ navigation }) {
                   title={'ENTRAR'}
                   isLoading={loading}
                   onPress={onLoginPressed}
+                  borderRadius="30px"
                   colorbutton={THEME.COLORS.PRIMARY_900}
                   colortitle={THEME.COLORS.TEXT_BUTTON}
                 ></Button>

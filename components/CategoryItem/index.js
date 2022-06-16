@@ -20,9 +20,9 @@ const CategoryItem = ({ item, plan, courses }) => {
                     <Icon
                         type="material-community"
                         name="lock"
-                        size={24}
+                        size={THEME.FONTSIZE.BIG}
                         iconStyle={{
-                            color: THEME.COLORS.ICON_CLICK,
+                            color: THEME.COLORS.BACKGROUND,
                         }}
                         containerStyle={{ flex: 1, alignSelf: "flex-end", justifyContent: "flex-end", padding: "0.2rem" }}
                     />

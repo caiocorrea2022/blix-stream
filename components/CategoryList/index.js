@@ -8,7 +8,7 @@ import THEME from "../../config/theme";
 import { Icon } from "react-native-elements";
 import ViewPortProvider from "../../hooks/MobileOrDesktop/ViewPortProvider";
 import useViewport from "../../hooks/MobileOrDesktop/useViewport";
-import { StandardText } from "../../config/theme/globalStyles";
+import { Title } from "../../config/theme/globalStyles";
 
 const CategoryList = ({ category, plan, courses }) => {
   const [allCards, setAllCards] = useState([]);
@@ -23,7 +23,7 @@ const CategoryList = ({ category, plan, courses }) => {
       <Icon
         type="material-community"
         name="chevron-left"
-        size={30}
+        size={THEME.FONTSIZE.BIG}
         iconStyle={{
           color: THEME.COLORS.ICON_DRAWER,
           backgroundColor: "rgba(255,255,255,0.3)",
@@ -51,7 +51,7 @@ const CategoryList = ({ category, plan, courses }) => {
       <Icon
         type="material-community"
         name="chevron-right"
-        size={24}
+        size={THEME.FONTSIZE.BIG}
         iconStyle={{
           color: THEME.COLORS.ICON_DRAWER,
           backgroundColor: "rgba(255,255,255,0.3)",
@@ -105,7 +105,7 @@ const CategoryList = ({ category, plan, courses }) => {
   return (
     <ViewPortProvider>
       <Container>
-        <StandardText maxWidth="230" textAlign="flex-start" numberOfLines={1}>{category.title}</StandardText>
+        <Title maxWidth="230" textAlign="flex-start" numberOfLines={1}>{category.title}</Title>
         <Content>
           <MobileOrDesktopLeftArrow></MobileOrDesktopLeftArrow>
           <FlatList

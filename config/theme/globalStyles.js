@@ -77,6 +77,7 @@ export const SmallText = styled.Text`
     margin: ${({ margin }) => (margin ? margin : '0')};
     max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : 'auto')};
     padding: ${({ padding }) => (padding ? padding : '0')};
+    text-decoration-line: ${({ textDecoration }) => (textDecoration ? textDecoration: '')};
 `;
 
 export const FooterText = styled.Text`

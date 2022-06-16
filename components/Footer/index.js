@@ -16,7 +16,7 @@ const Footer = () => {
             key={index}
             type={social.type}
             name={social.name}
-            size={18}
+            size={THEME.FONTSIZE.EXTRAMEDIUM}
             onPress={() => Linking.openURL(social.link)}
             iconStyle={{
               color: THEME.COLORS.ICON_DRAWER,

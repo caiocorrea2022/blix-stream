@@ -1,4 +1,6 @@
 export const clientName = "Yoga Luz Studio";
+export const titleMain = "Seja bem-vindo(a)";
+export const subtitleMain = "Aqui você irá imergir em autoconhecimento.";
 
 export const planFrequency = [
   { id: "1", frequency: "Mensal" },
@@ -7,8 +9,8 @@ export const planFrequency = [
   { id: "4", frequency: "Anual" },
 ];
 
-export const subtitlePlan =
-  "Teste grátis por 7 dias. Pagamento automático no boleto ou no cartão de crédito. Pode cancelar quando desejar.";
+export const subtitlePlan = "Teste grátis por 7 dias. Pagamento automático no boleto ou no cartão de crédito. Pode cancelar quando desejar.";
+
 export const planPrices = [
   ["R$200,00/mês", "R$220,00/mês", "R$250,00/mês"],
   ["R$400,00/trimestre", "R$420,00/trimestre", "R$450,00/trimestre"],

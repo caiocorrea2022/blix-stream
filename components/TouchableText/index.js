@@ -2,10 +2,10 @@ import React from 'react';
 import { SmallText } from '../../config/theme/globalStyles';
 import { Touchable } from './style';
 
-const TouchableText = ({ title, icon, ...rest }) => {
+const TouchableText = ({ title, color, textDecoration, icon, onPress, ...rest }) => {
     return (
         <Touchable {...rest}>
-            <SmallText>{title}</SmallText>
+            <SmallText textDecoration={textDecoration} color={color} onPress={onPress}>{title}</SmallText>
         </Touchable>
     )
 }

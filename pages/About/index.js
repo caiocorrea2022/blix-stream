@@ -65,7 +65,9 @@ export default function About({ navigation }) {
             title={'Ver todas as aulas'}
             colorbutton={THEME.COLORS.PRIMARY_900}
             onPress={() => navigation.navigate("Main")}
-            colortitle={THEME.COLORS.BACKGROUND}>
+            colortitle={THEME.COLORS.TEXT_BUTTON}
+            borderRadius="30px"
+            >
           </Button>
         </View>
       </Section>

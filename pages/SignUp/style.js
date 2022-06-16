@@ -43,7 +43,6 @@ export const Content = styled.View`
 
 export const Footer = styled.View`
   flex: 0.5;
-  flex-direction: row;
   padding: 0.5rem 0rem;
   justify-content:center;
   align-items: center;
