@@ -4,7 +4,7 @@ import { FooterText, SmallText } from "../../config/theme/globalStyles";
 import THEME from "../../config/theme";
 import { footerSocialData, clientName } from "../../config/data";
 import { Icon } from "react-native-elements";
-import { Linking } from 'react-native';
+import { Linking, TouchableOpacity } from 'react-native';
 
 const Footer = () => {
   return (
@@ -28,8 +28,10 @@ const Footer = () => {
       </FooterLeftSide>
       <FooterRightSide>
         <FooterText margin="0rem 0.5rem">Desenvolvido por</FooterText>
-        <Logo source={require("./../../assets/blix.svg")}></Logo>
-        <FooterText fontFamily={THEME.FONTFAMILY.BOLD} margin="0rem 0.5rem">BLIX</FooterText>
+        <TouchableOpacity onPress={() => Linking.openURL("https://www.instagram.com/blix.aplicativos/")}>
+          <Logo source={require("./../../assets/blix.svg")} ></Logo>
+        </TouchableOpacity>
+        <FooterText fontFamily={THEME.FONTFAMILY.BOLD} margin="0rem 0.5rem" onPress={() => Linking.openURL("https://www.instagram.com/blix.aplicativos/")}>BLIX</FooterText>
       </FooterRightSide>
     </Container>
   );

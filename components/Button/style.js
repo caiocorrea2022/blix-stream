@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import THEME from '../../config/theme';
 
 export const Container = styled.TouchableOpacity`
-  width: 18rem;
+  width: 16rem;
   height: 3rem;
   padding: 0.5rem 0rem;
   justify-content: center;

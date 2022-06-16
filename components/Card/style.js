@@ -6,7 +6,6 @@ export const HorizontalList = styled.ScrollView.attrs({
     flexGrow: 1,
     justifyContent: "center",
     flexDirection: "row",
-    backgroundColor:"white"
   },
 })`
 `;
