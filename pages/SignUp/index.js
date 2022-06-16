@@ -10,14 +10,17 @@ import {
   ViewCheckBox,
   ViewText,
   ViewHelper,
-  ViewTitle
+  ViewTitle,
+  VerticalScroll,
+  ContainerSideView,
+  SideView,
 } from "./style";
 import THEME from '../../config/theme';
 import { Provider } from "react-native-paper";
 import TextInput from "../../components/TextInput";
 import CheckBox from "../../components/CheckBox";
 import Button from "../../components/Button";
-import { emailValidator, passwordValidator, nameValidator, cellphoneValidator } from "../../utils";
+import { emailValidator, passwordValidator, nameValidator, cellphoneValidator, cpfValidator } from "../../utils";
 import {
   sendEmailVerification,
   createUserWithEmailAndPassword,
@@ -30,7 +33,7 @@ import { createCheckoutSession } from "../../services/stripe/createCheckoutSessi
 import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../hooks/MobileOrDesktop/useViewport';
 import { HelperText } from 'react-native-paper';
-import { Container, ContainerSideView, SideView, SmallText, Title } from '../../config/theme/globalStyles';
+import {   Title } from '../../config/theme/globalStyles';
 import TouchableText from '../../components/TouchableText';
 
 export default function SignUp({ navigation }) {
@@ -39,6 +42,7 @@ export default function SignUp({ navigation }) {
   const [password, setPassword] = useState({ value: "", error: "" });
   const [confirmPassword, setConfirmPassword] = useState({ value: "", error: "" });
   const [cellphone, setCellPhone] = useState({ value: "", error: "" });
+  const [cpf, setCpf] = useState({ value: "", error: "" });
   const [loading, setLoading] = useState(false);
   const [isSelected, setSelected] = useState(false);
   const [visibleAlert, setVisibleAlert] = useState(false);
@@ -63,13 +67,15 @@ export default function SignUp({ navigation }) {
     const passwordError = passwordValidator(password.value);
     const confirmPasswordError = passwordValidator(confirmPassword.value);
     const cellphoneError = cellphoneValidator(cellphone.value);
+    const cpfError = cpfValidator(cpf.value);
 
-    if (emailError || passwordError || nameError || cellphoneError) {
+    if (emailError || passwordError || nameError || cellphoneError || cpfError) {
       setName({ ...name, error: nameError });
       setEmail({ ...email, error: emailError });
       setPassword({ ...password, error: passwordError });
       setConfirmPassword({ ...confirmPassword, error: confirmPasswordError });
       setCellPhone({ ...cellphone, error: cellphoneError });
+      setCpf({ ...cpf, error: cpfError });
       setLoading(false);
       return;
     }
@@ -82,9 +88,9 @@ export default function SignUp({ navigation }) {
       if (isSelected === false) {
         showAlert("Erro", "Para prosseguir você precisa estar de acordo com os Termos de Uso e a Política de Privacidade.");
       }
-      else if (email.value && password.value && name.value && cellphone.value) {
+      else if (email.value && password.value && name.value && cellphone.value && cpf.value) {
         setLoading(true);
-        createUserWithEmailAndPassword(auth, email.value, password.value, cellphone.value)
+        createUserWithEmailAndPassword(auth, email.value, password.value, cellphone.value, cpf.value)
           .then((currentUser) => {
             console.log("user criado");
             const user = currentUser.user;
@@ -93,7 +99,8 @@ export default function SignUp({ navigation }) {
               await setDoc(usersCollectionRef, {
                 Nome_Completo: name.value,
                 Email: email.value,
-                Celular: cellphone.value
+                Celular: cellphone.value,
+                CPF: cpf.value,
               });
               console.log('user criado')
               console.log(user)
@@ -138,7 +145,7 @@ export default function SignUp({ navigation }) {
     const { width } = useViewport();
     const breakpoint = 1080;
 
-    return width < breakpoint ? <View></View> : <SideView flex="0.9"></SideView>;
+    return width < breakpoint ? <View></View> : <SideView width="50%"></SideView>;
   };
 
 
@@ -146,7 +153,7 @@ export default function SignUp({ navigation }) {
     <Provider>
       <ViewPortProvider>
         <ContainerSideView>
-          <Container>
+          <VerticalScroll>
             <Header goBack={navigation.goBack} />
             <ViewTitle>
               <Title textAlign="flex-start" padding="0rem 0rem 0rem 1rem">Cadastrar</Title>
@@ -205,6 +212,22 @@ export default function SignUp({ navigation }) {
               <ViewTextInput>
                 <ViewText>
                   <TextInput
+                    label="CPF"
+                    placeholder=""
+                    returnKeyType="done"
+                    value={cpf.value}
+                    onChangeText={(text) => setCpf({ value: text, error: "" })}
+                    error={!!cpf.error}
+                    keyboardType="phone-pad"
+                  />
+                </ViewText>
+                <ViewHelper>
+                  <HelperText type="error" visible={cpf.error}>{cpf.error}</HelperText>
+                </ViewHelper>
+              </ViewTextInput>
+              <ViewTextInput>
+                <ViewText>
+                  <TextInput
                     label="Senha"
                     placeholder="Digite uma senha"
                     returnKeyType="next"
@@ -252,6 +275,8 @@ export default function SignUp({ navigation }) {
                 colorbutton={THEME.COLORS.PRIMARY_900}
                 colortitle={THEME.COLORS.TEXT_BUTTON}
                 borderRadius="30px"
+                width="30%"
+                height="100%"
               ></Button>
             </ViewButton>
             {visibleAlert &&
@@ -265,7 +290,7 @@ export default function SignUp({ navigation }) {
             <Footer>
               <TouchableText textDecoration="underline" onPress={() => navigation.navigate("Login")} title={'Já possuo uma conta'} color={THEME.COLORS.PRIMARY_900}></TouchableText>
             </Footer>
-          </Container>
+            </VerticalScroll>
           <MobileOrDesktopComponent></MobileOrDesktopComponent>
         </ContainerSideView>
       </ViewPortProvider>

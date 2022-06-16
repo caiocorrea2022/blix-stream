@@ -70,7 +70,7 @@ const Pricing = ({ navigation, userId }) => {
               key={index}
               color={THEME.COLORS.SUB_TITLE}
               title={item.planType}
-              price={option[index]}
+              price={option[index].price}
               info={[
                 upsell[index],
                 ...item.info
@@ -112,7 +112,7 @@ const Pricing = ({ navigation, userId }) => {
               }}
               onButtonPress={() =>
                 userId ?
-                  createCheckoutSession(userId, "price_1L5qw3CmcyIwF9rcW6VuPvSg", "subscription", 6) :
+                  createCheckoutSession(userId, option[index].priceId, "subscription", option[index].iterations) :
                   navigation.navigate("SignUp")
               }
             />

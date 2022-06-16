@@ -1,13 +1,14 @@
 import React from 'react';
-import { Video } from 'expo-av';
+import ReactPlayer from 'react-player';
 
 const VideoPlayer = ({ video }) => {
     return (
-        <Video
-            source={{ uri: video }}
-            useNativeControls
-            style={{ width: '100%', aspectRatio: 16 / 9, }}
-            resizeMode="contain"
+        <ReactPlayer
+            url={video}
+            playing={false}
+            width={"100%"}
+            controls={true}
+            height={"100%"}
         />
     )
 }

@@ -17,6 +17,8 @@ export const Image = styled.ImageBackground`
 export const ContentVideo = styled.View`
     align-self: center;
     width: 60%;
+    background-color: red;
+    aspect-ratio: 16/9;
 `;
 
 export const ContentList = styled.View`

@@ -14,7 +14,7 @@ const CategoryItem = ({ item, plan, courses }) => {
     return (
         <Touchable onPress={onCardPress}>
             <Image source={{ uri: item.img }}>
-                {plan === item.plan || courses?.includes(item.courseId) ?
+                {plan >= item.plan || courses?.includes(item.priceId) ?
                     <div></div>
                     :
                     <Icon

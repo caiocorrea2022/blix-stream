@@ -19,3 +19,8 @@ export const cellphoneValidator = (cellphone) => {
   if (cellphone.length <= 10) return 'Por favor, preencha seu celular com DDD.';
   return '';
 }
+
+export const cpfValidator = (cpf) => {
+  if (cpf.length <= 11) return 'Por favor, preencha um CPF válido.';
+  return '';
+}
