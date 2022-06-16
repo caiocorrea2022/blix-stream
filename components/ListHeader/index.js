@@ -4,12 +4,8 @@ import { ContentIcon, Container, Content } from "./style";
 import THEME from '../../config/theme';
 import { SmallText, StandardText, Title } from '../../config/theme/globalStyles';
 import { Linking } from 'react-native';
-// import PDF from '../PDF';
-const ListHeader = ({ title, description, pdf, url, navigation }) => {
 
-  const onCardPress = () => {
-    navigation.navigate('ClickClass', { videos: item.videos, name: item.title, description: item.description, pdf: item.pdf, url: item.url })
-}
+const ListHeader = ({ title, description, pdf, url, navigation }) => {
 
   const Pdf = () => {
     return (
