@@ -4,7 +4,7 @@ import { Dimensions } from 'react-native';
 const windowHeight = Dimensions.get('window').height;
 
 export const Section = styled.View`
-    height: ${({ height }) => (height ? height : windowHeight * 0.95)};
+    height: ${({ height }) => (height ? height : windowHeight*0.98)};
 `;
 
 export const ContainerSideView = styled.View`

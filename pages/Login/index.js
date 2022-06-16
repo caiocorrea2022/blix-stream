@@ -106,7 +106,7 @@ export default function Login({ navigation }) {
         <ContainerSideView>
           <Container>
             <ViewImage>
-              <Image source={require('./../../assets/logo.png')}></Image>
+              <Image source={require('./../../assets/Logo.jpg')}></Image>
             </ViewImage>
             <ViewTitle>
               <MainTitle>YOGA LUZ</MainTitle>

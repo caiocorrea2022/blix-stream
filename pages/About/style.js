@@ -7,13 +7,31 @@ export const Container = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: true,
   contentContainerStyle: {
     flex:1,
+    backgroundColor: "white",
   },
 })`  
 `;
 
+export const ViewAboutMe = styled.View`
+  background-color: white;
+`;
+
+export const ViewTitleAboutMe = styled.View`
+  flex-basis: auto;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.5rem;
+`;
+
+
+export const ViewSubtitleAboutMe = styled.View`
+  justify-content: flex-start;
+  flex-basis: auto;
+  padding: 1rem;
+`;
+
 export const Poster = styled.ImageBackground`
-  width: 100%;
-  height: 100%;
+  flex:2;
 `;
 
 export const TitleView = styled.View`
