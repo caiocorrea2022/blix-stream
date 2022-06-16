@@ -76,8 +76,6 @@ const CategoryList = ({ category, plan, courses }) => {
       x = 0;
     }
     setScrollX(x);
-    console.log('x esquerda',x);
-    console.log('scrollx esquerda',scrollX);
   };
 
   const handleRightArrow = () => {
@@ -88,10 +86,12 @@ const CategoryList = ({ category, plan, courses }) => {
     } else if (((window.innerWidth - listW) > x)){
       x = (window.innerWidth - listW) - (23 * allCards.length);
     }
+    console.log(x);
+    console.log(scrollX);
+    console.log(listW);
+    console.log(window.innerWidth);
+    console.log(allCards.length);
     setScrollX(x);
-    console.log('x direita',x);
-    console.log('lista inteira', listW);
-    console.log('scrollx direita',scrollX);
   };
 
   useEffect(() => {
