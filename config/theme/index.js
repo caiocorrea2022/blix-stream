@@ -42,9 +42,11 @@ export default {
     REGULAR: 'Montserrat_400Regular',
     LIGHT: 'Montserrat_300Light',
     EXTRALIGHT: 'Montserrat_200ExtraLight',
+    FONTABOUT: "Rajdhani_Medium",
   },
 
   FONTSIZE:{
+    GIANT: RFValue(50, 1080),
     EXTRABIG: RFValue(24, 1080),
     BIG: RFValue(20, 1080),
     EXTRAMEDIUM: RFValue(18, 1080),

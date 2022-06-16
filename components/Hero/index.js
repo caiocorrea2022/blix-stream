@@ -7,7 +7,7 @@ import { Title, SubTitle } from '../../config/theme/globalStyles';
 const Hero = ({ userId, navigation, button, plan }) => {
 	return (
 		<Container>
-			<Title textAlign="flex-start" color={THEME.COLORS.BACKGROUND}>EMILY MONTEIRO</Title>
+			<Title textAlign="flex-start" color={THEME.COLORS.BACKGROUND} fontFamily={THEME.FONTFAMILY.FONTABOUT} fontSize={THEME.FONTSIZE.GIANT}>EMILY MONTEIRO</Title>
 			{button ?
 				plan ? (
 					<></>

@@ -22,7 +22,8 @@ export default function App() {
     Montserrat_400Regular: require('./assets/fonts/Montserrat-Regular.ttf'),
     Montserrat_500Medium: require('./assets/fonts/Montserrat-Medium.ttf'),
     Montserrat_700Bold: require('./assets/fonts/Montserrat-Bold.ttf'),
-    Montserrat_800ExtraBold: require('./assets/fonts/Montserrat-ExtraBold.ttf')
+    Montserrat_800ExtraBold: require('./assets/fonts/Montserrat-ExtraBold.ttf'),
+    Rajdhani_Medium: require('./assets/fonts/Rajdhani-Medium.ttf'),
   });
 
   if (!fontsLoaded) {

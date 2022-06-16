@@ -20,14 +20,14 @@ export const ViewTitleAboutMe = styled.View`
   flex-basis: auto;
   align-items: center;
   justify-content: center;
-  padding-top: 0.5rem;
+  padding: 1rem 0rem 1rem 0rem;
 `;
 
 
 export const ViewSubtitleAboutMe = styled.View`
   justify-content: flex-start;
   flex-basis: auto;
-  padding: 1rem;
+  padding: 0rem 2rem;
 `;
 
 export const Poster = styled.ImageBackground`
