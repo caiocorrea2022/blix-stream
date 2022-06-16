@@ -27,7 +27,7 @@ function TermsofUse({ navigation }) {
         <Icon
           type="material-icons"
           name="close"
-          size={24}
+          size={THEME.FONTSIZE.BIG}
           color={THEME.COLORS.ICON_DRAWER} />
       </ContentIcon>
     );

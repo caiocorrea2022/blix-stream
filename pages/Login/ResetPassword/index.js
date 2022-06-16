@@ -72,8 +72,9 @@ export default function ResetPassword() {
         title={'ENVIAR'}
         isLoading={loading}
         onPress={onResetPressed}
+        borderRadius="30px"
         colorbutton={THEME.COLORS.PRIMARY_900}
-        colortitle={THEME.COLORS.BACKGROUND}>
+        colortitle={THEME.COLORS.TEXT_BUTTON}>
       </Button>
 
       {error && (

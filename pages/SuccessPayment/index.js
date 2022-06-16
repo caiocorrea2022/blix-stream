@@ -120,8 +120,9 @@ export default function Success({ navigation }) {
         <Button
           title={"Fazer Login"}
           onPress={() => { navigation.navigate("Login"), postGoogle() }}
-          colortitle={THEME.COLORS.STANDARD}
+          borderRadius="30px"
           colorbutton={THEME.COLORS.BACKGROUND}
+          colortitle={THEME.COLORS.STANDARD}
         ></Button>
       </Container>
     </Provider>

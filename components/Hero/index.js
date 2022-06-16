@@ -17,14 +17,18 @@ const Hero = ({ userId, navigation, button, plan }) => {
 							title={'VER PLANOS'}
 							colorbutton={THEME.COLORS.PRIMARY_900}
 							onPress={() => navigation.navigate("Plans", { userId })}
-							colortitle={THEME.COLORS.TEXT_BUTTON}>
+							colortitle={THEME.COLORS.TEXT_BUTTON}
+							borderRadius="30px"
+							>
 						</Button> 
 						) : 
 						<Button
 							title={'ASSINAR AGORA'}
 							colorbutton={THEME.COLORS.PRIMARY_900}
 							onPress={() => navigation.navigate("Plans", { userId })}
-							colortitle={THEME.COLORS.TEXT_BUTTON}>
+							colortitle={THEME.COLORS.TEXT_BUTTON}
+							borderRadius="30px"
+							>
 						</Button>
 				) :
 				<></>
