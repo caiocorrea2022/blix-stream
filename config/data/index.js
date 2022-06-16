@@ -2,6 +2,7 @@ export const clientName = "Yoga Luz Studio";
 export const titleMain = "Seja bem-vindo(a)";
 export const subtitleMain = "Aqui você irá imergir em autoconhecimento.";
 
+
 export const planFrequency = [
   { id: "1", frequency: "Mensal" },
   { id: "2", frequency: "Trimestral" },
@@ -244,43 +245,52 @@ export const coursesInfo = [
     title: "Workshop Yoga Terapia",
     info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
     price: "R$ 100,00",
+    image: require("./../../assets/FotoCurso1.jpg"),
   },
   {
     title: "Curso de Meditação",
     info: "lit repudiandae et atque praesentium.",
     price: "R$ 120,00",
+    image: require("./../../assets/FotoCurso2.jpg"),
   },
   {
     title: "Retiro",
     info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
     price: "R$ 450,00",
+    image: require("./../../assets/FotoCurso3.jpg"),
   },
 ];
 
 export const categoriesInfo = [
   {
-    title: "Hatha",
-    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
+    title: "Hath Yoga",
+    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos.",
+    image: require("./../../assets/FotoCategoria1.jpg"),
   },
   {
-    title: "Curso de Meditação",
+    title: "Meditações",
     info: "lit repudiandae et atque praesentium.",
+    image: require("./../../assets/FotoCategoria2.jpg"),
   },
   {
-    title: "Retiro Sensacional",
-    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
+    title: "Aulas ao Vivo",
+    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit!",
+    image: require("./../../assets/FotoCategoria3.jpg"),
   },
   {
-    title: "Lorem",
-    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
+    title: "Tutoriais",
+    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumend.",
+    image: require("./../../assets/FotoCategoria4.jpg"),
   },
   {
-    title: "Top 10 do mês",
+    title: "Relaxamento",
     info: "lit repudiandae et atque praesentium.",
+    image: require("./../../assets/FotoCategoria5.jpg"),
   },
   {
-    title: "Oiiiiii",
-    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos officiis consequatur 33 velit repudiandae et atque praesentium.",
+    title: "Jornadas",
+    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste!",
+    image: require("./../../assets/FotoCategoria6.jpg"),
   },
 ];
 

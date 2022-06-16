@@ -40,10 +40,10 @@ const Header = ({ login, goBack, navigation, about, background }) => {
           {about ? (
             <>
               <StandardText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem" onPress={() => navigation.dispatch(jumpToAction)}>ACESSAR AULAS</StandardText>
-              <Avatar resizeMode="contain" source={require("../../assets/logo.png")} />
+              <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
             </>
           ) : (
-            <Avatar resizeMode="contain" source={require("../../assets/logo.png")} />
+            <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
           )}
         </HeaderRightSide>
       </HeaderContainer>
@@ -76,10 +76,10 @@ const Header = ({ login, goBack, navigation, about, background }) => {
           {about ? (
             <>
               <StandardText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem" onPress={() => navigation.navigate("Login")}>LOGIN</StandardText>
-              <Avatar resizeMode="contain" source={require("../../assets/logo.png")} />
+              <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
             </>
           ) : (
-            <Avatar resizeMode="contain" source={require("../../assets/logo.png")} />
+            <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
           )}
         </HeaderRightSide>
       </HeaderContainer>

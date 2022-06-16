@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import THEME from '../../config/theme';
 
 export const HorizontalList = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
@@ -11,9 +12,8 @@ export const HorizontalList = styled.ScrollView.attrs({
 `;
 
 export const HorizontalListView = styled.View`
-  flex:1;
-  padding: 1rem 0rem;
-  background-color: white;
+  flex-basis: auto;
+  padding: 2rem 1rem 0rem 1rem;
 `;
 
 export const Text = styled.Text`
