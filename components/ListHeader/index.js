@@ -5,7 +5,7 @@ import THEME from '../../config/theme';
 import { SmallText, StandardText, Title } from '../../config/theme/globalStyles';
 import { Linking } from 'react-native';
 
-const ListHeader = ({ title, description, pdf, url }) => {
+const ListHeader = ({ title, description, pdf, url, navigation }) => {
 
   const Pdf = () => {
     return (
@@ -15,7 +15,7 @@ const ListHeader = ({ title, description, pdf, url }) => {
           name="picture-as-pdf"
           size={28}
           color={THEME.COLORS.ICON_CLICK}
-          onPress={() => Linking.openURL(pdf)}
+          onPress={() => {navigation.navigate('PDFView', {pdf:pdf})}}
         />
         <SmallText margin="1rem 0rem">Material em PDF</SmallText>
       </ContentIcon>

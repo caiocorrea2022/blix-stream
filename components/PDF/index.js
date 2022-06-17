@@ -1,20 +1,9 @@
 import * as React from 'react';
-import { WebView } from 'react-native-webview';
-import { StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
+import { Container } from './style';
 
-export default function webvisualização() {
+export default function PDF({pdf}) {
   return (
-    <WebView 
-      style={styles.container}
-      source={{ uri: 'https://expo.dev' }}
-    />
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: Constants.statusBarHeight,
-  },
-});
+    <Container>
+       <iframe src={pdf} />
+    </Container>
+  )};
