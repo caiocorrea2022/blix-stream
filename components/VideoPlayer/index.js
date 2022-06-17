@@ -9,6 +9,13 @@ const VideoPlayer = ({ video }) => {
             width={"100%"}
             controls={true}
             height={"100%"}
+            config={{
+                file:{
+                    attributes:{
+                        controlsList: 'nodownload'
+                    }
+                }
+            }}
         />
     )
 }
