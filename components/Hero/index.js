@@ -3,8 +3,11 @@ import { Container } from './style';
 import THEME from '../../config/theme';
 import Button from '../Button';
 import { Title, SubTitle } from '../../config/theme/globalStyles';
+import { DrawerActions } from '@react-navigation/native';
 
 const Hero = ({ userId, navigation, button, plan }) => {
+	const jumpToAction = DrawerActions.jumpTo('Aulas');
+
 	return (
 		<Container>
 			<Title textAlign="flex-start" color={THEME.COLORS.BACKGROUND} fontFamily={THEME.FONTFAMILY.FONTABOUT} fontSize={THEME.FONTSIZE.GIANT}>EMILY MONTEIRO</Title>
