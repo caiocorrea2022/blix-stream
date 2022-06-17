@@ -7,7 +7,7 @@ import {
   ViewTitleAboutMe,
   ViewSubtitleAboutMe,
 } from "./style";
-import { DrawerActions } from '@react-navigation/native';
+import { DrawerActions } from "@react-navigation/native";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Hero from "../../components/Hero";
@@ -54,7 +54,7 @@ export default function About({ navigation }) {
     });
   }, []);
 
-  const jumpToAction = DrawerActions.jumpTo('Aulas');
+  const jumpToAction = DrawerActions.jumpTo("Aulas");
 
   return (
     <Container>
@@ -80,7 +80,10 @@ export default function About({ navigation }) {
           <StandardText>SOBRE MIM</StandardText>
         </ViewTitleAboutMe>
         <ViewSubtitleAboutMe>
-          <SmallText textAlign="flex-start" fontFamily={THEME.FONTFAMILY.REGULAR}>
+          <SmallText
+            textAlign="flex-start"
+            fontFamily={THEME.FONTFAMILY.REGULAR}
+          >
             {aboutText}
           </SmallText>
         </ViewSubtitleAboutMe>
@@ -136,9 +139,13 @@ export default function About({ navigation }) {
           navigation={navigation}
         ></CardInfo>
       </Section>
-      <Section background={THEME.COLORS.PRIMARY_700}>
-        <Pricing></Pricing>
-      </Section>
+      {plan ? (
+        <></>
+      ) : (
+        <Section background={THEME.COLORS.PRIMARY_700}>
+          <Pricing></Pricing>
+        </Section>
+      )}
       <Footer></Footer>
       {/* <CookieConsentFunction></CookieConsentFunction> */}
     </Container>
