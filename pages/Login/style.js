@@ -43,7 +43,6 @@ export const ViewHelper = styled.View`
 `;
 
 export const ViewButton = styled.View`
-  width: 100%;
   padding: 1rem 0rem;
   justify-content:center;
   align-items: center;

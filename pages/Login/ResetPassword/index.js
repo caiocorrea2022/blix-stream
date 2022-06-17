@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, FormMessage } from './style';
+import { Container, FormMessage, ViewButton, ViewText, ViewHelper, ViewTextInput } from './style';
 import { emailValidator } from '../../../utils';
 import TextInput from '../../../components/TextInput';
 import Button from '../../../components/Button';
@@ -30,7 +30,7 @@ export default function ResetPassword() {
     }
     sendPasswordResetEmail(auth, email.value)
       .then(() => {
-        setResult('Enviamos um e-mail de recuperação de senha este email');
+        setResult('Enviamos um e-mail de recuperação de senha para este email.');
       })
       .catch((e) => {
         console.log(e);
@@ -39,7 +39,7 @@ export default function ResetPassword() {
             setError('Usuário não cadastrado. Verifique se o email está correto.');
             break;
           case 'auth/invalid-email':
-            setError('E-mail inválido');
+            setError('E-mail inválido.');
             break;
           case 'auth/user-disabled':
             setError('Usuário desabilitado.');
@@ -55,47 +55,61 @@ export default function ResetPassword() {
   return (
     <Container>
       <SubTitle textAlign="flex-start" margin="0rem 0rem 2rem 0rem">Redefina a sua senha:</SubTitle>
-      <TextInput
-        label="Email"
-        returnKeyType="next"
-        value={email.value}
-        onChangeText={text => setEmail({ value: text, error: '' })}
-        error={!!email.error}
-        autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
-      />
-      <HelperText type="error" visible={email.error}>{email.error}</HelperText>
-
-      <Button
-        title={'ENVIAR'}
-        isLoading={loading}
-        onPress={onResetPressed}
-        borderRadius="30px"
-        colorbutton={THEME.COLORS.PRIMARY_900}
-        colortitle={THEME.COLORS.TEXT_BUTTON}>
-      </Button>
-
-      {error && (
-        <FormMessage
-          variants={messageVariants}
-          initial="hidden"
-          animate="animate"
-          error
-        >
-          {error}
-        </FormMessage>
-      )}
-      {result && (
-        <FormMessage
-          variants={messageVariants}
-          initial="hidden"
-          animate="animate"
-        >
-          {result}
-        </FormMessage>
-      )}
-    </Container>
+      <ViewTextInput>
+        <ViewText>
+          <TextInput
+            label="Email"
+            returnKeyType="next"
+            value={email.value}
+            onChangeText={text => setEmail({ value: text, error: '' })}
+            error={!!email.error}
+            autoCapitalize="none"
+            autoCompleteType="email"
+            textContentType="emailAddress"
+            keyboardType="email-address"
+          />
+        </ViewText>
+        <ViewHelper>
+          <HelperText type="error" visible={email.error}>{email.error}</HelperText>
+        </ViewHelper>
+      </ViewTextInput>
+      <ViewButton>
+        <Button
+          title={'Enviar'}
+          isLoading={loading}
+          onPress={onResetPressed}
+          colorbutton={THEME.COLORS.PRIMARY_900}
+          colortitle={THEME.COLORS.TEXT_BUTTON}
+          borderRadius="30px"
+          width="30%"
+          height="100%"
+        ></Button>
+      </ViewButton>
+      <ViewButton>
+        {
+          error && (
+            <FormMessage
+              variants={messageVariants}
+              initial="hidden"
+              animate="animate"
+              error
+            >
+              {error}
+            </FormMessage>
+          )
+        }
+        {
+          result && (
+            <FormMessage
+              variants={messageVariants}
+              initial="hidden"
+              animate="animate"
+            >
+              {result}
+            </FormMessage>
+          )
+        }
+      </ViewButton>
+    </Container >
   );
 }

@@ -131,10 +131,10 @@ export default function SignUp({ navigation }) {
             }
           });
       }
-    }
     else {
       showAlert("Erro", "Para prosseguir você precisa estar de acordo com os Termos de Uso e a Política de Privacidade.");
     }
+  }
   }
 
   const MobileOrDesktopComponent = () => {
