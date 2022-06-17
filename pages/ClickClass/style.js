@@ -25,5 +25,4 @@ export const ContentList = styled.View`
     align-self: center;
     width: 30%;
     height: 76%;
-    background-color: red;
 `;
