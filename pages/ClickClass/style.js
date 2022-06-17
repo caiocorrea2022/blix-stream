@@ -1,10 +1,4 @@
 import styled from 'styled-components/native';
-import THEME from '../../config/theme';
-
-export const Container = styled.View`
-    flex: 1;
-    background-color: ${THEME.COLORS.BACKGROUND};
-`;
 
 export const Image = styled.ImageBackground`
   width: 100%;
@@ -14,15 +8,21 @@ export const Image = styled.ImageBackground`
   overflow: hidden;
 `;
 
-export const ContentVideo = styled.View`
+export const ContentVideoDesktop = styled.View`
     align-self: center;
     width: 60%;
-    background-color: red;
     aspect-ratio: 16/9;
+`;
+
+export const ContentVideoMobile = styled.View`
+    align-self: center;
+    width: 95%;
+    aspect-ratio: 16/9;
+    margin-bottom:2rem
 `;
 
 export const ContentList = styled.View`
     align-self: center;
     width: 30%;
-    height: 76%
+    height: 76%;
 `;

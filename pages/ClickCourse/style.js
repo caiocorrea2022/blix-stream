@@ -21,7 +21,14 @@ export const ContentList = styled.View`
   padding: 2rem 0rem;
 `;
 
-export const ContentPrice = styled.View`
-  width: 70%; 
+export const ViewText = styled.View`
+  width: 100%; 
   align-self: center;
+  margin:0rem 0rem 1rem 0rem;
+  background-color: pink;
+`;
+
+export const ViewButton = styled.View`
+  padding: 1rem 0rem;
+  align-self: ${({ alignSelf }) => (alignSelf ? alignSelf : 'center')};
 `;

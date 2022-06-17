@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { FlatList, ImageBackground, TouchableOpacity } from "react-native";
-import { View, Text } from "react-native";
-import { Container, ContentVideo, ContentList, Image } from './style';
+import { FlatList, TouchableOpacity } from "react-native";
+import { View } from "react-native";
+import { ContentVideoDesktop, ContentVideoMobile, ContentList, Image } from './style';
 import VideoPlayer from "../../components/VideoPlayer";
 import Header from "../../components/Header";
 import PlayList from "../../components/PlayList";
@@ -9,7 +9,7 @@ import ViewPortProvider from "../../hooks/MobileOrDesktop/ViewPortProvider";
 import useViewport from "../../hooks/MobileOrDesktop/useViewport";
 import ListHeader from "../../components/ListHeader";
 import THEME from "../../config/theme";
-import { StandardText } from "../../config/theme/globalStyles";
+import { StandardText, Container } from "../../config/theme/globalStyles";
 import Button from "../../components/Button";
 import TouchableText from "../../components/TouchableText";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -69,12 +69,12 @@ const ClickClass = ({ route, navigation }) => {
     const breakpoint = 1080;
 
     return width < breakpoint ? (
-      <View style={{ width: "95%", alignSelf: "center" }}>
+      <ContentVideoMobile>
         {login ? (
           <VideoPlayer video={video.link} />
         ) : (
           <Image source={{ uri: 'https://picsum.photos/700' }} resizeMode="cover">
-            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', aspectRatio: 16 / 9, justifyContent: "center" }}>
+            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', height: "100%", justifyContent: "center" }}>
               <Button
                 title={'COMPRAR AGORA'}
                 colorbutton={THEME.COLORS.PRIMARY_900}
@@ -91,14 +91,14 @@ const ClickClass = ({ route, navigation }) => {
             </View>
           </Image>
         )}
-      </View>
+      </ContentVideoMobile>
     ) : (
-      <ContentVideo>
+      <ContentVideoDesktop>
         {login ? (
           <VideoPlayer video={video.link} />
         ) : (
           <Image source={{ uri: 'https://picsum.photos/700' }} resizeMode="cover">
-            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', aspectRatio: 16 / 9, justifyContent: "center" }}>
+            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', justifyContent: "center" }}>
               <Button
                 title={'COMPRAR AGORA'}
                 colorbutton={THEME.COLORS.PRIMARY_900}
@@ -115,7 +115,7 @@ const ClickClass = ({ route, navigation }) => {
             </View>
           </Image>
         )}
-      </ContentVideo>
+      </ContentVideoDesktop>
     );
   };
 

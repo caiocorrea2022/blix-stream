@@ -33,7 +33,7 @@ export default function Login({ navigation: { goBack } }) {
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  const containerStyle = { backgroundColor: THEME.COLORS.BACKGROUND, padding: "2rem", margin: "2rem", alignSelf:"center"};
+  const containerStyle = { backgroundColor: THEME.COLORS.BACKGROUND, padding: "2rem", width: Math.round(window.innerWidth * 0.7), alignSelf: "center" };
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
   const [loading, setLoading] = useState(false);
@@ -63,16 +63,16 @@ export default function Login({ navigation: { goBack } }) {
       return;
     }
     setPersistence(auth, browserLocalPersistence)
-    .then(() => {
-    signInWithEmailAndPassword(auth, email.value, password.value)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        if (user.emailVerified === false) {
-          showAlert("Erro", "E-mail não verificado. Confira sua caixa de entrada.")
-        } else
-          navigation.navigate('DrawerNavigatorScreen')
+      .then(() => {
+        signInWithEmailAndPassword(auth, email.value, password.value)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            if (user.emailVerified === false) {
+              showAlert("Erro", "E-mail não verificado. Confira sua caixa de entrada.")
+            } else
+              navigation.navigate('DrawerNavigatorScreen')
+          })
       })
-    })
       .catch((error) => {
         console.log(error.code)
         switch (error.code) {
@@ -106,7 +106,7 @@ export default function Login({ navigation: { goBack } }) {
       <ViewPortProvider>
         <ContainerSideView>
           <Container>
-          <HeaderContainer style={{justifyContent:"flex-start", alignItems:"center"}}>
+            <HeaderContainer style={{ justifyContent: "flex-start", alignItems: "center" }}>
               <Icon
                 type="material-community"
                 name="chevron-left"
@@ -164,9 +164,11 @@ export default function Login({ navigation: { goBack } }) {
                   title={'ENTRAR'}
                   isLoading={loading}
                   onPress={onLoginPressed}
-                  borderRadius="30px"
                   colorbutton={THEME.COLORS.PRIMARY_900}
                   colortitle={THEME.COLORS.TEXT_BUTTON}
+                  borderRadius="30px"
+                  width="30%"
+                  height="100%"
                 ></Button>
               </ViewButton>
               {visibleAlert &&

@@ -10,3 +10,22 @@ export const FormMessage = styled.Text`
   font-family: ${THEME.FONTFAMILY.REGULAR};
 	text-align: center;
 `;
+
+export const ViewButton = styled.View`
+  padding: 0.5rem 0rem;
+  justify-content:center;
+  align-items: center;
+`;
+
+export const ViewTextInput = styled.View`
+  height: 5rem;
+`;
+
+export const ViewText = styled.View`
+  height: 80%;
+`;
+
+export const ViewHelper = styled.View`
+  height: 20%;
+  justify-content: center;
+`;
