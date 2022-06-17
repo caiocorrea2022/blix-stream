@@ -7,6 +7,7 @@ import {
   ViewTitleAboutMe,
   ViewSubtitleAboutMe,
 } from "./style";
+import { DrawerActions } from '@react-navigation/native';
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Hero from "../../components/Hero";
@@ -52,6 +53,8 @@ export default function About({ navigation }) {
       }
     });
   }, []);
+
+  const jumpToAction = DrawerActions.jumpTo('Aulas');
 
   return (
     <Container>
@@ -109,7 +112,7 @@ export default function About({ navigation }) {
           <Button
             title={"Ver todas as aulas"}
             colorbutton={THEME.COLORS.PRIMARY_900}
-            onPress={() => navigation.navigate("Main")}
+            onPress={() => navigation.dispatch(jumpToAction)}
             colortitle={THEME.COLORS.TEXT_BUTTON}
             borderRadius="30px"
           ></Button>
