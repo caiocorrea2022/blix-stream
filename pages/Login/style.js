@@ -26,12 +26,11 @@ export const ViewTitle = styled.View`
 export const Content = styled.View`
   flex: 5;
   justify-content: flex-start;
-  padding: 1rem 2rem;
+  padding: 1rem 4rem;
 `;
 
 export const ViewTextInput = styled.View`
   height: 5rem;
-  padding: 0rem 4rem;
 `;
 
 export const ViewText = styled.View`

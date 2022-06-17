@@ -23,11 +23,12 @@ import THEME from '../../config/theme';
 import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../hooks/MobileOrDesktop/useViewport';
 import { HelperText } from 'react-native-paper';
-import { MainTitle, Container, ContainerSideView, SideView } from '../../config/theme/globalStyles';
+import { MainTitle, Container, ContainerSideView, SideView, HeaderContainer } from '../../config/theme/globalStyles';
+import { Icon } from 'react-native-elements';
 
 const auth = getAuth();
 
-export default function Login({ navigation }) {
+export default function Login({ navigation: { goBack } }) {
 
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
@@ -105,6 +106,16 @@ export default function Login({ navigation }) {
       <ViewPortProvider>
         <ContainerSideView>
           <Container>
+          <HeaderContainer style={{justifyContent:"flex-start", alignItems:"center"}}>
+              <Icon
+                type="material-community"
+                name="chevron-left"
+                color={THEME.COLORS.PRIMARY_900}
+                size={THEME.FONTSIZE.BIG}
+                onPress={() => goBack()}
+              />
+              <TouchableText onPress={() => goBack()} title={'Voltar'} color={THEME.COLORS.PRIMARY_900}></TouchableText>
+            </HeaderContainer>
             <ViewImage>
               <Image source={require('./../../assets/Logo.jpg')}></Image>
             </ViewImage>

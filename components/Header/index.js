@@ -30,7 +30,7 @@ const Header = ({ login, goBack, navigation, about, background }) => {
               type="material-community"
               name="menu"
               color={THEME.COLORS.ICON_HEADER}
-              size={28}
+              size={34}
               onPress={() => navigation.toggleDrawer()}
             />
           )}
@@ -66,7 +66,7 @@ const Header = ({ login, goBack, navigation, about, background }) => {
               type="material-community"
               name="menu"
               color={THEME.COLORS.ICON_HEADER}
-              size={28}
+              size={34}
               onPress={() => navigation.toggleDrawer()}
             />
           )}

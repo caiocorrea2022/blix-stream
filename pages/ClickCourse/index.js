@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { View } from "react-native";
 import { ContentDesktop, ContentMobile, ContentList, Image } from './style';
 import Header from "../../components/Header";
@@ -40,13 +40,13 @@ const ClickCourse = ({ navigation, route }) => {
       <ContentMobile>
         <Image source={{ uri: item.Image }} />
         <Title textAlign="flex-start" margin="0.5rem 0rem">{item.title}</Title>
-        <SmallText textAlign="justify">{item.description}</SmallText>
+        <SmallText textAlign="justify">{item.info}</SmallText>
       </ContentMobile>
     ) : (
       <ContentDesktop>
         <Image source={{ uri: item.image }} />
         <Title textAlign="flex-start" margin="0.5rem 0rem">{item.title}</Title>
-        <SmallText textAlign="justify">{item.description}</SmallText>
+        <SmallText textAlign="justify">{item.info}</SmallText>
       </ContentDesktop>
     );
   };

@@ -3,7 +3,6 @@ import { View } from "react-native";
 import Header from '../../components/Header';
 import {
   Content,
-  BackButton,
   Footer,
   ViewTextInput,
   ViewButton,
@@ -11,9 +10,6 @@ import {
   ViewText,
   ViewHelper,
   ViewTitle,
-  VerticalScroll,
-  ContainerSideView,
-  SideView,
 } from "./style";
 import THEME from '../../config/theme';
 import { Provider } from "react-native-paper";
@@ -21,11 +17,7 @@ import TextInput from "../../components/TextInput";
 import CheckBox from "../../components/CheckBox";
 import Button from "../../components/Button";
 import { emailValidator, passwordValidator, nameValidator, cellphoneValidator, cpfValidator } from "../../utils";
-import {
-  sendEmailVerification,
-  createUserWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
+import { sendEmailVerification, createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 import { auth, firestore } from '../../services/firebase';
 import AlertBox from "../../components/AlertBox";
@@ -33,7 +25,7 @@ import { createCheckoutSession } from "../../services/stripe/createCheckoutSessi
 import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../hooks/MobileOrDesktop/useViewport';
 import { HelperText } from 'react-native-paper';
-import {   Title } from '../../config/theme/globalStyles';
+import { Title, SideView, ContainerSideView, Container } from '../../config/theme/globalStyles';
 import TouchableText from '../../components/TouchableText';
 
 export default function SignUp({ navigation }) {
@@ -49,7 +41,6 @@ export default function SignUp({ navigation }) {
   const [title, setTitle] = useState(null);
   const [message, setMessege] = useState(null);
 
-
   const showAlert = (title, message) => {
     setVisibleAlert(true);
     setTitle(title);
@@ -59,7 +50,6 @@ export default function SignUp({ navigation }) {
   const hideAlert = (status) => {
     setVisibleAlert(status);
   };
-
 
   const validation = () => {
     const nameError = nameValidator(name.value);
@@ -84,11 +74,11 @@ export default function SignUp({ navigation }) {
 
   const onSignUpPressed = () => {
     validation();
-    if (password.value === confirmPassword.value) {
-      if (isSelected === false) {
-        showAlert("Erro", "Para prosseguir você precisa estar de acordo com os Termos de Uso e a Política de Privacidade.");
+    if (email.value && password.value && name.value && cellphone.value && cpf.value) {
+      if (password.value !== confirmPassword.value) {
+        showAlert("Erro", "As senhas não correspondem.");
       }
-      else if (email.value && password.value && name.value && cellphone.value && cpf.value) {
+      else if (isSelected === true) {
         setLoading(true);
         createUserWithEmailAndPassword(auth, email.value, password.value, cellphone.value, cpf.value)
           .then((currentUser) => {
@@ -134,10 +124,9 @@ export default function SignUp({ navigation }) {
             }
           });
       }
-    }
-    else {
-      showAlert("Erro", "As senhas não correspondem");
-      setLoading(false);
+      else {
+        showAlert("Erro", "Para prosseguir você precisa estar de acordo com os Termos de Uso e a Política de Privacidade.");
+      }
     }
   }
 
@@ -145,7 +134,7 @@ export default function SignUp({ navigation }) {
     const { width } = useViewport();
     const breakpoint = 1080;
 
-    return width < breakpoint ? <View></View> : <SideView width="50%"></SideView>;
+    return width < breakpoint ? <View></View> : <SideView flex="0.7"></SideView>;
   };
 
 
@@ -153,7 +142,7 @@ export default function SignUp({ navigation }) {
     <Provider>
       <ViewPortProvider>
         <ContainerSideView>
-          <VerticalScroll>
+          <Container>
             <Header goBack={navigation.goBack} />
             <ViewTitle>
               <Title textAlign="flex-start" padding="0rem 0rem 0rem 1rem">Cadastrar</Title>
@@ -197,8 +186,8 @@ export default function SignUp({ navigation }) {
                 <ViewText>
                   <TextInput
                     label="Celular"
-                    placeholder="(DDD) 99999-9999"
-                    returnKeyType="done"
+                    placeholder="(DDD) 9 9999-9999"
+                    returnKeyType="next"
                     value={cellphone.value}
                     onChangeText={(text) => setCellPhone({ value: text, error: "" })}
                     error={!!cellphone.error}
@@ -213,12 +202,11 @@ export default function SignUp({ navigation }) {
                 <ViewText>
                   <TextInput
                     label="CPF"
-                    placeholder=""
+                    placeholder="___.___.___.__"
                     returnKeyType="done"
                     value={cpf.value}
                     onChangeText={(text) => setCpf({ value: text, error: "" })}
                     error={!!cpf.error}
-                    keyboardType="phone-pad"
                   />
                 </ViewText>
                 <ViewHelper>
@@ -290,7 +278,7 @@ export default function SignUp({ navigation }) {
             <Footer>
               <TouchableText textDecoration="underline" onPress={() => navigation.navigate("Login")} title={'Já possuo uma conta'} color={THEME.COLORS.PRIMARY_900}></TouchableText>
             </Footer>
-            </VerticalScroll>
+          </Container>
           <MobileOrDesktopComponent></MobileOrDesktopComponent>
         </ContainerSideView>
       </ViewPortProvider>

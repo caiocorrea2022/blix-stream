@@ -2,13 +2,9 @@ import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient'
 
-export const Container = styled.ScrollView`
-	flex: 1;
-`;
-
 export const Poster = styled.ImageBackground`
     width: 100%;
-    height: ${(Dimensions.get('window').height * 40) / 100}px;
+    height: ${(Dimensions.get('window').height * 60) / 100}px;
 `;
 
 export const Content = styled.View`
@@ -22,6 +18,6 @@ export const Gradient = styled(LinearGradient)`
 export const Hero = styled.View`
     position: absolute;
     width: 100%;
-    bottom: 0.5rem;
+    bottom: 3rem;
     padding: 0.5rem 1rem;
 `;

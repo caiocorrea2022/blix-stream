@@ -11,28 +11,16 @@ import { onAuthStateChanged } from "firebase/auth";
 const DrawerNavigator = createDrawerNavigator();
 
 export default function DrawerNavigatorScreen({ navigation }) {
-  // const [firstName, setFirstName] = useState("Aulas");
-  // const [secondName, setSecondName] = useState("Tela Inicial");
-   const [login, setLogin] = useState(false);
-
-  // const FirstComponent = (usuario) => {
-  //   return usuario ? <Main></Main> : <About></About>;
-  // };
-
-  // const SecondComponent = (userId) => {
-  //   return userId ? <About></About>: <Main></Main>;
-  // };
+  const [login, setLogin] = useState(false);
 
   useEffect(() => {
-
     onAuthStateChanged(auth, (user) => {
-      console.log('user',user)
+      console.log('user', user)
       if (user) {
-       console.log(user.uid);
-       setLogin(true);
-      } 
+        console.log(user.uid);
+        setLogin(true);
+      }
     });
-
   }, []);
 
   return (
@@ -57,7 +45,7 @@ export default function DrawerNavigatorScreen({ navigation }) {
           drawerInactiveTintColor: THEME.COLORS.SMALL_TEXT,
           drawerLabelStyle: {
             fontSize: THEME.FONTSIZE.SMALL,
-            fontFamily: THEME.FONTFAMILY.LIGHT,
+            fontFamily: THEME.FONTFAMILY.REGULAR,
           },
         }}
       />
@@ -71,27 +59,27 @@ export default function DrawerNavigatorScreen({ navigation }) {
           drawerInactiveTintColor: THEME.COLORS.SMALL_TEXT,
           drawerLabelStyle: {
             fontSize: THEME.FONTSIZE.SMALL,
-            fontFamily: THEME.FONTFAMILY.LIGHT,
+            fontFamily: THEME.FONTFAMILY.REGULAR,
           },
         }}
       />
-      {login?
-      <DrawerNavigator.Screen
-        name="Editar Perfil"
-        component={EditProfile}
-        options={{
-          headerShown: false,
-          drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
-          drawerActiveTintColor: THEME.COLORS.STANDARD,
-          drawerInactiveTintColor: THEME.COLORS.STANDARD,
-          drawerLabelStyle: {
-            fontSize: THEME.FONTSIZE.SMALL,
-            fontFamily: THEME.FONTFAMILY.LIGHT,
-          },
-        }}
-      />
+      {login ?
+        <DrawerNavigator.Screen
+          name="Editar Perfil"
+          component={EditProfile}
+          options={{
+            headerShown: false,
+            drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
+            drawerActiveTintColor: THEME.COLORS.SMALL_TEXT,
+            drawerInactiveTintColor: THEME.COLORS.SMALL_TEXT,
+            drawerLabelStyle: {
+              fontSize: THEME.FONTSIZE.SMALL,
+              fontFamily: THEME.FONTFAMILY.REGULAR,
+            },
+          }}
+        />
         :
-      <></>
+        <></>
       }
     </DrawerNavigator.Navigator>
   );

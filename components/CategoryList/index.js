@@ -14,6 +14,21 @@ const CategoryList = ({ category, plan, courses }) => {
   const [allCards, setAllCards] = useState([]);
   const [scrollX, setScrollX] = useState(0);
 
+  useEffect(() => {
+    const findAllCategories = async () => {
+      const response = await getDocs(
+        collection(firestore, `categories/${category.id}/cards`)
+      );
+      let cards = [];
+      response.forEach((doc) => {
+        cards.push({ id: doc.id, ...doc.data() });
+      });
+      setAllCards(cards);
+    };
+    console.log("categorylist", plan);
+    findAllCategories();
+  }, []);
+
   const MobileOrDesktopLeftArrow = () => {
     const { width } = useViewport();
     const breakpoint = 1080;
@@ -80,34 +95,14 @@ const CategoryList = ({ category, plan, courses }) => {
 
   const handleRightArrow = () => {
     let x = scrollX - Math.round(window.innerWidth / 2);
-    let listW = allCards.length * 240; //230 eh o tamanho de cada card
+    let listW = allCards.length * 240;
     if ((window.innerWidth > listW)){
-      x=0;
+      x = 0;
     } else if (((window.innerWidth - listW) > x)){
       x = (window.innerWidth - listW) - (23 * allCards.length);
     }
-    console.log(x);
-    console.log(scrollX);
-    console.log(listW);
-    console.log(window.innerWidth);
-    console.log(allCards.length);
     setScrollX(x);
   };
-
-  useEffect(() => {
-    const findAllCategories = async () => {
-      const response = await getDocs(
-        collection(firestore, `categories/${category.id}/cards`)
-      );
-      let cards = [];
-      response.forEach((doc) => {
-        cards.push({ id: doc.id, ...doc.data() });
-      });
-      setAllCards(cards);
-    };
-    console.log("categorylist", plan);
-    findAllCategories();
-  }, []);
 
   return (
     <ViewPortProvider>

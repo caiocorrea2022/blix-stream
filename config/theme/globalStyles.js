@@ -11,7 +11,6 @@ export const Section = styled.View`
 export const ContainerSideView = styled.View`
     flex: ${({ flex }) => (flex ? flex : '1')};
     flex-Direction: ${({ flexDirection }) => (flexDirection ? flexDirection: 'row')};
-    background-color: red;
 `;
 
 export const SideView = styled.View`
@@ -23,7 +22,6 @@ export const SideView = styled.View`
 export const Container = styled.View`
     flex:1;
     background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND)};
-    justify-content: ${({ justifyContent }) => (justifyContent ? justifyContent : 'center')};
 `;
 
 export const HeaderContainer = styled.View`
@@ -73,7 +71,7 @@ export const StandardText = styled.Text`
 
 export const SmallText = styled.Text`
 	font-size: ${({ fontSize }) => (fontSize ? fontSize : THEME.FONTSIZE.SMALL)};
-    font-family: ${({ fontFamily }) => (fontFamily ? fontFamily : THEME.FONTFAMILY.LIGHT)};
+    font-family: ${({ fontFamily }) => (fontFamily ? fontFamily : THEME.FONTFAMILY.REGULAR)};
 	color: ${({ color }) => (color ? color : THEME.COLORS.SMALL_TEXT)};
     text-align: ${({ textAlign }) => (textAlign ? textAlign : 'center')};
     margin: ${({ margin }) => (margin ? margin : '0')};
@@ -84,7 +82,7 @@ export const SmallText = styled.Text`
 
 export const FooterText = styled.Text`
 	font-size: ${({ fontSize }) => (fontSize ? fontSize : THEME.FONTSIZE.EXTRASMALL)};
-    font-family: ${({ fontFamily }) => (fontFamily ? fontFamily : THEME.FONTFAMILY.EXTRALIGHT)};
+    font-family: ${({ fontFamily }) => (fontFamily ? fontFamily : THEME.FONTFAMILY.LIGHT)};
 	color: ${({ color }) => (color ? color : THEME.COLORS.FOOTER_TEXT)};
     text-align: ${({ textAlign }) => (textAlign ? textAlign : 'center')};
     margin: ${({ margin }) => (margin ? margin : '0')};

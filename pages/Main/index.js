@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
-import { Container, Poster, Gradient, Content, Hero } from './style';
+import { Poster, Gradient, Content, Hero } from './style';
 import Header from '../../components/Header';
 import CategoryList from '../../components/CategoryList';
 import { getDocs, collection } from "firebase/firestore";
@@ -8,7 +8,7 @@ import { firestore } from "../../services/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import THEME from '../../config/theme';
-import { Title, SubTitle } from '../../config/theme/globalStyles';
+import { Title, SubTitle, Container } from '../../config/theme/globalStyles';
 import { titleMain, subtitleMain } from '../../config/data';
 
 const auth = getAuth();
@@ -46,14 +46,14 @@ export default function Main({ navigation, route }) {
 
   return (
     <Container>
-      <Poster source={require('../../assets/foto2.jpg')}>
+      <Poster source={require('../../assets/yoga-logo.jpg')}>
         <Gradient
           locations={[0, 0.2, 0.7, 1]}
           colors={THEME.COLORS.GRADIENT}>
           <Header background="none" navigation={navigation} login={login} main={true} about={false} />
           <Hero>
-            <Title textAlign="flex-start" color={THEME.COLORS.BACKGROUND} margin="0.5rem 0rem">{titleMain}</Title>
-            <SubTitle textAlign="flex-start" color={THEME.COLORS.BACKGROUND}>{subtitleMain}</SubTitle>
+            <Title textAlign="flex-start" margin="0.5rem 0rem">{titleMain}</Title>
+            <SubTitle textAlign="flex-start">{subtitleMain}</SubTitle>
           </Hero>
         </Gradient>
       </Poster>
