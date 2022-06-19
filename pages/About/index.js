@@ -5,7 +5,7 @@ import {
   ViewText,
   ViewSection
 } from "./style";
-import { DrawerActions } from '@react-navigation/native';
+import { DrawerActions } from "@react-navigation/native";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Hero from "../../components/Hero";
@@ -53,7 +53,7 @@ export default function About({ navigation }) {
     });
   }, []);
 
-  const jumpToAction = DrawerActions.jumpTo('Aulas');
+  const jumpToAction = DrawerActions.jumpTo("Aulas");
 
   return (
     <Container>
@@ -88,23 +88,23 @@ export default function About({ navigation }) {
         <ViewText>
           <Title>CONTEÚDO DISPONÍVEL NO APP</Title>
         </ViewText>
-          <CardInfo
-            titleFontSize={THEME.FONTSIZE.EXTRASMALL}
-            titleColor={THEME.COLORS.EXTRASMALL}
-            cardStyle={{
-              width: "12rem",
-              margin: "1rem",
-            }}
-            cardCoverStyle={{
-              width: "100%",
-              height: "8rem",
-              borderRadius: "8px",
-            }}
-            array={categoriesInfo}
-            navigation={navigation}
-            buttonVisible={false}
-            priceVisible={false}
-          ></CardInfo>
+        <CardInfo
+          titleFontSize={THEME.FONTSIZE.EXTRASMALL}
+          titleColor={THEME.COLORS.EXTRASMALL}
+          cardStyle={{
+            width: "12rem",
+            margin: "1rem",
+          }}
+          cardCoverStyle={{
+            width: "100%",
+            height: "8rem",
+            borderRadius: "8px",
+          }}
+          array={categoriesInfo}
+          navigation={navigation}
+          buttonVisible={false}
+          priceVisible={false}
+        ></CardInfo>
         <ViewAboutMe>
           <Button
             title={"Ver todas as aulas"}
@@ -139,9 +139,13 @@ export default function About({ navigation }) {
           navigation={navigation}
         ></CardInfo>
       </ViewSection>
-      <Section background={THEME.COLORS.PRIMARY_700}>
-        <Pricing></Pricing>
-      </Section>
+      {plan ? (
+        <></>
+      ) : (
+        <Section background={THEME.COLORS.PRIMARY_700}>
+          <Pricing></Pricing>
+        </Section>
+      )}
       <Footer></Footer>
       {/* <CookieConsentFunction></CookieConsentFunction> */}
     </Container>
