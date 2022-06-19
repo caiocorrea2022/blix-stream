@@ -14,10 +14,10 @@ export const planFrequency = [
 export const subtitlePlan = "Teste grátis por 7 dias. Pagamento automático no boleto ou no cartão de crédito. Pode cancelar quando desejar.";
 
 export const planPrices = [
-  [{price: "R$200,00/mês", priceId: "", iterations: 0}, {price: "R$220,00/mês", priceId: "", iterations: 0}, {price: "R$250,00/mês", priceId: "", iterations: 0}],
-  [{price: "R$400,00/trimestre", priceId: "", iterations: 3}, {price: "R$420,00/trimestre", priceId: "", iterations: 3}, {price: "R$450,00/trimestre", priceId: "", iterations: 3}],
-  [{price: "R$800,00/semestre", priceId: "", iterations: 6}, {price: "R$820,00/semestre", priceId: "", iterations: 6}, {price: "R$850,00/semestre", priceId: "", iterations: 6}],
-  [{price: "R$1200,00/ano", priceId: "", iterations: 12}, {price: "R$1220,00/ano", priceId: "", iterations: 12}, {price: "R$1250,00/ano", priceId: "", iterations: 12}],
+  [{price: "R$200,00/mês", priceId: "price_1LCT29CmcyIwF9rcVBE0Q0oK", plan: "1", iterations: 0}, {price: "R$220,00/mês", priceId: "price_1LCT2YCmcyIwF9rc7iGWKEKn", plan: "2", iterations: 0}, {price: "R$250,00/mês", priceId: "", plan: "3", iterations: 0}],
+  [{price: "R$400,00/trimestre", priceId: "", plan: "1", iterations: 3}, {price: "R$420,00/trimestre", priceId: "", plan: "2", iterations: 3}, {price: "R$450,00/trimestre", priceId: "", plan: "3", iterations: 3}],
+  [{price: "R$800,00/semestre", priceId: "", plan: "1", iterations: 6}, {price: "R$820,00/semestre", priceId: "", plan: "2", iterations: 6}, {price: "R$850,00/semestre", priceId: "", plan: "3", iterations: 6}],
+  [{price: "R$1200,00/ano", priceId: "", plan: "1", iterations: 12}, {price: "R$1220,00/ano", priceId: "", plan: "2", iterations: 12}, {price: "R$1250,00/ano", priceId: "", plan: "3", iterations: 12}],
 ];
 
 export const upsellPrices = [

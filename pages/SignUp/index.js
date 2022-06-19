@@ -111,7 +111,7 @@ export default function SignUp({ navigation, route }) {
                     .then(() => {
                       if (purchaseType === 'PLAN') {
 
-                        createCheckoutSession(user.uid, "price_1L5qw3CmcyIwF9rcW6VuPvSg", "subscription", 6);
+                        createCheckoutSession(user.uid, priceId, "subscription", 6);
                       } else {
                         createCheckoutSession(user.uid, priceId, "payment", 0);
                       }

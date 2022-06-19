@@ -1,5 +1,6 @@
 const functions = require("firebase-functions");
 const admin = require('firebase-admin');
+const data = require("./data");
 // const paypal = require("@paypal/checkout-server-sdk");
 
 admin.initializeApp();
@@ -57,6 +58,8 @@ exports.paymentTrigger = functions.firestore
     .document('users/{docId}/{paymentType}/{paymentMethodId}')
     .onWrite((change, context) => {
 
+        const productId = []
+
         //get document, if documents not exists it has been deleted
         const newValue = change.after.exists ? change.after.data() : null;
 
@@ -69,9 +72,12 @@ exports.paymentTrigger = functions.firestore
             if (newValue.status === 'active') {
 
                 //TODO indentify PLAN and set current plan
+                const productId = newValue.items[0].plan.product;
+
+                const currentPlan = data[productId];
 
                 db.doc(`users/${userId}`).set({
-                    plan: '1'
+                    plan: currentPlan
                 }, { merge: true });
             } else {
 

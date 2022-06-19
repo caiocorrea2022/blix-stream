@@ -110,10 +110,10 @@ const Pricing = ({ navigation, userId }) => {
                 justifyContent: "space-between",
                 flex: 1,
               }}
-              onButtonPress={() =>
+              onButtonPress={() => 
                 userId ?
                   createCheckoutSession(userId, option[index].priceId, "subscription", option[index].iterations) :
-                  navigation.navigate("SignUp")
+                  navigation.navigate("SignUp", { purchaseType: 'PLAN', priceId: option[index].priceId })
               }
             />
           ))}

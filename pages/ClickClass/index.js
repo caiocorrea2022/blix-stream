@@ -47,7 +47,7 @@ const ClickClass = ({ route, navigation }) => {
 
   const buyItem = () => {
     if (plan) {
-      navigation.navigate("Plans", { plan: plan })
+      navigation.navigate("Plans", { userId: user })
       return;
     } else {
       getCourse(courseId).then((response) => {
