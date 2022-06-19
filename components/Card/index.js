@@ -7,7 +7,7 @@ import { Icon } from 'react-native-elements';
 import ViewPortProvider from "../../hooks/MobileOrDesktop/ViewPortProvider";
 import useViewport from "../../hooks/MobileOrDesktop/useViewport";
 
-const CardInfo = ({ array, buttonVisible = true, priceVisible = true, navigation, cardStyle, cardCoverStyle, titleFontSize, titleColor, subtitleNumberOfLines }) => {
+const CardInfo = ({ array, buttonVisible = true, priceVisible = true, navigation, cardStyle, cardCoverStyle, cardContentStyle, titleFontSize, titleColor, subtitleNumberOfLines }) => {
     const [scrollX, setScrollX] = useState(0);
 
     const MobileOrDesktopLeftArrow = () => {
@@ -93,7 +93,7 @@ const CardInfo = ({ array, buttonVisible = true, priceVisible = true, navigation
                     {array.map((item, index) => (
                         <Card key={index} style={cardStyle}>
                             <Card.Cover source={{ uri: item.image }} style={cardCoverStyle} />
-                            <Card.Content style={{ height: "40%" }}>
+                            <Card.Content style={cardContentStyle}>
                                 <Title textAlign="flex-start" padding="0.3rem 0rem" fontSize={titleFontSize} color={titleColor}>{item.title}</Title>
                                 <SmallText textAlign="flex-start" padding="0.3rem 0rem" fontSize={THEME.FONTSIZE.EXTRASMALL} numberOfLines={subtitleNumberOfLines}>{item.info}</SmallText>
                                 {priceVisible ? <StandardText fontFamily={THEME.FONTFAMILY.BOLD} textAlign="flex-start" margin="1rem 0rem">{item.price}</StandardText> : null}

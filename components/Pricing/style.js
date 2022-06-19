@@ -3,6 +3,7 @@ import THEME from "../../config/theme";
 
 export const Container = styled.View`
   height: 100%;
+  padding: 1rem 0rem;
 `;
 
 export const HorizontalList = styled.ScrollView.attrs({
