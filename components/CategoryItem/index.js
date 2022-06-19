@@ -8,7 +8,7 @@ import { SmallText } from '../../config/theme/globalStyles';
 const CategoryItem = ({ item, plan, courses }) => {
     const navigation = useNavigation();
     const onCardPress = () => {
-        navigation.navigate('ClickClass', { videos: item.videos, name: item.title, description: item.description, pdf: item.pdf, url: item.url })
+        navigation.navigate('ClickClass', { videos: item.videos, name: item.title, description: item.description, pdf: item.pdf, url: item.url, courseId: item.courseId, plan: item.plan })
     }
 
     return (

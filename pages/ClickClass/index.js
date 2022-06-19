@@ -18,22 +18,45 @@ import { firestore } from '../../services/firebase';
 
 const auth = getAuth();
 
+
 const ClickClass = ({ route, navigation }) => {
-  const { videos, name, description, pdf, url } = route.params;
+  const { videos, name, description, pdf, url, courseId, plan } = route.params;
   const [video, setVideo] = useState(videos[0]);
   const [login, setLogin] = useState(false);
   const [user, setUser] = useState("");
-  const [plan, setPlan] = useState("");
+  // const [plan, setPlan] = useState("");
 
 
-  const getUsers = async (user) => {
-    const docRef = doc(firestore, "users", user);
+  // const getUsers = async (user) => {
+  //   const docRef = doc(firestore, "users", user);
+  //   const docSnap = await getDoc(docRef);
+  //   if (docSnap.exists()) {
+  //     console.log("Document data:", docSnap.data());
+  //     setPlan(docSnap.data().plan);
+  //   }
+  // };
+
+  const getCourse = async (courseId) => {
+    const docRef = doc(firestore, "courses", courseId);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-      setPlan(docSnap.data().plan);
+      console.log('data', docSnap.data())
+      return docSnap.data();
     }
   };
+
+  const buyItem = () => {
+    if (plan) {
+      navigation.navigate("Plans", { plan: plan })
+      return;
+    } else {
+      getCourse(courseId).then((response) => {
+        navigation.navigate("ClickCourse", { item: response });
+      })
+      return;
+    }
+  }
+
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -41,7 +64,7 @@ const ClickClass = ({ route, navigation }) => {
       if (user) {
         console.log(user.uid);
         setUser(user.uid);
-        getUsers(user.uid);
+        // getUsers(user.uid);
         setLogin(true);
       }
     });
@@ -70,7 +93,9 @@ const ClickClass = ({ route, navigation }) => {
 
     return width < breakpoint ? (
       <ContentVideoMobile>
-        {login ? (
+        {
+          //TODO fix verification of permission
+        login && true == false ? (
           <VideoPlayer video={video.link} />
         ) : (
           <Image source={{ uri: 'https://picsum.photos/700' }} resizeMode="cover">
@@ -78,7 +103,7 @@ const ClickClass = ({ route, navigation }) => {
               <Button
                 title={'COMPRAR AGORA'}
                 colorbutton={THEME.COLORS.PRIMARY_900}
-                onPress={() => navigation.navigate("Plans")}
+                onPress={() => buyItem()}
                 colortitle={THEME.COLORS.TEXT_BUTTON}
                 borderRadius="5px"
               >

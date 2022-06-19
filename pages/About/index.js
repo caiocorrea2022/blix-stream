@@ -13,9 +13,9 @@ import Header from "../../components/Header";
 import Hero from "../../components/Hero";
 import CardInfo from "../../components/Card";
 import Pricing from "../../components/Pricing";
-import { coursesInfo, categoriesInfo, aboutText } from "../../config/data";
+import { categoriesInfo, aboutText } from "../../config/data";
 import { View } from "react-native";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
   Section,
@@ -33,6 +33,8 @@ export default function About({ navigation }) {
   const [user, setUser] = useState("");
   const [login, setLogin] = useState(false);
   const [plan, setPlan] = useState("");
+  const [coursesInfo, setCoursesInfo] = useState([]);
+
 
   const getUsers = async (user) => {
     const docRef = doc(firestore, "users", user);
@@ -43,7 +45,17 @@ export default function About({ navigation }) {
     }
   };
 
+  const getCourses = async () => {
+    const response = await getDocs(collection(firestore, "courses"));
+      let courses = [];
+      response.forEach((doc) => {
+        courses.push({ id: doc.id, ...doc.data() });
+      });
+      setCoursesInfo(courses);
+  };
+
   useEffect(() => {
+    getCourses();
     onAuthStateChanged(auth, (user) => {
       console.log("user", user);
       if (user) {
@@ -132,9 +144,10 @@ export default function About({ navigation }) {
           cardStyle={{ width: "18rem", margin: "1rem" }}
           cardCoverStyle={{
             width: "100%",
-            height: "15rem",
+            height: "9rem",
             borderRadius: "8px",
           }}
+          buttonVisible={true}
           array={coursesInfo}
           navigation={navigation}
         ></CardInfo>

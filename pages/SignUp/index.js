@@ -33,7 +33,9 @@ import { HelperText } from 'react-native-paper';
 import { Title, ContainerSideView, SideView, Container } from '../../config/theme/globalStyles';
 import TouchableText from '../../components/TouchableText';
 
-export default function SignUp({ navigation }) {
+export default function SignUp({ navigation, route }) {
+  const { purchaseType, priceId } = route.params;
+
   const [name, setName] = useState({ value: "", error: "" });
   const [email, setEmail] = useState({ value: "", error: "" });
   const [password, setPassword] = useState({ value: "", error: "" });
@@ -107,7 +109,12 @@ export default function SignUp({ navigation }) {
                 .then(() => {
                   signOut(auth)
                     .then(() => {
-                      createCheckoutSession(user.uid, "price_1L5qw3CmcyIwF9rcW6VuPvSg", "subscription", 6);
+                      if (purchaseType === 'PLAN') {
+
+                        createCheckoutSession(user.uid, "price_1L5qw3CmcyIwF9rcW6VuPvSg", "subscription", 6);
+                      } else {
+                        createCheckoutSession(user.uid, priceId, "payment", 0);
+                      }
                     });
                 });
             });

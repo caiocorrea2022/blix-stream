@@ -15,6 +15,7 @@ const ClickCourse = ({ navigation, route }) => {
   const { item } = route.params;
   const [userId, setUserId] = useState("");
   const [loading, setLoading] = useState(false);
+  const [login, setLogin] = useState(false);
 
   const OutsideView = () => {
     const { width } = useViewport();
@@ -56,6 +57,19 @@ const ClickCourse = ({ navigation, route }) => {
     const { width } = useViewport();
     const breakpoint = 1080;
 
+
+    const goToPurchase = () => {
+      setLoading(true);
+      
+      if(!login) {
+        setLoading(false);
+        return navigation.navigate("SignUp", { purchaseType: 'COURSE', priceId: item.priceId })
+      } else {
+        return createCheckoutSession(userId, item.priceId, "payment", 0);
+      }
+    }
+
+
     return width < breakpoint ? (
       <View>
         <ViewText>
@@ -70,7 +84,7 @@ const ClickCourse = ({ navigation, route }) => {
             colorbutton={THEME.COLORS.PRIMARY_900}
             colortitle={THEME.COLORS.TEXT_BUTTON}
             borderRadius="30px"
-            onPress={() => createCheckoutSession(user.uid, item.priceId, "payment", 0)}
+            onPress={() => goToPurchase()}
           >
           </Button>
         </ViewButton>
@@ -89,7 +103,7 @@ const ClickCourse = ({ navigation, route }) => {
             colorbutton={THEME.COLORS.PRIMARY_900}
             colortitle={THEME.COLORS.TEXT_BUTTON}
             borderRadius="30px"
-            onPress={() => createCheckoutSession(user.uid, item.priceId, "payment", 0)}
+            onPress={() => goToPurchase()}
           ></Button>
         </ViewButton>
       </ContentList>
@@ -101,6 +115,7 @@ const ClickCourse = ({ navigation, route }) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserId(user.uid);
+        setLogin(true);
       }
     });
 
