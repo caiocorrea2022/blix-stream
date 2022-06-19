@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {
-  Container,
-  TitleView,
   Poster,
   ViewAboutMe,
-  ViewTitleAboutMe,
-  ViewSubtitleAboutMe,
+  ViewText,
+  ViewSection
 } from "./style";
 import { DrawerActions } from "@react-navigation/native";
 import Footer from "../../components/Footer";
@@ -22,6 +20,7 @@ import {
   StandardText,
   SmallText,
   Title,
+  Container
 } from "../../config/theme/globalStyles";
 import { firestore } from "../../services/firebase/index";
 import THEME from "../../config/theme";
@@ -88,42 +87,37 @@ export default function About({ navigation }) {
         </Poster>
       </Section>
       <ViewAboutMe>
-        <ViewTitleAboutMe>
+        <ViewText>
           <StandardText>SOBRE MIM</StandardText>
-        </ViewTitleAboutMe>
-        <ViewSubtitleAboutMe>
-          <SmallText
-            textAlign="flex-start"
-            fontFamily={THEME.FONTFAMILY.REGULAR}
-          >
+        </ViewText>
+        <ViewText>
+          <SmallText textAlign="flex-start" fontFamily={THEME.FONTFAMILY.REGULAR}>
             {aboutText}
           </SmallText>
-        </ViewSubtitleAboutMe>
+        </ViewText>
       </ViewAboutMe>
-      <Section>
-        <ViewTitleAboutMe>
+      <ViewSection>
+        <ViewText>
           <Title>CONTEÚDO DISPONÍVEL NO APP</Title>
-        </ViewTitleAboutMe>
-        <View>
-          <CardInfo
-            titleFontSize={THEME.FONTSIZE.EXTRASMALL}
-            titleColor={THEME.COLORS.EXTRASMALL}
-            cardStyle={{
-              width: "12rem",
-              margin: "1rem",
-            }}
-            cardCoverStyle={{
-              width: "100%",
-              height: "8rem",
-              borderRadius: "8px",
-            }}
-            array={categoriesInfo}
-            navigation={navigation}
-            buttonVisible={false}
-            priceVisible={false}
-          ></CardInfo>
-        </View>
-        <View style={{ flex: 1 }}>
+        </ViewText>
+        <CardInfo
+          titleFontSize={THEME.FONTSIZE.EXTRASMALL}
+          titleColor={THEME.COLORS.EXTRASMALL}
+          cardStyle={{
+            width: "12rem",
+            margin: "1rem",
+          }}
+          cardCoverStyle={{
+            width: "100%",
+            height: "8rem",
+            borderRadius: "8px",
+          }}
+          array={categoriesInfo}
+          navigation={navigation}
+          buttonVisible={false}
+          priceVisible={false}
+        ></CardInfo>
+        <ViewAboutMe>
           <Button
             title={"Ver todas as aulas"}
             colorbutton={THEME.COLORS.PRIMARY_900}
@@ -131,27 +125,32 @@ export default function About({ navigation }) {
             colortitle={THEME.COLORS.TEXT_BUTTON}
             borderRadius="30px"
           ></Button>
-        </View>
-      </Section>
-      <Section>
-        <TitleView>
+        </ViewAboutMe>
+      </ViewSection>
+      <ViewSection>
+        <ViewText>
           <Title>CURSOS DISPONÍVEIS</Title>
-        </TitleView>
+        </ViewText>
         <CardInfo
-          subtitleNumberOfLines={4}
+          subtitleNumberOfLines={5}
           titleFontSize={THEME.FONTSIZE.SMALL}
           titleColor={THEME.COLORS.SMALL}
-          cardStyle={{ width: "18rem", margin: "1rem" }}
+          cardStyle={{
+            width: "20rem",
+            margin: "1rem",
+          }}
           cardCoverStyle={{
             width: "100%",
             height: "9rem",
             borderRadius: "8px",
           }}
-          buttonVisible={true}
+          cardContentStyle={{
+            height: "48%",
+          }}
           array={coursesInfo}
           navigation={navigation}
         ></CardInfo>
-      </Section>
+      </ViewSection>
       {plan ? (
         <></>
       ) : (

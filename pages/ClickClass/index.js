@@ -99,7 +99,7 @@ const ClickClass = ({ route, navigation }) => {
           <VideoPlayer video={video.link} />
         ) : (
           <Image source={{ uri: 'https://picsum.photos/700' }} resizeMode="cover">
-            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', height: "100%", justifyContent: "center" }}>
+            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', aspectRatio: 16 / 9, justifyContent: "center" }}>
               <Button
                 title={'COMPRAR AGORA'}
                 colorbutton={THEME.COLORS.PRIMARY_900}
@@ -123,7 +123,7 @@ const ClickClass = ({ route, navigation }) => {
           <VideoPlayer video={video.link} />
         ) : (
           <Image source={{ uri: 'https://picsum.photos/700' }} resizeMode="cover">
-            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', justifyContent: "center" }}>
+            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', aspectRatio: 16 / 9, justifyContent: "center" }}>
               <Button
                 title={'COMPRAR AGORA'}
                 colorbutton={THEME.COLORS.PRIMARY_900}
