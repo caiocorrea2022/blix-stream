@@ -20,27 +20,27 @@ const auth = getAuth();
 
 
 const ClickClass = ({ route, navigation }) => {
-  const { videos, name, description, pdf, url, courseId, plan } = route.params;
+  const { videos, name, description, pdf, url, courseId, priceId, plan } = route.params;
   const [video, setVideo] = useState(videos[0]);
   const [login, setLogin] = useState(false);
   const [user, setUser] = useState("");
-  // const [plan, setPlan] = useState("");
+  const [userPlan, setUserPlan] = useState("");
+  const [userPriceIds, setUserPriceIds] = useState([]);
 
 
-  // const getUsers = async (user) => {
-  //   const docRef = doc(firestore, "users", user);
-  //   const docSnap = await getDoc(docRef);
-  //   if (docSnap.exists()) {
-  //     console.log("Document data:", docSnap.data());
-  //     setPlan(docSnap.data().plan);
-  //   }
-  // };
+  const getUsers = async (user) => {
+    const docRef = doc(firestore, "users", user);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      setUserPlan(docSnap.data().plan);
+      setUserPriceIds(docSnap.data().courses)
+    }
+  };
 
   const getCourse = async (courseId) => {
     const docRef = doc(firestore, "courses", courseId);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      console.log('data', docSnap.data())
       return docSnap.data();
     }
   };
@@ -64,7 +64,7 @@ const ClickClass = ({ route, navigation }) => {
       if (user) {
         console.log(user.uid);
         setUser(user.uid);
-        // getUsers(user.uid);
+        getUsers(user.uid);
         setLogin(true);
       }
     });
@@ -93,9 +93,7 @@ const ClickClass = ({ route, navigation }) => {
 
     return width < breakpoint ? (
       <ContentVideoMobile>
-        {
-          //TODO fix verification of permission
-        login && true == false ? (
+        {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
           <VideoPlayer video={video.link} />
         ) : (
           <Image source={{ uri: 'https://picsum.photos/700' }} resizeMode="cover">
@@ -119,7 +117,7 @@ const ClickClass = ({ route, navigation }) => {
       </ContentVideoMobile>
     ) : (
       <ContentVideoDesktop>
-        {login && true == false ? (
+        {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
           <VideoPlayer video={video.link} />
         ) : (
           <Image source={{ uri: 'https://picsum.photos/700' }} resizeMode="cover">
