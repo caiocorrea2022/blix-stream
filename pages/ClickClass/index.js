@@ -96,7 +96,7 @@ const ClickClass = ({ route, navigation }) => {
         {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
           <VideoPlayer video={video.link} />
         ) : (
-          <Image source={{ uri: 'https://picsum.photos/700' }} resizeMode="cover">
+          <Image source={require("./../../assets/Bloqueada.jpg")} resizeMode="cover">
             <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', aspectRatio: 16/9, justifyContent: "center" }}>
               <Button
                 title={'COMPRAR AGORA'}
@@ -120,7 +120,7 @@ const ClickClass = ({ route, navigation }) => {
         {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
           <VideoPlayer video={video.link} />
         ) : (
-          <Image source={{ uri: 'https://picsum.photos/700' }} resizeMode="cover">
+          <Image source={require("./../../assets/Bloqueada.jpg")} resizeMode="cover">
             <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', aspectRatio: 16/9, justifyContent: "center" }}>
               <Button
                 title={'COMPRAR AGORA'}
@@ -201,7 +201,7 @@ const ClickClass = ({ route, navigation }) => {
 
   return (
     <ViewPortProvider>
-      <Container>
+      <Container >
         <Header goBack={navigation.goBack} background={THEME.COLORS.BACKGROUND_HEADER} />
         <OutsideView></OutsideView>
       </Container>

@@ -52,8 +52,8 @@ export default function Main({ navigation, route }) {
           colors={THEME.COLORS.GRADIENT}>
           <Header background="none" navigation={navigation} login={login} main={true} about={false} />
           <Hero>
-            <Title textAlign="flex-start" margin="0.5rem 0rem">{titleMain}</Title>
-            <SubTitle textAlign="flex-start">{subtitleMain}</SubTitle>
+            <Title color={THEME.COLORS.BACKGROUND} textAlign="flex-start" margin="0.5rem 0rem">{titleMain}</Title>
+            <SubTitle color={THEME.COLORS.BACKGROUND} textAlign="flex-start">{subtitleMain}</SubTitle>
           </Hero>
         </Gradient>
       </Poster>

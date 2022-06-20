@@ -8,7 +8,7 @@ import THEME from "../../config/theme";
 import { Icon } from "react-native-elements";
 import ViewPortProvider from "../../hooks/MobileOrDesktop/ViewPortProvider";
 import useViewport from "../../hooks/MobileOrDesktop/useViewport";
-import { Title } from "../../config/theme/globalStyles";
+import { StandardText, Title } from "../../config/theme/globalStyles";
 
 const CategoryList = ({ category, plan, courses }) => {
   const [allCards, setAllCards] = useState([]);
@@ -107,7 +107,7 @@ const CategoryList = ({ category, plan, courses }) => {
   return (
     <ViewPortProvider>
       <Container>
-        <Title maxWidth="230" textAlign="flex-start" numberOfLines={1}>{category.title}</Title>
+        <StandardText fontFamily={THEME.FONTFAMILY.BOLD} color={THEME.COLORS.BACKGROUND} maxWidth="230" textAlign="flex-start" numberOfLines={1}>{category.title}</StandardText>
         <Content>
           <MobileOrDesktopLeftArrow></MobileOrDesktopLeftArrow>
           <FlatList

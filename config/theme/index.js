@@ -5,9 +5,9 @@ export default {
     ALERT: "#ec1414",
 
     BACKGROUND: "#ffffff", //MESMA COR DO DRAWER
-    BACKGROUND_HEADER: "#ffffff",
+    BACKGROUND_HEADER: "#ffffffa0",
     BACKGROUND_FOOTER: "#ffffff",
-    BACKGROUND_CLICK: "#ffffff",
+    BACKGROUND_CLICK: "#2e2e2e",
 
     ICON_HEADER: "#ffffff",
     ICON_DRAWER: "#1E1E1E",
@@ -15,11 +15,11 @@ export default {
     ICON_CLICK: "#1E1E1E",
 
     MAIN_TITLE: '#1E1E1E',
-    TITLE: '#323644',
-    SUB_TITLE: '#323644',
-    STANDARD: '#323644',
-    SMALL_TEXT: '#323644',
-    FOOTER_TEXT: '#323644',
+    TITLE: '#1E1E1E',
+    SUB_TITLE: '#1E1E1E',
+    STANDARD: '#1E1E1E',
+    SMALL_TEXT: '#1E1E1E',
+    FOOTER_TEXT: '#1E1E1E',
 
     TEXT_BUTTON: "#ffffff",
 
@@ -30,8 +30,8 @@ export default {
     GRADIENT:[
       'rgba(0,0,0,0.5)',
       'rgba(0,0,0,0.1)',
-      'rgba(255,255,255,0.1)',
-      '#ffffff'
+      'rgba(0,0,0,0.1)',
+      '#2e2e2e'
     ]
   },
 

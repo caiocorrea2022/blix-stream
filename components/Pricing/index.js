@@ -4,7 +4,6 @@ import { FlatList, TouchableOpacity } from 'react-native';
 import {
   Container,
   TitleView,
-  Subtitle,
   ItemContainer,
   HorizontalList,
   HorizontalListView,
@@ -80,8 +79,8 @@ const Pricing = ({ navigation, userId }) => {
               }}
               titleFont={THEME.FONTFAMILY.BOLD}
               infoStyle={{
-                color: THEME.COLORS.STANDARD,
-                fontSize: THEME.FONTSIZE.MEDIUM,
+                color: THEME.COLORS.SMALL_TEXT,
+                fontSize: THEME.FONTSIZE.SMALL,
                 textAlign: 'center',
               }}
               pricingStyle={{
@@ -92,7 +91,7 @@ const Pricing = ({ navigation, userId }) => {
               infoFont={THEME.FONTFAMILY.LIGHT}
               button={{
                 title: "ASSINAR PLANO",
-                color: THEME.COLORS.BACKGROUND,
+                color: THEME.COLORS.PRIMARY_800,
                 titleStyle: {
                   color: THEME.COLORS.STANDARD,
                   fontFamily: THEME.FONTFAMILY.BOLD,
@@ -101,7 +100,7 @@ const Pricing = ({ navigation, userId }) => {
                 buttonStyle: { borderRadius: "10px" },
               }}
               containerStyle={{
-                backgroundColor: THEME.COLORS.PRIMARY_900,
+                backgroundColor: THEME.COLORS.BACKGROUND,
                 borderRadius: "15px",
                 width: "20rem",
                 height: "85%",

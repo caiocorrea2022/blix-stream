@@ -1,4 +1,4 @@
-export const clientName = "Yoga Luz Studio";
+export const clientName = "Emily Monteiro";
 export const titleMain = "Seja bem-vindo(a)!";
 export const subtitleMain = "Aqui você irá imergir em autoconhecimento.";
 export const aboutText = "Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Qui illum nobis ut modi Quis vel veniam voluptatibus et numquam sint ad voluptas repellendus est enim illum vel animi omnis! Ex animi asperiores qui nemo assumenda et corrupti necessitatibus quo accusantium impedit ea optio molestiae et sint dolorum?\n\nAt omnis internos ut incidunt modi ea sint. Ad inventore quidem id illo fugit id explicabo sunt. Qui nihil ducimus ad tempora eveniet qui quia dicta eum rerum aliquid?Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia.Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Qui illum nobis ut modi Quis vel veniam voluptatibus et numquam sint ad voluptas repellendus est enim illum vel animi omnis! Ex animi asperiores qui nemo assumenda et corrupti necessitatibus quo accusantium impedit ea optio molestiae et sint dolorum?\n\nAt omnis internos ut incidunt modi ea sint. Ad inventore quidem id illo fugit id explicabo sunt. Qui nihil ducimus ad tempora eveniet qui quia dicta eum rerum aliquid?Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. ";
@@ -42,7 +42,7 @@ export const upsellPrices = [
 export const planInfos = [
   {
     planType: "PLANO A",
-    info: ["✔ +50 Aulas gravadas", "oi1", "oi2", "oi3"],
+    info: ["✔ +50 Aulas gravadas", "Meditações guiadas", "", ""],
   },
   {
     planType: "PLANO GANESHA",
@@ -50,7 +50,7 @@ export const planInfos = [
       "✔ Tudo do Plano A",
       "✔ Acesso a aulas ao vivo",
       "✔ Acesso a +100 Aulas gravadas",
-      "oi4",
+      "",
     ],
   },
   {
@@ -58,8 +58,8 @@ export const planInfos = [
     info: [
       "✔ Tudo do Plano B",
       "✔ Acesso a aulas ao vivo e Lives",
-      "✔ Acesso à Jornada do Yogi",
       "✔ Acesso a todos os conteúdos",
+      "",
     ],
   },
 ];
@@ -251,7 +251,7 @@ export const categoriesInfo = [
   },
   {
     title: "Meditações",
-    info: "lit repudiandae et atque praesentium.",
+    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error. ",
     image: require("./../../assets/FotoCategoria2.jpg"),
   },
   {
@@ -310,12 +310,12 @@ export const footerSocialData = [
   {
     type: "material-community",
     name: "instagram",
-    link: "https://www.linkedin.com/company/blix-solu%C3%A7%C3%B5es-em-tecnologia/about/?viewAsMember=true",
+    link: "https://www.instagram.com",
   },
   {
     type: "material-community",
     name: "youtube",
-    link: "https://www.instagram.com/blix.aplicativos/",
+    link: "https://www.youtube.com",
   },
 
   {

@@ -132,20 +132,20 @@ export default function About({ navigation }) {
           <Title>CURSOS DISPONÍVEIS</Title>
         </ViewText>
         <CardInfo
-          subtitleNumberOfLines={5}
+          subtitleNumberOfLines={4}
           titleFontSize={THEME.FONTSIZE.SMALL}
           titleColor={THEME.COLORS.SMALL}
           cardStyle={{
-            width: "20rem",
+            width: "18rem",
             margin: "1rem",
           }}
           cardCoverStyle={{
             width: "100%",
-            height: "9rem",
+            height: "10rem",
             borderRadius: "8px",
           }}
           cardContentStyle={{
-            height: "48%",
+            height: "45%",
           }}
           array={coursesInfo}
           navigation={navigation}

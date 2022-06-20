@@ -46,6 +46,7 @@ function TermsofUse({ navigation }) {
         }}
       >
         <ViewHeading>
+        <ViewPressable></ViewPressable>
           <ViewText>
             <Title>TERMOS DE USO E POLÍTICA DE PRIVACIDADE</Title>
           </ViewText>

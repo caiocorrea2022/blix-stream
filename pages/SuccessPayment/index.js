@@ -119,7 +119,8 @@ export default function Success({ navigation }) {
         <SmallText color={THEME.COLORS.BACKGROUND} margin="0rem 0rem 3rem 0rem">Por favor, verifique seu e-mail e faça o seu primeiro login.</SmallText>
         <Button
           title={"Fazer Login"}
-          onPress={() => { navigation.navigate("Login"), postGoogle() }}
+          // onPress={() => { navigation.navigate("Login"), postGoogle() }}
+          onPress={() => { navigation.navigate("Login")}}
           borderRadius="30px"
           colorbutton={THEME.COLORS.BACKGROUND}
           colortitle={THEME.COLORS.STANDARD}

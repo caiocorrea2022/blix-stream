@@ -3,9 +3,9 @@ import THEME from '../../config/theme';
 
 
 export const ViewText = styled.View`
-  height: 100%;
-  width: 90%;
+  width: 80%;
   justify-content:center;
+  align-items: center;
 `;
 
 export const ViewHeading = styled.View`
@@ -34,7 +34,6 @@ export const VerticalScroll = styled.ScrollView.attrs({
   `;
 
 export const ViewPressable = styled.View`
-height: 100%;
 width: 10%;
 justify-content:center;
 `;

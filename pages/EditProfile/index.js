@@ -145,7 +145,7 @@ export default function EditProfile({ navigation }) {
                                 keyboardType='default'
                                 returnKeyType='go'
                                 value={name}
-                                onChangeText={(text) => setCellPhone(text)}
+                                onChangeText={(text) => setName(text)}
                             />
                         </ViewText>
                         <ViewHelper></ViewHelper>

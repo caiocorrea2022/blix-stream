@@ -6,6 +6,7 @@ import { HeaderContainer } from "../../config/theme/globalStyles";
 import { DrawerActions } from '@react-navigation/native';
 import { StandardText } from "../../config/theme/globalStyles";
 import TouchableText from '../../components/TouchableText'
+import { TouchableOpacity } from "react-native";
 
 const Header = ({ login, goBack, navigation, about, background }) => {
   const jumpToAction = DrawerActions.jumpTo('Aulas');
@@ -43,7 +44,9 @@ const Header = ({ login, goBack, navigation, about, background }) => {
               <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
             </>
           ) : (
-            <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
+            <TouchableOpacity onPress={() => navigation.navigate("DrawerNavigatorScreen")}>
+              <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
+            </TouchableOpacity>
           )}
         </HeaderRightSide>
       </HeaderContainer>
@@ -79,7 +82,9 @@ const Header = ({ login, goBack, navigation, about, background }) => {
               <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
             </>
           ) : (
-            <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
+            <TouchableOpacity onPress={() => navigation.navigate("DrawerNavigatorScreen")}>
+              <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
+            </TouchableOpacity>
           )}
         </HeaderRightSide>
       </HeaderContainer>

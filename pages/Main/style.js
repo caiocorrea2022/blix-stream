@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient'
+import THEME from '../../config/theme'
 
 export const Poster = styled.ImageBackground`
     width: 100%;
@@ -9,6 +10,7 @@ export const Poster = styled.ImageBackground`
 
 export const Content = styled.View`
 	padding: 0rem 1rem;
+    background-color: ${THEME.COLORS.BACKGROUND_CLICK};
 `;
 
 export const Gradient = styled(LinearGradient)`

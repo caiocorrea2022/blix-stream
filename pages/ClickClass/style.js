@@ -3,7 +3,6 @@ import styled from 'styled-components/native';
 export const Image = styled.ImageBackground`
   width: 100%;
   aspect-Ratio: 16 / 9;
-  margin: 1rem 1rem 0.5rem 0rem;
   border-radius: 10px;
   overflow: hidden;
 `;
@@ -18,7 +17,7 @@ export const ContentVideoMobile = styled.View`
     align-self: center;
     width: 95%;
     aspect-ratio: 16/9;
-    margin-bottom:2rem
+    margin-bottom:2rem;
 `;
 
 export const ContentList = styled.View`
