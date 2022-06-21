@@ -10,6 +10,7 @@ import { TouchableOpacity } from "react-native";
 
 const Header = ({ login, goBack, navigation, about, background }) => {
   const jumpToAction = DrawerActions.jumpTo('Aulas');
+  const jumpToAction2 = DrawerActions.jumpTo('Tela Inicial');
 
   return (
     login ? (
@@ -44,9 +45,9 @@ const Header = ({ login, goBack, navigation, about, background }) => {
               <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
             </>
           ) : (
-            // <TouchableOpacity onPress={() => navigation.dispatch("DrawerNavigatorScreen")}>
+            <TouchableOpacity onPress={() => navigation.dispatch(jumpToAction2)}>
               <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
-            // </TouchableOpacity>
+            </TouchableOpacity>
           )}
         </HeaderRightSide>
       </HeaderContainer>
