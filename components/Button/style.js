@@ -13,3 +13,4 @@ export const Container = styled.TouchableOpacity`
 
 export const Load = styled.ActivityIndicator.attrs({ color: THEME.COLORS.BACKGROUND })`
 `;
+

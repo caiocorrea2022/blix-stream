@@ -12,7 +12,6 @@ import Hero from "../../components/Hero";
 import CardInfo from "../../components/Card";
 import Pricing from "../../components/Pricing";
 import { categoriesInfo, aboutText } from "../../config/data";
-import { View } from "react-native";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
@@ -109,8 +108,9 @@ export default function About({ navigation }) {
           }}
           cardCoverStyle={{
             width: "100%",
-            height: "8rem",
+            height: "7rem",
             borderRadius: "8px",
+            marginBottom: "0.5rem",
           }}
           array={categoriesInfo}
           navigation={navigation}
@@ -132,20 +132,21 @@ export default function About({ navigation }) {
           <Title>CURSOS DISPONÍVEIS</Title>
         </ViewText>
         <CardInfo
-          subtitleNumberOfLines={4}
+          subtitleNumberOfLines={5}
           titleFontSize={THEME.FONTSIZE.SMALL}
           titleColor={THEME.COLORS.SMALL}
           cardStyle={{
             width: "18rem",
+            height: "25rem",
             margin: "1rem",
           }}
           cardCoverStyle={{
             width: "100%",
-            height: "10rem",
+            height: "40%",
             borderRadius: "8px",
           }}
           cardContentStyle={{
-            height: "45%",
+            height: "50%",
           }}
           array={coursesInfo}
           navigation={navigation}
