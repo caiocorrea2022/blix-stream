@@ -30,7 +30,7 @@ const auth = getAuth();
 
 export default function Login({ navigation: { goBack } }) {
 
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
   const containerStyle = { backgroundColor: THEME.COLORS.BACKGROUND, padding: "2rem", width: Math.round(window.innerWidth * 0.7), alignSelf: "center" };
