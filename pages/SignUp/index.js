@@ -101,19 +101,20 @@ export default function SignUp({ navigation, route }) {
               console.log('user criado')
               console.log(user)
             };
-            createUser().then(() => {
-              sendEmailVerification(auth.currentUser)
-                .then(() => {
-                  signOut(auth)
-                    .then(() => {
-                      if (purchaseType === 'PLAN') {
-                        createCheckoutSession(user.uid, priceId, "subscription", 6);
-                      } else {
-                        createCheckoutSession(user.uid, priceId, "payment", 0);
-                      }
-                    });
-                });
-            });
+            createUser()
+              .then(() => {
+                sendEmailVerification(auth.currentUser)
+                  .then(() => {
+                    signOut(auth)
+                      .then(() => {
+                        if (purchaseType === 'PLAN') {
+                          createCheckoutSession(user.uid, priceId, "subscription", 6);
+                        } else {
+                          createCheckoutSession(user.uid, priceId, "payment", 0);
+                        }
+                      });
+                  });
+              });
           })
           .catch((error) => {
             setLoading(false);

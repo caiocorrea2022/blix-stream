@@ -99,7 +99,7 @@ const CardInfo = ({ array, buttonVisible = true, priceVisible = true, navigation
                                 {priceVisible ? <StandardText fontFamily={THEME.FONTFAMILY.BOLD} textAlign="flex-start" margin="1rem 0rem">{item.price}</StandardText> : null}
                             </Card.Content>
                             <Card.Actions>
-                                {buttonVisible ? <Button onPress={() => navigation.navigate('ClickCourse', { item })}>Saiba mais</Button> : null}
+                                {buttonVisible ? <Button labelStyle={{color:THEME.COLORS.PRIMARY_900}} onPress={() => navigation.navigate('ClickCourse', { item })}>Saiba mais</Button> : null}
                             </Card.Actions>
                         </Card>
                     ))}

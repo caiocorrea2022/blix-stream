@@ -42,57 +42,67 @@ export default function Login({ navigation: { goBack } }) {
   const [message, setMessege] = useState(null)
 
   const showAlert = (title, message) => {
-    setVisibleAlert(true)
-    setTitle(title)
-    setMessege(message)
+    setVisibleAlert(true);
+    setTitle(title);
+    setMessege(message);
   }
 
   const hideAlert = (status) => {
-    setVisibleAlert(status)
+    setVisibleAlert(status);
   }
 
-  const onLoginPressed = () => {
+  const validation = () => {
     const emailError = emailValidator(email.value);
     const passwordError = passwordValidator(password.value);
 
-    setLoading(true);
     if (emailError || passwordError) {
       setEmail({ ...email, error: emailError });
       setPassword({ ...password, error: passwordError });
       setLoading(false);
       return;
     }
-    setPersistence(auth, browserLocalPersistence)
-      .then(() => {
-        signInWithEmailAndPassword(auth, email.value, password.value)
-          .then((userCredential) => {
-            const user = userCredential.user;
-            if (user.emailVerified === false) {
-              showAlert("Erro", "E-mail não verificado. Confira sua caixa de entrada.")
-            } else
-              navigation.navigate('DrawerNavigatorScreen')
-          })
-      })
-      .catch((error) => {
-        console.log(error.code)
-        switch (error.code) {
-          case 'auth/user-not-found':
-            showAlert("Erro", "Usuário não cadastrado.");
-            break;
-          case 'auth/wrong-password':
-            showAlert("Erro", "Senha incorreta");
-            break;
-          case 'auth/invalid-email':
-            showAlert("Erro", "E-mail inválido");
-            break;
-          case 'auth/user-disabled':
-            showAlert("Erro", "Usuário desabilitado");
-            break;
-        }
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+  };
+
+  const onLoginPressed = () => {
+    validation();
+    if (email.value && password.value) {
+      setLoading(true);
+      setPersistence(auth, browserLocalPersistence)
+        .then(() => {
+          signInWithEmailAndPassword(auth, email.value, password.value)
+            .then((userCredential) => {
+              const user = userCredential.user;
+              if (user.emailVerified === false) {
+                showAlert("Erro", "E-mail não verificado. Confira sua caixa de entrada.")
+              } else {
+                navigation.navigate('DrawerNavigatorScreen')
+              }
+            })
+            .catch((error) => {
+              setLoading(false);
+              console.error(error);
+              switch (error.code) {
+                case 'auth/user-not-found':
+                  showAlert("Erro", "Usuário não cadastrado.");
+                  break;
+                case 'auth/wrong-password':
+                  showAlert("Erro", "Senha incorreta");
+                  break;
+                case 'auth/invalid-email':
+                  showAlert("Erro", "E-mail inválido");
+                  break;
+                case 'auth/user-disabled':
+                  showAlert("Erro", "Usuário desabilitado");
+                  break;
+              }
+            })
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode + errorMessage);
+        })
+    }
   }
 
   const MobileOrDesktopComponent = () => {
@@ -171,9 +181,6 @@ export default function Login({ navigation: { goBack } }) {
                   height="100%"
                 ></Button>
               </ViewButton>
-              {visibleAlert &&
-                <AlertBox title={title} message={message} visible={visibleAlert} onClose={hideAlert}></AlertBox>
-              }
               <TouchableText onPress={showModal} title={'RECUPERAR SENHA'}></TouchableText>
             </Content>
             <Portal>
@@ -181,6 +188,14 @@ export default function Login({ navigation: { goBack } }) {
                 <ResetPassword></ResetPassword>
               </Modal>
             </Portal>
+            {visibleAlert &&
+              <AlertBox
+                title={title}
+                message={message}
+                visible={visibleAlert}
+                onClose={hideAlert}
+              ></AlertBox>
+            }
           </Container>
           <MobileOrDesktopComponent></MobileOrDesktopComponent>
         </ContainerSideView>

@@ -44,9 +44,9 @@ const Header = ({ login, goBack, navigation, about, background }) => {
               <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
             </>
           ) : (
-            <TouchableOpacity onPress={() => navigation.navigate("DrawerNavigatorScreen")}>
+            // <TouchableOpacity onPress={() => navigation.dispatch("DrawerNavigatorScreen")}>
               <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
-            </TouchableOpacity>
+            // </TouchableOpacity>
           )}
         </HeaderRightSide>
       </HeaderContainer>
@@ -82,9 +82,9 @@ const Header = ({ login, goBack, navigation, about, background }) => {
               <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
             </>
           ) : (
-            <TouchableOpacity onPress={() => navigation.navigate("DrawerNavigatorScreen")}>
+            // <TouchableOpacity onPress={() => navigation.dispatch("DrawerNavigatorScreen")}>
               <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
-            </TouchableOpacity>
+            // </TouchableOpacity>
           )}
         </HeaderRightSide>
       </HeaderContainer>

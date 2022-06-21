@@ -23,7 +23,7 @@ export const FooterLeftSide = styled.View`
 `;
 
 export const Logo = styled.Image`
-    width: 1.2rem;
+    width: 1.3rem;
     height: 1rem;
 `;
 
