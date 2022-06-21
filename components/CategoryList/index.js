@@ -35,25 +35,31 @@ const CategoryList = ({ category, plan, courses }) => {
     return width < breakpoint ? (
       <></>
     ) : (
-      <Icon
-        type="material-community"
-        name="chevron-left"
-        size={THEME.FONTSIZE.BIG}
-        iconStyle={{
-          color: THEME.COLORS.ICON_DRAWER,
-          backgroundColor: "rgba(255,255,255,0.3)",
-          borderRadius: "5px"
-        }}
-        containerStyle={{
-          position: "absolute",
-          left: 0,
-          zIndex: 99,
-          height: "10rem",
-          justifyContent: "center",
-          overflow: "hidden",
-        }}
-        onPress={handleLeftArrow}
-      />
+      <>
+        {window.innerWidth < (allCards.length * 240) ? (
+          <Icon
+            type="material-community"
+            name="chevron-left"
+            size={THEME.FONTSIZE.BIG}
+            iconStyle={{
+              color: THEME.COLORS.ICON_DRAWER,
+              backgroundColor: "rgba(255,255,255,0.3)",
+              borderRadius: "5px",
+            }}
+            containerStyle={{
+              position: "absolute",
+              left: 0,
+              zIndex: 99,
+              height: "10rem",
+              justifyContent: "center",
+              overflow: "hidden",
+            }}
+            onPress={handleLeftArrow}
+          />
+        ) : (
+          <></>
+        )}
+      </>
     );
   };
 
@@ -63,25 +69,31 @@ const CategoryList = ({ category, plan, courses }) => {
     return width < breakpoint ? (
       <></>
     ) : (
-      <Icon
-        type="material-community"
-        name="chevron-right"
-        size={THEME.FONTSIZE.BIG}
-        iconStyle={{
-          color: THEME.COLORS.ICON_DRAWER,
-          backgroundColor: "rgba(255,255,255,0.3)",
-          borderRadius: "5px"
-        }}
-        containerStyle={{
-          position: "absolute",
-          right: 0,
-          zIndex: 99,
-          height: "10rem",
-          justifyContent: "center",
-          overflow: "hidden",
-        }}
-        onPress={handleRightArrow}
-      />
+      <>
+        {window.innerWidth < (allCards.length * 240) ? (
+          <Icon
+            type="material-community"
+            name="chevron-right"
+            size={THEME.FONTSIZE.BIG}
+            iconStyle={{
+              color: THEME.COLORS.ICON_DRAWER,
+              backgroundColor: "rgba(255,255,255,0.3)",
+              borderRadius: "5px",
+            }}
+            containerStyle={{
+              position: "absolute",
+              right: 0,
+              zIndex: 99,
+              height: "10rem",
+              justifyContent: "center",
+              overflow: "hidden",
+            }}
+            onPress={handleRightArrow}
+          />
+        ) : (
+          <></>
+        )}
+      </>
     );
   };
 
@@ -96,9 +108,9 @@ const CategoryList = ({ category, plan, courses }) => {
   const handleRightArrow = () => {
     let x = scrollX - Math.round(window.innerWidth / 2);
     let listW = allCards.length * 240;
-    if ((window.innerWidth > listW)){
+    if ((window.innerWidth > listW)) {
       x = 0;
-    } else if (((window.innerWidth - listW) > x)){
+    } else if (((window.innerWidth - listW) > x)) {
       x = (window.innerWidth - listW) - (23 * allCards.length);
     }
     setScrollX(x);

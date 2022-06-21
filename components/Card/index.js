@@ -39,25 +39,31 @@ const CardInfo = ({
     return width < breakpoint ? (
       <></>
     ) : (
-      <Icon
-        type="material-community"
-        name="chevron-left"
-        size={THEME.FONTSIZE.BIG}
-        iconStyle={{
-          color: THEME.COLORS.ICON_DRAWER,
-          backgroundColor: "rgba(255,255,255,0.3)",
-          borderRadius: "5px",
-        }}
-        containerStyle={{
-          position: "absolute",
-          left: 0,
-          zIndex: 99,
-          height: "10rem",
-          justifyContent: "center",
-          overflow: "hidden",
-        }}
-        onPress={handleLeftArrow}
-      />
+      <>
+        {window.innerWidth < (array.length * 192) ? (
+          <Icon
+            type="material-community"
+            name="chevron-left"
+            size={THEME.FONTSIZE.BIG}
+            iconStyle={{
+              color: THEME.COLORS.ICON_DRAWER,
+              backgroundColor: "rgba(255,255,255,0.3)",
+              borderRadius: "5px",
+            }}
+            containerStyle={{
+              position: "absolute",
+              left: 0,
+              zIndex: 99,
+              height: "10rem",
+              justifyContent: "center",
+              overflow: "hidden",
+            }}
+            onPress={handleLeftArrow}
+          />
+        ) : (
+          <></>
+        )}
+      </>
     );
   };
 
@@ -67,25 +73,31 @@ const CardInfo = ({
     return width < breakpoint ? (
       <></>
     ) : (
-      <Icon
-        type="material-community"
-        name="chevron-right"
-        size={THEME.FONTSIZE.BIG}
-        iconStyle={{
-          color: THEME.COLORS.ICON_DRAWER,
-          backgroundColor: "rgba(255,255,255,0.3)",
-          borderRadius: "5px",
-        }}
-        containerStyle={{
-          position: "absolute",
-          right: 0,
-          zIndex: 99,
-          height: "10rem",
-          justifyContent: "center",
-          overflow: "hidden",
-        }}
-        onPress={handleRightArrow}
-      />
+      <>
+        {window.innerWidth < (array.length * 192) ? (
+          <Icon
+            type="material-community"
+            name="chevron-right"
+            size={THEME.FONTSIZE.BIG}
+            iconStyle={{
+              color: THEME.COLORS.ICON_DRAWER,
+              backgroundColor: "rgba(255,255,255,0.3)",
+              borderRadius: "5px",
+            }}
+            containerStyle={{
+              position: "absolute",
+              right: 0,
+              zIndex: 99,
+              height: "10rem",
+              justifyContent: "center",
+              overflow: "hidden",
+            }}
+            onPress={handleRightArrow}
+          />
+        ) : (
+          <></>
+        )}
+      </>
     );
   };
 
