@@ -128,37 +128,6 @@ const CardInfo = ({
           {array.map((item, index) => (
             <Card key={index} style={cardStyle}>
               <Card.Cover source={{ uri: item.image }} style={cardCoverStyle} />
-              {priceVisible ? (
-                <Card.Content style={cardContentStyle}>
-                  <ViewTitleCourse>
-                    <Title
-                      textAlign="flex-start"
-                      fontSize={titleFontSize}
-                      color={titleColor}
-                      numberOfLines={1}
-                    >
-                      {item.title}
-                    </Title>
-                  </ViewTitleCourse>
-                  <ViewSmallTextCourse>
-                    <SmallText
-                      textAlign="flex-start"
-                      fontSize={THEME.FONTSIZE.EXTRASMALL}
-                      numberOfLines={subtitleNumberOfLines}
-                    >
-                      {item.info}
-                    </SmallText>
-                  </ViewSmallTextCourse>
-                  <ViewPrice>
-                    <StandardText
-                      fontFamily={THEME.FONTFAMILY.BOLD}
-                      textAlign="flex-start"
-                    >
-                      {item.price}
-                    </StandardText>
-                  </ViewPrice>
-                </Card.Content>
-              ) : (
                 <Card.Content style={cardContentStyle}>
                   <ViewTitleCategory>
                     <Title
@@ -179,8 +148,16 @@ const CardInfo = ({
                       {item.info}
                     </SmallText>
                   </ViewSmallTextCategory>
+                  {priceVisible ? (
+                  <ViewPrice>
+                    <StandardText
+                      fontFamily={THEME.FONTFAMILY.BOLD}
+                      textAlign="flex-start"
+                    >
+                      {item.price}
+                    </StandardText>
+                  </ViewPrice> ) : null }
                 </Card.Content>
-              )}
               <Card.Actions style={{ height: "10%" }}>
                 {buttonVisible ? (
                   <Button

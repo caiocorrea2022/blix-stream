@@ -11,7 +11,7 @@ import Header from "../../components/Header";
 import Hero from "../../components/Hero";
 import CardInfo from "../../components/Card";
 import Pricing from "../../components/Pricing";
-import { categoriesInfo, aboutText } from "../../config/data";
+import { categoriesInfo, aboutText, aboutTitle, aboutTitleCategory, aboutTitleCourses } from "../../config/data";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
@@ -85,7 +85,7 @@ export default function About({ navigation }) {
       </Section>
       <ViewAboutMe>
         <ViewText>
-          <SubTitle>SOBRE MIM</SubTitle>
+          <SubTitle>{aboutTitle}</SubTitle>
         </ViewText>
         <ViewText>
           <SmallText textAlign="flex-start" fontFamily={THEME.FONTFAMILY.REGULAR}>
@@ -95,7 +95,7 @@ export default function About({ navigation }) {
       </ViewAboutMe>
       <ViewSection>
         <ViewText>
-          <Title>CONTEÚDO DISPONÍVEL NO APP</Title>
+          <Title>{aboutTitleCategory}</Title>
         </ViewText>
         <CardInfo
           titleFontSize={THEME.FONTSIZE.EXTRASMALL}
@@ -127,7 +127,7 @@ export default function About({ navigation }) {
       </ViewSection>
       <ViewSection>
         <ViewText>
-          <Title>CURSOS DISPONÍVEIS</Title>
+          <Title>{aboutTitleCourses}</Title>
         </ViewText>
         <CardInfo
           subtitleNumberOfLines={5}
@@ -135,16 +135,13 @@ export default function About({ navigation }) {
           titleColor={THEME.COLORS.SMALL}
           cardStyle={{
             width: "18rem",
-            height: "25rem",
             margin: "1rem",
           }}
           cardCoverStyle={{
             width: "100%",
-            height: "40%",
+            height: "10rem",
             borderRadius: "8px",
-          }}
-          cardContentStyle={{
-            height: "50%",
+            marginBottom: "0.5rem",
           }}
           array={coursesInfo}
           navigation={navigation}
