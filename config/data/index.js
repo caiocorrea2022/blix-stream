@@ -2,6 +2,10 @@ export const clientName = "Emily Monteiro";
 export const titleMain = "Seja bem-vindo(a)!";
 export const subtitleMain = "Aqui você irá imergir em autoconhecimento.";
 export const aboutText = "Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Qui illum nobis ut modi Quis vel veniam voluptatibus et numquam sint ad voluptas repellendus est enim illum vel animi omnis! Ex animi asperiores qui nemo assumenda et corrupti necessitatibus quo accusantium impedit ea optio molestiae et sint dolorum?\n\nAt omnis internos ut incidunt modi ea sint. Ad inventore quidem id illo fugit id explicabo sunt. Qui nihil ducimus ad tempora eveniet qui quia dicta eum rerum aliquid?Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia.Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Qui illum nobis ut modi Quis vel veniam voluptatibus et numquam sint ad voluptas repellendus est enim illum vel animi omnis! Ex animi asperiores qui nemo assumenda et corrupti necessitatibus quo accusantium impedit ea optio molestiae et sint dolorum?\n\nAt omnis internos ut incidunt modi ea sint. Ad inventore quidem id illo fugit id explicabo sunt. Qui nihil ducimus ad tempora eveniet qui quia dicta eum rerum aliquid?Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. ";
+export const aboutTitle = "SOBRE MIM";
+export const aboutTitleCategory = "CONTEÚDO DISPONÍVEL NO APP";
+export const aboutTitleCourses = "CURSOS DISPONÍVEIS";
+
 
 
 export const planFrequency = [
