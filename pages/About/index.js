@@ -16,10 +16,10 @@ import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
   Section,
-  StandardText,
   SmallText,
   Title,
-  Container
+  Container,
+  SubTitle
 } from "../../config/theme/globalStyles";
 import { firestore } from "../../services/firebase/index";
 import THEME from "../../config/theme";
@@ -33,7 +33,6 @@ export default function About({ navigation }) {
   const [plan, setPlan] = useState("");
   const [coursesInfo, setCoursesInfo] = useState([]);
 
-
   const getUsers = async (user) => {
     const docRef = doc(firestore, "users", user);
     const docSnap = await getDoc(docRef);
@@ -45,11 +44,11 @@ export default function About({ navigation }) {
 
   const getCourses = async () => {
     const response = await getDocs(collection(firestore, "courses"));
-      let courses = [];
-      response.forEach((doc) => {
-        courses.push({ id: doc.id, ...doc.data() });
-      });
-      setCoursesInfo(courses);
+    let courses = [];
+    response.forEach((doc) => {
+      courses.push({ id: doc.id, ...doc.data() });
+    });
+    setCoursesInfo(courses);
   };
 
   useEffect(() => {
@@ -87,7 +86,7 @@ export default function About({ navigation }) {
       </Section>
       <ViewAboutMe>
         <ViewText>
-          <StandardText>SOBRE MIM</StandardText>
+          <SubTitle>SOBRE MIM</SubTitle>
         </ViewText>
         <ViewText>
           <SmallText textAlign="flex-start" fontFamily={THEME.FONTFAMILY.REGULAR}>

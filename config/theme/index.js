@@ -37,11 +37,9 @@ export default {
 
   FONTFAMILY:{
     BOLD: "Montserrat_700Bold",
-    EXTRABOLD: 'Montserrat_800ExtraBold',
     MEDIUM: 'Montserrat_500Medium',
     REGULAR: 'Montserrat_400Regular',
     LIGHT: 'Montserrat_300Light',
-    EXTRALIGHT: 'Montserrat_200ExtraLight',
     FONTABOUT: "Rajdhani_Medium",
   },
 

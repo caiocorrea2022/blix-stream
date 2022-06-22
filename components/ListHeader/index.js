@@ -40,7 +40,7 @@ const ListHeader = ({ title, description, pdf, url, navigation }) => {
   return (
     <Container>
       <Title textAlign="flex-start">{title}</Title>
-      <StandardText textAlign="flex-start" margin="1rem 0rem 0rem 0rem" fontFamily={THEME.FONTFAMILY.EXTRALIGHT}>{description}</StandardText>
+      <StandardText textAlign="flex-start" margin="1rem 0rem 0rem 0rem" fontFamily={THEME.FONTFAMILY.LIGHT}>{description}</StandardText>
       <Content>
         {pdf ? <Pdf></Pdf> : null}
         {url ? <Live></Live> : null}
