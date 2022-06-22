@@ -9,7 +9,7 @@ function Plans({ navigation, route }) {
   console.log('userIdPlan', userId);
 
   return (
-    <Container background={THEME.COLORS.PRIMARY_700}>
+    <Container background={THEME.COLORS.PRIMARY_800}>
       <Header goBack={navigation.goBack} login={true} main={false} about={false} />
       <Pricing navigation={navigation} userId={userId}></Pricing>
     </Container>

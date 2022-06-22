@@ -31,61 +31,55 @@ const Stack = createNativeStackNavigator();
 
 function Navigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+    screenOptions={{
+      headerShown: false
+    }}
+    
+    >
       <Stack.Screen
         name="DrawerNavigatorScreen"
         component={DrawerNavigatorScreen}
-        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Main"
         component={Main}
-        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="About"
         component={About}
-        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Plans"
         component={Plans}
-        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Login"
         component={Login}
-        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="SignUp"
         component={SignUp}
-        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="ClickClass"
         component={ClickClass}
-        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="ClickCourse"
         component={ClickCourse}
-        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="TermsofUse"
         component={TermsofUse}
-        options={{ headerShown: false }}
       />
             <Stack.Screen
         name="PDFView"
         component={PDFView}
-        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Success"
         component={Success}
-        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

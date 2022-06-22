@@ -9,6 +9,6 @@ export const Footer = styled.View`
     padding: 1rem 0rem;
     flex-direction: row;
     justify-content: center;
-    background-color: ${THEME.COLORS.PRIMARY_700};
+    background-color: ${THEME.COLORS.PRIMARY_800};
 `;
 

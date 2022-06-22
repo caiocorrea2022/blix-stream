@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Logo, FooterLeftSide, FooterRightSide } from "./style";
-import { FooterText, SmallText } from "../../config/theme/globalStyles";
+import { FooterText } from "../../config/theme/globalStyles";
 import THEME from "../../config/theme";
 import { footerSocialData, clientName } from "../../config/data";
 import { Icon } from "react-native-elements";
@@ -10,16 +10,16 @@ const Footer = () => {
   return (
     <Container>
       <FooterLeftSide>
-        <SmallText textAlign="flex-star" fontFamily={THEME.FONTFAMILY.BOLD} margin="0rem 0.5rem">{clientName}</SmallText>
+        <FooterText textAlign="flex-star" fontFamily={THEME.FONTFAMILY.BOLD} margin="0rem 0.5rem">{clientName}</FooterText>
         {footerSocialData.map((social, index) => (
           <Icon
             key={index}
             type={social.type}
             name={social.name}
-            size={THEME.FONTSIZE.EXTRAMEDIUM}
+            size={20}
             onPress={() => Linking.openURL(social.link)}
             iconStyle={{
-              color: THEME.COLORS.ICON_DRAWER,
+              color: THEME.COLORS.TEXT_FOOTER,
               marginHorizontal: "0.2rem"
             }}
           >

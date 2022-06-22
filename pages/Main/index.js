@@ -45,15 +45,15 @@ export default function Main({ navigation, route }) {
   }, []);
 
   return (
-    <Container>
+    <Container background={THEME.COLORS.BACKGROUND_MAIN}>
       <Poster source={require('../../assets/yoga-logo.jpg')}>
         <Gradient
           locations={[0, 0.2, 0.7, 1]}
-          colors={THEME.COLORS.GRADIENT}>
-          <Header background="none" navigation={navigation} login={login} main={true} about={false} />
+          colors={THEME.COLORS.GRADIENT_MAIN}>
+          <Header navigation={navigation} login={login} main={true} about={false} />
           <Hero>
-            <Title color={THEME.COLORS.BACKGROUND} textAlign="flex-start" margin="0.5rem 0rem">{titleMain}</Title>
-            <SubTitle color={THEME.COLORS.BACKGROUND} textAlign="flex-start">{subtitleMain}</SubTitle>
+            <Title color={THEME.COLORS.TITLE_MAIN} textAlign="flex-start" margin="0.5rem 0rem">{titleMain}</Title>
+            <SubTitle color={THEME.COLORS.TITLE_MAIN} textAlign="flex-start">{subtitleMain}</SubTitle>
           </Hero>
         </Gradient>
       </Poster>

@@ -31,7 +31,7 @@ export default function DrawerNavigatorScreen({ navigation }) {
       screenOptions={{
         drawerPosition: 'left',
         drawerStyle: {
-          backgroundColor: THEME.COLORS.BACKGROUND,
+          backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
         },
       }}
     >
@@ -40,9 +40,9 @@ export default function DrawerNavigatorScreen({ navigation }) {
         component={About}
         options={{
           headerShown: false,
-          drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
-          drawerActiveTintColor: THEME.COLORS.SMALL_TEXT,
-          drawerInactiveTintColor: THEME.COLORS.SMALL_TEXT,
+          drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_800,
+          drawerActiveTintColor: THEME.COLORS.TEXT_ABOUT,
+          drawerInactiveTintColor: THEME.COLORS.TEXT_ABOUT,
           drawerLabelStyle: {
             fontSize: THEME.FONTSIZE.SMALL,
             fontFamily: THEME.FONTFAMILY.REGULAR,
@@ -54,9 +54,9 @@ export default function DrawerNavigatorScreen({ navigation }) {
         component={Main}
         options={{
           headerShown: false,
-          drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
-          drawerActiveTintColor: THEME.COLORS.SMALL_TEXT,
-          drawerInactiveTintColor: THEME.COLORS.SMALL_TEXT,
+          drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_800,
+          drawerActiveTintColor: THEME.COLORS.TEXT_ABOUT,
+          drawerInactiveTintColor: THEME.COLORS.TEXT_ABOUT,
           drawerLabelStyle: {
             fontSize: THEME.FONTSIZE.SMALL,
             fontFamily: THEME.FONTFAMILY.REGULAR,
@@ -69,9 +69,9 @@ export default function DrawerNavigatorScreen({ navigation }) {
           component={EditProfile}
           options={{
             headerShown: false,
-            drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_700,
-            drawerActiveTintColor: THEME.COLORS.SMALL_TEXT,
-            drawerInactiveTintColor: THEME.COLORS.SMALL_TEXT,
+            drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_800,
+            drawerActiveTintColor: THEME.COLORS.TEXT_ABOUT,
+            drawerInactiveTintColor: THEME.COLORS.TEXT_ABOUT,
             drawerLabelStyle: {
               fontSize: THEME.FONTSIZE.SMALL,
               fontFamily: THEME.FONTFAMILY.REGULAR,

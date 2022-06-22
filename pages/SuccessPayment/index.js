@@ -123,7 +123,7 @@ export default function Success({ navigation }) {
           onPress={() => { navigation.navigate("Login")}}
           borderRadius="30px"
           colorbutton={THEME.COLORS.BACKGROUND}
-          colortitle={THEME.COLORS.STANDARD}
+          colortitle={THEME.COLORS.TEXT_ABOUT}
         ></Button>
       </Container>
     </Provider>

@@ -75,12 +75,12 @@ const ClickClass = ({ route, navigation }) => {
     const breakpoint = 1080;
 
     return width < breakpoint ? (
-      <View>
+      <View style={{ backgroundColor: THEME.COLORS.BACKGROUND_MAIN }}>
         <ViewVideo></ViewVideo>
         <ViewFlatlist></ViewFlatlist>
       </View>
     ) : (
-      <View style={{ flexDirection: "row", justifyContent: "center", flex: 1 }}>
+      <View style={{ flexDirection: "row", justifyContent: "center", flex: 1, backgroundColor: THEME.COLORS.BACKGROUND_MAIN }}>
         <ViewVideo></ViewVideo>
         <ViewFlatlist></ViewFlatlist>
       </View>
@@ -97,7 +97,7 @@ const ClickClass = ({ route, navigation }) => {
           <VideoPlayer video={video.link} />
         ) : (
           <Image source={require("./../../assets/Bloqueada.jpg")} resizeMode="cover">
-            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', aspectRatio: 16/9, justifyContent: "center" }}>
+            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', aspectRatio: 16 / 9, justifyContent: "center" }}>
               <Button
                 title={'COMPRAR AGORA'}
                 colorbutton={THEME.COLORS.PRIMARY_900}
@@ -107,9 +107,9 @@ const ClickClass = ({ route, navigation }) => {
               >
               </Button>
               <View style={{ flexDirection: "row", justifyContent: "center", margin: "1rem" }} >
-                <StandardText margin="0rem 0.5rem" color={THEME.COLORS.BACKGROUND}>ou</StandardText>
-                <TouchableText textDecoration="underline" onPress={() => navigation.navigate("Login")} title={'Logar'} color={THEME.COLORS.BACKGROUND}></TouchableText>
-                <StandardText margin="0rem 0.5rem" color={THEME.COLORS.BACKGROUND}>para continuar</StandardText>
+                <StandardText margin="0rem 0.5rem" color={THEME.COLORS.TEXT_BUTTON}>ou</StandardText>
+                <TouchableText textDecoration="underline" onPress={() => navigation.navigate("Login")} title={'Logar'} color={THEME.COLORS.TEXT_BUTTON}></TouchableText>
+                <StandardText margin="0rem 0.5rem" color={THEME.COLORS.TEXT_BUTTON}>para continuar</StandardText>
               </View>
             </View>
           </Image>
@@ -121,7 +121,7 @@ const ClickClass = ({ route, navigation }) => {
           <VideoPlayer video={video.link} />
         ) : (
           <Image source={require("./../../assets/Bloqueada.jpg")} resizeMode="cover">
-            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', aspectRatio: 16/9, justifyContent: "center" }}>
+            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', aspectRatio: 16 / 9, justifyContent: "center" }}>
               <Button
                 title={'COMPRAR AGORA'}
                 colorbutton={THEME.COLORS.PRIMARY_900}
@@ -201,8 +201,8 @@ const ClickClass = ({ route, navigation }) => {
 
   return (
     <ViewPortProvider>
-      <Container >
-        <Header goBack={navigation.goBack} background={THEME.COLORS.BACKGROUND_HEADER} />
+      <Container background={THEME.COLORS.BACKGROUND_MAIN}>
+        <Header goBack={navigation.goBack} />
         <OutsideView></OutsideView>
       </Container>
     </ViewPortProvider>

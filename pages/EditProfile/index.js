@@ -127,8 +127,8 @@ export default function EditProfile({ navigation }) {
                             isLoading={loadingPlan}
                             onPress={sendToCustomerPortal}
                             borderRadius="5px"
-                            colorbutton={THEME.COLORS.PRIMARY_700}
-                            colortitle={THEME.COLORS.STANDARD}
+                            colorbutton={THEME.COLORS.PRIMARY_800}
+                            colortitle={THEME.COLORS.TEXT_ABOUT}
                         ></Button>
                     </ViewButton>
                 </ViewPlan>
@@ -198,8 +198,8 @@ export default function EditProfile({ navigation }) {
                             isLoading={loadingSave}
                             onPress={salvar}
                             borderRadius="5px"
-                            colorbutton={THEME.COLORS.PRIMARY_700}
-                            colortitle={THEME.COLORS.STANDARD}
+                            colorbutton={THEME.COLORS.PRIMARY_800}
+                            colortitle={THEME.COLORS.TEXT_ABOUT}
                         ></Button>
                     </ViewButton>
                 </Content>

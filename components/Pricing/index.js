@@ -18,7 +18,6 @@ const Pricing = ({ navigation, userId }) => {
   const [option, setOption] = useState(planPrices[0]);
   const [upsell, setUpsell] = useState(upsellPrices[0]);
 
-
   const Item = ({ item, onPress, backgroundColor, textColor }) => (
     <ItemContainer style={[backgroundColor]}>
       <TouchableOpacity onPress={onPress}>
@@ -29,9 +28,9 @@ const Pricing = ({ navigation, userId }) => {
 
   const renderItem = ({ item, index }) => {
     const backgroundColor =
-      item.id === selectedId ? THEME.COLORS.PRIMARY_900 : THEME.COLORS.BACKGROUND;
+      item.id === selectedId ? THEME.COLORS.PRIMARY_900 : THEME.COLORS.PRIMARY_800;
     const color =
-      item.id === selectedId ? THEME.COLORS.BACKGROUND : THEME.COLORS.STANDARD;
+      item.id === selectedId ? THEME.COLORS.TEXT_BUTTON : THEME.COLORS.TEXT_ABOUT;
     return (
       <Item
         item={item}
@@ -67,7 +66,7 @@ const Pricing = ({ navigation, userId }) => {
           {planInfos.map((item, index) => (
             <PricingCard
               key={index}
-              color={THEME.COLORS.SUB_TITLE}
+              color={THEME.COLORS.TEXT_ABOUT}
               title={item.planType}
               price={option[index].price}
               info={[
@@ -75,32 +74,32 @@ const Pricing = ({ navigation, userId }) => {
                 ...item.info
               ]}
               titleStyle={{
-                fontSize: THEME.FONTSIZE.EXTRAMEDIUM,
+                fontSize: THEME.FONTSIZE.STANDARD,
               }}
               titleFont={THEME.FONTFAMILY.BOLD}
               infoStyle={{
-                color: THEME.COLORS.SMALL_TEXT,
+                color: THEME.COLORS.TEXT_ABOUT,
                 fontSize: THEME.FONTSIZE.SMALL,
                 textAlign: 'center',
               }}
               pricingStyle={{
-                fontSize: THEME.FONTSIZE.EXTRAMEDIUM,
+                fontSize: THEME.FONTSIZE.STANDARD,
                 justifyContent: "flex-start"
               }}
               pricingFont={THEME.FONTFAMILY.MEDIUM}
               infoFont={THEME.FONTFAMILY.LIGHT}
               button={{
                 title: "ASSINAR PLANO",
-                color: THEME.COLORS.PRIMARY_800,
+                color: THEME.COLORS.PRIMARY_900,
                 titleStyle: {
-                  color: THEME.COLORS.STANDARD,
+                  color: THEME.COLORS.TEXT_BUTTON,
                   fontFamily: THEME.FONTFAMILY.BOLD,
                   fontSize: THEME.FONTSIZE.MEDIUM,
                 },
                 buttonStyle: { borderRadius: "10px" },
               }}
               containerStyle={{
-                backgroundColor: THEME.COLORS.BACKGROUND,
+                backgroundColor: THEME.COLORS.PRIMARY_800,
                 borderRadius: "15px",
                 width: "20rem",
                 height: "85%",

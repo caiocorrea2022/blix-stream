@@ -8,30 +8,30 @@ import { StandardText } from "../../config/theme/globalStyles";
 import TouchableText from '../../components/TouchableText'
 import { TouchableOpacity } from "react-native";
 
-const Header = ({ login, goBack, navigation, about, background }) => {
+const Header = ({ login, goBack, navigation, about }) => {
   const jumpToAction = DrawerActions.jumpTo('Aulas');
   const jumpToAction2 = DrawerActions.jumpTo('Tela Inicial');
 
   return (
     login ? (
-      <HeaderContainer background={background}>
+      <HeaderContainer>
         <HeaderLeftSide>
           {goBack ? (
             <Row>
               <Icon
                 type="material-community"
                 name="chevron-left"
-                color={THEME.COLORS.PRIMARY_900}
+                color={THEME.COLORS.ICON_HEADER}
                 size={THEME.FONTSIZE.BIG}
                 onPress={goBack}
               />
-              <TouchableText onPress={() => goBack()} title={'Voltar'} color={THEME.COLORS.PRIMARY_900}></TouchableText>
+              <TouchableText onPress={() => goBack()} title={'Voltar'} color={THEME.COLORS.ICON_HEADER}></TouchableText>
             </Row>
           ) : (
             <Icon
               type="material-community"
               name="menu"
-              color={THEME.COLORS.ICON_HEADER}
+              color={THEME.COLORS.ICON_HEADER_OVERPHOTO}
               size={34}
               onPress={() => navigation.toggleDrawer()}
             />
@@ -41,7 +41,7 @@ const Header = ({ login, goBack, navigation, about, background }) => {
         <HeaderRightSide>
           {about ? (
             <>
-              <StandardText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem" onPress={() => navigation.dispatch(jumpToAction)}>ACESSAR AULAS</StandardText>
+              <StandardText color={THEME.COLORS.ICON_HEADER_OVERPHOTO} margin="0rem 1rem" onPress={() => navigation.dispatch(jumpToAction)}>ACESSAR AULAS</StandardText>
               <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
             </>
           ) : (
@@ -52,24 +52,24 @@ const Header = ({ login, goBack, navigation, about, background }) => {
         </HeaderRightSide>
       </HeaderContainer>
     ) : (
-      <HeaderContainer background={background}>
+      <HeaderContainer>
         <HeaderLeftSide>
           {goBack ? (
             <Row>
               <Icon
                 type="material-community"
                 name="chevron-left"
-                color={THEME.COLORS.PRIMARY_900}
+                color={THEME.COLORS.ICON_HEADER}
                 size={THEME.FONTSIZE.BIG}
                 onPress={goBack}
               />
-              <TouchableText onPress={() => goBack()} title={'Voltar'} color={THEME.COLORS.PRIMARY_900}></TouchableText>
+              <TouchableText onPress={() => goBack()} title={'Voltar'} color={THEME.COLORS.ICON_HEADER}></TouchableText>
             </Row>
           ) : (
             <Icon
               type="material-community"
               name="menu"
-              color={THEME.COLORS.ICON_HEADER}
+              color={THEME.COLORS.ICON_HEADER_OVERPHOTO}
               size={34}
               onPress={() => navigation.toggleDrawer()}
             />
@@ -79,7 +79,7 @@ const Header = ({ login, goBack, navigation, about, background }) => {
         <HeaderRightSide>
           {about ? (
             <>
-              <StandardText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem" onPress={() => navigation.navigate("Login")}>LOGIN</StandardText>
+              <StandardText color={THEME.COLORS.ICON_HEADER_OVERPHOTO} margin="0rem 1rem" onPress={() => navigation.navigate("Login")}>LOGIN</StandardText>
               <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
             </>
           ) : (

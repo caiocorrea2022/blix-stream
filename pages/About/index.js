@@ -70,7 +70,6 @@ export default function About({ navigation }) {
       <Section>
         <Poster source={require("../../assets/FotoAbout.jpg")}>
           <Header
-            background="none"
             navigation={navigation}
             login={login}
             main={false}
@@ -154,7 +153,7 @@ export default function About({ navigation }) {
       {plan ? (
         <></>
       ) : (
-        <Section background={THEME.COLORS.PRIMARY_700}>
+        <Section>
           <Pricing></Pricing>
         </Section>
       )}

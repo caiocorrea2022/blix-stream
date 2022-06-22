@@ -119,7 +119,7 @@ const CategoryList = ({ category, plan, courses }) => {
   return (
     <ViewPortProvider>
       <Container>
-        <StandardText fontFamily={THEME.FONTFAMILY.BOLD} color={THEME.COLORS.BACKGROUND} maxWidth="230" textAlign="flex-start" numberOfLines={1}>{category.title}</StandardText>
+        <StandardText fontFamily={THEME.FONTFAMILY.BOLD} color={THEME.COLORS.TEXT_MAIN} maxWidth="230" textAlign="flex-start" numberOfLines={1}>{category.title}</StandardText>
         <Content>
           <MobileOrDesktopLeftArrow></MobileOrDesktopLeftArrow>
           <FlatList

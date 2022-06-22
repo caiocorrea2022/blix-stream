@@ -22,13 +22,13 @@ const CategoryItem = ({ item, plan, courses }) => {
                         name="lock"
                         size={THEME.FONTSIZE.BIG}
                         iconStyle={{
-                            color: THEME.COLORS.BACKGROUND,
+                            color: THEME.COLORS.ICON_HEADER_OVERPHOTO,
                         }}
                         containerStyle={{ flex: 1, alignSelf: "flex-end", justifyContent: "flex-end", padding: "0.2rem" }}
                     />
                 }
             </Image>
-            <SmallText color={THEME.COLORS.BACKGROUND} maxWidth="230" textAlign="flex-start" numberOfLines={1}>{item.title}</SmallText>
+            <SmallText color={THEME.COLORS.TEXT_MAIN} maxWidth="230" textAlign="flex-start" numberOfLines={1}>{item.title}</SmallText>
         </Touchable>
     )
 }

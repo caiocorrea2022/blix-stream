@@ -12,7 +12,7 @@ const Hero = ({ userId, navigation, button, plan }) => {
     <Container>
       <Title
         textAlign="flex-start"
-        color={THEME.COLORS.BACKGROUND}
+        color={THEME.COLORS.TITLE_OVERPHOTO_ABOUT}
         fontFamily={THEME.FONTFAMILY.FONTABOUT}
         fontSize={THEME.FONTSIZE.GIANT}
       >

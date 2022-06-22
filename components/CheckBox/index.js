@@ -6,9 +6,9 @@ import THEME from '../../config/theme';
 const CheckBox = ({ ...props }) => (
   <Check
     checkedColor={THEME.COLORS.PRIMARY_900}
-    uncheckedColor={THEME.COLORS.STANDARD}
-    textStyle={{ color: THEME.COLORS.STANDARD, fontFamily: THEME.FONTFAMILY.LIGHT, fontSize: THEME.FONTSIZE.EXTRASMALL }}
-    containerStyle={{ backgroundColor: THEME.COLORS.BACKGROUND, width: "90%", height: "100%", justifyContent: "center" }}
+    uncheckedColor={THEME.COLORS.TEXT_ABOUT}
+    textStyle={{ color: THEME.COLORS.TEXT_ABOUT, fontFamily: THEME.FONTFAMILY.LIGHT, fontSize: THEME.FONTSIZE.EXTRASMALL }}
+    containerStyle={{ backgroundColor: THEME.COLORS.BACKGROUND_ABOUT, width: "90%", height: "100%", justifyContent: "center" }}
     {...props}
   />
 );

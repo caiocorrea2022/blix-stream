@@ -19,17 +19,17 @@ export default function CookieConsentFunction() {
 
         buttonStyle= {{
             background: 'black',
-            color: THEME.COLORS.TEXT_800,
+            color: THEME.COLORS.TEXT_ABOUT,
             borderRadius: 10,
             padding: 10,
         }}
         declineButtonStyle={{
-            color:  THEME.COLORS.TEXT_800,
-            background: THEME.COLORS.BACKGROUND_CLICK,
+            color:  THEME.COLORS.TEXT_ABOUT,
+            background: THEME.COLORS.BACKGROUND_MAIN,
             textDecorationLine:'underline'
           }}
         contentStyle={{
-            color:THEME.COLORS.background,
+            color:THEME.COLORS.BACKGROUND_ABOUT,
             textAlign:'justify',
             fontFamily: THEME.FONTFAMILY.LIGHT,
             fontSize: 14,

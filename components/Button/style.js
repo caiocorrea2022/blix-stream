@@ -11,6 +11,6 @@ export const Container = styled.TouchableOpacity`
   background-color: ${({ backgroundColor }) => (backgroundColor ? backgroundColor : THEME.COLORS.PRIMARY_900)};
 `;
 
-export const Load = styled.ActivityIndicator.attrs({ color: THEME.COLORS.BACKGROUND })`
+export const Load = styled.ActivityIndicator.attrs({ color: THEME.COLORS.TEXT_BUTTON })`
 `;
 

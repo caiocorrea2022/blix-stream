@@ -17,7 +17,7 @@ export const HorizontalList = styled.ScrollView.attrs({
 `;
 
 export const ItemContainer = styled.View`
-  background-color: ${THEME.COLORS.BACKGROUND};
+  background-color: ${THEME.COLORS.PRIMARY_800};
   border-radius: 5px;
   padding: 0.4rem 1rem;
   margin: 0.3rem;
