@@ -4,9 +4,7 @@ import {
   HorizontalListView,
   HorizontalList,
   ViewTitleCategory,
-  ViewTitleCourse,
   ViewSmallTextCategory,
-  ViewSmallTextCourse,
   ViewPrice,
 } from "./style";
 import THEME from "../../config/theme";
@@ -30,6 +28,7 @@ const CardInfo = ({
   titleFontSize,
   titleColor,
   subtitleNumberOfLines,
+  cardWidth,
 }) => {
   const [scrollX, setScrollX] = useState(0);
 
@@ -40,7 +39,7 @@ const CardInfo = ({
       <></>
     ) : (
       <>
-        {window.innerWidth < (array.length * 192) ? (
+        {window.innerWidth < (array.length * cardWidth) ? (
           <Icon
             type="material-community"
             name="chevron-left"
@@ -74,7 +73,7 @@ const CardInfo = ({
       <></>
     ) : (
       <>
-        {window.innerWidth < (array.length * 192) ? (
+        {window.innerWidth < (array.length * cardWidth) ? (
           <Icon
             type="material-community"
             name="chevron-right"
@@ -111,7 +110,7 @@ const CardInfo = ({
 
   const handleRightArrow = () => {
     let x = scrollX - Math.round(window.innerWidth / 2);
-    let listW = array.length * 192;
+    let listW = array.length * cardWidth;
     if (window.innerWidth > listW) {
       x = 0;
     } else if (window.innerWidth - listW > x) {
@@ -158,7 +157,7 @@ const CardInfo = ({
                     </StandardText>
                   </ViewPrice> ) : null }
                 </Card.Content>
-              <Card.Actions style={{ height: "10%" }}>
+              <Card.Actions>
                 {buttonVisible ? (
                   <Button
                     labelStyle={{ color: THEME.COLORS.TEXT_BUTTON }}

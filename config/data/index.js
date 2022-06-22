@@ -250,7 +250,7 @@ export const privacyData = [
 export const categoriesInfo = [
   {
     title: "Hath Yoga",
-    info: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos.",
+    info: "Lorem ipsum dolor sit amet",
     image: require("./../../assets/FotoCategoria1.jpg"),
   },
   {

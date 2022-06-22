@@ -114,6 +114,7 @@ export default function About({ navigation }) {
           navigation={navigation}
           buttonVisible={false}
           priceVisible={false}
+          cardWidth={192} //12rem em px
         ></CardInfo>
         <ViewAboutMe>
           <Button
@@ -145,6 +146,7 @@ export default function About({ navigation }) {
           }}
           array={coursesInfo}
           navigation={navigation}
+          cardWidth={288} //18rem em px
         ></CardInfo>
       </ViewSection>
       {plan ? (
