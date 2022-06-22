@@ -136,16 +136,13 @@ export default function About({ navigation }) {
           titleColor={THEME.COLORS.SMALL}
           cardStyle={{
             width: "18rem",
-            height: "25rem",
             margin: "1rem",
           }}
           cardCoverStyle={{
             width: "100%",
-            height: "40%",
+            height: "10rem",
             borderRadius: "8px",
-          }}
-          cardContentStyle={{
-            height: "50%",
+            marginBottom: "0.5rem",
           }}
           array={coursesInfo}
           navigation={navigation}

@@ -35,5 +35,6 @@ export const ViewSmallTextCategory = styled.View`
 `;
 
 export const ViewPrice = styled.View`
-  height: 20%;
+flex-basis: auto;
+margin-bottom: 0.5rem;
 `;
