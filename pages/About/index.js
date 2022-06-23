@@ -103,12 +103,17 @@ export function About({ navigation }) {
           cardStyle={{
             width: "12rem",
             margin: "1rem",
+            display: "flex",
+            flexDrection: "column",
           }}
           cardCoverStyle={{
             width: "100%",
             height: "7rem",
             borderRadius: "8px",
             marginBottom: "0.5rem",
+          }}
+          cardContentStyle={{
+            flex: '1 1 auto',
           }}
           array={categoriesInfo}
           navigation={navigation}
@@ -137,12 +142,17 @@ export function About({ navigation }) {
           cardStyle={{
             width: "18rem",
             margin: "1rem",
+            display: "flex",
+            flexDrection: "column",
           }}
           cardCoverStyle={{
             width: "100%",
             height: "10rem",
             borderRadius: "8px",
             marginBottom: "0.5rem",
+          }}
+          cardContentStyle={{
+            flex: '1 1 auto',
           }}
           array={coursesInfo}
           navigation={navigation}
@@ -152,9 +162,9 @@ export function About({ navigation }) {
       {plan ? (
         <></>
       ) : (
-        <Section>
+        <ViewSection>
           <Pricing></Pricing>
-        </Section>
+        </ViewSection>
       )}
       <Footer></Footer>
       {/* <CookieConsentFunction></CookieConsentFunction> */}

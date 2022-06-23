@@ -5,7 +5,8 @@ export const aboutText = "Lorem ipsum dolor sit amet. In saepe beatae nam autem 
 export const aboutTitle = "SOBRE MIM";
 export const aboutTitleCategory = "CONTEÚDO DISPONÍVEL NO APP";
 export const aboutTitleCourses = "CURSOS DISPONÍVEIS";
-
+export const pricingTitle = "PLANOS DE ASSINATURA";
+export const subtitlePlan = "Teste grátis por 7 dias. Pagamento automático no boleto ou no cartão de crédito. Pode cancelar quando desejar.";
 
 
 export const planFrequency = [
@@ -14,8 +15,6 @@ export const planFrequency = [
   { id: "3", frequency: "Semestral" },
   { id: "4", frequency: "Anual" },
 ];
-
-export const subtitlePlan = "Teste grátis por 7 dias. Pagamento automático no boleto ou no cartão de crédito. Pode cancelar quando desejar.";
 
 export const planPrices = [
   [{price: "R$200,00/mês", priceId: "price_1LCT29CmcyIwF9rcVBE0Q0oK", plan: "1", iterations: 0}, {price: "R$220,00/mês", priceId: "price_1LCT2YCmcyIwF9rc7iGWKEKn", plan: "2", iterations: 0}, {price: "R$250,00/mês", priceId: "", plan: "3", iterations: 0}],
@@ -46,7 +45,7 @@ export const upsellPrices = [
 export const planInfos = [
   {
     planType: "PLANO A",
-    info: ["✔ +50 Aulas gravadas", "Meditações guiadas", "", ""],
+    info: ["✔ +50 Aulas gravadas", "✔ Meditações guiadas"],
   },
   {
     planType: "PLANO GANESHA",
@@ -54,7 +53,6 @@ export const planInfos = [
       "✔ Tudo do Plano A",
       "✔ Acesso a aulas ao vivo",
       "✔ Acesso a +100 Aulas gravadas",
-      "",
     ],
   },
   {
@@ -63,7 +61,12 @@ export const planInfos = [
       "✔ Tudo do Plano B",
       "✔ Acesso a aulas ao vivo e Lives",
       "✔ Acesso a todos os conteúdos",
-      "",
+      "✔ Tudo do Plano B",
+      "✔ Acesso a aulas ao vivo e Lives",
+      "✔ Acesso a todos os conteúdos",
+      "✔ Tudo do Plano B",
+      "✔ Acesso a aulas ao vivo e Lives",
+      "✔ Acesso a todos os conteúdos",
     ],
   },
 ];
