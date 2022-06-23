@@ -1,9 +1,9 @@
 import styled from "styled-components/native";
 import THEME from "../../config/theme";
 
+
 export const Container = styled.View`
-  height: 100%;
-  padding: 1rem 0rem;
+
 `;
 
 export const HorizontalList = styled.ScrollView.attrs({
@@ -24,11 +24,11 @@ export const ItemContainer = styled.View`
 `;
 
 export const TitleView = styled.View`
-  flex:1.5;
-  text-align:center;
-  justify-content: space-around;
+  padding: 1rem 0rem;
+  flex-basis: "auto";
 `;
 
 export const HorizontalListView = styled.View`
-  flex: 5;
+  flex-basis: "auto";
+  background-color: "green";
 `;
