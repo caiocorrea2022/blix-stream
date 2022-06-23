@@ -119,10 +119,7 @@ export function About({ navigation }) {
         <ViewAboutMe>
           <Button
             title={"Ver todas as aulas"}
-            colorbutton={THEME.COLORS.PRIMARY_900}
             onPress={() => navigation.dispatch(jumpToAction)}
-            colortitle={THEME.COLORS.TEXT_BUTTON}
-            borderRadius="30px"
           ></Button>
         </ViewAboutMe>
       </ViewSection>

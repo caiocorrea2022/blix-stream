@@ -84,9 +84,6 @@ export function ClickCourse () {
           <Button
             title={'Comprar agora'}
             isLoading={loading}
-            colorbutton={THEME.COLORS.PRIMARY_900}
-            colortitle={THEME.COLORS.TEXT_BUTTON}
-            borderRadius="30px"
             onPress={() => goToPurchase()}
           >
           </Button>
@@ -103,9 +100,6 @@ export function ClickCourse () {
           <Button
             title={"Comprar agora"}
             isLoading={loading}
-            colorbutton={THEME.COLORS.PRIMARY_900}
-            colortitle={THEME.COLORS.TEXT_BUTTON}
-            borderRadius="30px"
             onPress={() => goToPurchase()}
           ></Button>
         </ViewButton>

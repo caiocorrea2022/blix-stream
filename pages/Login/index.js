@@ -177,9 +177,7 @@ export function Login({ navigation: { goBack, dispatch } }) {
                   title={'ENTRAR'}
                   isLoading={loading}
                   onPress={onLoginPressed}
-                  colorbutton={THEME.COLORS.PRIMARY_900}
                   colortitle={THEME.COLORS.TEXT_BUTTON}
-                  borderRadius="30px"
                   width="60%"
                   height="100%"
                 ></Button>

@@ -137,7 +137,6 @@ export function Success({ navigation }) {
           title={"Fazer Login"}
           // onPress={() => { navigation.navigate("Login"), postGoogle() }}
           onPress={() => { navigation.navigate("Login")}}
-          borderRadius="30px"
           colorbutton={THEME.COLORS.BACKGROUND_ABOUT}
           colortitle={THEME.COLORS.TEXT_ABOUT}
         ></Button>

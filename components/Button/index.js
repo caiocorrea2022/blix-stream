@@ -1,11 +1,28 @@
 import React from 'react';
-import { Container, Load } from './style';
-import { StandardText } from '../../config/theme/globalStyles';
+import { Container } from './style';
+import { SmallText } from '../../config/theme/globalStyles';
+import { ActivityIndicator } from 'react-native';
+import THEME from '../../config/theme';
 
-const Button = ({ colortitle, borderRadius, colorbutton, title, isLoading = false, ...rest }) => {
+const Button = ({
+  colortitle,
+  borderRadius,
+  colorbutton,
+  title,
+  isLoading = false,
+  ...rest
+}) => {
   return (
-    <Container enabled={!isLoading} {...rest} style={{ backgroundColor: colorbutton, borderRadius: borderRadius }}>
-      {isLoading ? <Load /> : <StandardText style={{ color: colortitle }}>{title}</StandardText>}
+    <Container
+      enabled={!isLoading}
+      colorbutton={colorbutton ? colorbutton : THEME.COLORS.PRIMARY_900}
+      borderRadius={borderRadius ? borderRadius : "30px"}
+      style={{ opacity: ( isLoading === true) ? 0.5 : 1}}
+      {...rest}
+    >
+      {isLoading
+        ? <ActivityIndicator color={THEME.COLORS.TEXT_BUTTON} />
+        : <SmallText style={{ color: colortitle ? colortitle : THEME.COLORS.TEXT_BUTTON }}>{title}</SmallText>}
     </Container>
   )
 }
