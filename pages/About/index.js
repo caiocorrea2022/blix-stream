@@ -3,7 +3,8 @@ import {
   Poster,
   ViewAboutMe,
   ViewText,
-  ViewSection
+  ViewSection,
+  Container,
 } from "./style";
 import { DrawerActions } from "@react-navigation/native";
 import Footer from "../../components/Footer";
@@ -18,7 +19,6 @@ import {
   Section,
   SmallText,
   Title,
-  Container,
   SubTitle
 } from "../../config/theme/globalStyles";
 import { firestore } from "../../services/firebase/index";

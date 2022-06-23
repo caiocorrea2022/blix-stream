@@ -3,12 +3,12 @@ import { useNavigation } from '@react-navigation/native';
 import { Linking } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import { Icon } from 'react-native-elements'
-import { Footer, Container } from './style';
+import { Footer} from './style';
 import THEME from '../../config/theme';
 import { auth } from '../../services/firebase'
 import { signOut } from "firebase/auth";
 import { onAuthStateChanged } from "firebase/auth";
-import { SmallText, FooterText } from '../../config/theme/globalStyles';
+import { SmallText, FooterText, Container  } from '../../config/theme/globalStyles';
 
 export function DrawerContent(props) {
   const navigation = useNavigation();
