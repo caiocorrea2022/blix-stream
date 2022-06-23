@@ -10,6 +10,21 @@ import { StandardText, SmallText } from "../../config/theme/globalStyles";
 
 export function Success({ navigation }) {
 
+  const createTaxIdStripe = async (stripeId, cpf) => {
+    const taxId = await fetch(`https://api.stripe.com/v1/customers/${stripeId}/tax_ids`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer sk_test_51K1wAiCmcyIwF9rcDllUmRHt47Sf8pzFwglHfcrHN6Zy8GdSnl3RFPl8yoPoOJbFXs18LK8eCHavE9oQilLFqzbk00dR3pma24'
+      },
+      body: {
+        type: 'br_cpf',
+        value: cpf,
+      },
+    })
+   }
+
+
   const getUsers = async (user) => {
     const docRef = doc(firestore, "users", user);
     const docSnap = await getDoc(docRef);
@@ -19,7 +34,8 @@ export function Success({ navigation }) {
         Nome: docSnap.data().Nome_Completo,
         Email: docSnap.data().Email,
       };
-      return axios.post('https://sheet.best/api/sheets/ea18f0f1-e07a-438b-8ec5-ac2c44b1c9ab', userProfile);
+      // return axios.post('https://sheet.best/api/sheets/ea18f0f1-e07a-438b-8ec5-ac2c44b1c9ab', userProfile);
+      return createTaxIdStripe(docSnap.data().stripeId, docSnap.data().CPF);
     } else {
       console.log("GetUser-Document data: No such document!");
     }
@@ -112,17 +128,17 @@ export function Success({ navigation }) {
         <Icon
           type="material-icons"
           name="check-circle-outline"
-          color={THEME.COLORS.BACKGROUND}
+          color={THEME.COLORS.BACKGROUND_ABOUT}
           size={60}
         />
-        <StandardText color={THEME.COLORS.BACKGROUND} margin="1rem 0rem">Plano assinado com sucesso!</StandardText>
-        <SmallText color={THEME.COLORS.BACKGROUND} margin="0rem 0rem 3rem 0rem">Por favor, verifique seu e-mail e faça o seu primeiro login.</SmallText>
+        <StandardText color={THEME.COLORS.BACKGROUND_ABOUT} margin="1rem 0rem">Plano assinado com sucesso!</StandardText>
+        <SmallText color={THEME.COLORS.BACKGROUND_ABOUT} margin="0rem 0rem 3rem 0rem">Por favor, verifique seu e-mail e faça o seu primeiro login.</SmallText>
         <Button
           title={"Fazer Login"}
           // onPress={() => { navigation.navigate("Login"), postGoogle() }}
           onPress={() => { navigation.navigate("Login")}}
           borderRadius="30px"
-          colorbutton={THEME.COLORS.BACKGROUND}
+          colorbutton={THEME.COLORS.BACKGROUND_ABOUT}
           colortitle={THEME.COLORS.TEXT_ABOUT}
         ></Button>
       </Container>

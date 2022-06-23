@@ -180,7 +180,7 @@ export function Login({ navigation: { goBack, dispatch } }) {
                   colorbutton={THEME.COLORS.PRIMARY_900}
                   colortitle={THEME.COLORS.TEXT_BUTTON}
                   borderRadius="30px"
-                  width="30%"
+                  width="60%"
                   height="100%"
                 ></Button>
               </ViewButton>
