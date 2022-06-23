@@ -21,7 +21,8 @@ export const SideView = styled.View`
 `;
 
 export const Container = styled.View`
-    flex:1;
+    padding: 1rem 0rem;
+    flex-basis: auto;
     background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND_ABOUT)};
 `;
 
