@@ -9,6 +9,7 @@ const Button = ({
   borderRadius,
   colorbutton,
   title,
+  width,
   isLoading = false,
   ...rest
 }) => {
@@ -16,6 +17,7 @@ const Button = ({
     <Container
       enabled={!isLoading}
       colorbutton={colorbutton ? colorbutton : THEME.COLORS.PRIMARY_900}
+      width={width}
       borderRadius={borderRadius ? borderRadius : "30px"}
       style={{ opacity: ( isLoading === true) ? 0.5 : 1}}
       {...rest}

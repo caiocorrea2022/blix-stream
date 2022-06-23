@@ -78,8 +78,6 @@ export function ResetPassword() {
           title={'Enviar'}
           isLoading={loading}
           onPress={onResetPressed}
-          width="30%"
-          height="100%"
         ></Button>
       </ViewButton>
       <ViewButton>

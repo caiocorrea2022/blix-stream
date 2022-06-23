@@ -271,8 +271,6 @@ export function SignUp({ navigation, route }) {
                 title={"Ir para pagamento"}
                 isLoading={loading}
                 onPress={onSignUpPressed}
-                width="30%"
-                height="100%"
               ></Button>
             </ViewButton>
             <Footer>
