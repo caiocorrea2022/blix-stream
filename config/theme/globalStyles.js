@@ -22,6 +22,7 @@ export const SideView = styled.View`
 
 export const Container = styled.View`
     flex-basis: auto;
+    background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND_ABOUT)};
 `;
 
 export const HeaderContainer = styled.View`
