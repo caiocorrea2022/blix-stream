@@ -49,11 +49,6 @@ export const ViewButton = styled.View`
   align-items: center;
 `;
 
-export const Container = styled.View`
-    flex: 1;
-    background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND_ABOUT)};
-`;
-
 
 
 

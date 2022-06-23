@@ -21,10 +21,9 @@ export const SideView = styled.View`
 `;
 
 export const Container = styled.View`
-    flex-basis: auto;
+    flex:1;
     background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND_ABOUT)};
 `;
-
 export const HeaderContainer = styled.View`
     background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND_HEADER)};
     flex-direction: row;
