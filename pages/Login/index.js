@@ -14,7 +14,7 @@ import {
 } from './style';
 import { emailValidator, passwordValidator } from '../../utils';
 import { getAuth, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } from "firebase/auth";
-import ResetPassword from './ResetPassword';
+import {ResetPassword }from './ResetPassword';
 import TouchableText from '../../components/TouchableText'
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
@@ -25,15 +25,18 @@ import useViewport from '../../hooks/MobileOrDesktop/useViewport';
 import { HelperText } from 'react-native-paper';
 import { MainTitle, Container, ContainerSideView, SideView, HeaderContainer } from '../../config/theme/globalStyles';
 import { Icon } from 'react-native-elements';
+import { DrawerActions } from '@react-navigation/native';
 
 const auth = getAuth();
 
-export default function Login({ navigation: { goBack } }) {
+export function Login({ navigation: { goBack, dispatch } }) {
+
+  const jumpToAction = DrawerActions.jumpTo("Aulas");
 
   const [visible, setVisible] = useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  const containerStyle = { backgroundColor: THEME.COLORS.BACKGROUND, padding: "2rem", width: Math.round(window.innerWidth * 0.7), alignSelf: "center" };
+  const containerStyle = { backgroundColor: THEME.COLORS.BACKGROUND_ABOUT, padding: "2rem", width: Math.round(window.innerWidth * 0.7), alignSelf: "center" };
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
   const [loading, setLoading] = useState(false);
@@ -75,7 +78,7 @@ export default function Login({ navigation: { goBack } }) {
               if (user.emailVerified === false) {
                 showAlert("Erro", "E-mail não verificado. Confira sua caixa de entrada.")
               } else {
-                navigation.navigate('DrawerNavigatorScreen')
+                navigation.navigate("Drawer")
               }
             })
             .catch((error) => {

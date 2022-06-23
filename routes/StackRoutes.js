@@ -1,0 +1,60 @@
+import React from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Success } from "../pages/SuccessPayment";
+import { ClickClass } from "../pages/ClickClass";
+import { ClickCourse } from "../pages/ClickCourse";
+import { PDFView } from '../pages/PDFView';
+import { Login } from "../pages/Login";
+import { SignUp } from "../pages/SignUp";
+import { Plans } from "../pages/Plans"
+import { TermsofUse } from '../pages/TermsofUse';
+import { DrawerRoutes } from "./DrawerRoutes";
+
+const { Screen, Navigator } = createNativeStackNavigator();
+
+export function StackRoutes() {
+    return (
+        <Navigator
+            screenOptions={{
+                headerShown: false
+            }}>
+            <Screen
+                name="Drawer"
+                component={DrawerRoutes}
+            />
+            <Screen
+                name="Plans"
+                component={Plans}
+            />
+            <Screen
+                name="Login"
+                component={Login}
+            />
+            <Screen
+                name="SignUp"
+                component={SignUp}
+            />
+            <Screen
+                name="ClickClass"
+                component={ClickClass}
+            />
+            <Screen
+                name="ClickCourse"
+                component={ClickCourse}
+            />
+            <Screen
+                name="TermsofUse"
+                component={TermsofUse}
+            />
+            <Screen
+                name="PDFView"
+                component={PDFView}
+            />
+            <Screen
+                name="Success"
+                component={Success}
+            />
+
+        </Navigator>
+    )
+}

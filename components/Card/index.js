@@ -18,12 +18,12 @@ import {
 import { Icon } from "react-native-elements";
 import ViewPortProvider from "../../hooks/MobileOrDesktop/ViewPortProvider";
 import useViewport from "../../hooks/MobileOrDesktop/useViewport";
+import { useNavigation } from "@react-navigation/native";
 
 const CardInfo = ({
   array,
   buttonVisible = true,
   priceVisible = true,
-  navigation,
   cardStyle,
   cardCoverStyle,
   cardContentStyle,
@@ -31,8 +31,8 @@ const CardInfo = ({
   titleColor,
   subtitleNumberOfLines,
 }) => {
+  const navigation = useNavigation();
   const [scrollX, setScrollX] = useState(0);
-
   const MobileOrDesktopLeftArrow = () => {
     const { width } = useViewport();
     const breakpoint = 1080;

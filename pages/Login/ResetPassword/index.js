@@ -9,7 +9,7 @@ import { HelperText } from 'react-native-paper';
 import THEME from '../../../config/theme';
 import { SubTitle } from '../../../config/theme/globalStyles';
 
-export default function ResetPassword() {
+export function ResetPassword() {
   const [email, setEmail] = useState({ value: '', error: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');

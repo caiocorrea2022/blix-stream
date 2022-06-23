@@ -16,7 +16,7 @@ export const nameValidator = (name) => {
 };
 
 export const cellphoneValidator = (cellphone) => {
-  if (cellphone.length <= 10) return 'Por favor, preencha seu celular com DDD.';
+  if (cellphone.length <= 10 || cellphone.length >= 11) return 'Por favor, preencha seu celular corretamente com DDD.';
   return '';
 }
 

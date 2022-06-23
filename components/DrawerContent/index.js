@@ -4,13 +4,13 @@ import { Linking } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import { Icon } from 'react-native-elements'
 import { Footer } from './style';
-import THEME from '../../../config/theme';
-import { auth } from '../../../services/firebase'
+import THEME from '../../config/theme';
+import { auth } from '../../services/firebase'
 import { signOut } from "firebase/auth";
 import { onAuthStateChanged } from "firebase/auth";
-import { SmallText, FooterText, Container } from '../../../config/theme/globalStyles';
+import { SmallText, FooterText, Container } from '../../config/theme/globalStyles';
 
-export default function DrawerContent(props) {
+export function DrawerContent(props) {
   const navigation = useNavigation();
   const [login, setLogin] = useState(false);
 
@@ -47,24 +47,24 @@ export default function DrawerContent(props) {
       <DrawerItem
         label={() => (<SmallText textAlign="flex-start">Termos de Uso e Privacidade</SmallText>)}
         onPress={() => navigation.navigate("TermsofUse")}
-        icon={({ color }) => (
+        icon={({ size }) => (
           <Icon
             type="material-community"
             name="file-document-outline"
-            color={color}
-            size={20}
+            color={THEME.COLORS.ICON_DRAWER}
+            size={size}
           />
         )}
       />
       {login ?
         <DrawerItem
           label={() => (<SmallText textAlign="flex-start" onPress={logout}>Sair</SmallText>)}
-          icon={({ color }) => (
+          icon={({ size }) => (
             <Icon
               type="material-community"
               name="logout-variant"
-              color={color}
-              size={20}
+              color={THEME.COLORS.ICON_DRAWER}
+              size={size}
               onPress={logout}
             />
           )}

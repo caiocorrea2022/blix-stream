@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import PDF from '../../components/PDF';
 
-const PDFView = ({ route, navigation }) => {
+export function PDFView ({ route, navigation }) {
     const {pdf} = route.params;
 
   return (
@@ -13,5 +13,3 @@ const PDFView = ({ route, navigation }) => {
     </View> 
      );
 }
-
-export default PDFView;

@@ -9,7 +9,8 @@ export const Image = styled.ImageBackground`
 
 export const ContentVideoDesktop = styled.View`
     align-self: center;
-    width: 60%;
+    width: 65%;
+    height: 70%;
     aspect-ratio: 16/9;
 `;
 
@@ -23,5 +24,5 @@ export const ContentVideoMobile = styled.View`
 export const ContentList = styled.View`
     align-self: center;
     width: 30%;
-    height: 76%;
+    height: 70%;
 `;

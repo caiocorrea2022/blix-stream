@@ -8,7 +8,7 @@ import { firestore } from '../../services/firebase/index';
 import Button from '../../components/Button';
 import { StandardText, SmallText } from "../../config/theme/globalStyles";
 
-export default function Success({ navigation }) {
+export function Success({ navigation }) {
 
   const getUsers = async (user) => {
     const docRef = doc(firestore, "users", user);

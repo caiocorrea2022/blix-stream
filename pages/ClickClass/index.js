@@ -18,8 +18,7 @@ import { firestore } from '../../services/firebase';
 
 const auth = getAuth();
 
-
-const ClickClass = ({ route, navigation }) => {
+export function ClickClass ({ route, navigation }) {
   const { videos, name, description, pdf, url, courseId, priceId, plan } = route.params;
   const [video, setVideo] = useState(videos[0]);
   const [login, setLogin] = useState(false);
@@ -131,9 +130,9 @@ const ClickClass = ({ route, navigation }) => {
               >
               </Button>
               <View style={{ flexDirection: "row", justifyContent: "center", margin: "1rem" }} >
-                <StandardText margin="0rem 0.5rem" color={THEME.COLORS.BACKGROUND}>ou</StandardText>
-                <TouchableText textDecoration="underline" onPress={() => navigation.navigate("Login")} title={'Logar'} color={THEME.COLORS.BACKGROUND}></TouchableText>
-                <StandardText margin="0rem 0.5rem" color={THEME.COLORS.BACKGROUND}>para continuar</StandardText>
+                <StandardText margin="0rem 0.5rem" color={THEME.COLORS.TEXT_BUTTON}>ou</StandardText>
+                <TouchableText textDecoration="underline" onPress={() => navigation.navigate("Login")} title={'Logar'} color={THEME.COLORS.TEXT_BUTTON}></TouchableText>
+                <StandardText margin="0rem 0.5rem" color={THEME.COLORS.TEXT_BUTTON}></StandardText>
               </View>
             </View>
           </Image>
@@ -208,5 +207,3 @@ const ClickClass = ({ route, navigation }) => {
     </ViewPortProvider>
   );
 };
-
-export default ClickClass;

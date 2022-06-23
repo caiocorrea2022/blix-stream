@@ -18,12 +18,12 @@ import { HelperText } from 'react-native-paper';
 const auth = getAuth();
 const functions = getFunctions();
 
-export default function EditProfile({ navigation }) {
+export function EditProfile({ navigation }) {
     const [name, setName] = useState('');
-    // const [name, setName] = useState({ value: "", error: "" });
+    const [errorName, setErrorName] = useState('')
     const [email, setEmail] = useState('');
     const [cellphone, setCellPhone] = useState('');
-    // const [cellphone, setCellPhone] = useState({ value: "", error: "" });
+    const [errorCellphone, setErrorCellphone] = useState('')
     const [cpf, setCpf] = useState('');
     const [user, setUser] = useState(auth.currentUser);
     const [loadingPlan, setLoadingPlan] = useState(false);
@@ -40,17 +40,19 @@ export default function EditProfile({ navigation }) {
         setVisibleAlert(status)
     }
 
-    //TODO validation no name e no cellphone
     const validation = () => {
-        const nameError = nameValidator(name.value);
-        const cellphoneError = cellphoneValidator(cellphone.value);
+        let error = false
+        const nameError = nameValidator(name);
+        const cellphoneError = cellphoneValidator(cellphone);
 
         if (nameError || cellphoneError) {
-            setName({ ...name, error: nameError });
-            setCellPhone({ ...cellphone, error: cellphoneError });
-            setLoading(false);
-            return;
+            let error = true
+            setErrorName(nameError);
+            setErrorCellphone(cellphoneError)
+            setLoadingSave(false);
+            return error;
         }
+        return error;
     };
 
     const getUsers = async (user) => {
@@ -98,22 +100,26 @@ export default function EditProfile({ navigation }) {
     }
 
     const salvar = () => {
-        // validation();
-        const userRef = doc(firestore, "users", user);
-        setLoadingSave(true)
-        setDoc(userRef, {
-            Nome_Completo: name,
-            Celular: cellphone,
-        }, { merge: true })
-            .then(() => {
-                showAlert("Concluído! Seus dados foram salvos com sucesso!")
-            })
-            .catch((e) => {
-                console.log('EditProfile, salvar: ' + e);
-            })
-            .finally(() => {
-                setLoadingSave(false);
-            });
+        if (validation()==false){
+            console.log("pós erro")
+            console.log(setErrorCellphone)
+            console.log(errorCellphone)
+            setLoadingSave(true)
+            const userRef = doc(firestore, "users", user);
+            setDoc(userRef, {
+                Nome_Completo: name,
+                Celular: cellphone,
+            }, { merge: true })
+                .then(() => {
+                    showAlert("Concluído! Seus dados foram salvos com sucesso!")
+                })
+                .catch((e) => {
+                    console.log('EditProfile, salvar: ' + e);
+                })
+                .finally(() => {
+                    setLoadingSave(false);
+                });
+            }
     }
     return (
         <Provider>
@@ -134,7 +140,6 @@ export default function EditProfile({ navigation }) {
                 </ViewPlan>
                 <Content>
                     <StandardText padding="1rem 0rem" textAlign="flex-start">EDITAR INFORMAÇÕES DO CADASTRO:</StandardText>
-
                     <ViewDescription>
                         <SmallText textAlign="flex-start">Nome Completo:</SmallText>
                     </ViewDescription>
@@ -145,10 +150,13 @@ export default function EditProfile({ navigation }) {
                                 keyboardType='default'
                                 returnKeyType='go'
                                 value={name}
-                                onChangeText={(text) => setName(text)}
+                                onChange={({ target: { value } }) => { setName(value); setErrorName(null) }}
+                                error={!!errorName}
                             />
                         </ViewText>
-                        <ViewHelper></ViewHelper>
+                        <ViewHelper>
+                            <HelperText type="error" visible={errorName}>{errorName}</HelperText>
+                        </ViewHelper>
                     </ViewTextInput>
                     <ViewDescription>
                         <SmallText textAlign="flex-start">Email:</SmallText>
@@ -172,10 +180,13 @@ export default function EditProfile({ navigation }) {
                                 keyboardType='default'
                                 returnKeyType='go'
                                 value={cellphone}
-                                onChangeText={(text) => setCellPhone(text)}
+                                onChange={({ target: { value } }) => { setCellPhone(value); setErrorCellphone(null) }}
+                                error={!!errorCellphone}
                             />
                         </ViewText>
-                        <ViewHelper></ViewHelper>
+                        <ViewHelper>
+                            <HelperText type="error" visible={errorCellphone}>{errorCellphone}</HelperText>
+                        </ViewHelper>
                     </ViewTextInput>
                     <ViewDescription>
                         <SmallText textAlign="flex-start">CPF:</SmallText>

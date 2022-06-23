@@ -4,7 +4,7 @@ import Header from '../../components/Header';
 import { Container } from '../../config/theme/globalStyles'
 import THEME from "../../config/theme";
 
-function Plans({ navigation, route }) {
+export function Plans({ navigation, route }) {
   const { userId } = route.params;
   console.log('userIdPlan', userId);
 
@@ -15,5 +15,3 @@ function Plans({ navigation, route }) {
     </Container>
   );
 }
-
-export default Plans;

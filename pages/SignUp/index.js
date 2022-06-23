@@ -33,7 +33,7 @@ import { HelperText } from 'react-native-paper';
 import { Title, ContainerSideView, SideView, Container } from '../../config/theme/globalStyles';
 import TouchableText from '../../components/TouchableText';
 
-export default function SignUp({ navigation, route }) {
+export function SignUp({ navigation, route }) {
   const { purchaseType, priceId } = route.params;
   const [name, setName] = useState({ value: "", error: "" });
   const [email, setEmail] = useState({ value: "", error: "" });

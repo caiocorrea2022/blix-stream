@@ -8,12 +8,23 @@ const linking = {
           SignUp: "SignUp",
           Success: "Success",
           Plans: "Plans",
-          DrawerNavigatorScreen: "DrawerNavigatorScreen",
+          ClickClass: "ClickClass",
           ClickCourse: "ClickCourse",
-          Main: "DrawerNavigatorScreen/Aulas"
+          Drawer: {
+            path: 'Drawer',
+            initialRouteName: 'Aulas',
+            screens: {
+              Main: 'Aulas',
+              About:'Home',
+              EditProfile: 'Perfil',
+            },
+          },
         },
     },
   };
   
   export default linking;
+
+
+  
   

@@ -7,10 +7,12 @@ import { DrawerActions } from '@react-navigation/native';
 import { StandardText } from "../../config/theme/globalStyles";
 import TouchableText from '../../components/TouchableText'
 import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-const Header = ({ login, goBack, navigation, about }) => {
+const Header = ({ login, goBack, about }) => {
   const jumpToAction = DrawerActions.jumpTo('Aulas');
-  const jumpToAction2 = DrawerActions.jumpTo('Tela Inicial');
+  const jumpToAction2 = DrawerActions.jumpTo('Home');
+  const navigation = useNavigation();
 
   return (
     login ? (
@@ -83,7 +85,7 @@ const Header = ({ login, goBack, navigation, about }) => {
               <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
             </>
           ) : (
-            <TouchableOpacity onPress={() => navigation.dispatch(jumpToAction2)}>
+            <TouchableOpacity onPress={() => navigation.navigate("Drawer")}>
               <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
             </TouchableOpacity>
           )}

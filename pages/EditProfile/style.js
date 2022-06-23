@@ -30,6 +30,7 @@ export const ViewHelper = styled.View`
 
 export const ViewDescription = styled.View`
   justify-content: center;
+  padding: 0.5rem 0rem;
 `;
 
 export const Content = styled.View`

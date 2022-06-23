@@ -13,7 +13,7 @@ export default function AuthProvider ({children}) {
                 email: email,
                 status: "ATIVO"
             })
-            navigation.navigate("DrawerNavigatorScreen");
+            navigation.navigate("Drawer");
         }
     }
 

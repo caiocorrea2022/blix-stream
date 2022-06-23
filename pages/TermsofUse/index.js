@@ -14,7 +14,7 @@ import THEME from '../../config/theme';
 import { DrawerActions } from '@react-navigation/native';
 import { Title } from "../../config/theme/globalStyles"
 
-function TermsofUse({ navigation }) {
+export function TermsofUse({ navigation }) {
   const [modalVisible, setModalVisible] = useState(true);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ function TermsofUse({ navigation }) {
         visible={modalVisible}
         onRequestClose={() => {
           setModalVisible(!modalVisible);
-          navigation.navigate("DrawerNavigatorScreen");
+          navigation.navigate("Drawer");
         }}
       >
         <ViewHeading>
@@ -52,7 +52,7 @@ function TermsofUse({ navigation }) {
           </ViewText>
           <ViewPressable>
             <Pressable
-              onPress={() => {setModalVisible(!modalVisible), navigation.navigate("DrawerNavigatorScreen"), navigation.dispatch(DrawerActions.closeDrawer())}}>
+              onPress={() => {setModalVisible(!modalVisible), navigation.navigate("Drawer"), navigation.dispatch(DrawerActions.closeDrawer())}}>
               <Close></Close>
             </Pressable>
           </ViewPressable>
@@ -66,5 +66,3 @@ function TermsofUse({ navigation }) {
     </View>
   );
 }
-
-export default TermsofUse;

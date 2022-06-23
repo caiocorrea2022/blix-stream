@@ -13,7 +13,7 @@ import { titleMain, subtitleMain } from '../../config/data';
 
 const auth = getAuth();
 
-export default function Main({ navigation, route }) {
+export function Main({ navigation, route }) {
   const [allCategories, setAllCategories] = useState([]);
   const [plan, setPlan] = useState("");
   const [login, setLogin] = useState(false);

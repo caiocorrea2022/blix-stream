@@ -27,7 +27,7 @@ import Button from "../../components/Button";
 
 const auth = getAuth();
 
-export default function About({ navigation }) {
+export function About({ navigation }) {
   const [user, setUser] = useState("");
   const [login, setLogin] = useState(false);
   const [plan, setPlan] = useState("");
