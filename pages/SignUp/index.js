@@ -271,9 +271,6 @@ export function SignUp({ navigation, route }) {
                 title={"Ir para pagamento"}
                 isLoading={loading}
                 onPress={onSignUpPressed}
-                colorbutton={THEME.COLORS.PRIMARY_900}
-                colortitle={THEME.COLORS.TEXT_BUTTON}
-                borderRadius="30px"
                 width="30%"
                 height="100%"
               ></Button>

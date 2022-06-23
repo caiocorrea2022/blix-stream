@@ -99,9 +99,7 @@ export function ClickClass ({ route, navigation }) {
             <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', aspectRatio: 16 / 9, justifyContent: "center" }}>
               <Button
                 title={'COMPRAR AGORA'}
-                colorbutton={THEME.COLORS.PRIMARY_900}
                 onPress={() => buyItem()}
-                colortitle={THEME.COLORS.TEXT_BUTTON}
                 borderRadius="5px"
               >
               </Button>
@@ -123,9 +121,7 @@ export function ClickClass ({ route, navigation }) {
             <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', aspectRatio: 16 / 9, justifyContent: "center" }}>
               <Button
                 title={'COMPRAR AGORA'}
-                colorbutton={THEME.COLORS.PRIMARY_900}
                 onPress={() => buyItem()}
-                colortitle={THEME.COLORS.TEXT_BUTTON}
                 borderRadius="5px"
               >
               </Button>
