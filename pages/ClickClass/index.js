@@ -79,7 +79,7 @@ export function ClickClass ({ route, navigation }) {
         <ViewFlatlist></ViewFlatlist>
       </View>
     ) : (
-      <View style={{ flexDirection: "row", justifyContent: "center", backgroundColor: THEME.COLORS.BACKGROUND_MAIN }}>
+      <View style={{ flexDirection: "row", justifyContent: "center", flex:1, backgroundColor: THEME.COLORS.BACKGROUND_MAIN }}>
         <ViewVideo></ViewVideo>
         <ViewFlatlist></ViewFlatlist>
       </View>
@@ -143,35 +143,43 @@ export function ClickClass ({ route, navigation }) {
 
     return width < breakpoint ? (
       <View>
-        <FlatList
-          data={videos}
-          renderItem={({ item, index }) => (
-            login ? (
-              <TouchableOpacity
-                onPress={() => {
-                  setVideo(videos[index]);
-                }}
-                style={{ margin: 10 }}
-              >
-                <PlayList {...item}></PlayList>
-              </TouchableOpacity>
-            ) : (
-              <TouchableOpacity
-                style={{ margin: 10 }}
-              >
-                <PlayList {...item}></PlayList>
-              </TouchableOpacity>
-            ))}
-          style={{ marginBottom: "1rem", flexGrow: 0 }}
-          ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url} navigation={navigation}></ListHeader>}
-        />
+         {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? 
+         <FlatList
+         data={videos}
+         renderItem={({ item, index }) => (
+             <TouchableOpacity
+               onPress={() => {
+                 setVideo(videos[index]);
+               }}
+               style={{ margin: 10 }}
+             >
+               <PlayList {...item}></PlayList>
+             </TouchableOpacity>
+           )}
+         style={{ marginBottom: "1rem", flexGrow: 0 }}
+         ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url} login={true} navigation={navigation}></ListHeader>}
+       />
+         :
+         <FlatList
+         data={videos}
+         renderItem={({ item, index }) => (
+             <TouchableOpacity
+               style={{ margin: 10 }}
+             >
+               <PlayList {...item}></PlayList>
+             </TouchableOpacity>
+           )}
+         style={{ marginBottom: "1rem", flexGrow: 0 }}
+         ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url} login={false} navigation={navigation}></ListHeader>}
+       />
+      }      
       </View>
     ) : (
       <ContentList>
+        {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? 
         <FlatList
           data={videos}
           renderItem={({ item, index }) => (
-            login ? (
               <TouchableOpacity
                 onPress={() => {
                   setVideo(videos[index]);
@@ -180,18 +188,26 @@ export function ClickClass ({ route, navigation }) {
               >
                 <PlayList {...item}></PlayList>
               </TouchableOpacity>
-            ) : (
+            )}
+          style={{ marginBottom: "1rem", flexGrow: 0 }}
+          ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url} login={true}></ListHeader>}
+        />
+        :
+        <FlatList
+          data={videos}
+          renderItem={({ item, index }) => (
               <TouchableOpacity
                 style={{ margin: 10 }}
               >
                 <PlayList {...item}></PlayList>
               </TouchableOpacity>
-            ))}
+            )}
           style={{ marginBottom: "1rem", flexGrow: 0 }}
-          ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url}></ListHeader>}
+          ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url} login={false}></ListHeader>}
         />
+          }
       </ContentList>
-    );
+    )
   };
 
   return (
