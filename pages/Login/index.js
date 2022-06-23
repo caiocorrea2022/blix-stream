@@ -177,9 +177,7 @@ export function Login({ navigation: { goBack, dispatch } }) {
                   title={'ENTRAR'}
                   isLoading={loading}
                   onPress={onLoginPressed}
-                  colortitle={THEME.COLORS.TEXT_BUTTON}
-                  width="60%"
-                  height="100%"
+                  width="30%"
                 ></Button>
               </ViewButton>
               <TouchableText onPress={showModal} title={'RECUPERAR SENHA'}></TouchableText>

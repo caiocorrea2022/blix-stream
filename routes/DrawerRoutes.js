@@ -25,6 +25,8 @@ export function DrawerRoutes() {
 
     return (
         <Navigator
+            useLegacyImplementation
+            id="Drawer"
             drawerContent={(props) => <DrawerContent {...props} />}
             screenOptions={{
                 headerShown: false,
