@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import THEME from '../../config/theme';
 
 export const Poster = styled.ImageBackground`
   width: 100%;
@@ -48,7 +49,10 @@ export const ViewButton = styled.View`
   align-items: center;
 `;
 
-
+export const Container = styled.View`
+    flex: 1;
+    background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND_ABOUT)};
+`;
 
 
 

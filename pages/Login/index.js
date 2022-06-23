@@ -11,6 +11,7 @@ import {
   ViewHelper,
   ViewTitle,
   Poster,
+  Container
 } from './style';
 import { emailValidator, passwordValidator } from '../../utils';
 import { getAuth, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } from "firebase/auth";
@@ -23,7 +24,7 @@ import THEME from '../../config/theme';
 import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../hooks/MobileOrDesktop/useViewport';
 import { HelperText } from 'react-native-paper';
-import { MainTitle, Container, ContainerSideView, SideView, HeaderContainer } from '../../config/theme/globalStyles';
+import { MainTitle, ContainerSideView, SideView, HeaderContainer } from '../../config/theme/globalStyles';
 import { Icon } from 'react-native-elements';
 import { DrawerActions } from '@react-navigation/native';
 
