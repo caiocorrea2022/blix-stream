@@ -77,7 +77,7 @@ export function Login({ navigation: { goBack, dispatch } }) {
             .then((userCredential) => {
               const user = userCredential.user;
               if (user.emailVerified === false) {
-                showAlert("Erro", "E-mail não verificado. Confira sua caixa de entrada.")
+                showAlert("Erro:", "E-mail não verificado. Confira sua caixa de entrada.")
               } else {
                 navigation.navigate("Drawer")
               }
@@ -87,16 +87,16 @@ export function Login({ navigation: { goBack, dispatch } }) {
               console.error(error);
               switch (error.code) {
                 case 'auth/user-not-found':
-                  showAlert("Erro", "Usuário não cadastrado.");
+                  showAlert("Erro:", "Usuário não cadastrado.");
                   break;
                 case 'auth/wrong-password':
-                  showAlert("Erro", "Senha incorreta");
+                  showAlert("Erro:", "Senha incorreta.");
                   break;
                 case 'auth/invalid-email':
-                  showAlert("Erro", "E-mail inválido");
+                  showAlert("Erro:", "E-mail inválido.");
                   break;
                 case 'auth/user-disabled':
-                  showAlert("Erro", "Usuário desabilitado");
+                  showAlert("Erro:", "Usuário desabilitado.");
                   break;
               }
             })
@@ -178,7 +178,6 @@ export function Login({ navigation: { goBack, dispatch } }) {
                   title={'ENTRAR'}
                   isLoading={loading}
                   onPress={onLoginPressed}
-                  width="30%"
                 ></Button>
               </ViewButton>
               <TouchableText onPress={showModal} title={'RECUPERAR SENHA'}></TouchableText>

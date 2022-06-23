@@ -79,7 +79,7 @@ export function ClickClass ({ route, navigation }) {
         <ViewFlatlist></ViewFlatlist>
       </View>
     ) : (
-      <View style={{ flexDirection: "row", justifyContent: "center", flex: 1, backgroundColor: THEME.COLORS.BACKGROUND_MAIN }}>
+      <View style={{ flexDirection: "row", justifyContent: "center", backgroundColor: THEME.COLORS.BACKGROUND_MAIN }}>
         <ViewVideo></ViewVideo>
         <ViewFlatlist></ViewFlatlist>
       </View>
@@ -96,7 +96,7 @@ export function ClickClass ({ route, navigation }) {
           <VideoPlayer video={video.link} />
         ) : (
           <Image source={require("./../../assets/Bloqueada.jpg")} resizeMode="cover">
-            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', aspectRatio: 16 / 9, justifyContent: "center" }}>
+            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', height:'100%', justifyContent: "center" }}>
               <Button
                 title={'COMPRAR AGORA'}
                 onPress={() => buyItem()}
@@ -118,7 +118,7 @@ export function ClickClass ({ route, navigation }) {
           <VideoPlayer video={video.link} />
         ) : (
           <Image source={require("./../../assets/Bloqueada.jpg")} resizeMode="cover">
-            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', aspectRatio: 16 / 9, justifyContent: "center" }}>
+            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', height:'100%', justifyContent: "center" }}>
               <Button
                 title={'COMPRAR AGORA'}
                 onPress={() => buyItem()}

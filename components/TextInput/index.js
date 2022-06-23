@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { TextInput as Input } from 'react-native-paper';
 import THEME from '../../config/theme';
 
-const TextInput = ({ ...props }) => (
+const TextInput = ({ ...rest }) => (
   <Input
     style={{ backgroundColor: THEME.COLORS.BACKGROUND_ABOUT, fontFamily: THEME.FONTFAMILY.REGULAR, fontSize: THEME.FONTSIZE.SMALL}}
     underlineColor={THEME.COLORS.PRIMARY_800}
@@ -16,7 +16,7 @@ const TextInput = ({ ...props }) => (
         text: THEME.COLORS.TEXT_ABOUT
       }
     }}
-    {...props}
+    {...rest}
   />
 );
 
