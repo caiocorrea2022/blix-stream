@@ -9,7 +9,7 @@ export function Plans({ navigation, route }) {
 
   return (
     <Container>
-      <Header goBack={navigation.goBack} login={true} main={false} about={false} />
+      <Header goBack={navigation.goBack} />
       <Pricing navigation={navigation} userId={userId}></Pricing>
     </Container>
   );
