@@ -166,7 +166,7 @@ const CardInfo = ({
                       width: "100%",
                       backgroundColor: THEME.COLORS.PRIMARY_900,
                     }}
-                    onPress={() => navigation.navigate("ClickCourse", { item:item.image })}
+                    onPress={() => navigation.navigate("ClickCourse", { title:item.title, info: item.info, image:item.image, price:item.price, priceId:item.priceId })}
                   >
                     Saiba mais
                   </Button>

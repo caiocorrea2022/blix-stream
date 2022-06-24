@@ -67,6 +67,7 @@ export function ClickClass ({ route, navigation }) {
         setLogin(true);
       }
     });
+    console.log('videos', videos, 'name', name)
   }, []);
 
   const OutsideView = () => {

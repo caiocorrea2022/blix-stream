@@ -15,7 +15,7 @@ import { onAuthStateChanged } from "firebase/auth";
 export function ClickCourse ({ route, navigation }) {
   // const navigation = useNavigation();
   // const route = useRoute();
-  const { item } = route.params;
+  const { title, info, image, price, priceId } = route.params;
   const [userId, setUserId] = useState("");
   const [loading, setLoading] = useState(false);
   const [login, setLogin] = useState(false);
@@ -43,15 +43,15 @@ export function ClickCourse ({ route, navigation }) {
 
     return width < breakpoint ? (
       <ContentMobile>
-        <Image source={{ uri: item.image }} />
-        <Title textAlign="flex-start" margin="0.5rem 0rem">{item.title}</Title>
-        <SmallText textAlign="justify">{item.info}</SmallText>
+        <Image source={{ uri: image }} />
+        <Title textAlign="flex-start" margin="0.5rem 0rem">{title}</Title>
+        <SmallText textAlign="justify">{info}</SmallText>
       </ContentMobile>
     ) : (
       <ContentDesktop>
-        <Image source={{ uri: item.image }} />
-        <Title textAlign="flex-start" margin="0.5rem 0rem">{item.title}</Title>
-        <SmallText textAlign="justify">{item.info}</SmallText>
+        <Image source={{ uri: image }} />
+        <Title textAlign="flex-start" margin="0.5rem 0rem">{title}</Title>
+        <SmallText textAlign="justify">{info}</SmallText>
       </ContentDesktop>
     );
   };
@@ -66,9 +66,9 @@ export function ClickCourse ({ route, navigation }) {
       
       if(!login) {
         setLoading(false);
-        return navigation.navigate("SignUp", { purchaseType: 'COURSE', priceId: item.priceId })
+        return navigation.navigate("SignUp", { purchaseType: 'COURSE', priceId: priceId })
       } else {
-        return createCheckoutSession(userId, item.priceId, "payment", 0);
+        return createCheckoutSession(userId, priceId, "payment", 0);
       }
     }
 
@@ -76,7 +76,7 @@ export function ClickCourse ({ route, navigation }) {
     return width < breakpoint ? (
       <View>
         <ViewText>
-          <Title margin="0.5rem 0rem">{item.price}</Title>
+          <Title margin="0.5rem 0rem">{price}</Title>
           <FooterText >parcelado em até 12x</FooterText>
           <SmallText >✔ Garantia de 7 dias</SmallText>
         </ViewText>
@@ -92,7 +92,7 @@ export function ClickCourse ({ route, navigation }) {
     ) : (
       <ContentList>
         <View>
-          <MainTitle textAlign="flex-start" margin="0.5rem 0rem">{item.price}</MainTitle>
+          <MainTitle textAlign="flex-start" margin="0.5rem 0rem">{price}</MainTitle>
           <FooterText textAlign="justify">parcelado em até 12x</FooterText>
           <SmallText textAlign="justify">✔ Garantia de 7 dias</SmallText>
         </View>
