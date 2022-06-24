@@ -36,26 +36,10 @@ export function DrawerContent(props) {
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
         <DrawerItem
-          label={() => (<SmallText textAlign="flex-start">Acesse o e-commerce</SmallText>)}
-          onPress={() => Linking.openURL('https://www.google.com')}
-        />
-        <DrawerItem
           label={() => (<SmallText textAlign="flex-start">Fale comigo</SmallText>)}
           onPress={() => Linking.openURL('https://www.google.com')}
         />
       </DrawerContentScrollView>
-      <DrawerItem
-        label={() => (<SmallText textAlign="flex-start">Termos de Uso e Privacidade</SmallText>)}
-        onPress={() => navigation.navigate("TermsofUse")}
-        icon={({ size }) => (
-          <Icon
-            type="material-community"
-            name="file-document-outline"
-            color={THEME.COLORS.ICON_DRAWER}
-            size={size}
-          />
-        )}
-      />
       {login ?
         <DrawerItem
           label={() => (<SmallText textAlign="flex-start" onPress={logout}>Sair</SmallText>)}

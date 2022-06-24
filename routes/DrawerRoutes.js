@@ -44,12 +44,12 @@ export function DrawerRoutes() {
             }}
         >
             <Screen
-                name='Home'
-                component={About}
-            />
-            <Screen
                 name='Aulas'
                 component={Main}
+            />
+            <Screen
+                name='Home'
+                component={About}
             />
             {login ?
                 <Screen
