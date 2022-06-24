@@ -15,11 +15,12 @@ import TouchableText from "../../components/TouchableText";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { firestore } from '../../services/firebase';
+import { getDocs, collection } from "firebase/firestore";
 
 const auth = getAuth();
 
 export function ClickClass ({ route, navigation }) {
-  const { videos, name, description, pdf, url, courseId, priceId, plan } = route.params;
+  const { videos, name, description, img, pdf, url, courseId, priceId, plan, cardId } = route.params;
   const [video, setVideo] = useState(videos[0]);
   const [login, setLogin] = useState(false);
   const [user, setUser] = useState("");
@@ -44,6 +45,13 @@ export function ClickClass ({ route, navigation }) {
     }
   };
 
+  const getCard = async () => {
+    const response = await getDocs(
+      collection(firestore, cardId)
+    );
+    console.log('resposta', response)
+  };
+
   const buyItem = () => {
     if (plan) {
       navigation.navigate("Plans", { userId: user })
@@ -64,11 +72,14 @@ export function ClickClass ({ route, navigation }) {
         console.log(user.uid);
         setUser(user.uid);
         getUsers(user.uid);
+        getCard();
         setLogin(true);
       }
     });
-    console.log('videos', videos, 'name', name)
+    console.log('itemId', cardId)
+    getCard();
   }, []);
+
 
   const OutsideView = () => {
     const { width } = useViewport();
@@ -96,7 +107,7 @@ export function ClickClass ({ route, navigation }) {
         {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
           <VideoPlayer video={video.link} />
         ) : (
-          <Image source={require("./../../assets/Bloqueada.jpg")} resizeMode="cover">
+          <Image source={img} resizeMode="cover">
             <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', height:'100%', justifyContent: "center" }}>
               <Button
                 title={'COMPRAR AGORA'}
@@ -118,7 +129,7 @@ export function ClickClass ({ route, navigation }) {
         {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
           <VideoPlayer video={video.link} />
         ) : (
-          <Image source={require("./../../assets/Bloqueada.jpg")} resizeMode="cover">
+          <Image source={img} resizeMode="cover">
             <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', height:'100%', justifyContent: "center" }}>
               <Button
                 title={'COMPRAR AGORA'}
@@ -191,7 +202,7 @@ export function ClickClass ({ route, navigation }) {
               </TouchableOpacity>
             )}
           style={{ marginBottom: "1rem", flexGrow: 0 }}
-          ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url} login={true}></ListHeader>}
+          ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url} login={true} navigation={navigation}></ListHeader>}
         />
         :
         <FlatList
@@ -204,7 +215,7 @@ export function ClickClass ({ route, navigation }) {
               </TouchableOpacity>
             )}
           style={{ marginBottom: "1rem", flexGrow: 0 }}
-          ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url} login={false}></ListHeader>}
+          ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url} login={false} navigation={navigation}></ListHeader>}
         />
           }
       </ContentList>

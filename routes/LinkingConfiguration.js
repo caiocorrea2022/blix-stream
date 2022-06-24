@@ -6,19 +6,12 @@ const linking = {
         screens: {
           Login: "Login",
           SignUp: "SignUp",
+          About: "Drawer/About",
+          Drawer: "Drawer",
           Success: "Success",
           Plans: "Plans",
           ClickClass: "ClickClass",
           ClickCourse: "ClickCourse",
-          Drawer: {
-            path: 'Drawer',
-            initialRouteName: 'Aulas',
-            screens: {
-              Main: 'Aulas',
-              About:'Home',
-              EditProfile: 'Perfil',
-            },
-          },
         },
     },
   };

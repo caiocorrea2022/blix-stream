@@ -7,7 +7,7 @@ import {
   Container,
 } from "./style";
 import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import HeaderHome from "../../components/HeaderHome";
 import Hero from "../../components/Hero";
 import CardInfo from "../../components/Card";
 import Pricing from "../../components/Pricing";
@@ -66,11 +66,8 @@ export function About({ navigation }) {
     <Container>
       <Section>
         <Poster source={require("../../assets/FotoAbout.jpg")}>
-          <Header
-            navigation={navigation}
+          <HeaderHome
             login={login}
-            main={false}
-            about={true}
           />
           <Hero
             navigation={navigation}

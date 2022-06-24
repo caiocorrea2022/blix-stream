@@ -50,7 +50,7 @@ export function Main({ navigation, route }) {
         <Gradient
           locations={[0, 0.2, 0.7, 1]}
           colors={THEME.COLORS.GRADIENT_MAIN}>
-          <Header navigation={navigation} login={login} main={true} about={false} />
+          <Header navigation={navigation} />
           <Hero>
             <Title color={THEME.COLORS.TITLE_MAIN} textAlign="flex-start" margin="0.5rem 0rem">{titleMain}</Title>
             <SubTitle color={THEME.COLORS.TITLE_MAIN} textAlign="flex-start">{subtitleMain}</SubTitle>

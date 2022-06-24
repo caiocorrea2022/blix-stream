@@ -25,7 +25,6 @@ const CategoryList = ({ category, plan, courses }) => {
       });
       setAllCards(cards);
     };
-    console.log("categorylist", plan);
     findAllCategories();
   }, []);
 
