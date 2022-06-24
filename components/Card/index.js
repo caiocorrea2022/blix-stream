@@ -16,10 +16,11 @@ import {
 import { Icon } from "react-native-elements";
 import ViewPortProvider from "../../hooks/MobileOrDesktop/ViewPortProvider";
 import useViewport from "../../hooks/MobileOrDesktop/useViewport";
-import { useNavigation } from "@react-navigation/native";
+// import { useNavigation } from "@react-navigation/native";
 
 const CardInfo = ({
   array,
+  navigation,
   buttonVisible = true,
   priceVisible = true,
   cardStyle,
@@ -30,7 +31,7 @@ const CardInfo = ({
   subtitleNumberOfLines,
   cardWidth,
 }) => {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
   const [scrollX, setScrollX] = useState(0);
   const MobileOrDesktopLeftArrow = () => {
     const { width } = useViewport();
@@ -165,7 +166,7 @@ const CardInfo = ({
                       width: "100%",
                       backgroundColor: THEME.COLORS.PRIMARY_900,
                     }}
-                    onPress={() => navigation.navigate("ClickCourse", { item })}
+                    onPress={() => navigation.navigate("ClickCourse", { item:item.image })}
                   >
                     Saiba mais
                   </Button>

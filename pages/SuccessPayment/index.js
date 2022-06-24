@@ -30,11 +30,7 @@ export function Success({ navigation }) {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      const userProfile = {
-        Nome: docSnap.data().Nome_Completo,
-        Email: docSnap.data().Email,
-      };
-      // return axios.post('https://sheet.best/api/sheets/ea18f0f1-e07a-438b-8ec5-ac2c44b1c9ab', userProfile);
+      
       return createTaxIdStripe(docSnap.data().stripeId, docSnap.data().CPF);
     } else {
       console.log("GetUser-Document data: No such document!");

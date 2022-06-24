@@ -30,9 +30,11 @@ import { createCheckoutSession } from "../../services/stripe/createCheckoutSessi
 import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../hooks/MobileOrDesktop/useViewport';
 import { HelperText } from 'react-native-paper';
-import { Title, ContainerSideView, SideView, Container } from '../../config/theme/globalStyles';
+import { Title, ContainerSideView, SideView } from '../../config/theme/globalStyles';
 import TouchableText from '../../components/TouchableText';
 import {TextInputMask} from 'react-native-masked-text';
+import axios from 'axios';
+import {googleSheetUrl} from '../../config/data'
 
 export function SignUp({ navigation, route }) {
   const { purchaseType, priceId } = route.params;
@@ -103,6 +105,7 @@ export function SignUp({ navigation, route }) {
               console.log(user)
             };
             createUser()
+            // postGoogleSheet(name.value, email.value, cellphone.value, cpf.value)
               .then(() => {
                 sendEmailVerification(auth.currentUser)
                   .then(() => {
@@ -141,6 +144,16 @@ export function SignUp({ navigation, route }) {
       }
     }
   }
+
+  const postGoogleSheet = async (name, email, cellphone, cpf) => {
+      
+      return axios.post(googleSheetUrl, {
+      Nome: name,
+      Email: email,
+      Celular: cellphone,
+      CPF: cpf,
+    })
+    } 
 
   const MobileOrDesktopComponent = () => {
     const { width } = useViewport();

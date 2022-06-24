@@ -10,11 +10,11 @@ import { FooterText, SmallText, Title, Container, MainTitle } from "../../config
 import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
 import { auth } from '../../services/firebase'
 import { onAuthStateChanged } from "firebase/auth";
-import { useRoute, useNavigation } from "@react-navigation/native";
+// import { useRoute, useNavigation } from "@react-navigation/native";
 
-export function ClickCourse () {
-  const navigation = useNavigation();
-  const route = useRoute();
+export function ClickCourse ({ route, navigation }) {
+  // const navigation = useNavigation();
+  // const route = useRoute();
   const { item } = route.params;
   const [userId, setUserId] = useState("");
   const [loading, setLoading] = useState(false);
