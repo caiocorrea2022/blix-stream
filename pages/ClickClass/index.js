@@ -50,7 +50,7 @@ export function ClickClass ({ route, navigation }) {
       return;
     } else {
       getCourse(courseId).then((response) => {
-        navigation.navigate("ClickCourse", { item: response });
+        navigation.navigate("ClickCourse", { title: response.title, info: response.info, image:response.image, price: response.price, priceId: response.priceId });
       })
       return;
     }
