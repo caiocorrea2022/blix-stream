@@ -11,6 +11,7 @@ import { SmallText, StandardText } from '../../config/theme/globalStyles';
 import TextInput from "../../components/TextInput";
 import Button from '../../components/Button';
 import THEME from '../../config/theme';
+import { returnUrlCustomerPortal} from '../../config/data';
 import { AlertBox } from '../../components/AlertBox'
 import { nameValidator, cellphoneValidator } from "../../utils";
 import { HelperText } from 'react-native-paper';
@@ -89,7 +90,7 @@ export function EditProfile({ navigation }) {
         const functionRef = httpsCallable(functions, 'ext-firestore-stripe-payments-createPortalLink');
         setLoadingPlan(true);
         const { data } = await functionRef({
-            returnUrl: 'http://loupaz-ec0b1.firebaseapp.com/meuperfil',
+            returnUrl: returnUrlCustomerPortal,
             locale: "auto"
         })
             .finally(() => {
