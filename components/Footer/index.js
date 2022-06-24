@@ -5,8 +5,10 @@ import THEME from "../../config/theme";
 import { footerSocialData, clientName } from "../../config/data";
 import { Icon } from "react-native-elements";
 import { Linking, TouchableOpacity } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
 
 const Footer = () => {
+  const navigation = useNavigation();
   return (
     <Container>
       <FooterLeftSide>
@@ -25,6 +27,7 @@ const Footer = () => {
           >
           </Icon>
         ))}
+         <FooterText fontFamily={THEME.FONTFAMILY.BOLD} margin="0rem 0.5rem" onPress={() => navigation.navigate("TermsofUse")}>TERMOS DE USO E PRIVACIDADE</FooterText>
       </FooterLeftSide>
       <FooterRightSide>
         <FooterText margin="0rem 0.5rem">Desenvolvido por</FooterText>
