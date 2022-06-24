@@ -25,13 +25,14 @@ import {
 } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 import { auth, firestore } from '../../services/firebase';
-import AlertBox from "../../components/AlertBox";
+import { AlertBox } from "../../components/AlertBox";
 import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
 import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../hooks/MobileOrDesktop/useViewport';
 import { HelperText } from 'react-native-paper';
 import { Title, ContainerSideView, SideView, Container } from '../../config/theme/globalStyles';
 import TouchableText from '../../components/TouchableText';
+import {TextInputMask} from 'react-native-masked-text';
 
 export function SignUp({ navigation, route }) {
   const { purchaseType, priceId } = route.params;
@@ -121,22 +122,22 @@ export function SignUp({ navigation, route }) {
             console.error(error);
             switch (error.code) {
               case "auth/email-already-in-use":
-                showAlert("Erro", "Este email já está cadastrado");
+                showAlert("Erro:", "Este email já está cadastrado. Contate o suporte do aplicativo.");
                 break;
               case "auth/weak-password":
-                showAlert("Erro", "Senha deve conter pelo menos 6 caracteres");
+                showAlert("Erro:", "Senha deve conter pelo menos 6 caracteres.");
                 break;
               case "auth/invalid-email":
-                showAlert("Erro", "Email inválido");
+                showAlert("Erro:", "Email inválido.");
                 break;
               case "auth/operation-not-allowed":
-                showAlert("Erro", "Problemas ao cadastrar o usuário.");
+                showAlert("Erro:", "Problemas ao cadastrar o usuário.");
                 break;
             }
           });
       }
       else {
-        showAlert("Erro", "Para prosseguir você precisa estar de acordo com os Termos de Uso e a Política de Privacidade.");
+        showAlert("Erro:", "Para prosseguir você precisa estar de acordo com os Termos de Uso e a Política de Privacidade.");
       }
     }
   }
@@ -202,6 +203,17 @@ export function SignUp({ navigation, route }) {
                     onChangeText={(text) => setCellPhone({ value: text, error: "" })}
                     error={!!cellphone.error}
                     keyboardType="phone-pad"
+                    render={(props) => (
+                      <TextInputMask
+                        {...props}
+                        type={'cel-phone'}
+                        options={{
+                          maskType:'BRL',
+                          withDDD:true,
+                          dddMask:'(99) '
+                        }}
+                      />
+                      )}
                   />
                 </ViewText>
                 <ViewHelper>
@@ -217,7 +229,13 @@ export function SignUp({ navigation, route }) {
                     value={cpf.value}
                     onChangeText={(text) => setCpf({ value: text, error: "" })}
                     error={!!cpf.error}
-                    keyboardType="phone-pad"
+                    keyboardType="numeric"
+                    render={(props) => (
+                      <TextInputMask
+                        {...props}
+                        type={'cpf'}
+                      />
+                      )}
                   />
                 </ViewText>
                 <ViewHelper>

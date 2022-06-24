@@ -6,7 +6,6 @@ import {
   ViewSection,
   Container,
 } from "./style";
-import { DrawerActions } from "@react-navigation/native";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Hero from "../../components/Hero";
@@ -62,8 +61,6 @@ export function About({ navigation }) {
       }
     });
   }, []);
-
-  const jumpToAction = DrawerActions.jumpTo("Aulas");
 
   return (
     <Container>
@@ -124,7 +121,7 @@ export function About({ navigation }) {
         <ViewAboutMe>
           <Button
             title={"Ver todas as aulas"}
-            onPress={() => navigation.dispatch(jumpToAction)}
+            onPress={() => navigation.navigate('Drawer', { screen: 'Aulas' })}
           ></Button>
         </ViewAboutMe>
       </ViewSection>

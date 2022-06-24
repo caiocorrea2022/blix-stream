@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button as PaperButton, Paragraph, Dialog, Portal } from 'react-native-paper';
 import THEME from '../../config/theme';
 
-const AlertBox = (props) => {
+export function AlertBox (props) {
   return (
     <Portal>
       <Dialog visible={props.visible} onDismiss={() => props.onClose(false)} style={{ width: Math.round(window.innerWidth * 0.7), alignSelf:"center"}}>
@@ -17,5 +17,3 @@ const AlertBox = (props) => {
     </Portal>
   )
 }
-
-export default AlertBox

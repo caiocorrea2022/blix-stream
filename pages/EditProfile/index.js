@@ -11,7 +11,7 @@ import { SmallText, StandardText } from '../../config/theme/globalStyles';
 import TextInput from "../../components/TextInput";
 import Button from '../../components/Button';
 import THEME from '../../config/theme';
-import AlertBox from '../../components/AlertBox'
+import { AlertBox } from '../../components/AlertBox'
 import { nameValidator, cellphoneValidator } from "../../utils";
 import { HelperText } from 'react-native-paper';
 

@@ -10,8 +10,6 @@ import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 const Header = ({ login, goBack, about }) => {
-  const jumpToAction = DrawerActions.jumpTo('Aulas');
-  const jumpToAction2 = DrawerActions.jumpTo('Home');
   const navigation = useNavigation();
 
   return (
@@ -35,7 +33,7 @@ const Header = ({ login, goBack, about }) => {
               name="menu"
               color={THEME.COLORS.ICON_HEADER_OVERPHOTO}
               size={34}
-              onPress={() => navigation.toggleDrawer()}
+              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
             />
           )}
         </HeaderLeftSide>
@@ -43,11 +41,11 @@ const Header = ({ login, goBack, about }) => {
         <HeaderRightSide>
           {about ? (
             <>
-              <StandardText color={THEME.COLORS.ICON_HEADER_OVERPHOTO} margin="0rem 1rem" onPress={() => navigation.dispatch(jumpToAction)}>ACESSAR AULAS</StandardText>
+              <StandardText color={THEME.COLORS.ICON_HEADER_OVERPHOTO} margin="0rem 1rem" onPress={() => navigation.navigate('Drawer', { screen: 'Aulas' })}>ACESSAR AULAS</StandardText>
               <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
             </>
           ) : (
-            <TouchableOpacity onPress={() => navigation.dispatch(jumpToAction2)}>
+            <TouchableOpacity onPress={() => navigation.navigate('Drawer', { screen: 'Home' })}>
               <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
             </TouchableOpacity>
           )}
@@ -73,7 +71,7 @@ const Header = ({ login, goBack, about }) => {
               name="menu"
               color={THEME.COLORS.ICON_HEADER_OVERPHOTO}
               size={34}
-              onPress={() => navigation.toggleDrawer()}
+              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
             />
           )}
         </HeaderLeftSide>
@@ -85,7 +83,7 @@ const Header = ({ login, goBack, about }) => {
               <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
             </>
           ) : (
-            <TouchableOpacity onPress={() => navigation.navigate("Drawer")}>
+            <TouchableOpacity onPress={() => navigation.navigate('Drawer', { screen: 'Home' })}>
               <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
             </TouchableOpacity>
           )}

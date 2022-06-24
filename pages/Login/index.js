@@ -18,20 +18,17 @@ import {ResetPassword }from './ResetPassword';
 import TouchableText from '../../components/TouchableText'
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
-import AlertBox from '../../components/AlertBox'
+import { AlertBox } from '../../components/AlertBox'
 import THEME from '../../config/theme';
 import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
 import useViewport from '../../hooks/MobileOrDesktop/useViewport';
 import { HelperText } from 'react-native-paper';
 import { MainTitle, ContainerSideView, SideView, HeaderContainer, Container } from '../../config/theme/globalStyles';
 import { Icon } from 'react-native-elements';
-import { DrawerActions } from '@react-navigation/native';
 
 const auth = getAuth();
 
 export function Login({ navigation: { goBack, dispatch } }) {
-
-  const jumpToAction = DrawerActions.jumpTo("Aulas");
 
   const [visible, setVisible] = useState(false);
   const showModal = () => setVisible(true);
@@ -78,7 +75,7 @@ export function Login({ navigation: { goBack, dispatch } }) {
               if (user.emailVerified === false) {
                 showAlert("Erro:", "E-mail não verificado. Confira sua caixa de entrada.")
               } else {
-                navigation.navigate("Drawer")
+                navigation.navigate('Drawer', { screen: 'Aulas' })
               }
             })
             .catch((error) => {
