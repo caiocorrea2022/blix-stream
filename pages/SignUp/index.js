@@ -105,7 +105,6 @@ export function SignUp({ navigation, route }) {
               console.log(user)
             };
             createUser()
-            // postGoogleSheet(name.value, email.value, cellphone.value, cpf.value)
               .then(() => {
                 sendEmailVerification(auth.currentUser)
                   .then(() => {
@@ -138,6 +137,7 @@ export function SignUp({ navigation, route }) {
                 break;
             }
           });
+          postGoogleSheet()
       }
       else {
         showAlert("Erro:", "Para prosseguir você precisa estar de acordo com os Termos de Uso e a Política de Privacidade.");
@@ -145,13 +145,12 @@ export function SignUp({ navigation, route }) {
     }
   }
 
-  const postGoogleSheet = async (name, email, cellphone, cpf) => {
-      
+  const postGoogleSheet = () => {
       return axios.post(googleSheetUrl, {
-      Nome: name,
-      Email: email,
-      Celular: cellphone,
-      CPF: cpf,
+      Nome: 'Julia',
+      Email: 'juliaexemplo@hotmail.com',
+      Celular: '51981633333',
+      CPF: '03346886042',
     })
     } 
 
