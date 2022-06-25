@@ -12,8 +12,8 @@ import THEME from '../../config/theme';
 import { planFrequency, planPrices, planInfos, upsellPrices, subtitlePlan, pricingTitle } from '../../config/data';
 import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
 import { Title, SmallText, StandardText } from '../../config/theme/globalStyles';
-import ViewPortProvider from "../../hooks/MobileOrDesktop/ViewPortProvider";
-import useViewport from "../../hooks/MobileOrDesktop/useViewport";
+import ViewPortProvider from "../../hooks/ViewPortProvider";
+import useViewport from "../../hooks/useViewport";
 import { Dimensions } from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;

@@ -6,8 +6,8 @@ import { getDocs, collection } from "firebase/firestore";
 import { firestore } from "../../services/firebase";
 import THEME from "../../config/theme";
 import { Icon } from "react-native-elements";
-import ViewPortProvider from "../../hooks/MobileOrDesktop/ViewPortProvider";
-import useViewport from "../../hooks/MobileOrDesktop/useViewport";
+import ViewPortProvider from "../../hooks/ViewPortProvider";
+import useViewport from "../../hooks/useViewport";
 import { StandardText, Title } from "../../config/theme/globalStyles";
 
 const CategoryList = ({ category, plan, courses }) => {

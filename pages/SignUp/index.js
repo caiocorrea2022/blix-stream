@@ -27,8 +27,8 @@ import { setDoc, doc } from "firebase/firestore";
 import { auth, firestore } from '../../services/firebase';
 import { AlertBox } from "../../components/AlertBox";
 import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
-import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
-import useViewport from '../../hooks/MobileOrDesktop/useViewport';
+import ViewPortProvider from '../../hooks/ViewPortProvider';
+import useViewport from '../../hooks/useViewport';
 import { HelperText } from 'react-native-paper';
 import { Title, ContainerSideView, SideView } from '../../config/theme/globalStyles';
 import TouchableText from '../../components/TouchableText';
@@ -286,7 +286,6 @@ export function SignUp({ navigation, route }) {
                   <HelperText type="error" visible={confirmPassword.error}>{confirmPassword.error}</HelperText>
                 </ViewHelper>
               </ViewTextInput>
-
             </Content>
             <ViewCheckBox>
               <CheckBox

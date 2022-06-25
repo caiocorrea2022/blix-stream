@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React from 'react';
 import { Linking } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import { Icon } from 'react-native-elements'
@@ -7,12 +6,11 @@ import { Footer} from './style';
 import THEME from '../../config/theme';
 import { auth } from '../../services/firebase'
 import { signOut } from "firebase/auth";
-import { onAuthStateChanged } from "firebase/auth";
+import { useAuth } from "../../context/useAuth";
 import { SmallText, FooterText, Container  } from '../../config/theme/globalStyles';
 
 export function DrawerContent(props) {
-  const navigation = useNavigation();
-  const [login, setLogin] = useState(false);
+  const { user } = useAuth();
 
   const logout = () => {
     signOut(auth).then(() => {
@@ -21,15 +19,6 @@ export function DrawerContent(props) {
       console.log('deu erro', error)
     });
   }
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      console.log('user', user)
-      if (user) {
-        setLogin(true);
-      }
-    });
-  }, []);
 
   return (
     <Container>
@@ -40,9 +29,9 @@ export function DrawerContent(props) {
           onPress={() => Linking.openURL('https://www.google.com')}
         />
       </DrawerContentScrollView>
-      {login ?
+      {user ?
         <DrawerItem
-          label={() => (<SmallText textAlign="flex-start" onPress={logout}>Sair</SmallText>)}
+          label={() => (<SmallText textAlign="flex-start" onPress={() => logout}>Sair</SmallText>)}
           icon={({ size }) => (
             <Icon
               type="material-community"

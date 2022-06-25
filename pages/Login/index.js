@@ -20,8 +20,8 @@ import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import { AlertBox } from '../../components/AlertBox'
 import THEME from '../../config/theme';
-import ViewPortProvider from '../../hooks/MobileOrDesktop/ViewPortProvider';
-import useViewport from '../../hooks/MobileOrDesktop/useViewport';
+import ViewPortProvider from '../../hooks/ViewPortProvider';
+import useViewport from '../../hooks/useViewport';
 import { HelperText } from 'react-native-paper';
 import { MainTitle, ContainerSideView, SideView, HeaderContainer, Container } from '../../config/theme/globalStyles';
 import { Icon } from 'react-native-elements';
@@ -74,8 +74,9 @@ export function Login({ navigation: { goBack, dispatch } }) {
               const user = userCredential.user;
               if (user.emailVerified === false) {
                 showAlert("Erro:", "E-mail não verificado. Confira sua caixa de entrada.")
+                setLoading(false)
               } else {
-                navigation.navigate('Drawer', { screen: 'Aulas' })
+                navigation.navigate('Drawer')
               }
             })
             .catch((error) => {

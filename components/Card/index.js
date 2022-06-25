@@ -14,8 +14,8 @@ import {
   Title,
 } from "../../config/theme/globalStyles";
 import { Icon } from "react-native-elements";
-import ViewPortProvider from "../../hooks/MobileOrDesktop/ViewPortProvider";
-import useViewport from "../../hooks/MobileOrDesktop/useViewport";
+import ViewPortProvider from "../../hooks/ViewPortProvider";
+import useViewport from "../../hooks/useViewport";
 // import { useNavigation } from "@react-navigation/native";
 
 const CardInfo = ({

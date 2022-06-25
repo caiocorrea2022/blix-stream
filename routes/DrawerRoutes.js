@@ -1,27 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import THEME from '../config/theme'
-import { auth } from "../services/firebase";
-import { onAuthStateChanged } from "firebase/auth";
 import { About } from "../pages/About";
 import { Main } from "../pages/Main";
 import { EditProfile } from "../pages/EditProfile";
 import { DrawerContent } from "../components/DrawerContent";
+import { useAuth } from "../context/useAuth";
 
 const { Screen, Navigator } = createDrawerNavigator();
 
 export function DrawerRoutes() {
-    const [login, setLogin] = useState(false);
-
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            console.log('user', user)
-            if (user) {
-                console.log(user.uid);
-                setLogin(true);
-            }
-        });
-    }, []);
+    const { user } = useAuth();
 
     return (
         <Navigator
@@ -51,7 +40,7 @@ export function DrawerRoutes() {
                 name='Home'
                 component={About}
             />
-            {login ?
+            {user ?
                 <Screen
                     name='Perfil'
                     component={EditProfile}

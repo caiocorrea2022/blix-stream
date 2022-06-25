@@ -5,8 +5,8 @@ import { ContentVideoDesktop, ContentVideoMobile, ContentList, Image } from './s
 import VideoPlayer from "../../components/VideoPlayer";
 import Header from "../../components/Header";
 import PlayList from "../../components/PlayList";
-import ViewPortProvider from "../../hooks/MobileOrDesktop/ViewPortProvider";
-import useViewport from "../../hooks/MobileOrDesktop/useViewport";
+import ViewPortProvider from "../../hooks/ViewPortProvider";
+import useViewport from "../../hooks/useViewport";
 import ListHeader from "../../components/ListHeader";
 import THEME from "../../config/theme";
 import { StandardText, Container } from "../../config/theme/globalStyles";

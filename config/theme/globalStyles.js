@@ -21,7 +21,7 @@ export const SideView = styled.View`
 `;
 
 export const Container = styled.View`
-    flex:1;
+    flex: ${({ flex}) => (flex ? flex : 1)};
     background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND_ABOUT)};
 `;
 export const HeaderContainer = styled.View`
