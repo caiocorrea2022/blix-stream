@@ -1,6 +1,7 @@
 const functions = require("firebase-functions");
 const admin = require('firebase-admin');
 const data = require("./data");
+const request = require('request');
 // const paypal = require("@paypal/checkout-server-sdk");
 
 admin.initializeApp();
@@ -72,13 +73,52 @@ exports.paymentTrigger = functions.firestore
             if (newValue.status === 'active') {
 
                 //TODO indentify PLAN and set current plan
-                const productId = newValue.items[0].plan.product;
+                const priceId = newValue.items[0].price.id;
 
-                const currentPlan = data[productId];
+                const currentPlan = data[priceId]?.plan;
 
                 db.doc(`users/${userId}`).set({
                     plan: currentPlan
                 }, { merge: true });
+
+                const iterations = data[priceId]?.iterations;
+                
+        
+                if (iterations > 0) {
+                    const subId = context.params.paymentMethodId;
+
+                    request.post('https://api.stripe.com/v1/subscription_schedules', {
+                        form: {
+                            from_subscription: subId
+                        },
+                        headers: {
+                            'Authorization': 'Bearer sk_test_51K1wAiCmcyIwF9rcDllUmRHt47Sf8pzFwglHfcrHN6Zy8GdSnl3RFPl8yoPoOJbFXs18LK8eCHavE9oQilLFqzbk00dR3pma24'
+                        }
+                    }, (err, res, body) => {
+                 
+                        const info = JSON.parse(body)
+                  
+                        const scheduleId = info.id
+                        const startDate = info.current_phase.start_date;
+
+                        request.post(`https://api.stripe.com/v1/subscription_schedules/${scheduleId}`, {
+                            form: {
+                                end_behavior: 'cancel',
+                                'phases[0]start_date': startDate,
+                                'phases[0][items][0][price]': priceId,
+                                'phases[0][iterations]': iterations,
+                                'phases[0][items][0][quantity]': 1,
+                            },
+                            headers: {
+                                'Authorization': 'Bearer sk_test_51K1wAiCmcyIwF9rcDllUmRHt47Sf8pzFwglHfcrHN6Zy8GdSnl3RFPl8yoPoOJbFXs18LK8eCHavE9oQilLFqzbk00dR3pma24'
+                            }, 
+                        }, (err, res, body) => {
+                            const info = JSON.parse(body)               
+                        });
+                    });
+                  
+                }
+
             } else {
 
                 //Set plan = 0, no plan active 
@@ -92,7 +132,7 @@ exports.paymentTrigger = functions.firestore
         if (newValue && context.params.paymentType == 'payments') {
 
             if (newValue.status === 'succeeded') {
-                
+
                 const priceId = newValue.items[0].price.id;
 
                 db.doc(`users/${userId}`).set({
