@@ -8,14 +8,12 @@ import TouchableText from '../../components/TouchableText'
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../../context/useAuth";
-import { ActivityIndicator } from 'react-native';
 
 const Header = ({ onPress, about }) => {
   const navigation = useNavigation();
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
 
   return (
-    loading ? <ActivityIndicator color="transparent" /> :
     about ? (
       <HeaderContainer>
         <HeaderLeftSide>
