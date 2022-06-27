@@ -23,6 +23,7 @@ export const SideView = styled.View`
 export const Container = styled.View`
     flex: ${({ flex}) => (flex ? flex : 1)};
     background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND_ABOUT)};
+    justify-content: ${({ justifyContent }) => (justifyContent ? justifyContent : '')};
 `;
 export const HeaderContainer = styled.View`
     background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND_HEADER)};

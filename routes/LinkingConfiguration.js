@@ -6,12 +6,13 @@ const linking = {
         screens: {
           Login: "Login",
           SignUp: "SignUp",
-          About: "Drawer/About",
+          About: "About",
           Drawer: "Drawer",
           Success: "Success",
           Plans: "Plans",
           ClickClass: "ClickClass",
           ClickCourse: "ClickCourse",
+          PDFView:"PDFView"
         },
     },
   };

@@ -8,12 +8,14 @@ import TouchableText from '../../components/TouchableText'
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../../context/useAuth";
+import { ActivityIndicator } from 'react-native';
 
-const Header = ({ goBack, about }) => {
+const Header = ({ onPress, about }) => {
   const navigation = useNavigation();
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
 
   return (
+    loading ? <ActivityIndicator color="transparent" /> :
     about ? (
       <HeaderContainer>
         <HeaderLeftSide>
@@ -27,7 +29,7 @@ const Header = ({ goBack, about }) => {
             <StandardText
               color={THEME.COLORS.ICON_HEADER_OVERPHOTO}
               margin="0rem 1rem"
-              onPress={() => navigation.navigate("Drawer", { screen: 'Aulas' })}
+              onPress={onPress}
             >
               ACESSAR AULAS
             </StandardText>
@@ -45,16 +47,16 @@ const Header = ({ goBack, about }) => {
     ) : (
       <HeaderContainer>
         <HeaderLeftSide>
-          {goBack ? (
+          {onPress ? (
             <Row>
               <Icon
                 type="material-community"
                 name="chevron-left"
                 color={THEME.COLORS.ICON_HEADER}
                 size={THEME.FONTSIZE.BIG}
-                onPress={goBack}
+                onPress={onPress}
               />
-              <TouchableText onPress={() => goBack()} title={'Voltar'} color={THEME.COLORS.ICON_HEADER}></TouchableText>
+              <TouchableText onPress={onPress} title={'Voltar'} color={THEME.COLORS.ICON_HEADER}></TouchableText>
             </Row>
           ) : (
             <Icon

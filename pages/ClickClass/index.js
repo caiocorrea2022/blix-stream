@@ -140,7 +140,7 @@ export function ClickClass ({ route, navigation }) {
               <View style={{ flexDirection: "row", justifyContent: "center", margin: "1rem" }} >
                 <StandardText margin="0rem 0.5rem" color={THEME.COLORS.TEXT_BUTTON}>ou</StandardText>
                 <TouchableText textDecoration="underline" onPress={() => navigation.navigate("Login")} title={'Logar'} color={THEME.COLORS.TEXT_BUTTON}></TouchableText>
-                <StandardText margin="0rem 0.5rem" color={THEME.COLORS.TEXT_BUTTON}></StandardText>
+                <StandardText margin="0rem 0.5rem" color={THEME.COLORS.TEXT_BUTTON}>para continuar</StandardText>
               </View>
             </View>
           </Image>
@@ -225,7 +225,7 @@ export function ClickClass ({ route, navigation }) {
   return (
     <ViewPortProvider>
       <Container background={THEME.COLORS.BACKGROUND_MAIN}>
-        <Header goBack={navigation.goBack} />
+        <Header onPress={() => {navigation.navigate('Drawer')}} />
         <OutsideView></OutsideView>
       </Container>
     </ViewPortProvider>

@@ -42,7 +42,7 @@ export function DrawerRoutes() {
             />
             {user ?
                 <Screen
-                    name='Perfil'
+                    name='Meu Perfil'
                     component={EditProfile}
                 />
                 :

@@ -13,14 +13,10 @@ import { About } from "../pages/About";
 
 const { Screen, Navigator } = createNativeStackNavigator();
 
-export function StackRoutes() {
+export function AppRoutes() {
   return (
-    <Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-    <Screen name="Drawer" component={DrawerRoutes} />
+    <Navigator screenOptions={{headerShown: false}}>
+      <Screen name="Drawer" component={DrawerRoutes} />
       <Screen name="About" component={About} />
       <Screen name="Plans" component={Plans} />
       <Screen name="Login" component={Login} />

@@ -12,7 +12,7 @@ import { auth } from '../../services/firebase'
 import { onAuthStateChanged } from "firebase/auth";
 // import { useRoute, useNavigation } from "@react-navigation/native";
 
-export function ClickCourse ({ route, navigation }) {
+export function ClickCourse ({ route, navigation: { goBack } }) {
   // const navigation = useNavigation();
   // const route = useRoute();
   const { title, info, image, price, priceId } = route.params;
@@ -121,7 +121,7 @@ export function ClickCourse ({ route, navigation }) {
   return (
     <ViewPortProvider>
       <Container>
-        <Header goBack={navigation.goBack} background={THEME.COLORS.BACKGROUND_HEADER} />
+        <Header onPress={() => goBack()} background={THEME.COLORS.BACKGROUND_HEADER} />
         <OutsideView></OutsideView>
       </Container>
     </ViewPortProvider>

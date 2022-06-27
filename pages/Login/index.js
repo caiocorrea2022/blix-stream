@@ -28,7 +28,7 @@ import { Icon } from 'react-native-elements';
 
 const auth = getAuth();
 
-export function Login({ navigation: { goBack, dispatch } }) {
+export function Login({ navigation: { goBack } }) {
 
   const [visible, setVisible] = useState(false);
   const showModal = () => setVisible(true);

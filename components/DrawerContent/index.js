@@ -2,19 +2,19 @@ import React from 'react';
 import { Linking } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import { Icon } from 'react-native-elements'
-import { Footer} from './style';
+import { Footer } from './style';
 import THEME from '../../config/theme';
 import { auth } from '../../services/firebase'
 import { signOut } from "firebase/auth";
 import { useAuth } from "../../context/useAuth";
-import { SmallText, FooterText, Container  } from '../../config/theme/globalStyles';
+import { SmallText, FooterText, Container } from '../../config/theme/globalStyles';
 
 export function DrawerContent(props) {
   const { user } = useAuth();
 
   const logout = () => {
     signOut(auth).then(() => {
-      window.location.reload()
+      window.location.assign('../About');
     }).catch((error) => {
       console.log('deu erro', error)
     });
@@ -31,7 +31,9 @@ export function DrawerContent(props) {
       </DrawerContentScrollView>
       {user ?
         <DrawerItem
-          label={() => (<SmallText textAlign="flex-start" onPress={() => logout}>Sair</SmallText>)}
+          label={() => (
+            <SmallText textAlign="flex-start" onPress={logout}>Sair</SmallText>
+          )}
           icon={({ size }) => (
             <Icon
               type="material-community"
@@ -47,7 +49,7 @@ export function DrawerContent(props) {
       }
       <Footer>
         <FooterText fontFamily={THEME.FONTFAMILY.REGULAR} onPress={() => Linking.openURL('https://www.instagram.com/blix.aplicativos/')}>developed by</FooterText>
-        <FooterText margin="0rem 0.3rem"fontFamily={THEME.FONTFAMILY.BOLD} onPress={() => Linking.openURL('https://www.instagram.com/blix.aplicativos/')}>BLIX</FooterText>
+        <FooterText margin="0rem 0.3rem" fontFamily={THEME.FONTFAMILY.BOLD} onPress={() => Linking.openURL('https://www.instagram.com/blix.aplicativos/')}>BLIX</FooterText>
       </Footer>
     </Container>
 

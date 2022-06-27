@@ -68,6 +68,7 @@ export function About({ navigation }) {
         <Poster source={require("../../assets/FotoAbout.jpg")}>
           <Header
             about={true}
+            onPress={() => navigation.navigate('Drawer', { screen: 'Aulas' })}
           />
           <Hero
             navigation={navigation}

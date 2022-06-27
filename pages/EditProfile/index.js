@@ -7,11 +7,11 @@ import { firestore } from '../../services/firebase'
 import 'firebase/functions';
 import { getFunctions, httpsCallable } from "firebase/functions";
 import { Content, ViewText, ViewTextInput, ViewDescription, ViewButton, ViewPlan, ViewHelper, VerticalScroll } from './style';
-import { SmallText, StandardText } from '../../config/theme/globalStyles';
+import { Container, SmallText, StandardText } from '../../config/theme/globalStyles';
 import TextInput from "../../components/TextInput";
 import Button from '../../components/Button';
 import THEME from '../../config/theme';
-import { returnUrlCustomerPortal} from '../../config/data';
+import { returnUrlCustomerPortal } from '../../config/data';
 import { AlertBox } from '../../components/AlertBox'
 import { nameValidator, cellphoneValidator } from "../../utils";
 import { HelperText } from 'react-native-paper';
@@ -19,7 +19,7 @@ import { HelperText } from 'react-native-paper';
 const auth = getAuth();
 const functions = getFunctions();
 
-export function EditProfile({ navigation }) {
+export function EditProfile({ navigation: { goBack } }) {
     const [name, setName] = useState('');
     const [errorName, setErrorName] = useState('')
     const [email, setEmail] = useState('');
@@ -101,7 +101,7 @@ export function EditProfile({ navigation }) {
     }
 
     const salvar = () => {
-        if (validation()==false){
+        if (validation() == false) {
             console.log("pós erro")
             console.log(setErrorCellphone)
             console.log(errorCellphone)
@@ -120,102 +120,104 @@ export function EditProfile({ navigation }) {
                 .finally(() => {
                     setLoadingSave(false);
                 });
-            }
+        }
     }
     return (
         <Provider>
-            <VerticalScroll>
-                <Header goBack={navigation.goBack} />
-                <ViewPlan>
-                    <StandardText padding="0rem 0rem 0.5rem 0rem" textAlign="flex-start">DETALHES DO PLANO:</StandardText>
-                    <ViewButton>
-                        <Button
-                            title={'Editar meu plano'}
-                            isLoading={loadingPlan}
-                            onPress={sendToCustomerPortal}
-                            borderRadius="5px"
-                            colorbutton={THEME.COLORS.PRIMARY_800}
-                            colortitle={THEME.COLORS.TEXT_ABOUT}
-                        ></Button>
-                    </ViewButton>
-                </ViewPlan>
-                <Content>
-                    <StandardText padding="1rem 0rem" textAlign="flex-start">EDITAR INFORMAÇÕES DO CADASTRO:</StandardText>
-                    <ViewDescription>
-                        <SmallText textAlign="flex-start">Nome Completo:</SmallText>
-                    </ViewDescription>
-                    <ViewTextInput>
-                        <ViewText>
-                            <TextInput
-                                placeholder="Nome"
-                                keyboardType='default'
-                                returnKeyType='go'
-                                value={name}
-                                onChange={({ target: { value } }) => { setName(value); setErrorName(null) }}
-                                error={!!errorName}
-                            />
-                        </ViewText>
-                        <ViewHelper>
-                            <HelperText type="error" visible={errorName}>{errorName}</HelperText>
-                        </ViewHelper>
-                    </ViewTextInput>
-                    <ViewDescription>
-                        <SmallText textAlign="flex-start">Email:</SmallText>
-                    </ViewDescription>
-                    <ViewTextInput>
-                        <ViewText>
-                            <TextInput
-                                value={email}
-                                editable={false}
-                            />
-                        </ViewText>
-                        <ViewHelper></ViewHelper>
-                    </ViewTextInput>
-                    <ViewDescription>
-                        <SmallText textAlign="flex-start">Celular:</SmallText>
-                    </ViewDescription>
-                    <ViewTextInput>
-                        <ViewText>
-                            <TextInput
-                                placeholder="(DDD)99999-9999"
-                                keyboardType='default'
-                                returnKeyType='go'
-                                value={cellphone}
-                                onChange={({ target: { value } }) => { setCellPhone(value); setErrorCellphone(null) }}
-                                error={!!errorCellphone}
-                            />
-                        </ViewText>
-                        <ViewHelper>
-                            <HelperText type="error" visible={errorCellphone}>{errorCellphone}</HelperText>
-                        </ViewHelper>
-                    </ViewTextInput>
-                    <ViewDescription>
-                        <SmallText textAlign="flex-start">CPF:</SmallText>
-                    </ViewDescription>
-                    <ViewTextInput>
-                        <ViewText>
-                            <TextInput
-                                value={cpf}
-                                editable={false}
-                            />
-                        </ViewText>
-                        <ViewHelper></ViewHelper>
-                    </ViewTextInput>
-                    {visibleAlert &&
-                        <AlertBox message={message} visible={visibleAlert} onClose={hideAlert}></AlertBox>
-                    }
-                    <ViewButton>
-                        <Button
-                            title={'SALVAR'}
-                            isLoading={loadingSave}
-                            onPress={salvar}
-                            borderRadius="5px"
-                            colorbutton={THEME.COLORS.PRIMARY_800}
-                            colortitle={THEME.COLORS.TEXT_ABOUT}
-                        ></Button>
-                    </ViewButton>
-                </Content>
-            </VerticalScroll>
+            <Container flex="none">
+                <VerticalScroll>
+                    <Header onPress={() => goBack()} />
+                    <ViewPlan>
+                        <StandardText padding="0rem 0rem 0.5rem 0rem" textAlign="flex-start">DETALHES DO PLANO:</StandardText>
+                        <ViewButton>
+                            <Button
+                                title={'Editar meu plano'}
+                                isLoading={loadingPlan}
+                                onPress={sendToCustomerPortal}
+                                borderRadius="5px"
+                                colorbutton={THEME.COLORS.PRIMARY_800}
+                                colortitle={THEME.COLORS.TEXT_ABOUT}
+                            ></Button>
+                        </ViewButton>
+                    </ViewPlan>
+                    <Content>
+                        <StandardText padding="1rem 0rem" textAlign="flex-start">EDITAR INFORMAÇÕES DO CADASTRO:</StandardText>
+                        <ViewDescription>
+                            <SmallText textAlign="flex-start">Nome Completo:</SmallText>
+                        </ViewDescription>
+                        <ViewTextInput>
+                            <ViewText>
+                                <TextInput
+                                    placeholder="Nome"
+                                    keyboardType='default'
+                                    returnKeyType='go'
+                                    value={name}
+                                    onChange={({ target: { value } }) => { setName(value); setErrorName(null) }}
+                                    error={!!errorName}
+                                />
+                            </ViewText>
+                            <ViewHelper>
+                                <HelperText type="error" visible={errorName}>{errorName}</HelperText>
+                            </ViewHelper>
+                        </ViewTextInput>
+                        <ViewDescription>
+                            <SmallText textAlign="flex-start">Email:</SmallText>
+                        </ViewDescription>
+                        <ViewTextInput>
+                            <ViewText>
+                                <TextInput
+                                    value={email}
+                                    editable={false}
+                                />
+                            </ViewText>
+                            <ViewHelper></ViewHelper>
+                        </ViewTextInput>
+                        <ViewDescription>
+                            <SmallText textAlign="flex-start">Celular:</SmallText>
+                        </ViewDescription>
+                        <ViewTextInput>
+                            <ViewText>
+                                <TextInput
+                                    placeholder="(DDD)99999-9999"
+                                    keyboardType='default'
+                                    returnKeyType='go'
+                                    value={cellphone}
+                                    onChange={({ target: { value } }) => { setCellPhone(value); setErrorCellphone(null) }}
+                                    error={!!errorCellphone}
+                                />
+                            </ViewText>
+                            <ViewHelper>
+                                <HelperText type="error" visible={errorCellphone}>{errorCellphone}</HelperText>
+                            </ViewHelper>
+                        </ViewTextInput>
+                        <ViewDescription>
+                            <SmallText textAlign="flex-start">CPF:</SmallText>
+                        </ViewDescription>
+                        <ViewTextInput>
+                            <ViewText>
+                                <TextInput
+                                    value={cpf}
+                                    editable={false}
+                                />
+                            </ViewText>
+                            <ViewHelper></ViewHelper>
+                        </ViewTextInput>
+                        {visibleAlert &&
+                            <AlertBox message={message} visible={visibleAlert} onClose={hideAlert}></AlertBox>
+                        }
+                        <ViewButton>
+                            <Button
+                                title={'SALVAR'}
+                                isLoading={loadingSave}
+                                onPress={salvar}
+                                borderRadius="5px"
+                                colorbutton={THEME.COLORS.PRIMARY_800}
+                                colortitle={THEME.COLORS.TEXT_ABOUT}
+                            ></Button>
+                        </ViewButton>
+                    </Content>
+                </VerticalScroll>
+            </Container>
         </Provider>
     );
 };

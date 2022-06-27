@@ -36,7 +36,7 @@ import {TextInputMask} from 'react-native-masked-text';
 import axios from 'axios';
 import {googleSheetUrl} from '../../config/data'
 
-export function SignUp({ navigation, route }) {
+export function SignUp({ navigation: { goBack }, route }) {
   const { purchaseType, priceId } = route.params;
   const [name, setName] = useState({ value: "", error: "" });
   const [email, setEmail] = useState({ value: "", error: "" });
@@ -166,7 +166,7 @@ export function SignUp({ navigation, route }) {
       <ViewPortProvider>
         <ContainerSideView>
           <VerticalScroll>
-            <Header goBack={navigation.goBack} />
+            <Header onPress={() => goBack()} />
             <ViewTitle>
               <Title textAlign="flex-start" padding="0rem 0rem 0rem 1rem">Cadastrar</Title>
             </ViewTitle>
