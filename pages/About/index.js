@@ -4,6 +4,7 @@ import {
   ViewAboutMe,
   ViewText,
   ViewSection,
+  ViewCookies,
   Container,
 } from "./style";
 import Footer from "../../components/Footer";
@@ -18,11 +19,14 @@ import {
   Section,
   SmallText,
   Title,
-  SubTitle
+  SubTitle,
+  StandardText,
+  FooterText
 } from "../../config/theme/globalStyles";
 import { firestore } from "../../services/firebase/index";
 import THEME from "../../config/theme";
 import Button from "../../components/Button";
+import { Cookie } from "../../components/CookieConsent";
 
 const auth = getAuth();
 
@@ -159,7 +163,9 @@ export function About({ navigation }) {
         </ViewSection>
       )}
       <Footer></Footer>
-      {/* <CookieConsentFunction></CookieConsentFunction> */}
+      <ViewCookies>
+        <Cookie></Cookie>
+      </ViewCookies>
     </Container>
   );
 }

@@ -1,59 +1,31 @@
-import React from "react";
-// import CookieConsent, { Cookies, getCookieConsentValue } from "react-cookie-consent";
-import  CookieConsent ,  {  Cookies  }  from  "react-cookie-consent" ;
-import {View} from 'react-native';
+import CookieConsent from "react-cookie-consent";
 import THEME from "../../config/theme";
+import { FooterText } from "../../config/theme/globalStyles";
 
-export default function CookieConsentFunction() {
+export function Cookie() {
     return (
-    <View>
-       
         <CookieConsent
-        location="bottom"
-        buttonText="Aceitar"
-        declineButtonText="Política de cookies"
-        style={{ 
-            background: 'red',
-            justifyContent: "center", 
-        }} 
-
-        buttonStyle= {{
-            background: 'black',
-            color: THEME.COLORS.TEXT_ABOUT,
-            borderRadius: 10,
-            padding: 10,
-        }}
-        declineButtonStyle={{
-            color:  THEME.COLORS.TEXT_ABOUT,
-            background: THEME.COLORS.BACKGROUND_MAIN,
-            textDecorationLine:'underline'
-          }}
-        contentStyle={{
-            color:THEME.COLORS.BACKGROUND_ABOUT,
-            textAlign:'justify',
-            fontFamily: THEME.FONTFAMILY.LIGHT,
-            fontSize: 14,
-            margin: 12,
-        }}
-        expires={150}
-        onAccept={(acceptedByScrolling) => {
-            if (acceptedByScrolling) {
-            // triggered if user scrolls past threshold
-            alert("Accept was triggered by user scrolling");
-            } else {
-            alert("Accept was triggered by clicking the Accept button");
-            }
-            console.log(getCookieConsentValue());
+            buttonText="Ok, entendido!"
+            cookieName="myAwesomeCookieName2"
+            buttonStyle={{
+                color: THEME.COLORS.TEXT_ABOUT,
+                fontSize: THEME.FONTSIZE.EXTRASMALL,
+                fontFamily: THEME.FONTFAMILY.REGULAR,
+                borderRadius: 10,
+                backgroundColor: THEME.COLORS.PRIMARY_800
             }}
-            enableDeclineButton
-            onDecline={() => {
-            //   alert("nay!");
-              console.log(getCookieConsentValue());
+            style={{ 
+                backgroundColor: 'rgba(128,128,128,0.9)'
+            }} 
+            expires={150}
+            onAccept={(acceptedByScrolling) => {
+                if (acceptedByScrolling) {
+                    alert("O aceite foi acionado pela rolagem do usuário.");
+                }
+                console.log(getCookieConsentValue());
             }}
         >
-        Usamos cookies para armazenar informações sobre como você usa o nosso site e as páginas que visita. Tudo para tornar a sua experiência a mais agradável possível. Ao clicar em "Aceitar", você consente com a utilização de todos os cookies. {" "}
-        <span style={{ fontSize: 14}}>Saiba que a qualquer momento você poderá limpar os dados/cache do seu navegador e desabilitar cookies de terceiros.</span>
+            <FooterText color={THEME.COLORS.BACKGROUND_ABOUT}>Utilizamos cookies para lhe oferecer uma experiência mais personalizada na nossa plataforma. Se você permanecer neste site, você concorda com nosso uso de cookies.</FooterText>
         </CookieConsent>
-    </View>
-    );
-  }
+    )
+}

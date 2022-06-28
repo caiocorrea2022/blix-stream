@@ -21,6 +21,16 @@ export const ViewText = styled.View`
 `;
 
 export const Container = styled.View`
-    flex-basis: auto;
-    background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND_ABOUT)};
+  flex-basis: auto;
+  background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND_ABOUT)};
+`;
+
+export const ViewCookies = styled.View`
+  flex-direction:row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  padding: 1rem 0rem;
+  z-index: 99999;
 `;
