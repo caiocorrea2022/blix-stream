@@ -10,13 +10,19 @@ import { FooterText, SmallText, Title, Container, MainTitle } from "../../config
 import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
 import { auth } from '../../services/firebase'
 import { onAuthStateChanged } from "firebase/auth";
-// import { useRoute, useNavigation } from "@react-navigation/native";
+import { doc, getDoc } from "firebase/firestore";
+import { firestore } from "../../services/firebase/index";
 
 export function ClickCourse ({ route, navigation: { goBack } }) {
-  // const navigation = useNavigation();
-  // const route = useRoute();
-  const { title, info, image, price, priceId } = route.params;
+  const {courseId } = route.params;
   const [userId, setUserId] = useState("");
+  const [title, setTitle] = useState("");
+  const [footerText, setFooterText] = useState("");
+  const [smallText, setSmallText] = useState("");
+  const [image, setImage] = useState("");
+  const [price, setPrice] = useState("");
+  const [priceId, setPriceId] = useState("");
+  const [infos, setInfos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [login, setLogin] = useState(false);
 
@@ -30,11 +36,19 @@ export function ClickCourse ({ route, navigation: { goBack } }) {
         <ViewFlatlist></ViewFlatlist>
       </View>
     ) : (
-      <View style={{ flexDirection: "row", justifyContent: "center", flex: 1 }}>
+      <View style={{ flexDirection: "row", justifyContent: "center" }}>
         <ViewImage></ViewImage>
         <ViewFlatlist></ViewFlatlist>
       </View>
     );
+  };
+
+  const getCourse = async () => {
+    const docRef = doc(firestore, "courses", courseId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      return docSnap.data();
+    }
   };
 
   const ViewImage = () => {
@@ -45,40 +59,43 @@ export function ClickCourse ({ route, navigation: { goBack } }) {
       <ContentMobile>
         <Image source={{ uri: image }} />
         <Title textAlign="flex-start" margin="0.5rem 0rem">{title}</Title>
-        <SmallText textAlign="justify">{info}</SmallText>
+        {infos.map((i) => (
+          <SmallText margin="1rem 0rem 0.5rem 0rem" textAlign="justify">{i}</SmallText>
+        ))}
       </ContentMobile>
     ) : (
       <ContentDesktop>
         <Image source={{ uri: image }} />
         <Title textAlign="flex-start" margin="0.5rem 0rem">{title}</Title>
-        <SmallText textAlign="justify">{info}</SmallText>
+        {infos.map((i) => (
+          <SmallText margin="1rem 0rem 0.5rem 0rem" textAlign="justify">{i}</SmallText>
+        ))}
       </ContentDesktop>
     );
   };
+
+  const goToPurchase = () => {
+    setLoading(true);
+    
+    if(!login) {
+      setLoading(false);
+      return navigation.navigate("SignUp", { purchaseType: 'COURSE', priceId: priceId })
+    } else {
+      return createCheckoutSession(userId, priceId, "payment", 0);
+    }
+  }
 
   const ViewFlatlist = () => {
     const { width } = useViewport();
     const breakpoint = 1080;
 
 
-    const goToPurchase = () => {
-      setLoading(true);
-      
-      if(!login) {
-        setLoading(false);
-        return navigation.navigate("SignUp", { purchaseType: 'COURSE', priceId: priceId })
-      } else {
-        return createCheckoutSession(userId, priceId, "payment", 0);
-      }
-    }
-
-
     return width < breakpoint ? (
       <View>
         <ViewText>
           <Title margin="0.5rem 0rem">{price}</Title>
-          <FooterText >parcelado em até 12x</FooterText>
-          <SmallText >✔ Garantia de 7 dias</SmallText>
+          <FooterText >{footerText}</FooterText>
+          <SmallText >{smallText}</SmallText>
         </ViewText>
         <ViewButton>
           <Button
@@ -93,8 +110,8 @@ export function ClickCourse ({ route, navigation: { goBack } }) {
       <ContentList>
         <View>
           <MainTitle textAlign="flex-start" margin="0.5rem 0rem">{price}</MainTitle>
-          <FooterText textAlign="justify">parcelado em até 12x</FooterText>
-          <SmallText textAlign="justify">✔ Garantia de 7 dias</SmallText>
+          <FooterText textAlign="justify">{footerText}</FooterText>
+          <SmallText textAlign="justify">{smallText}</SmallText>
         </View>
         <ViewButton alignSelf="flex-start">
           <Button
@@ -114,6 +131,16 @@ export function ClickCourse ({ route, navigation: { goBack } }) {
         setUserId(user.uid);
         setLogin(true);
       }
+      getCourse().then((response) => {
+        console.log(response.infos);
+        setTitle(response.title);
+        setImage(response.image);
+        setInfos(response.infos);
+        setSmallText(response.smallText);
+        setFooterText(response.footerText);
+        setPrice(response.price);
+        setPriceId(response.priceId);
+      })
     });
 
   }, []);

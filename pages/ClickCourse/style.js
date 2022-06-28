@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const ContentDesktop = styled.View`
-  width: 60%;
+  width: 70%;
   padding: 2rem 6rem;
 `;
 
@@ -17,7 +17,7 @@ export const Image = styled.Image`
 `;
 
 export const ContentList = styled.View`
-  width: 40%;
+  width: 30%;
   padding: 2rem 0rem;
 `;
 
@@ -25,7 +25,6 @@ export const ViewText = styled.View`
   width: 100%; 
   align-self: center;
   margin:0rem 0rem 1rem 0rem;
-  background-color: pink;
 `;
 
 export const ViewButton = styled.View`

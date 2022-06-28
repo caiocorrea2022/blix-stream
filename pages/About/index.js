@@ -159,7 +159,7 @@ export function About({ navigation }) {
         <></>
       ) : (
         <ViewSection>
-          <Pricing></Pricing>
+          <Pricing userId={user}></Pricing>
         </ViewSection>
       )}
       <Footer></Footer>
