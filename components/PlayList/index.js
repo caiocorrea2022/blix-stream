@@ -8,7 +8,7 @@ const PlayList = ({ title, image }) => {
         <Container>
             <Avatar resizeMode='cover' source={{ uri: image }} />
             <Content>
-                <StandardText color={THEME.COLORS.TEXT_MAIN} textAlign="flex-start">{title}</StandardText>
+                <StandardText color={THEME.COLORS.TEXT_MAIN} textAlign="flex-start" numberOfLines={2}>{title}</StandardText>
             </Content>
         </Container>
     )
