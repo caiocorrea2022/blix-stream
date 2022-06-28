@@ -145,7 +145,7 @@ const CardInfo = ({
                       fontSize={THEME.FONTSIZE.EXTRASMALL}
                       numberOfLines={subtitleNumberOfLines}
                     >
-                      {item.info}
+                      {item.infos}
                     </SmallText>
                   </ViewSmallTextCategory>
                   {priceVisible ? (
