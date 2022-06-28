@@ -15,15 +15,18 @@ import { Title, SmallText, StandardText } from '../../config/theme/globalStyles'
 import ViewPortProvider from "../../hooks/ViewPortProvider";
 import useViewport from "../../hooks/useViewport";
 import { Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const windowWidth = Dimensions.get('window').width;
 const numColumns = planInfos.length;
-const cardSize = windowWidth*0.7/numColumns;
+const cardSize = windowWidth * 0.7 / numColumns;
 
-const Pricing = ({ navigation, userId }) => {
+const Pricing = ({ userId }) => {
   const [selectedId, setSelectedId] = useState("1");
   const [option, setOption] = useState(planPrices[0]);
   const [upsell, setUpsell] = useState(upsellPrices[0]);
+  const [isLoading, setLoading] = useState(false);
+  const navigation = useNavigation();
 
   const Item = ({ item, onPress, backgroundColor, textColor }) => (
     <ItemContainer style={[backgroundColor]}>
@@ -33,7 +36,7 @@ const Pricing = ({ navigation, userId }) => {
     </ItemContainer>
   );
 
-    const MobileOrDesktopCardSize = () => {
+  const MobileOrDesktopCardSize = () => {
     const { width } = useViewport();
     const breakpoint = 1080;
     return width < breakpoint ? (
@@ -68,6 +71,7 @@ const Pricing = ({ navigation, userId }) => {
               infoFont={THEME.FONTFAMILY.LIGHT}
               button={{
                 title: "ASSINAR PLANO",
+                loading: isLoading,
                 color: THEME.COLORS.PRIMARY_900,
                 titleStyle: {
                   color: THEME.COLORS.TEXT_BUTTON,
@@ -79,17 +83,19 @@ const Pricing = ({ navigation, userId }) => {
               containerStyle={{
                 backgroundColor: THEME.COLORS.PRIMARY_800,
                 borderRadius: "15px",
-                width: windowWidth*0.6,
+                width: windowWidth * 0.6,
                 display: "flex",
                 flexDrection: "column",
               }}
               wrapperStyle={{
-                flex:1,
+                flex: 1,
               }}
-              onButtonPress={() => 
-                userId ?
-                  createCheckoutSession(userId, option[index].priceId, "subscription", option[index].iterations) :
-                  navigation.navigate("SignUp", { purchaseType: 'PLAN', priceId: option[index].priceId })
+              onButtonPress={() => {
+                setLoading(true)
+                userId
+                  ? createCheckoutSession(userId, option[index].priceId, "subscription", option[index].iterations)
+                  : navigation.navigate("SignUp", { purchaseType: 'PLAN', priceId: option[index].priceId })
+              }
               }
             />
           ))}
@@ -126,6 +132,7 @@ const Pricing = ({ navigation, userId }) => {
               infoFont={THEME.FONTFAMILY.LIGHT}
               button={{
                 title: "ASSINAR PLANO",
+                loading: isLoading,
                 color: THEME.COLORS.PRIMARY_900,
                 titleStyle: {
                   color: THEME.COLORS.TEXT_BUTTON,
@@ -142,18 +149,20 @@ const Pricing = ({ navigation, userId }) => {
                 flexDrection: "column",
               }}
               wrapperStyle={{
-                flex:1,
+                flex: 1,
               }}
-              onButtonPress={() => 
-                userId ?
-                  createCheckoutSession(userId, option[index].priceId, "subscription", option[index].iterations) :
-                  navigation.navigate("SignUp", { purchaseType: 'PLAN', priceId: option[index].priceId })
+              onButtonPress={() => {
+                setLoading(true)
+                userId
+                  ? createCheckoutSession(userId, option[index].priceId, "subscription", option[index].iterations)
+                  : navigation.navigate("SignUp", { purchaseType: 'PLAN', priceId: option[index].priceId })
+              }
               }
             />
           ))}
         </HorizontalList>
       </HorizontalListView>
-        )
+    )
   };
 
 
@@ -178,23 +187,23 @@ const Pricing = ({ navigation, userId }) => {
 
   return (
     <ViewPortProvider>
-    <Container>
-      <TitleView>
-        <Title>{pricingTitle}</Title>
-        <StandardText margin="0rem 1rem">{subtitlePlan}</StandardText>
-        <FlatList
-          data={planFrequency}
-          renderItem={renderItem}
-          showsVerticalScrollIndicator={false}
-          keyExtractor={(item, index) => index.toString()}
-          extraData={selectedId}
-          numColumns={planFrequency.length}
-          columnWrapperStyle={{ justifyContent: "center" }}
-          style={{ flexGrow: 0 }}
-        />
-      </TitleView>
-      <MobileOrDesktopCardSize></MobileOrDesktopCardSize>
-    </Container>
+      <Container>
+        <TitleView>
+          <Title>{pricingTitle}</Title>
+          <StandardText margin="1rem">{subtitlePlan}</StandardText>
+          <FlatList
+            data={planFrequency}
+            renderItem={renderItem}
+            showsVerticalScrollIndicator={false}
+            keyExtractor={(item, index) => index.toString()}
+            extraData={selectedId}
+            numColumns={planFrequency.length}
+            columnWrapperStyle={{ justifyContent: "center" }}
+            style={{ flexGrow: 0 }}
+          />
+        </TitleView>
+        <MobileOrDesktopCardSize></MobileOrDesktopCardSize>
+      </Container>
     </ViewPortProvider>
   );
 };

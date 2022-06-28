@@ -81,6 +81,11 @@ export function SignUp({ navigation: { goBack }, route }) {
     }
   };
 
+  const getRawValue = (value) => {
+    return value.replace(/\D/g, '').trim();
+  };
+
+
   const onSignUpPressed = () => {
     validation();
     if (email.value && password.value && name.value && cellphone.value && cpf.value) {
@@ -99,7 +104,7 @@ export function SignUp({ navigation: { goBack }, route }) {
                 Nome_Completo: name.value,
                 Email: email.value,
                 Celular: cellphone.value,
-                CPF: cpf.value,
+                CPF: getRawValue(cpf.value),
               });
               console.log('user criado')
               console.log(user)
@@ -137,7 +142,7 @@ export function SignUp({ navigation: { goBack }, route }) {
                 break;
             }
           });
-          postGoogleSheet()
+          // postGoogleSheet()
       }
       else {
         showAlert("Erro:", "Para prosseguir você precisa estar de acordo com os Termos de Uso e a Política de Privacidade.");
