@@ -4,6 +4,12 @@ import ZoomMtgEmbedded from "@zoomus/websdk/embedded";
 import { Image } from './style';
 import {View} from "react-native";
 import { Dimensions } from 'react-native';
+import Constants from 'expo-constants';
+
+const zoomConfig = {
+  zoomSdkKey: Constants.manifest.extra.zoomSdkKey,
+  zoomSdkSecret: Constants.manifest.extra.zoomSdkSecret,
+};
 
 function Zoom({img}) {
   const KJUR = require("jsrsasign");
@@ -13,7 +19,7 @@ function Zoom({img}) {
   const client = ZoomMtgEmbedded.createClient();
   const [signature, setSignature] = useState("");
   const [buttonVisible, setButtonVisible] = useState(true);
-  var sdkKey = "zb5bNqHIJ3SObt0AxMFCmyjNSI2zBwl7lQRY";
+  var sdkKey = zoomConfig.zoomSdkKey;
   var meetingNumber = "6517604350";
   var userName = "React";
   var userEmail = "";
@@ -42,8 +48,8 @@ function Zoom({img}) {
       return sdkJWT, setSignature(sdkJWT);
     }
     generateSignature(
-      "zb5bNqHIJ3SObt0AxMFCmyjNSI2zBwl7lQRY",
-      "aiw4cjV4Q4khq264SVZFylT3GCJiIZWyWitv",
+      zoomConfig.zoomSdkKey,
+      zoomConfig.zoomSdkSecret,
       6517604350,
       0
     );
@@ -128,23 +134,6 @@ function Zoom({img}) {
       </Image>
       {/* <div id="meetingSDKElement"></div> */}
     </>
-    /* <div id="meetingSDKElement"></div> */
-    // <div className="App">
-    //   <main>
-    //     <h1>Zoom Meeting SDK Sample React</h1>
-
-    //     {/* For Component View */}
-    //     <div id="meetingSDKElement">
-    //       {/* Zoom Meeting SDK Component View Rendered Here */}
-    //     </div>
-    //     <Button
-    //           title={"Join Meeting"}
-    //           onPress={() => startMeeting()}
-    //     ></Button>
-
-    //     {/* <button onClick={console.log('oi')}>Join Meeting</button> */}
-    //   </main>
-    // </div>
   );
 }
 
