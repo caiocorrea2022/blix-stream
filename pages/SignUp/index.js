@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { View } from "react-native";
 import Header from '../../components/Header';
 import {
@@ -117,7 +117,7 @@ export function SignUp({ navigation: { goBack }, route }) {
                       .then(() => {
                         if (purchaseType === 'PLAN') {
                           createCheckoutSession(user.uid, priceId, "subscription", 6);
-                        } else {
+                        } else if (purchaseType === 'COURSE') {
                           createCheckoutSession(user.uid, priceId, "payment", 0);
                         }
                       });
@@ -165,6 +165,7 @@ export function SignUp({ navigation: { goBack }, route }) {
 
     return width < breakpoint ? <View></View> : <SideView flex="2"></SideView>;
   };
+
 
   return (
     <Provider>
