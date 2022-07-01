@@ -7,7 +7,7 @@ export const Container = styled.View`
 `;
 
 export const HorizontalList = styled.ScrollView.attrs({
-  showsVerticalScrollIndicator: false,
+  showsVerticalScrollIndicator: true,
   contentContainerStyle: {
     flexGrow: 1,
     justifyContent: "center",
