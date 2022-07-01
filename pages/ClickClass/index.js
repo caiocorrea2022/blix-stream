@@ -20,26 +20,29 @@ import TouchableText from "../../components/TouchableText";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { firestore } from "../../services/firebase";
-import { getDocs, collection } from "firebase/firestore";
 import Zoom from '../../components/Zoom';
 
 const auth = getAuth();
-const link = "foooi";
+const link2 = "foooi";
 
 export function ClickClass({ route, navigation }) {
   const {
-    videos,
-    name,
-    description,
-    img,
-    pdf,
-    url,
-    courseId,
-    priceId,
-    plan,
     cardId,
   } = route.params;
-  const [video, setVideo] = useState(videos[0]);
+
+  const [video, setVideo] = useState();
+  const [listVideos, setListVideos] = useState([]);
+
+  const [img, setImg] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [pdf, setPdf] = useState("");
+  const [url, setUrl] = useState("");
+
+  const [plan, setPlan] = useState("");
+  const [priceId, setPriceId] = useState("");
+  const [courseId, setCourseId] = useState("");
+  
   const [login, setLogin] = useState(false);
   const [user, setUser] = useState("");
   const [userPlan, setUserPlan] = useState("");
@@ -54,17 +57,21 @@ export function ClickClass({ route, navigation }) {
     }
   };
 
-  const getCourse = async (courseId) => {
-    const docRef = doc(firestore, "courses", courseId);
+  const getCard = async () => {
+    const docRef = doc(firestore, "categories", "MkYps8Md8G6jDwFyg4VB", "cards", cardId);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      return docSnap.data();
-    }
-  };
-
-  const getCard = async () => {
-    const response = await getDocs(collection(firestore, cardId));
-    console.log("resposta", response);
+      setListVideos(docSnap.data().videos);
+      setVideo(docSnap.data().videos[0].link);
+      setImg(docSnap.data().img);
+      setName(docSnap.data().title);
+      setPdf(docSnap.data().pdf);
+      setUrl(docSnap.data().url);
+      setDescription(docSnap.data().description);
+      setPlan(docSnap.data().plan);
+      setCourseId(docSnap.data().courseId);
+      setPriceId(docSnap.data().priceId);
+    } 
   };
 
   const buyItem = () => {
@@ -72,15 +79,9 @@ export function ClickClass({ route, navigation }) {
       navigation.navigate("Plans", { userId: user });
       return;
     } else {
-      getCourse(courseId).then((response) => {
         navigation.navigate("ClickCourse", {
-          title: response.title,
-          info: response.info,
-          image: response.image,
-          price: response.price,
-          priceId: response.priceId,
+          courseId: courseId,
         });
-      });
       return;
     }
   };
@@ -131,10 +132,10 @@ export function ClickClass({ route, navigation }) {
     return width < breakpoint ? (
       <ContentVideoMobile>
         {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
-          link ? (
+          link2 ? (
             <Zoom img={img}></Zoom>
           ) : (
-            <VideoPlayer video={video.link} />
+            <VideoPlayer video={video} />
           )
         ) : (
           <Image source={img} resizeMode="cover">
@@ -184,10 +185,10 @@ export function ClickClass({ route, navigation }) {
     ) : (
       <ContentVideoDesktop>
         {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
-          link ? (
+          link2 ? (
             <Zoom img={img}></Zoom>
           ) : (
-            <VideoPlayer video={video.link} />
+            <VideoPlayer video={video} />
           )
         ) : (
           <Image source={img} resizeMode="cover">
@@ -245,11 +246,11 @@ export function ClickClass({ route, navigation }) {
       <View>
         {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
           <FlatList
-            data={videos}
+            data={listVideos}
             renderItem={({ item, index }) => (
               <TouchableOpacity
                 onPress={() => {
-                  setVideo(videos[index]);
+                  setVideo(listVideos[index].link);
                 }}
                 style={{ margin: 10 }}
               >
@@ -270,7 +271,7 @@ export function ClickClass({ route, navigation }) {
           />
         ) : (
           <FlatList
-            data={videos}
+            data={listVideos}
             renderItem={({ item, index }) => (
               <TouchableOpacity style={{ margin: 10 }}>
                 <PlayList {...item}></PlayList>
@@ -294,11 +295,11 @@ export function ClickClass({ route, navigation }) {
       <ContentList>
         {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
           <FlatList
-            data={videos}
+            data={listVideos}
             renderItem={({ item, index }) => (
               <TouchableOpacity
                 onPress={() => {
-                  setVideo(videos[index]);
+                  setVideo(listVideos[index].link);
                 }}
                 style={{ margin: 10 }}
               >
@@ -319,7 +320,7 @@ export function ClickClass({ route, navigation }) {
           />
         ) : (
           <FlatList
-            data={videos}
+            data={listVideos}
             renderItem={({ item, index }) => (
               <TouchableOpacity style={{ margin: 10 }}>
                 <PlayList {...item}></PlayList>

@@ -8,7 +8,7 @@ import THEME from "../../config/theme";
 import { Icon } from "react-native-elements";
 import ViewPortProvider from "../../hooks/ViewPortProvider";
 import useViewport from "../../hooks/useViewport";
-import { StandardText, Title } from "../../config/theme/globalStyles";
+import { StandardText } from "../../config/theme/globalStyles";
 
 const CategoryList = ({ category, plan, courses }) => {
   const [allCards, setAllCards] = useState([]);
