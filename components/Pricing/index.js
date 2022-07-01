@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PricingCard } from "react-native-elements";
 import { FlatList, TouchableOpacity } from 'react-native';
 import {
@@ -27,6 +27,10 @@ const Pricing = ({ userId }) => {
   const [upsell, setUpsell] = useState(upsellPrices[0]);
   const [isLoading, setLoading] = useState(false);
   const navigation = useNavigation();
+
+useEffect(()=>{
+  setLoading(false)
+})
 
   const Item = ({ item, onPress, backgroundColor, textColor }) => (
     <ItemContainer style={[backgroundColor]}>

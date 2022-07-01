@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const HorizontalList = styled.ScrollView.attrs({
-  showsVerticalScrollIndicator: true,
+  showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     flexGrow: 1,
     justifyContent: "center",

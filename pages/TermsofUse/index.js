@@ -52,7 +52,7 @@ export function TermsofUse({ navigation }) {
           </ViewText>
           <ViewPressable>
             <Pressable
-              onPress={() => {setModalVisible(!modalVisible), navigation.navigate("Drawer"), navigation.dispatch(DrawerActions.closeDrawer())}}>
+              onPress={() => {setModalVisible(!modalVisible), navigation.navigate("About"), navigation.dispatch(DrawerActions.closeDrawer())}}>
               <Close></Close>
             </Pressable>
           </ViewPressable>

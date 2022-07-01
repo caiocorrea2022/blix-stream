@@ -81,7 +81,10 @@ export function ClickCourse ({ route, navigation: { goBack } }) {
       setLoading(false);
       return navigation.navigate("SignUp", { purchaseType: 'COURSE', priceId: priceId })
     } else {
-      return createCheckoutSession(userId, priceId, "payment", 0);
+      return createCheckoutSession(userId, priceId, "payment", 0)
+      .finally(() => {
+        setLoading(false);
+      });
     }
   }
 

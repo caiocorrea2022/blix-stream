@@ -164,7 +164,7 @@ export function About({ navigation }) {
       )}
       <Footer></Footer>
       <ViewCookies>
-        <Cookie></Cookie>
+        <Cookie debug={true}></Cookie>
       </ViewCookies>
     </Container>
   );
