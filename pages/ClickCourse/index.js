@@ -12,8 +12,9 @@ import { auth } from '../../services/firebase'
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { firestore } from "../../services/firebase/index";
+import { useNavigation } from '@react-navigation/native';
 
-export function ClickCourse ({ route, navigation: { goBack } }) {
+export function ClickCourse ({ route }) {
   const {courseId } = route.params;
   const [userId, setUserId] = useState("");
   const [title, setTitle] = useState("");
@@ -24,6 +25,7 @@ export function ClickCourse ({ route, navigation: { goBack } }) {
   const [priceId, setPriceId] = useState("");
   const [infos, setInfos] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigation = useNavigation();
 
   const OutsideView = () => {
     const { width } = useViewport();
