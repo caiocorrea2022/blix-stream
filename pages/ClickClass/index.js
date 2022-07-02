@@ -20,7 +20,7 @@ import TouchableText from "../../components/TouchableText";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { firestore } from "../../services/firebase";
-import Zoom from '../../components/Zoom';
+// import Zoom from '../../components/Zoom';
 
 const auth = getAuth();
 const link2 = "foooi";
@@ -132,11 +132,11 @@ export function ClickClass({ route, navigation }) {
     return width < breakpoint ? (
       <ContentVideoMobile>
         {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
-          link2 ? (
-            <Zoom img={img}></Zoom>
-          ) : (
+          // link2 ? (
+          //    <Zoom img={img}></Zoom>
+          // ) : (
             <VideoPlayer video={video} />
-          )
+          // )
         ) : (
           <Image source={img} resizeMode="cover">
             <View
@@ -185,11 +185,11 @@ export function ClickClass({ route, navigation }) {
     ) : (
       <ContentVideoDesktop>
         {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
-          link2 ? (
-            <Zoom img={img}></Zoom>
-          ) : (
+          // link2 ? (
+          //   <Zoom img={img}></Zoom>
+          // ) : (
             <VideoPlayer video={video} />
-          )
+          // )
         ) : (
           <Image source={img} resizeMode="cover">
             <View

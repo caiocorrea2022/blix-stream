@@ -81,20 +81,6 @@ export function ClickCourse ({ route }) {
     );
   };
 
-  const goToPurchase = () => {
-    setLoading(true);
-    
-    if(!login) {
-      setLoading(false);
-      return navigation.navigate("SignUp", { purchaseType: 'COURSE', priceId: priceId })
-    } else {
-      return createCheckoutSession(userId, priceId, "payment", 0)
-      .finally(() => {
-        setLoading(false);
-      });
-    }
-  }
-
   const ViewFlatlist = () => {
     const { width } = useViewport();
     const breakpoint = 1080;
@@ -133,9 +119,8 @@ export function ClickCourse ({ route }) {
             title={"Comprar agora"}
             isLoading={loading}
             onPress={() => {
-              setLoading(true);
               userId
-                ? createCheckoutSession(userId, priceId, "payment", 0)
+                ? (setLoading(true), createCheckoutSession(userId, priceId, "payment", 0))
                 : navigation.navigate("SignUp", { purchaseType: 'COURSE', priceId: priceId })
             }}
           ></Button>
@@ -152,7 +137,6 @@ export function ClickCourse ({ route }) {
       }
       getCourse();
     });
-
   }, []);
 
   return (
