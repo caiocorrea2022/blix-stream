@@ -110,7 +110,7 @@ import { View } from "react-native";
 import "@zoomus/websdk/dist/css/react-select.css";
 import "@zoomus/websdk/dist/css/bootstrap.css";
 
-const Zoom = ({ img, meetingNumber, passWord, className }) => {
+const Zoom = ({ img, meetingNumber, passWord, className, userName }) => {
   const zoomConfig = {
     zoomSdkKey: Constants.manifest.extra.zoomSdkKey,
     zoomSdkSecret: Constants.manifest.extra.zoomSdkSecret,
@@ -118,11 +118,9 @@ const Zoom = ({ img, meetingNumber, passWord, className }) => {
 
   const KJUR = require("jsrsasign");
   var sdkKey = zoomConfig.zoomSdkKey;
-  //var meetingNumber = "6517604350";
   var leaveUrl = "http://localhost:19006";
-  var userName = "React";
+  // var userName = "React";
   var userEmail = "";
-  //var passWord = "YXkxYlAwQ0ROdXhUZGdVZDF6cFo0dz09";
   var registrantToken = "";
   var role = 0;
 

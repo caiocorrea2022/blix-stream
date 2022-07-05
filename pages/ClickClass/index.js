@@ -31,6 +31,7 @@ export function ClickClass({ route, navigation }) {
 
   const [video, setVideo] = useState();
   const [meetingNumber, setMeetingNumber] = useState("123456");
+  const [userName, setUserName] = useState("");
   const [className, setClassName] = useState("");
   const [passWord, setPassWord] = useState("");
 
@@ -56,6 +57,7 @@ export function ClickClass({ route, navigation }) {
     if (docSnap.exists()) {
       setUserPlan(docSnap.data().plan);
       setUserPriceIds(docSnap.data().courses);
+      setUserName(docSnap.data().Nome_Completo);
     }
   };
 
@@ -143,6 +145,7 @@ export function ClickClass({ route, navigation }) {
             meetingNumber={meetingNumber}
             passWord={passWord}
             className={className}
+            userName={userName}
           ></Zoom>
           ) : (
           <VideoPlayer video={video} />
@@ -201,6 +204,7 @@ export function ClickClass({ route, navigation }) {
             meetingNumber={meetingNumber}
             passWord={passWord}
             className={className}
+            userName={userName}
           ></Zoom>
           ) : (
           <VideoPlayer video={video} />
