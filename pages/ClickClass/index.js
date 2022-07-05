@@ -146,6 +146,7 @@ export function ClickClass({ route, navigation }) {
             passWord={passWord}
             className={className}
             userName={userName}
+            cardId={cardId}
           ></Zoom>
           ) : (
           <VideoPlayer video={video} />
@@ -205,6 +206,7 @@ export function ClickClass({ route, navigation }) {
             passWord={passWord}
             className={className}
             userName={userName}
+            cardId={cardId}
           ></Zoom>
           ) : (
           <VideoPlayer video={video} />

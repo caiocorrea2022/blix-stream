@@ -9,6 +9,7 @@ export const pricingTitle = "PLANOS DE ASSINATURA";
 export const subtitlePlan = "Teste grátis por 7 dias. Pagamento automático no boleto ou no cartão de crédito. Pode cancelar quando desejar.";
 export const googleSheetUrl = 'https://sheet.best/api/sheets/ea18f0f1-e07a-438b-8ec5-ac2c44b1c9ab';
 export const returnUrlCustomerPortal = 'http://loupaz-ec0b1.firebaseapp.com/meuperfil';
+export const returnDomainZoom = 'http://localhost:19006';
 
 export const planFrequency = [
   { id: "1", frequency: "Mensal" },
