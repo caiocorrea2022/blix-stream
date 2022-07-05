@@ -4,8 +4,10 @@ import THEME from '../../config/theme';
 import Button from '../../components/Button';
 import { StandardText, SmallText, Container } from "../../config/theme/globalStyles";
 import { ActivityIndicator } from 'react-native';
+import { useAuth } from "../../context/useAuth";
 
 export function Success({ navigation }) {
+  const { user, loading } = useAuth();
   
   return (
     loading ? <ActivityIndicator color="transparent" /> :

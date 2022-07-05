@@ -41,6 +41,10 @@ export default {
             stripeSecretKey: process.env.STRIPE_SECRET_KEY,
             zoomSdkKey: process.env.ZOOM_SDK_KEY,
             zoomSdkSecret: process.env.ZOOM_SDK_SECRET,
+            spreadsheetId: process.env.SPREADSHEET_ID,
+            sheetId: process.env.SHEET_ID,
+            clientEmail: process.env.CLIENT_EMAIL,
+            privateKey: process.env.PRIVATE_KEY,
         },
     }
 }

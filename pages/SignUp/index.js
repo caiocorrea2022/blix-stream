@@ -33,8 +33,7 @@ import { HelperText } from 'react-native-paper';
 import { Title, ContainerSideView, SideView } from '../../config/theme/globalStyles';
 import TouchableText from '../../components/TouchableText';
 import {TextInputMask} from 'react-native-masked-text';
-import axios from 'axios';
-import {googleSheetUrl} from '../../config/data'
+import { appendSpreadsheet } from '../../services/googlesheets';
 
 export function SignUp({ navigation: { goBack }, route }) {
   const { purchaseType, priceId } = route.params;
@@ -49,6 +48,7 @@ export function SignUp({ navigation: { goBack }, route }) {
   const [visibleAlert, setVisibleAlert] = useState(false);
   const [title, setTitle] = useState(null);
   const [message, setMessege] = useState(null);
+
 
   const showAlert = (title, message) => {
     setVisibleAlert(true);
@@ -142,22 +142,13 @@ export function SignUp({ navigation: { goBack }, route }) {
                 break;
             }
           });
-          // postGoogleSheet()
+          appendSpreadsheet({ NomeCompleto: name.value, Email: email.value, Celular: cellphone.value, CPF: cpf.value })
       }
       else {
         showAlert("Erro:", "Para prosseguir você precisa estar de acordo com os Termos de Uso e a Política de Privacidade.");
       }
     }
   }
-
-  const postGoogleSheet = () => {
-      return axios.post(googleSheetUrl, {
-      Nome: 'Julia',
-      Email: 'juliaexemplo@hotmail.com',
-      Celular: '51981633333',
-      CPF: '03346886042',
-    })
-    } 
 
   const MobileOrDesktopComponent = () => {
     const { width } = useViewport();
@@ -180,7 +171,7 @@ export function SignUp({ navigation: { goBack }, route }) {
               <ViewTextInput>
                 <ViewText>
                   <TextInput
-                    label="Nome"
+                    label="Nome Completo"
                     placeholder="Digite seu nome completo"
                     returnKeyType="next"
                     value={name.value}
