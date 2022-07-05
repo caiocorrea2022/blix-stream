@@ -7,7 +7,8 @@ import { useFonts } from 'expo-font';
 import { AuthContextProvider } from './context/AuthContextProvider';
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
+
+    const [fontsLoaded] = useFonts({
     Montserrat_300Light: require('./assets/fonts/Montserrat-Light.ttf'),
     Montserrat_400Regular: require('./assets/fonts/Montserrat-Regular.ttf'),
     Montserrat_500Medium: require('./assets/fonts/Montserrat-Medium.ttf'),
@@ -25,123 +26,472 @@ export default function App() {
         <Navigation />
       </AuthContextProvider>
     </ThemeProvider>
-  );
+  )
 }
 
-// import React, {useEffect} from "react";
-
-// import { ZoomMtg } from "@zoomus/websdk";
-// import Constants from "expo-constants";
-// import {View} from "react-native";
-// import { Image } from './components/Zoom/style';
+// import React, { useState, useEffect } from "react";
+// import { FlatList, TouchableOpacity } from "react-native";
+// import { View } from "react-native";
+// import {
+//   ContentVideoDesktop,
+//   ContentVideoMobile,
+//   ContentList,
+//   Image,
+// } from "./pages/ClickClass/style";
+// import VideoPlayer from "./components/VideoPlayer";
+// import Header from "./components/Header";
+// import PlayList from "./components/PlayList";
+// import ViewPortProvider from "./hooks/ViewPortProvider";
+// import useViewport from "./hooks/useViewport";
+// import ListHeader from "./components/ListHeader";
+// import THEME from "./config/theme";
+// import { StandardText, Container } from "./config/theme/globalStyles";
 // import Button from "./components/Button";
+// import TouchableText from "./components/TouchableText";
+// import { getAuth, onAuthStateChanged } from "firebase/auth";
+// import { doc, getDoc } from "firebase/firestore";
+// import { firestore } from "./services/firebase";
+// import Zoom from "./components/Zoom";
 
+// const auth = getAuth();
 
-// const zoomConfig = {
-//   zoomSdkKey: Constants.manifest.extra.zoomSdkKey,
-//   zoomSdkSecret: Constants.manifest.extra.zoomSdkSecret,
-// };
+// export default function App() {
+//   const [video, setVideo] = useState();
+//   //adicionei
+//   const [meetingNumber, setMeetingNumber] = useState("123456");
+//   const [className, setClassName] = useState("");
+//   const [passWord, setPassWord] = useState("");
 
-// ZoomMtg.setZoomJSLib("https://source.zoom.us/2.5.0/lib", "/av");
+//   const [listVideos, setListVideos] = useState([]);
 
-// ZoomMtg.preLoadWasm();
-// ZoomMtg.prepareWebSDK();
-// // loads language files, also passes any error messages to the ui
-// ZoomMtg.i18n.load("pt-PT");
-// ZoomMtg.i18n.reload("pt-PT");
+//   const [img, setImg] = useState("");
+//   const [name, setName] = useState("");
+//   const [description, setDescription] = useState("");
+//   const [pdf, setPdf] = useState("");
+//   const [url, setUrl] = useState("");
 
-// function App() {
-//   const KJUR = require("jsrsasign");
-//   var sdkKey = zoomConfig.zoomSdkKey;
-//   var meetingNumber = "6517604350";
-//   var leaveUrl = "http://localhost:19006";
-//   var userName = "React";
-//   var userEmail = "";
-//   var passWord = "YXkxYlAwQ0ROdXhUZGdVZDF6cFo0dz09";
-//   var registrantToken = "";
+//   const [plan, setPlan] = useState("");
+//   const [priceId, setPriceId] = useState("");
+//   const [courseId, setCourseId] = useState("");
 
-//   function generateSignature(sdkKey, sdkSecret, meetingNumber, role) {
-//     const iat = Math.round((new Date().getTime() - 30000) / 1000);
-//     const exp = iat + 60 * 60 * 2;
-//     const oHeader = { alg: "HS256", typ: "JWT" };
+//   const [user, setUser] = useState("");
+//   const [userPlan, setUserPlan] = useState("");
+//   const [userPriceIds, setUserPriceIds] = useState([]);
 
-//     const oPayload = {
-//       sdkKey: sdkKey,
-//       mn: meetingNumber,
-//       role: role,
-//       iat: iat,
-//       exp: exp,
-//       appKey: sdkKey,
-//       tokenExp: iat + 60 * 60 * 2,
-//     };
+//   const getUsers = async (user) => {
+//     const docRef = doc(firestore, "users", user);
+//     const docSnap = await getDoc(docRef);
+//     if (docSnap.exists()) {
+//       setUserPlan(docSnap.data().plan);
+//       setUserPriceIds(docSnap.data().courses);
+//     }
+//   };
+//   const getCard = async () => {
+//     const docRef = doc(
+//       firestore,
+//       "categories",
+//       "MkYps8Md8G6jDwFyg4VB",
+//       "cards",
+//       "PHL6UNdcYSaec85LVmul"
+//     );
+//     const docSnap = await getDoc(docRef);
+//     if (docSnap.exists()) {
+//       setListVideos(docSnap.data().videos);
+//       setVideo(docSnap.data().videos[0].link);
+//       //adicionei
+//       setMeetingNumber(docSnap.data().videos[0].meetingNumber);
+//       setPassWord(docSnap.data().videos[0].meetingPassword);
+//       setClassName(docSnap.data().videos[0].title)
 
-//     const sHeader = JSON.stringify(oHeader);
-//     const sPayload = JSON.stringify(oPayload);
-//     const sdkJWT = KJUR.jws.JWS.sign("HS256", sHeader, sPayload, sdkSecret);
-//     return sdkJWT, startMeeting(sdkJWT);
-//   }
+//       setImg(docSnap.data().img);
+//       setName(docSnap.data().title);
+//       setPdf(docSnap.data().pdf);
+//       setUrl(docSnap.data().url);
+//       setDescription(docSnap.data().description);
+//       setPlan(docSnap.data().plan);
+//       setCourseId(docSnap.data().courseId);
+//       setPriceId(docSnap.data().priceId);
+//     }
+//   };
 
-//   function startMeeting(signature) {
-//     // document.getElementById("zmmtg-root").style.display = "block";
-//     const zoomMeetingSDK = document.getElementById('zmmtg-root')
-//     zoomMeetingSDK.style.display = 'block';
-
-//     ZoomMtg.init({
-//       leaveUrl: leaveUrl,
-//       success: (success) => {
-//         console.log(success);
-
-//         ZoomMtg.join({
-//           signature: signature,
-//           meetingNumber: meetingNumber,
-//           userName: userName,
-//           sdkKey: sdkKey,
-//           userEmail: userEmail,
-//           passWord: passWord,
-//           tk: registrantToken,
-//           success: (success) => {
-//             console.log(success);
-//           },
-//           error: (error) => {
-//             console.log(error);
-//           },
-//         });
-//       },
-//       error: (error) => {
-//         console.log(error);
-//       },
-//     });
-//   }
+//   const buyItem = () => {
+//     if (plan) {
+//       navigation.navigate("Plans", { userId: user });
+//       return;
+//     } else {
+//       navigation.navigate("ClickCourse", {
+//         courseId: courseId,
+//       });
+//       return;
+//     }
+//   };
 
 //   useEffect(() => {
-//      generateSignature(
-//       zoomConfig.zoomSdkKey,
-//       zoomConfig.zoomSdkSecret,
-//       6517604350,
-//       0
-//     );
+//     onAuthStateChanged(auth, (user) => {
+//       console.log("user", user);
+//       if (user) {
+//         console.log(user.uid);
+//         setUser(user.uid);
+//         getUsers(user.uid);
+//         getCard();
+//       }
+//     });
+//     console.log("itemId", "PHL6UNdcYSaec85LVmul");
+//     getCard();
 //   }, []);
 
+//   const OutsideView = () => {
+//     const { width } = useViewport();
+//     const breakpoint = 1080;
+
+//     return width < breakpoint ? (
+//       <View style={{ backgroundColor: THEME.COLORS.BACKGROUND_MAIN }}>
+//         <ViewVideo></ViewVideo>
+//         <ViewFlatlist></ViewFlatlist>
+//       </View>
+//     ) : (
+//       <View
+//         style={{
+//           flexDirection: "row",
+//           justifyContent: "center",
+//           flex: 1,
+//           backgroundColor: THEME.COLORS.BACKGROUND_MAIN,
+//         }}
+//       >
+//         <ViewVideo></ViewVideo>
+//         <ViewFlatlist></ViewFlatlist>
+//       </View>
+//     );
+//   };
+
+//   const ViewVideo = () => {
+//     const { width } = useViewport();
+//     const breakpoint = 1080;
+
+//     return width < breakpoint ? (
+//       <ContentVideoMobile>
+//         {(userPlan >= plan || userPriceIds.includes(priceId)) ? (
+//                //adicionei
+//                meetingNumber? (
+//               //   <Image source={img} resizeMode="cover">
+//               //   <View
+//               //     style={{
+//               //       backgroundColor: "rgba(0,0,0,0.7)",
+//               //       width: "100%",
+//               //       height: "100%",
+//               //       justifyContent: "center",
+//               //     }}
+//               //   >
+//               //     <Button
+//               //       title={"ACESSAR AGORA"}
+//               //       onPress={() => buyItem()}
+//               //       borderRadius="5px"
+//               //     ></Button>
+//               //     <View
+//               //       style={{
+//               //         flexDirection: "row",
+//               //         justifyContent: "center",
+//               //         margin: "1rem",
+//               //       }}
+//               //     >
+//               //       <StandardText
+//               //         margin="0rem 0.5rem"
+//               //         color={THEME.COLORS.TEXT_BUTTON}
+//               //       >
+//               //         ou
+//               //       </StandardText>
+//               //       <TouchableText
+//               //         textDecoration="underline"
+//               //         onPress={() => navigation.navigate("Login")}
+//               //         title={"Logar"}
+//               //         color={THEME.COLORS.TEXT_BUTTON}
+//               //       ></TouchableText>
+//               //       <StandardText
+//               //         margin="0rem 0.5rem"
+//               //         color={THEME.COLORS.TEXT_BUTTON}
+//               //       >
+//               //         para continuar
+//               //       </StandardText>
+//               //     </View>
+//               //   </View>
+//               // </Image>
+//                 <Zoom
+//                 img={img}
+//                 meetingNumber={meetingNumber}
+//                 passWord={passWord}
+//                 className={className}
+//               ></Zoom>
+//               ) : (
+//               <VideoPlayer video={video} />
+//               )
+//         ) : (
+//           <Image source={img} resizeMode="cover">
+//             <View
+//               style={{
+//                 backgroundColor: "rgba(0,0,0,0.7)",
+//                 width: "100%",
+//                 height: "100%",
+//                 justifyContent: "center",
+//               }}
+//             >
+//               <Button
+//                 title={"COMPRAR AGORA"}
+//                 onPress={() => buyItem()}
+//                 borderRadius="5px"
+//               ></Button>
+//               <View
+//                 style={{
+//                   flexDirection: "row",
+//                   justifyContent: "center",
+//                   margin: "1rem",
+//                 }}
+//               >
+//                 <StandardText
+//                   margin="0rem 0.5rem"
+//                   color={THEME.COLORS.TEXT_BUTTON}
+//                 >
+//                   ou
+//                 </StandardText>
+//                 <TouchableText
+//                   textDecoration="underline"
+//                   onPress={() => navigation.navigate("Login")}
+//                   title={"Logar"}
+//                   color={THEME.COLORS.TEXT_BUTTON}
+//                 ></TouchableText>
+//                 <StandardText
+//                   margin="0rem 0.5rem"
+//                   color={THEME.COLORS.TEXT_BUTTON}
+//                 >
+//                   para continuar
+//                 </StandardText>
+//               </View>
+//             </View>
+//           </Image>
+//         )}
+//       </ContentVideoMobile>
+//     ) : (
+//       <ContentVideoDesktop>
+//         { (userPlan >= plan || userPriceIds.includes(priceId)) ? (
+//           //adicionei
+//           meetingNumber? (
+//           //   <Image source={img} resizeMode="cover">
+//           //   <View
+//           //     style={{
+//           //       backgroundColor: "rgba(0,0,0,0.7)",
+//           //       width: "100%",
+//           //       height: "100%",
+//           //       justifyContent: "center",
+//           //     }}
+//           //   >
+//           //     <Button
+//           //       title={"ACESSAR AGORA"}
+//           //       onPress={() => buyItem()}
+//           //       borderRadius="5px"
+//           //     ></Button>
+//           //     <View
+//           //       style={{
+//           //         flexDirection: "row",
+//           //         justifyContent: "center",
+//           //         margin: "1rem",
+//           //       }}
+//           //     >
+//           //       <StandardText
+//           //         margin="0rem 0.5rem"
+//           //         color={THEME.COLORS.TEXT_BUTTON}
+//           //       >
+//           //         ou
+//           //       </StandardText>
+//           //       <TouchableText
+//           //         textDecoration="underline"
+//           //         onPress={() => navigation.navigate("Login")}
+//           //         title={"Logar"}
+//           //         color={THEME.COLORS.TEXT_BUTTON}
+//           //       ></TouchableText>
+//           //       <StandardText
+//           //         margin="0rem 0.5rem"
+//           //         color={THEME.COLORS.TEXT_BUTTON}
+//           //       >
+//           //         para continuar
+//           //       </StandardText>
+//           //     </View>
+//           //   </View>
+//           // </Image>
+//             <Zoom
+//             img={img}
+//             meetingNumber={meetingNumber}
+//             passWord={passWord}
+//             className={className}
+//           ></Zoom>
+//           ) : (
+//           <VideoPlayer video={video} />
+//           )
+//         ) : (
+//           <Image source={img} resizeMode="cover">
+//             <View
+//               style={{
+//                 backgroundColor: "rgba(0,0,0,0.7)",
+//                 width: "100%",
+//                 height: "100%",
+//                 justifyContent: "center",
+//               }}
+//             >
+//               <Button
+//                 title={"COMPRAR AGORA"}
+//                 onPress={() => buyItem()}
+//                 borderRadius="5px"
+//               ></Button>
+//               <View
+//                 style={{
+//                   flexDirection: "row",
+//                   justifyContent: "center",
+//                   margin: "1rem",
+//                 }}
+//               >
+//                 <StandardText
+//                   margin="0rem 0.5rem"
+//                   color={THEME.COLORS.TEXT_BUTTON}
+//                 >
+//                   ou
+//                 </StandardText>
+//                 <TouchableText
+//                   textDecoration="underline"
+//                   onPress={() => navigation.navigate("Login")}
+//                   title={"Logar"}
+//                   color={THEME.COLORS.TEXT_BUTTON}
+//                 ></TouchableText>
+//                 <StandardText
+//                   margin="0rem 0.5rem"
+//                   color={THEME.COLORS.TEXT_BUTTON}
+//                 >
+//                   para continuar
+//                 </StandardText>
+//               </View>
+//             </View>
+//           </Image>
+//         )}
+//       </ContentVideoDesktop>
+//     );
+//   };
+
+//   const ViewFlatlist = () => {
+//     const { width } = useViewport();
+//     const breakpoint = 1080;
+
+//     return width < breakpoint ? (
+//       <View>
+//         { (userPlan >= plan || userPriceIds.includes(priceId)) ? (
+//           <FlatList
+//             data={listVideos}
+//             renderItem={({ item, index }) => (
+//               <TouchableOpacity
+//                 onPress={() => {
+//                   setVideo(listVideos[index].link);
+//                   //adicionei
+//                   setClassName(item.title);
+//                   setMeetingNumber(item.meetingNumber);
+//                   setPassWord(item.meetingPassword);
+//                 }}
+//                 style={{ margin: 10 }}
+//               >
+//                 <PlayList {...item}></PlayList>
+//               </TouchableOpacity>
+//             )}
+//             style={{ marginBottom: "1rem", flexGrow: 0 }}
+//             ListHeaderComponent={
+//               <ListHeader
+//                 title={name}
+//                 description={description}
+//                 pdf={pdf}
+//                 url={url}
+//                 login={true}
+//                 navigation={navigation}
+//               ></ListHeader>
+//             }
+//           />
+//         ) : (
+//           <FlatList
+//             data={listVideos}
+//             renderItem={({ item, index }) => (
+//               <TouchableOpacity style={{ margin: 10 }}>
+//                 <PlayList {...item}></PlayList>
+//               </TouchableOpacity>
+//             )}
+//             style={{ marginBottom: "1rem", flexGrow: 0 }}
+//             ListHeaderComponent={
+//               <ListHeader
+//                 title={name}
+//                 description={description}
+//                 pdf={pdf}
+//                 url={url}
+//                 login={false}
+//                 navigation={navigation}
+//               ></ListHeader>
+//             }
+//           />
+//         )}
+//       </View>
+//     ) : (
+//       <ContentList>
+//         { (userPlan >= plan || userPriceIds.includes(priceId)) ? (
+//           <FlatList
+//             data={listVideos}
+//             renderItem={({ item, index }) => (
+//               <TouchableOpacity
+//                 onPress={() => {
+//                   setVideo(listVideos[index].link);
+//                   //adicionei
+//                   setClassName(item.title);
+//                   setMeetingNumber(item.meetingNumber);
+//                   setPassWord(item.meetingPassword);
+//                 }}
+//                 style={{ margin: 10 }}
+//               >
+//                 <PlayList {...item}></PlayList>
+//               </TouchableOpacity>
+//             )}
+//             style={{ marginBottom: "1rem", flexGrow: 0 }}
+//             ListHeaderComponent={
+//               <ListHeader
+//                 title={name}
+//                 description={description}
+//                 pdf={pdf}
+//                 url={url}
+//                 login={true}
+//                 navigation={navigation}
+//               ></ListHeader>
+//             }
+//           />
+//         ) : (
+//           <FlatList
+//             data={listVideos}
+//             renderItem={({ item, index }) => (
+//               <TouchableOpacity style={{ margin: 10 }}>
+//                 <PlayList {...item}></PlayList>
+//               </TouchableOpacity>
+//             )}
+//             style={{ marginBottom: "1rem", flexGrow: 0 }}
+//             ListHeaderComponent={
+//               <ListHeader
+//                 title={name}
+//                 description={description}
+//                 pdf={pdf}
+//                 url={url}
+//                 login={false}
+//                 navigation={navigation}
+//               ></ListHeader>
+//             }
+//           />
+//         )}
+//       </ContentList>
+//     );
+//   };
 
 //   return (
-//     <div className="App">
-//       <main>
-//          <h1>Zoom Meeting SDK Sample React</h1>
-
-//         <button
-//           onClick={generateSignature(
-//             zoomConfig.zoomSdkKey,
-//             zoomConfig.zoomSdkSecret,
-//             6517604350,
-//             0
-//           )}
-//         >
-//           Join Meeting
-//         </button>
-//       </main>
-//     </div>
+//     <ViewPortProvider>
+//       <Container background={THEME.COLORS.BACKGROUND_MAIN}>
+//         <OutsideView></OutsideView>
+//       </Container>
+//     </ViewPortProvider>
 //   );
 // }
-
-// export default App;
 
