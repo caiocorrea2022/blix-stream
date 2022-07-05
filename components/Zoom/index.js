@@ -102,7 +102,7 @@
 // export default Zoom;
 
 import React, { useEffect } from "react";
-import { ZoomMtg } from "@zoomus/websdk";
+// import { ZoomMtg } from "@zoomus/websdk";
 import Constants from "expo-constants";
 import Button from "../Button";
 import { Image } from "./style";
@@ -111,14 +111,6 @@ import "@zoomus/websdk/dist/css/react-select.css";
 import "@zoomus/websdk/dist/css/bootstrap.css";
 
 const Zoom = ({ img, meetingNumber, passWord, className }) => {
-
-  ZoomMtg.setZoomJSLib("https://source.zoom.us/2.5.0/lib", "/av");
-  ZoomMtg.preLoadWasm();
-  ZoomMtg.prepareJssdk();
-
-  ZoomMtg.i18n.load("pt-PT");
-  ZoomMtg.i18n.reload("pt-PT");
-
   const zoomConfig = {
     zoomSdkKey: Constants.manifest.extra.zoomSdkKey,
     zoomSdkSecret: Constants.manifest.extra.zoomSdkSecret,
@@ -135,6 +127,13 @@ const Zoom = ({ img, meetingNumber, passWord, className }) => {
   var role = 0;
 
   useEffect(() => {
+    const { ZoomMtg } = require("@zoomus/websdk");
+    ZoomMtg.setZoomJSLib("https://source.zoom.us/2.5.0/lib", "/av");
+    ZoomMtg.preLoadWasm();
+    ZoomMtg.prepareJssdk();
+
+    ZoomMtg.i18n.load("pt-PT");
+    ZoomMtg.i18n.reload("pt-PT");
     document.getElementById("zmmtg-root").style.display = "none";
   });
 

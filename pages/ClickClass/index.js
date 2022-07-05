@@ -20,6 +20,7 @@ import TouchableText from "../../components/TouchableText";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { firestore } from "../../services/firebase";
+import Zoom from "../../components/Zoom";
 
 const auth = getAuth();
 
@@ -29,6 +30,10 @@ export function ClickClass({ route, navigation }) {
   } = route.params;
 
   const [video, setVideo] = useState();
+  const [meetingNumber, setMeetingNumber] = useState("123456");
+  const [className, setClassName] = useState("");
+  const [passWord, setPassWord] = useState("");
+
   const [listVideos, setListVideos] = useState([]);
 
   const [img, setImg] = useState("");
@@ -41,7 +46,6 @@ export function ClickClass({ route, navigation }) {
   const [priceId, setPriceId] = useState("");
   const [courseId, setCourseId] = useState("");
   
-  const [login, setLogin] = useState(false);
   const [user, setUser] = useState("");
   const [userPlan, setUserPlan] = useState("");
   const [userPriceIds, setUserPriceIds] = useState([]);
@@ -61,6 +65,9 @@ export function ClickClass({ route, navigation }) {
     if (docSnap.exists()) {
       setListVideos(docSnap.data().videos);
       setVideo(docSnap.data().videos[0].link);
+      setMeetingNumber(docSnap.data().videos[0].meetingNumber);
+      setPassWord(docSnap.data().videos[0].meetingPassword);
+      setClassName(docSnap.data().videos[0].title)
       setImg(docSnap.data().img);
       setName(docSnap.data().title);
       setPdf(docSnap.data().pdf);
@@ -92,7 +99,6 @@ export function ClickClass({ route, navigation }) {
         setUser(user.uid);
         getUsers(user.uid);
         getCard();
-        setLogin(true);
       }
     });
     console.log("itemId", cardId);
@@ -130,8 +136,17 @@ export function ClickClass({ route, navigation }) {
 
     return width < breakpoint ? (
       <ContentVideoMobile>
-        {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
-            <VideoPlayer video={video} />
+        {(userPlan >= plan || userPriceIds.includes(priceId)) ? (
+           meetingNumber? (
+            <Zoom
+            img={img}
+            meetingNumber={meetingNumber}
+            passWord={passWord}
+            className={className}
+          ></Zoom>
+          ) : (
+          <VideoPlayer video={video} />
+          )
         ) : (
           <Image source={img} resizeMode="cover">
             <View
@@ -179,8 +194,17 @@ export function ClickClass({ route, navigation }) {
       </ContentVideoMobile>
     ) : (
       <ContentVideoDesktop>
-        {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
-            <VideoPlayer video={video} />
+        {(userPlan >= plan || userPriceIds.includes(priceId)) ? (
+          meetingNumber? (
+            <Zoom
+            img={img}
+            meetingNumber={meetingNumber}
+            passWord={passWord}
+            className={className}
+          ></Zoom>
+          ) : (
+          <VideoPlayer video={video} />
+          )
         ) : (
           <Image source={img} resizeMode="cover">
             <View
@@ -235,13 +259,16 @@ export function ClickClass({ route, navigation }) {
 
     return width < breakpoint ? (
       <View>
-        {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
+        {(userPlan >= plan || userPriceIds.includes(priceId)) ? (
           <FlatList
             data={listVideos}
             renderItem={({ item, index }) => (
               <TouchableOpacity
                 onPress={() => {
                   setVideo(listVideos[index].link);
+                  setClassName(item.title);
+                  setMeetingNumber(item.meetingNumber);
+                  setPassWord(item.meetingPassword);
                 }}
                 style={{ margin: 10 }}
               >
@@ -284,13 +311,16 @@ export function ClickClass({ route, navigation }) {
       </View>
     ) : (
       <ContentList>
-        {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
+        {(userPlan >= plan || userPriceIds.includes(priceId)) ? (
           <FlatList
             data={listVideos}
             renderItem={({ item, index }) => (
               <TouchableOpacity
                 onPress={() => {
                   setVideo(listVideos[index].link);
+                  setClassName(item.title);
+                  setMeetingNumber(item.meetingNumber);
+                  setPassWord(item.meetingPassword);
                 }}
                 style={{ margin: 10 }}
               >
