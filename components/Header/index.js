@@ -1,5 +1,5 @@
 import React from "react";
-import { HeaderLeftSide, HeaderRightSide, Avatar, Row } from "./style";
+import { HeaderLeftSide, HeaderRightSide, Avatar, Row, Avatar2} from "./style";
 import { Icon } from "react-native-elements";
 import THEME from "../../config/theme";
 import { HeaderContainer, StandardText } from "../../config/theme/globalStyles";
@@ -22,7 +22,9 @@ const Header = ({ onPress, about }) => {
             source={require("../../assets/LogoAbout.png")}
           />
         </HeaderLeftSide>
-        <HeaderRightSide>
+        <HeaderRightSide
+        style={{alignItems: "center"}}
+        >
           {user ? (
             <StandardText
               color={THEME.COLORS.ICON_HEADER_OVERPHOTO}
@@ -69,7 +71,7 @@ const Header = ({ onPress, about }) => {
 
         <HeaderRightSide>
           <TouchableOpacity onPress={() => navigation.navigate('About')}>
-            <Avatar resizeMode="contain" source={require("../../assets/Logo.jpg")} />
+            <Avatar2 resizeMode="contain" source={require("../../assets/LogoMain.png")} />
           </TouchableOpacity>
         </HeaderRightSide>
       </HeaderContainer>

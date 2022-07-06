@@ -14,9 +14,8 @@ export const ViewImage = styled.View`
 `;
 
 export const Image = styled.Image`
-  width: 60%;
-  height: undefined;
-  aspectRatio: ${aspectRatioLogoLogin}; 
+  width: 40%;
+  height: 85%;
 `;
 
 export const ViewTitle = styled.View`

@@ -5,7 +5,7 @@ const windowHeight = Dimensions.get('window').height;
 
 export const Section = styled.View`
     height: ${({ height }) => (height ? height : windowHeight*0.98)};
-    /* background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND_ABOUT)}; */
+    background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND_ABOUT)};
 `;
 
 export const ContainerSideView = styled.View`
@@ -34,7 +34,7 @@ export const HeaderContainer = styled.View`
 `;
 
 export const MainTitle = styled.Text`
-	font-size: ${({ fontSize }) => (fontSize ? fontSize : THEME.FONTSIZE.EXTRABIG)};
+	font-size: ${({ fontSize }) => (fontSize ? fontSize : THEME.FONTSIZE.EXTRABIG)}px;
     font-family: ${({ fontFamily }) => (fontFamily ? fontFamily : THEME.FONTFAMILY.BOLD)};
 	color: ${({ color }) => (color ? color : THEME.COLORS.TITLE_ABOUT)};
     text-align: ${({ textAlign }) => (textAlign ? textAlign : 'center')};
@@ -43,7 +43,7 @@ export const MainTitle = styled.Text`
 `;
 
 export const Title = styled.Text`
-	font-size: ${({ fontSize }) => (fontSize ? fontSize : THEME.FONTSIZE.BIG)};
+	font-size: ${({ fontSize }) => (fontSize ? fontSize : THEME.FONTSIZE.BIG)}px;
     font-family: ${({ fontFamily }) => (fontFamily ? fontFamily : THEME.FONTFAMILY.BOLD)};
 	color: ${({ color }) => (color ? color : THEME.COLORS.TITLE_ABOUT)};
     text-align: ${({ textAlign }) => (textAlign ? textAlign : 'center')};
@@ -52,7 +52,7 @@ export const Title = styled.Text`
 `;
 
 export const SubTitle = styled.Text`
-	font-size: ${({ fontSize }) => (fontSize ? fontSize : THEME.FONTSIZE.STANDARD)};
+	font-size: ${({ fontSize }) => (fontSize ? fontSize : THEME.FONTSIZE.STANDARD)}px;
     font-family: ${({ fontFamily }) => (fontFamily ? fontFamily : THEME.FONTFAMILY.MEDIUM)};
 	color: ${({ color }) => (color ? color : THEME.COLORS.TITLE_ABOUT)};
     text-align: ${({ textAlign }) => (textAlign ? textAlign : 'center')};
@@ -61,7 +61,7 @@ export const SubTitle = styled.Text`
 `;
 
 export const StandardText = styled.Text`
-	font-size: ${({ fontSize }) => (fontSize ? fontSize : THEME.FONTSIZE.MEDIUM)};
+	font-size: ${({ fontSize }) => (fontSize ? fontSize : THEME.FONTSIZE.MEDIUM)}px;
     font-family: ${({ fontFamily }) => (fontFamily ? fontFamily : THEME.FONTFAMILY.MEDIUM)};
 	color: ${({ color }) => (color ? color : THEME.COLORS.TEXT_ABOUT)};
     text-align: ${({ textAlign }) => (textAlign ? textAlign : 'center')};
@@ -71,7 +71,7 @@ export const StandardText = styled.Text`
 `;
 
 export const SmallText = styled.Text`
-	font-size: ${({ fontSize }) => (fontSize ? fontSize : THEME.FONTSIZE.SMALL)};
+	font-size: ${({ fontSize }) => (fontSize ? fontSize : THEME.FONTSIZE.SMALL)}px;
     font-family: ${({ fontFamily }) => (fontFamily ? fontFamily : THEME.FONTFAMILY.REGULAR)};
 	color: ${({ color }) => (color ? color : THEME.COLORS.TEXT_ABOUT)};
     text-align: ${({ textAlign }) => (textAlign ? textAlign : 'center')};
@@ -82,7 +82,7 @@ export const SmallText = styled.Text`
 `;
 
 export const FooterText = styled.Text`
-	font-size: ${({ fontSize }) => (fontSize ? fontSize : THEME.FONTSIZE.EXTRASMALL)};
+	font-size: ${({ fontSize }) => (fontSize ? fontSize : THEME.FONTSIZE.EXTRASMALL)}px;
     font-family: ${({ fontFamily }) => (fontFamily ? fontFamily : THEME.FONTFAMILY.LIGHT)};
 	color: ${({ color }) => (color ? color : THEME.COLORS.TEXT_FOOTER)};
     text-align: ${({ textAlign }) => (textAlign ? textAlign : 'center')};

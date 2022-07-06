@@ -12,8 +12,9 @@ export const googleSheetUrl = 'https://sheet.best/api/sheets/ea18f0f1-e07a-438b-
 export const returnUrlCustomerPortal = 'http://loupaz-ec0b1.firebaseapp.com/meuperfil';
 export const returnDomainZoom = 'http://localhost:19006';
 
-export const aspectRatioLogoAbout = '4'; // width/height
-export const aspectRatioLogoLogin = '2'; // width/height
+export const aspectRatioLogoAbout = '1'; // width/height
+export const aspectRatioLogoLogin = '1'; // width/height
+export const aspectRatioLogoMain = '1'; // width/height
 
 export const planFrequency = [
   { id: "1", frequency: "Mensal" },
