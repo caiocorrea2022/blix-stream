@@ -81,6 +81,12 @@ export function ClickClass({ route, navigation }) {
     } 
   };
 
+  const toDate = (seconds) => {
+    const date = new Date(1970, 0 , 1);
+    date.setSeconds(seconds);
+    return date;
+}
+
   const buyItem = () => {
     if (plan) {
       navigation.navigate("Plans", { userId: user });
@@ -138,7 +144,7 @@ export function ClickClass({ route, navigation }) {
 
     return width < breakpoint ? (
       <ContentVideoMobile>
-        {(userPlan >= plan || userPriceIds.includes(priceId)) ? (
+        {(userPlan >= plan || (userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
            meetingNumber? (
             <Zoom
             img={img}
@@ -198,7 +204,7 @@ export function ClickClass({ route, navigation }) {
       </ContentVideoMobile>
     ) : (
       <ContentVideoDesktop>
-        {(userPlan >= plan || userPriceIds.includes(priceId)) ? (
+        {(userPlan >= plan || (userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
           meetingNumber? (
             <Zoom
             img={img}
@@ -265,7 +271,7 @@ export function ClickClass({ route, navigation }) {
 
     return width < breakpoint ? (
       <View>
-        {(userPlan >= plan || userPriceIds.includes(priceId)) ? (
+        {(userPlan >= plan || (userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
           <FlatList
             data={listVideos}
             renderItem={({ item, index }) => (
@@ -317,7 +323,7 @@ export function ClickClass({ route, navigation }) {
       </View>
     ) : (
       <ContentList>
-        {(userPlan >= plan || userPriceIds.includes(priceId)) ? (
+        {(userPlan >= plan || (userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
           <FlatList
             data={listVideos}
             renderItem={({ item, index }) => (

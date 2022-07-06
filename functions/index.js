@@ -154,15 +154,22 @@ exports.paymentTrigger = functions.firestore
             }
         }
 
+   
+
         //stripe payment (course)
         if (newValue && context.params.paymentType == 'payments') {
 
             if (newValue.status === 'succeeded') {
 
                 const priceId = newValue.items[0].price.id;
+                const months = data[priceId]?.months
+
+                //TODO get months from data
+                let date = new Date();
+                date.setMonth(date.getMonth() + 6)
 
                 db.doc(`users/${userId}`).set({
-                    courses: admin.firestore.FieldValue.arrayUnion(priceId)
+                    courses: admin.firestore.FieldValue.arrayUnion({priceId: priceId, dueDate: date})
                 }, { merge: true });
             }
         }
