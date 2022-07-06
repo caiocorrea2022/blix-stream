@@ -48,13 +48,13 @@ useEffect(()=>{
         <HorizontalList horizontal={true}>
           {planInfos.map((item, index) => (
             <PricingCard
-              key={index}
+              key={item.id}
               color={THEME.COLORS.TEXT_ABOUT}
               title={item.planType}
               price={option[index].price}
               info={[
                 upsell[index],
-                ...item.info
+                item.info
               ]}
               titleStyle={{
                 fontSize: THEME.FONTSIZE.STANDARD,
@@ -110,13 +110,13 @@ useEffect(()=>{
         <HorizontalList horizontal={true}>
           {planInfos.map((item, index) => (
             <PricingCard
-              key={index}
+              key={item.id}
               color={THEME.COLORS.TEXT_ABOUT}
               title={item.planType}
               price={option[index].price}
               info={[
                 upsell[index],
-                ...item.info
+                item.info
               ]}
               titleStyle={{
                 fontSize: THEME.FONTSIZE.STANDARD,

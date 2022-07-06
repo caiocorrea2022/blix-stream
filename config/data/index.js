@@ -50,29 +50,24 @@ export const upsellPrices = [
 
 export const planInfos = [
   {
+    id: 1,
     planType: "PLANO A",
-    info: ["✔ +50 Aulas gravadas", "✔ Meditações guiadas"],
-  },
-  {
-    planType: "PLANO GANESHA",
     info: [
-      "✔ Tudo do Plano A",
-      "✔ Acesso a aulas ao vivo",
-      "✔ Acesso a +100 Aulas gravadas",
+      "✔ +50 Aulas gravadas\n✔ Meditações guiadas"
     ],
   },
   {
+    id: 2,
+    planType: "PLANO GANESHA",
+    info: [
+      "✔ Tudo do Plano A\n✔ Acesso a aulas ao vivo\n✔ Acesso a +100 Aulas gravadas"
+    ],
+  },
+  {
+    id:3,
     planType: "PLANO SHIVA",
     info: [
-      "✔ Tudo do Plano B",
-      "✔ Acesso a aulas ao vivo e Lives",
-      "✔ Acesso a todos os conteúdos",
-      "✔ Tudo do Plano B",
-      "✔ Acesso a aulas ao vivo e Lives",
-      "✔ Acesso a todos os conteúdos",
-      "✔ Tudo do Plano B",
-      "✔ Acesso a aulas ao vivo e Lives",
-      "✔ Acesso a todos os conteúdos",
+      "✔ Tudo do Plano B\n✔ Acesso a aulas ao vivo e Lives\n✔ Acesso a todos os conteúdos\n✔ Tudo do Plano B\n✔ Acesso a aulas ao vivo e Lives\n✔ Acesso a todos os conteúdos\n✔ Tudo do Plano B\n✔ Acesso a aulas ao vivo e Lives\n✔ Acesso a todos os conteúdos",
     ],
   },
 ];
