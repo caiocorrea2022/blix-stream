@@ -3,8 +3,6 @@ import Constants from "expo-constants";
 import Button from "../Button";
 import { Image } from "./style";
 import { View } from "react-native";
-import "@zoomus/websdk/dist/css/react-select.css";
-import "@zoomus/websdk/dist/css/bootstrap.css";
 import {returnDomainZoom} from "../../config/data"
 
 const Zoom = ({ img, meetingNumber, passWord, className, userName, cardId }) => {
