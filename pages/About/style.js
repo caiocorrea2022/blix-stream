@@ -20,9 +20,14 @@ export const ViewText = styled.View`
   padding: 1rem 0rem;
 `;
 
-export const Container = styled.View`
-  flex-basis: auto;
-  background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND_ABOUT)};
+export const Container = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: true,
+  contentContainerStyle: {
+    flexDirection: "column",
+    backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
+    flexBasis: "auto",
+  },
+})`  
 `;
 
 export const ViewCookies = styled.View`
