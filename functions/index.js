@@ -55,6 +55,32 @@ const db = admin.firestore();
 // });
 
 
+exports.userTrigger = functions.firestore
+    .document('users/{userId}')
+    .onUpdate((change, context) => {
+
+        const user = change.after.data();
+        const userBefore = change.before.data();
+
+        if(userBefore.stripeId != user.stripeId) {
+    
+            request.post(`https://api.stripe.com/v1/customers/${user.stripeId}/tax_ids`, {
+                form: {
+                    type: 'br_cpf',
+                    value: user.CPF,
+                },
+                headers: {
+                    'Authorization': 'Bearer sk_test_51K1wAiCmcyIwF9rcDllUmRHt47Sf8pzFwglHfcrHN6Zy8GdSnl3RFPl8yoPoOJbFXs18LK8eCHavE9oQilLFqzbk00dR3pma24'
+                },
+            }, (err, res, body) => {
+                const info = JSON.parse(body)
+    
+            });
+        }
+       
+    });
+
+
 exports.paymentTrigger = functions.firestore
     .document('users/{docId}/{paymentType}/{paymentMethodId}')
     .onWrite((change, context) => {
@@ -82,8 +108,8 @@ exports.paymentTrigger = functions.firestore
                 }, { merge: true });
 
                 const iterations = data[priceId]?.iterations;
-                
-        
+
+
                 if (iterations > 0) {
                     const subId = context.params.paymentMethodId;
 
@@ -95,9 +121,9 @@ exports.paymentTrigger = functions.firestore
                             'Authorization': 'Bearer sk_test_51K1wAiCmcyIwF9rcDllUmRHt47Sf8pzFwglHfcrHN6Zy8GdSnl3RFPl8yoPoOJbFXs18LK8eCHavE9oQilLFqzbk00dR3pma24'
                         }
                     }, (err, res, body) => {
-                 
+
                         const info = JSON.parse(body)
-                  
+
                         const scheduleId = info.id
                         const startDate = info.current_phase.start_date;
 
@@ -111,12 +137,12 @@ exports.paymentTrigger = functions.firestore
                             },
                             headers: {
                                 'Authorization': 'Bearer sk_test_51K1wAiCmcyIwF9rcDllUmRHt47Sf8pzFwglHfcrHN6Zy8GdSnl3RFPl8yoPoOJbFXs18LK8eCHavE9oQilLFqzbk00dR3pma24'
-                            }, 
+                            },
                         }, (err, res, body) => {
-                            const info = JSON.parse(body)               
+                            const info = JSON.parse(body)
                         });
                     });
-                  
+
                 }
 
             } else {
