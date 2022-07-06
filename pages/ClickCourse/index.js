@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { View } from "react-native";
-import { ContentDesktop, ContentMobile, ContentList, Image, ViewText, ViewButton } from './style';
+import { ContentDesktop, ContentMobile, ContentList, Image, ViewText, ViewButton, Container } from './style';
 import Header from "../../components/Header";
 import Button from "../../components/Button";
 import ViewPortProvider from "../../hooks/ViewPortProvider";
 import useViewport from "../../hooks/useViewport";
 import THEME from '../../config/theme';
-import { FooterText, SmallText, Title, Container, MainTitle } from "../../config/theme/globalStyles";
+import { FooterText, SmallText, Title, MainTitle } from "../../config/theme/globalStyles";
 import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
 import { auth } from '../../services/firebase'
 import { onAuthStateChanged } from "firebase/auth";

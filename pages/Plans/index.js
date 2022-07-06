@@ -1,7 +1,7 @@
 import React from "react";
 import Pricing from '../../components/Pricing';
 import Header from '../../components/Header';
-import { Container } from '../../config/theme/globalStyles'
+import { Container } from './style'
 
 export function Plans({ navigation: { goBack }, route }) {
   const { userId } = route.params;

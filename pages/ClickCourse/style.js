@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import THEME from '../../config/theme';
 
 export const ContentDesktop = styled.View`
   width: 70%;
@@ -30,4 +31,14 @@ export const ViewText = styled.View`
 export const ViewButton = styled.View`
   padding: 1rem 0rem;
   align-self: ${({ alignSelf }) => (alignSelf ? alignSelf : 'center')};
+`;
+
+export const Container = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: true,
+  contentContainerStyle: {
+    flexDirection: "column",
+    backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
+    flexBasis: "auto",
+  },
+})`  
 `;
