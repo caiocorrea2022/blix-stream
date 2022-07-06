@@ -128,11 +128,8 @@ export function Login({ navigation: { goBack } }) {
               <TouchableText onPress={() => goBack()} title={'Voltar'} color={THEME.COLORS.PRIMARY_900}></TouchableText>
             </HeaderContainer>
             <ViewImage>
-              <Image source={require('./../../assets/Logo.jpg')}></Image>
+              <Image resizeMode="contain" source={require('./../../assets/LogoLogin.png')}></Image>
             </ViewImage>
-            <ViewTitle>
-              <MainTitle>YOGA LUZ</MainTitle>
-            </ViewTitle>
             <Content>
               <ViewTextInput>
                 <ViewText>

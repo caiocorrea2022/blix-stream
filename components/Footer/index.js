@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Logo, FooterLeftSide, FooterRightSide } from "./style";
 import { FooterText } from "../../config/theme/globalStyles";
 import THEME from "../../config/theme";
-import { footerSocialData, clientName } from "../../config/data";
+import { footerSocialData, clientNameFooter } from "../../config/data";
 import { Icon } from "react-native-elements";
 import { Linking, TouchableOpacity } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <Container>
       <FooterLeftSide>
-        <FooterText textAlign="flex-star" fontFamily={THEME.FONTFAMILY.BOLD} margin="0rem 0.5rem">{clientName}</FooterText>
+        <FooterText textAlign="flex-star" fontFamily={THEME.FONTFAMILY.BOLD} margin="0rem 0.5rem">{clientNameFooter}</FooterText>
         {footerSocialData.map((social, index) => (
           <Icon
             key={index}
@@ -27,7 +27,7 @@ const Footer = () => {
           >
           </Icon>
         ))}
-         <FooterText fontFamily={THEME.FONTFAMILY.BOLD} margin="0rem 0.5rem" onPress={() => navigation.navigate("TermsofUse")}>TERMOS DE USO E PRIVACIDADE</FooterText>
+         <FooterText fontFamily={THEME.FONTFAMILY.REGULAR} margin="0rem 0.5rem" onPress={() => navigation.navigate("TermsofUse")}>Termos de Uso e Privacidade</FooterText>
       </FooterLeftSide>
       <FooterRightSide>
         <FooterText margin="0rem 0.5rem">Desenvolvido por</FooterText>

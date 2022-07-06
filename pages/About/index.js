@@ -98,12 +98,13 @@ export function About({ navigation }) {
         </ViewText>
         <CardInfo
           titleFontSize={THEME.FONTSIZE.EXTRASMALL}
-          titleColor={THEME.COLORS.EXTRASMALL}
+          titleColor={THEME.COLORS.TEXT_ABOUT}
           cardStyle={{
             width: "12rem",
             margin: "1rem",
             display: "flex",
             flexDrection: "column",
+            backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
           }}
           cardCoverStyle={{
             width: "100%",
@@ -134,12 +135,13 @@ export function About({ navigation }) {
         <CardInfo
           subtitleNumberOfLines={5}
           titleFontSize={THEME.FONTSIZE.SMALL}
-          titleColor={THEME.COLORS.SMALL}
+          titleColor={THEME.COLORS.TEXT_ABOUT}
           cardStyle={{
             width: "18rem",
             margin: "1rem",
             display: "flex",
             flexDrection: "column",
+            backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
           }}
           cardCoverStyle={{
             width: "100%",

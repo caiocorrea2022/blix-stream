@@ -19,7 +19,7 @@ const Header = ({ onPress, about }) => {
         <HeaderLeftSide>
           <Avatar
             resizeMode="contain"
-            source={require("../../assets/Logo.jpg")}
+            source={require("../../assets/LogoAbout.png")}
           />
         </HeaderLeftSide>
         <HeaderRightSide>

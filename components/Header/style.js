@@ -1,9 +1,10 @@
 import styled from 'styled-components/native'
+import { aspectRatioLogoAbout } from '../../config/data';
 
 export const Avatar = styled.Image`
-	width: 2.0rem;
-	height: 2.0rem;
-	border-radius: 50%;
+width: undefined;
+height: 100%;
+aspectRatio: ${aspectRatioLogoAbout}; 
 `;
 
 export const HeaderRightSide = styled.View`
@@ -14,6 +15,7 @@ export const HeaderRightSide = styled.View`
 
 export const HeaderLeftSide = styled.View`
     flex-direction: row;
+    height: 2.5rem;
 `;
 
 export const Row = styled.View`
