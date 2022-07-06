@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { FlatList, TouchableOpacity } from "react-native";
 import { View } from "react-native";
-import { ContentVideoDesktop, ContentVideoMobile, ContentList, Image } from './style';
+import {
+  ContentVideoDesktop,
+  ContentVideoMobile,
+  ContentList,
+  Image,
+} from "./style";
 import VideoPlayer from "../../components/VideoPlayer";
 import Header from "../../components/Header";
 import PlayList from "../../components/PlayList";
@@ -14,72 +19,94 @@ import Button from "../../components/Button";
 import TouchableText from "../../components/TouchableText";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-import { firestore } from '../../services/firebase';
-import { getDocs, collection } from "firebase/firestore";
+import { firestore } from "../../services/firebase";
+import Zoom from "../../components/Zoom";
 
 const auth = getAuth();
 
-export function ClickClass ({ route, navigation }) {
-  const { videos, name, description, img, pdf, url, courseId, priceId, plan, cardId } = route.params;
-  const [video, setVideo] = useState(videos[0]);
-  const [login, setLogin] = useState(false);
+export function ClickClass({ route, navigation }) {
+  const {
+    cardId,
+  } = route.params;
+
+  const [video, setVideo] = useState();
+  const [meetingNumber, setMeetingNumber] = useState("123456");
+  const [userName, setUserName] = useState("");
+  const [className, setClassName] = useState("");
+  const [passWord, setPassWord] = useState("");
+
+  const [listVideos, setListVideos] = useState([]);
+
+  const [img, setImg] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [pdf, setPdf] = useState("");
+  const [url, setUrl] = useState("");
+
+  const [plan, setPlan] = useState("");
+  const [priceId, setPriceId] = useState("");
+  const [courseId, setCourseId] = useState("");
+  
   const [user, setUser] = useState("");
   const [userPlan, setUserPlan] = useState("");
   const [userPriceIds, setUserPriceIds] = useState([]);
-
 
   const getUsers = async (user) => {
     const docRef = doc(firestore, "users", user);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       setUserPlan(docSnap.data().plan);
-      setUserPriceIds(docSnap.data().courses)
-    }
-  };
-
-  const getCourse = async (courseId) => {
-    const docRef = doc(firestore, "courses", courseId);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      return docSnap.data();
+      setUserPriceIds(docSnap.data().courses);
+      setUserName(docSnap.data().Nome_Completo);
     }
   };
 
   const getCard = async () => {
-    const response = await getDocs(
-      collection(firestore, cardId)
-    );
-    console.log('resposta', response)
+    const docRef = doc(firestore, "categories", "MkYps8Md8G6jDwFyg4VB", "cards", cardId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      setListVideos(docSnap.data().videos);
+      setVideo(docSnap.data().videos[0].link);
+      setMeetingNumber(docSnap.data().videos[0].meetingNumber);
+      setPassWord(docSnap.data().videos[0].meetingPassword);
+      setClassName(docSnap.data().videos[0].title)
+      setImg(docSnap.data().img);
+      setName(docSnap.data().title);
+      setPdf(docSnap.data().pdf);
+      setUrl(docSnap.data().url);
+      setDescription(docSnap.data().description);
+      setPlan(docSnap.data().plan);
+      setCourseId(docSnap.data().courseId);
+      setPriceId(docSnap.data().priceId);
+    } 
   };
 
   const buyItem = () => {
     if (plan) {
-      navigation.navigate("Plans", { userId: user })
+      navigation.navigate("Plans", { userId: user });
       return;
     } else {
-      getCourse(courseId).then((response) => {
-        navigation.navigate("ClickCourse", { title: response.title, info: response.info, image:response.image, price: response.price, priceId: response.priceId });
-      })
+        navigation.navigate("ClickCourse", {
+          courseId: courseId,
+        });
       return;
     }
-  }
-
+  };
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      console.log('user', user)
+      console.log("user", user);
       if (user) {
         console.log(user.uid);
         setUser(user.uid);
         getUsers(user.uid);
         getCard();
-        setLogin(true);
       }
     });
-    console.log('itemId', cardId)
+    console.log("itemId", cardId);
     getCard();
+    // console.log('lenght', meetingNumber.length)
   }, []);
-
 
   const OutsideView = () => {
     const { width } = useViewport();
@@ -91,7 +118,14 @@ export function ClickClass ({ route, navigation }) {
         <ViewFlatlist></ViewFlatlist>
       </View>
     ) : (
-      <View style={{ flexDirection: "row", justifyContent: "center", flex:1, backgroundColor: THEME.COLORS.BACKGROUND_MAIN }}>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          flex: 1,
+          backgroundColor: THEME.COLORS.BACKGROUND_MAIN,
+        }}
+      >
         <ViewVideo></ViewVideo>
         <ViewFlatlist></ViewFlatlist>
       </View>
@@ -104,21 +138,59 @@ export function ClickClass ({ route, navigation }) {
 
     return width < breakpoint ? (
       <ContentVideoMobile>
-        {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
-          <VideoPlayer video={video.link} />
+        {(userPlan >= plan || userPriceIds.includes(priceId)) ? (
+           meetingNumber? (
+            <Zoom
+            img={img}
+            meetingNumber={meetingNumber}
+            passWord={passWord}
+            className={className}
+            userName={userName}
+            cardId={cardId}
+          ></Zoom>
+          ) : (
+          <VideoPlayer video={video} />
+          )
         ) : (
           <Image source={img} resizeMode="cover">
-            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', height:'100%', justifyContent: "center" }}>
+            <View
+              style={{
+                backgroundColor: "rgba(0,0,0,0.7)",
+                width: "100%",
+                height: "100%",
+                justifyContent: "center",
+              }}
+            >
               <Button
-                title={'COMPRAR AGORA'}
+                title={"COMPRAR AGORA"}
                 onPress={() => buyItem()}
                 borderRadius="5px"
+              ></Button>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  margin: "1rem",
+                }}
               >
-              </Button>
-              <View style={{ flexDirection: "row", justifyContent: "center", margin: "1rem" }} >
-                <StandardText margin="0rem 0.5rem" color={THEME.COLORS.TEXT_BUTTON}>ou</StandardText>
-                <TouchableText textDecoration="underline" onPress={() => navigation.navigate("Login")} title={'Logar'} color={THEME.COLORS.TEXT_BUTTON}></TouchableText>
-                <StandardText margin="0rem 0.5rem" color={THEME.COLORS.TEXT_BUTTON}>para continuar</StandardText>
+                <StandardText
+                  margin="0rem 0.5rem"
+                  color={THEME.COLORS.TEXT_BUTTON}
+                >
+                  ou
+                </StandardText>
+                <TouchableText
+                  textDecoration="underline"
+                  onPress={() => navigation.navigate("Login")}
+                  title={"Logar"}
+                  color={THEME.COLORS.TEXT_BUTTON}
+                ></TouchableText>
+                <StandardText
+                  margin="0rem 0.5rem"
+                  color={THEME.COLORS.TEXT_BUTTON}
+                >
+                  para continuar
+                </StandardText>
               </View>
             </View>
           </Image>
@@ -126,21 +198,59 @@ export function ClickClass ({ route, navigation }) {
       </ContentVideoMobile>
     ) : (
       <ContentVideoDesktop>
-        {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? (
-          <VideoPlayer video={video.link} />
+        {(userPlan >= plan || userPriceIds.includes(priceId)) ? (
+          meetingNumber? (
+            <Zoom
+            img={img}
+            meetingNumber={meetingNumber}
+            passWord={passWord}
+            className={className}
+            userName={userName}
+            cardId={cardId}
+          ></Zoom>
+          ) : (
+          <VideoPlayer video={video} />
+          )
         ) : (
           <Image source={img} resizeMode="cover">
-            <View style={{ backgroundColor: "rgba(0,0,0,0.7)", width: '100%', height:'100%', justifyContent: "center" }}>
+            <View
+              style={{
+                backgroundColor: "rgba(0,0,0,0.7)",
+                width: "100%",
+                height: "100%",
+                justifyContent: "center",
+              }}
+            >
               <Button
-                title={'COMPRAR AGORA'}
+                title={"COMPRAR AGORA"}
                 onPress={() => buyItem()}
                 borderRadius="5px"
+              ></Button>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  margin: "1rem",
+                }}
               >
-              </Button>
-              <View style={{ flexDirection: "row", justifyContent: "center", margin: "1rem" }} >
-                <StandardText margin="0rem 0.5rem" color={THEME.COLORS.TEXT_BUTTON}>ou</StandardText>
-                <TouchableText textDecoration="underline" onPress={() => navigation.navigate("Login")} title={'Logar'} color={THEME.COLORS.TEXT_BUTTON}></TouchableText>
-                <StandardText margin="0rem 0.5rem" color={THEME.COLORS.TEXT_BUTTON}>para continuar</StandardText>
+                <StandardText
+                  margin="0rem 0.5rem"
+                  color={THEME.COLORS.TEXT_BUTTON}
+                >
+                  ou
+                </StandardText>
+                <TouchableText
+                  textDecoration="underline"
+                  onPress={() => navigation.navigate("Login")}
+                  title={"Logar"}
+                  color={THEME.COLORS.TEXT_BUTTON}
+                ></TouchableText>
+                <StandardText
+                  margin="0rem 0.5rem"
+                  color={THEME.COLORS.TEXT_BUTTON}
+                >
+                  para continuar
+                </StandardText>
               </View>
             </View>
           </Image>
@@ -155,79 +265,121 @@ export function ClickClass ({ route, navigation }) {
 
     return width < breakpoint ? (
       <View>
-         {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? 
-         <FlatList
-         data={videos}
-         renderItem={({ item, index }) => (
-             <TouchableOpacity
-               onPress={() => {
-                 setVideo(videos[index]);
-               }}
-               style={{ margin: 10 }}
-             >
-               <PlayList {...item}></PlayList>
-             </TouchableOpacity>
-           )}
-         style={{ marginBottom: "1rem", flexGrow: 0 }}
-         ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url} login={true} navigation={navigation}></ListHeader>}
-       />
-         :
-         <FlatList
-         data={videos}
-         renderItem={({ item, index }) => (
-             <TouchableOpacity
-               style={{ margin: 10 }}
-             >
-               <PlayList {...item}></PlayList>
-             </TouchableOpacity>
-           )}
-         style={{ marginBottom: "1rem", flexGrow: 0 }}
-         ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url} login={false} navigation={navigation}></ListHeader>}
-       />
-      }      
-      </View>
-    ) : (
-      <ContentList>
-        {login && (userPlan >= plan || userPriceIds.includes(priceId)) ? 
-        <FlatList
-          data={videos}
-          renderItem={({ item, index }) => (
+        {(userPlan >= plan || userPriceIds.includes(priceId)) ? (
+          <FlatList
+            data={listVideos}
+            renderItem={({ item, index }) => (
               <TouchableOpacity
                 onPress={() => {
-                  setVideo(videos[index]);
+                  setVideo(listVideos[index].link);
+                  setClassName(item.title);
+                  setMeetingNumber(item.meetingNumber);
+                  setPassWord(item.meetingPassword);
                 }}
                 style={{ margin: 10 }}
               >
                 <PlayList {...item}></PlayList>
               </TouchableOpacity>
             )}
-          style={{ marginBottom: "1rem", flexGrow: 0 }}
-          ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url} login={true} navigation={navigation}></ListHeader>}
-        />
-        :
-        <FlatList
-          data={videos}
-          renderItem={({ item, index }) => (
+            style={{ marginBottom: "1rem", flexGrow: 0 }}
+            ListHeaderComponent={
+              <ListHeader
+                title={name}
+                description={description}
+                pdf={pdf}
+                url={url}
+                login={true}
+                navigation={navigation}
+              ></ListHeader>
+            }
+          />
+        ) : (
+          <FlatList
+            data={listVideos}
+            renderItem={({ item, index }) => (
+              <TouchableOpacity style={{ margin: 10 }}>
+                <PlayList {...item}></PlayList>
+              </TouchableOpacity>
+            )}
+            style={{ marginBottom: "1rem", flexGrow: 0 }}
+            ListHeaderComponent={
+              <ListHeader
+                title={name}
+                description={description}
+                pdf={pdf}
+                url={url}
+                login={false}
+                navigation={navigation}
+              ></ListHeader>
+            }
+          />
+        )}
+      </View>
+    ) : (
+      <ContentList>
+        {(userPlan >= plan || userPriceIds.includes(priceId)) ? (
+          <FlatList
+            data={listVideos}
+            renderItem={({ item, index }) => (
               <TouchableOpacity
+                onPress={() => {
+                  setVideo(listVideos[index].link);
+                  setClassName(item.title);
+                  setMeetingNumber(item.meetingNumber);
+                  setPassWord(item.meetingPassword);
+                }}
                 style={{ margin: 10 }}
               >
                 <PlayList {...item}></PlayList>
               </TouchableOpacity>
             )}
-          style={{ marginBottom: "1rem", flexGrow: 0 }}
-          ListHeaderComponent={<ListHeader title={name} description={description} pdf={pdf} url={url} login={false} navigation={navigation}></ListHeader>}
-        />
-          }
+            style={{ marginBottom: "1rem", flexGrow: 0 }}
+            ListHeaderComponent={
+              <ListHeader
+                title={name}
+                description={description}
+                pdf={pdf}
+                url={url}
+                login={true}
+                navigation={navigation}
+              ></ListHeader>
+            }
+          />
+        ) : (
+          <FlatList
+            data={listVideos}
+            renderItem={({ item, index }) => (
+              <TouchableOpacity style={{ margin: 10 }}>
+                <PlayList {...item}></PlayList>
+              </TouchableOpacity>
+            )}
+            style={{ marginBottom: "1rem", flexGrow: 0 }}
+            ListHeaderComponent={
+              <ListHeader
+                title={name}
+                description={description}
+                pdf={pdf}
+                url={url}
+                login={false}
+                navigation={navigation}
+              ></ListHeader>
+            }
+          />
+        )}
       </ContentList>
-    )
+    );
   };
 
   return (
     <ViewPortProvider>
       <Container background={THEME.COLORS.BACKGROUND_MAIN}>
-        <Header onPress={() => {navigation.navigate('Drawer')}} />
+        <Header
+          onPress={() => {
+            navigation.navigate("Drawer");
+          }}
+        />
         <OutsideView></OutsideView>
       </Container>
     </ViewPortProvider>
   );
-};
+}

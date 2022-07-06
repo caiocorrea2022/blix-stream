@@ -30,7 +30,7 @@ export const HeaderContainer = styled.View`
     flex-direction: row;
     justify-content: ${({ justifyContent }) => (justifyContent ? justifyContent : 'space-between')};
     width: 100%;
-    padding: ${({ padding }) => (padding ? padding : '1rem')};
+    padding: ${({ padding }) => (padding ? padding : '0.7rem')};
 `;
 
 export const MainTitle = styled.Text`

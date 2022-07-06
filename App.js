@@ -7,7 +7,8 @@ import { useFonts } from 'expo-font';
 import { AuthContextProvider } from './context/AuthContextProvider';
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
+
+    const [fontsLoaded] = useFonts({
     Montserrat_300Light: require('./assets/fonts/Montserrat-Light.ttf'),
     Montserrat_400Regular: require('./assets/fonts/Montserrat-Regular.ttf'),
     Montserrat_500Medium: require('./assets/fonts/Montserrat-Medium.ttf'),
@@ -25,5 +26,5 @@ export default function App() {
         <Navigation />
       </AuthContextProvider>
     </ThemeProvider>
-  );
+  )
 }

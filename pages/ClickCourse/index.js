@@ -12,8 +12,9 @@ import { auth } from '../../services/firebase'
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { firestore } from "../../services/firebase/index";
+import { useNavigation } from '@react-navigation/native';
 
-export function ClickCourse ({ route, navigation: { goBack } }) {
+export function ClickCourse ({ route }) {
   const {courseId } = route.params;
   const [userId, setUserId] = useState("");
   const [title, setTitle] = useState("");
@@ -24,7 +25,7 @@ export function ClickCourse ({ route, navigation: { goBack } }) {
   const [priceId, setPriceId] = useState("");
   const [infos, setInfos] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [login, setLogin] = useState(false);
+  const navigation = useNavigation();
 
   const OutsideView = () => {
     const { width } = useViewport();
@@ -47,7 +48,13 @@ export function ClickCourse ({ route, navigation: { goBack } }) {
     const docRef = doc(firestore, "courses", courseId);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      return docSnap.data();
+        setTitle(docSnap.data().title);
+        setImage(docSnap.data().image);
+        setInfos(docSnap.data().infos);
+        setSmallText(docSnap.data().smallText);
+        setFooterText(docSnap.data().footerText);
+        setPrice(docSnap.data().price);
+        setPriceId(docSnap.data().priceId);
     }
   };
 
@@ -74,17 +81,6 @@ export function ClickCourse ({ route, navigation: { goBack } }) {
     );
   };
 
-  const goToPurchase = () => {
-    setLoading(true);
-    
-    if(!login) {
-      setLoading(false);
-      return navigation.navigate("SignUp", { purchaseType: 'COURSE', priceId: priceId })
-    } else {
-      return createCheckoutSession(userId, priceId, "payment", 0);
-    }
-  }
-
   const ViewFlatlist = () => {
     const { width } = useViewport();
     const breakpoint = 1080;
@@ -101,7 +97,12 @@ export function ClickCourse ({ route, navigation: { goBack } }) {
           <Button
             title={'Comprar agora'}
             isLoading={loading}
-            onPress={() => goToPurchase()}
+            onPress={() => {
+              setLoading(true);
+              userId
+                ? createCheckoutSession(userId, priceId, "payment", 0)
+                : navigation.navigate("SignUp", { purchaseType: 'COURSE', priceId: priceId })
+            }}
           >
           </Button>
         </ViewButton>
@@ -117,7 +118,11 @@ export function ClickCourse ({ route, navigation: { goBack } }) {
           <Button
             title={"Comprar agora"}
             isLoading={loading}
-            onPress={() => goToPurchase()}
+            onPress={() => {
+              userId
+                ? (setLoading(true), createCheckoutSession(userId, priceId, "payment", 0))
+                : navigation.navigate("SignUp", { purchaseType: 'COURSE', priceId: priceId })
+            }}
           ></Button>
         </ViewButton>
       </ContentList>
@@ -129,20 +134,9 @@ export function ClickCourse ({ route, navigation: { goBack } }) {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserId(user.uid);
-        setLogin(true);
       }
-      getCourse().then((response) => {
-        console.log(response.infos);
-        setTitle(response.title);
-        setImage(response.image);
-        setInfos(response.infos);
-        setSmallText(response.smallText);
-        setFooterText(response.footerText);
-        setPrice(response.price);
-        setPriceId(response.priceId);
-      })
+      getCourse();
     });
-
   }, []);
 
   return (

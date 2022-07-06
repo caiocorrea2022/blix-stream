@@ -1,4 +1,5 @@
-export const clientName = "Emily Monteiro";
+export const clientName = "EMILY MONTEIRO\nAplicativo de Yoga";
+export const clientNameFooter = "EMILY MONTEIRO";
 export const titleMain = "Seja bem-vindo(a)!";
 export const subtitleMain = "Aqui você irá imergir em autoconhecimento.";
 export const aboutText = "Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Qui illum nobis ut modi Quis vel veniam voluptatibus et numquam sint ad voluptas repellendus est enim illum vel animi omnis! Ex animi asperiores qui nemo assumenda et corrupti necessitatibus quo accusantium impedit ea optio molestiae et sint dolorum?\n\nAt omnis internos ut incidunt modi ea sint. Ad inventore quidem id illo fugit id explicabo sunt. Qui nihil ducimus ad tempora eveniet qui quia dicta eum rerum aliquid?Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia.Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Qui illum nobis ut modi Quis vel veniam voluptatibus et numquam sint ad voluptas repellendus est enim illum vel animi omnis! Ex animi asperiores qui nemo assumenda et corrupti necessitatibus quo accusantium impedit ea optio molestiae et sint dolorum?\n\nAt omnis internos ut incidunt modi ea sint. Ad inventore quidem id illo fugit id explicabo sunt. Qui nihil ducimus ad tempora eveniet qui quia dicta eum rerum aliquid?Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. ";
@@ -9,6 +10,10 @@ export const pricingTitle = "PLANOS DE ASSINATURA";
 export const subtitlePlan = "Teste grátis por 7 dias. Pagamento automático no boleto ou no cartão de crédito. Pode cancelar quando desejar.";
 export const googleSheetUrl = 'https://sheet.best/api/sheets/ea18f0f1-e07a-438b-8ec5-ac2c44b1c9ab';
 export const returnUrlCustomerPortal = 'http://loupaz-ec0b1.firebaseapp.com/meuperfil';
+export const returnDomainZoom = 'http://localhost:19006';
+
+export const aspectRatioLogoAbout = '4'; // width/height
+export const aspectRatioLogoLogin = '2'; // width/height
 
 export const planFrequency = [
   { id: "1", frequency: "Mensal" },
@@ -18,10 +23,10 @@ export const planFrequency = [
 ];
 
 export const planPrices = [
-  [{price: "R$200,00/mês", priceId: "price_1LCT29CmcyIwF9rcVBE0Q0oK", plan: 1, iterations: 0}, {price: "R$220,00/mês", priceId: "price_1LCT2YCmcyIwF9rc7iGWKEKn", plan: 10, iterations: 0}, {price: "R$250,00/mês", priceId: "", plan: 20, iterations: 0}],
-  [{price: "R$400,00/trimestre", priceId: "", plan: 2, iterations: 3}, {price: "R$420,00/trimestre", priceId: "price_1LEk9LCmcyIwF9rcTgWOXDqu", plan: 11, iterations: 3}, {price: "R$450,00/trimestre", priceId: "", plan: 21, iterations: 3}],
+  [{price: "R$197,00/mês", priceId: "price_1LFKx8CmcyIwF9rcptrUJuBI", plan: 1, iterations: 0}, {price: "R$347,00/mês", priceId: "price_1LFLB2CmcyIwF9rcoZDBuj4v", plan: 10, iterations: 0}, {price: "R$500,00/mês", priceId: "price_1LFkOACmcyIwF9rcGGV8TELx", plan: 20, iterations: 0}],
+  [{price: "R$547,00/trimestre", priceId: "price_1LFKpkCmcyIwF9rcHm7cVgUd", plan: 2, iterations: 3}, {price: "R$947,00/trimestre", priceId: "price_1LFLCXCmcyIwF9rcusWSqn6I", plan: 11, iterations: 3}, {price: "R$1.410,00/trimestre", priceId: "price_1LFkNYCmcyIwF9rcajeITdWW", plan: 21, iterations: 3}],
   [{price: "R$800,00/semestre", priceId: "", plan: 3, iterations: 6}, {price: "R$820,00/semestre", priceId: "", plan: 12, iterations: 6}, {price: "R$850,00/semestre", priceId: "", plan: 22, iterations: 6}],
-  [{price: "R$1200,00/ano", priceId: "", plan: 4, iterations: 12}, {price: "R$1220,00/ano", priceId: "", plan: 13, iterations: 12}, {price: "R$1250,00/ano", priceId: "", plan: 23, iterations: 12}],
+  [{price: "R$1.979,00/ano", priceId: "price_1LFL3XCmcyIwF9rcJy8jLFqf", plan: 4, iterations: 12}, {price: "R$3.497,00/ano", priceId: "price_1LFLDaCmcyIwF9rcfb91PhiF", plan: 13, iterations: 12}, {price: "R$4200,00/ano", priceId: "price_1LFkLCCmcyIwF9rc2JUasWWY", plan: 23, iterations: 12}],
 ];
 
 export const upsellPrices = [
@@ -45,29 +50,24 @@ export const upsellPrices = [
 
 export const planInfos = [
   {
+    id: 1,
     planType: "PLANO A",
-    info: ["✔ +50 Aulas gravadas", "✔ Meditações guiadas"],
-  },
-  {
-    planType: "PLANO GANESHA",
     info: [
-      "✔ Tudo do Plano A",
-      "✔ Acesso a aulas ao vivo",
-      "✔ Acesso a +100 Aulas gravadas",
+      "✔ +50 Aulas gravadas\n✔ Meditações guiadas"
     ],
   },
   {
+    id: 2,
+    planType: "PLANO GANESHA",
+    info: [
+      "✔ Tudo do Plano A\n✔ Acesso a aulas ao vivo\n✔ Acesso a +100 Aulas gravadas"
+    ],
+  },
+  {
+    id:3,
     planType: "PLANO SHIVA",
     info: [
-      "✔ Tudo do Plano B",
-      "✔ Acesso a aulas ao vivo e Lives",
-      "✔ Acesso a todos os conteúdos",
-      "✔ Tudo do Plano B",
-      "✔ Acesso a aulas ao vivo e Lives",
-      "✔ Acesso a todos os conteúdos",
-      "✔ Tudo do Plano B",
-      "✔ Acesso a aulas ao vivo e Lives",
-      "✔ Acesso a todos os conteúdos",
+      "✔ Tudo do Plano B\n✔ Acesso a aulas ao vivo e Lives\n✔ Acesso a todos os conteúdos\n✔ Tudo do Plano B\n✔ Acesso a aulas ao vivo e Lives\n✔ Acesso a todos os conteúdos\n✔ Tudo do Plano B\n✔ Acesso a aulas ao vivo e Lives\n✔ Acesso a todos os conteúdos",
     ],
   },
 ];

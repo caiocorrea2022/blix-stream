@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import THEME from '../../config/theme';
+import { aspectRatioLogoLogin } from '../../config/data';
 
 export const Poster = styled.ImageBackground`
   width: 100%;
@@ -9,13 +10,13 @@ export const Poster = styled.ImageBackground`
 export const ViewImage = styled.View`
   flex: 3;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 `;
 
 export const Image = styled.Image`
-  width: 10rem;
-  height: 10rem;
-  border-radius: 50%;
+  width: 60%;
+  height: undefined;
+  aspectRatio: ${aspectRatioLogoLogin}; 
 `;
 
 export const ViewTitle = styled.View`

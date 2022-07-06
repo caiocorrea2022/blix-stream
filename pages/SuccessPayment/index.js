@@ -1,53 +1,14 @@
 import React, { useEffect } from "react";
 import { Icon } from "react-native-elements";
-import axios from 'axios';
 import THEME from '../../config/theme';
-import { doc, getDoc } from "firebase/firestore";
-import { firestore } from '../../services/firebase/index';
 import Button from '../../components/Button';
 import { StandardText, SmallText, Container } from "../../config/theme/globalStyles";
-import { useAuth } from "../../context/useAuth";
 import { ActivityIndicator } from 'react-native';
+import { useAuth } from "../../context/useAuth";
 
 export function Success({ navigation }) {
   const { user, loading } = useAuth();
-  const createTaxIdStripe = async (stripeId, cpf) => {
-    const taxId = await fetch(`https://api.stripe.com/v1/customers/${stripeId}/tax_ids`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer sk_test_51K1wAiCmcyIwF9rcDllUmRHt47Sf8pzFwglHfcrHN6Zy8GdSnl3RFPl8yoPoOJbFXs18LK8eCHavE9oQilLFqzbk00dR3pma24'
-      },
-      body: {
-        type: 'br_cpf',
-        value: cpf,
-      },
-    })
-  }
-
-  const getUsers = async (user) => {
-    const docRef = doc(firestore, "users", user);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      return createTaxIdStripe(docSnap.data().stripeId, docSnap.data().CPF);
-    } else {
-      console.log("GetUser-Document data: No such document!");
-    }
-  }
-
-  const getSessionId = async () => {
-    //TODO remove token and add everything as URL parameters iterations, priceid and verify upsell
-    //get param from URL
-    const queryParams = new URLSearchParams(window.location.search);
-
-    const uid = queryParams.get("uid");
-    await getUsers(uid);
-  }
-
-  useEffect(() => {
-    getSessionId();
-  }, []);
-
+  
   return (
     loading ? <ActivityIndicator color="transparent" /> :
     <Container justifyContent="center">

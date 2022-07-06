@@ -1,4 +1,4 @@
-import CookieConsent from "react-cookie-consent";
+import CookieConsent, { Cookies, getCookieConsentValue } from "react-cookie-consent";
 import THEME from "../../config/theme";
 import { FooterText } from "../../config/theme/globalStyles";
 
@@ -14,15 +14,13 @@ export function Cookie() {
                 borderRadius: 10,
                 backgroundColor: THEME.COLORS.PRIMARY_800
             }}
-            style={{ 
+            style={{
                 backgroundColor: 'rgba(128,128,128,0.9)'
-            }} 
+            }}
             expires={150}
             onAccept={(acceptedByScrolling) => {
-                if (acceptedByScrolling) {
-                    alert("O aceite foi acionado pela rolagem do usuário.");
-                }
-                console.log(getCookieConsentValue());
+               acceptedByScrolling=true
+               console.log(getCookieConsentValue());
             }}
         >
             <FooterText color={THEME.COLORS.BACKGROUND_ABOUT}>Utilizamos cookies para lhe oferecer uma experiência mais personalizada na nossa plataforma. Se você permanecer neste site, você concorda com nosso uso de cookies.</FooterText>

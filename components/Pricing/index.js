@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PricingCard } from "react-native-elements";
 import { FlatList, TouchableOpacity } from 'react-native';
 import {
@@ -28,6 +28,10 @@ const Pricing = ({ userId }) => {
   const [isLoading, setLoading] = useState(false);
   const navigation = useNavigation();
 
+useEffect(()=>{
+  setLoading(false)
+})
+
   const Item = ({ item, onPress, backgroundColor, textColor }) => (
     <ItemContainer style={[backgroundColor]}>
       <TouchableOpacity onPress={onPress}>
@@ -44,13 +48,13 @@ const Pricing = ({ userId }) => {
         <HorizontalList horizontal={true}>
           {planInfos.map((item, index) => (
             <PricingCard
-              key={index}
+              key={item.id}
               color={THEME.COLORS.TEXT_ABOUT}
               title={item.planType}
               price={option[index].price}
               info={[
                 upsell[index],
-                ...item.info
+                item.info
               ]}
               titleStyle={{
                 fontSize: THEME.FONTSIZE.STANDARD,
@@ -106,13 +110,13 @@ const Pricing = ({ userId }) => {
         <HorizontalList horizontal={true}>
           {planInfos.map((item, index) => (
             <PricingCard
-              key={index}
+              key={item.id}
               color={THEME.COLORS.TEXT_ABOUT}
               title={item.planType}
               price={option[index].price}
               info={[
                 upsell[index],
-                ...item.info
+                item.info
               ]}
               titleStyle={{
                 fontSize: THEME.FONTSIZE.STANDARD,
