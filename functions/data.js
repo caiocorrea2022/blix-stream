@@ -4,6 +4,7 @@
 //o segundo produto "plano B" tera o valor de plano a partir de 10 (11, 12, ...)
 
 module.exports = {
+    //plans...
     "price_1LFKx8CmcyIwF9rcptrUJuBI": {
         plan: 1,
         iterations: 0
@@ -52,6 +53,11 @@ module.exports = {
         plan: 23,
         iterations: 12
     },
+    //courses... first id is fake
+    "price_1LFkLCCmcyIwF9rc2JUasWWz":{
+        months: 6
+    },
+
 };
 
 

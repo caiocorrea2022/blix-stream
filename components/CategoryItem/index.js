@@ -11,10 +11,16 @@ const CategoryItem = ({ item, plan, courses }) => {
         navigation.navigate('ClickClass', { cardId:item.id })
     }
 
+    const toDate = (seconds) => {
+        const date = new Date(1970, 0 , 1);
+        date.setSeconds(seconds);
+        return date;
+    }
+
     return (
         <Touchable onPress={onCardPress}>
             <Image source={{ uri: item.img }}>
-                {plan >= item.plan || courses?.includes(item.priceId) ?
+                {plan >= item.plan || (courses?.length > 0 && courses?.filter(course => course.priceId == item.priceId && toDate(course.dueDate.seconds) > new Date()).length > 0) ?
                     <div></div>
                     :
                     <Icon
