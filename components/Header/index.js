@@ -31,9 +31,17 @@ const Header = ({ onPress, about }) => {
               margin="0rem 1rem"
               onPress={onPress}
             >
-              ACESSAR AULAS
+              ACESSAR APLICATIVO
             </StandardText>
           ) : (
+            <>
+            <StandardText
+            color={THEME.COLORS.ICON_HEADER_OVERPHOTO}
+            margin="0rem 1rem"
+            onPress={onPress}
+          >
+            VER APLICATIVO
+          </StandardText>
             <StandardText
               color={THEME.COLORS.ICON_HEADER_OVERPHOTO}
               margin="0rem 1rem"
@@ -41,6 +49,7 @@ const Header = ({ onPress, about }) => {
             >
               LOGIN
             </StandardText>
+            </>
           )}
         </HeaderRightSide>
       </HeaderContainer>

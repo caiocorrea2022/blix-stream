@@ -1,5 +1,5 @@
 export const clientName = "EMILY MONTEIRO";
-export const substitleAbout = "Fico muito grato por vê-lo por aqui!\nSeja bem-vindo ao seu novo aplicativo para praticar Yôga.";
+export const substitleAbout = "Fico muito grato por vê-lo por aqui!\nSeja bem-vindo ao seu novo aplicativo para praticar Yōga.";
 export const clientNameFooter = "EMILY MONTEIRO";
 export const titleMain = "Seja bem-vindo(a)!";
 export const subtitleMain = "Aqui você irá imergir em autoconhecimento.";
