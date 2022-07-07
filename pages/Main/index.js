@@ -46,7 +46,7 @@ export function Main({ navigation, route }) {
 
   return (
     <Container background={THEME.COLORS.BACKGROUND_MAIN}>
-      <Poster source={require('../../assets/yoga-logo.jpg')}>
+      <Poster source={require('../../assets/FotoMain.jpg')}>
         <Gradient
           locations={[0, 0.2, 0.7, 1]}
           colors={THEME.COLORS.GRADIENT_MAIN}>

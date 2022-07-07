@@ -24,11 +24,10 @@ import ViewPortProvider from '../../hooks/ViewPortProvider';
 import useViewport from '../../hooks/useViewport';
 import { HelperText } from 'react-native-paper';
 import { MainTitle, ContainerSideView, SideView, HeaderContainer, Container } from '../../config/theme/globalStyles';
-import { Icon } from 'react-native-elements';
 
 const auth = getAuth();
 
-export function Login({ navigation: { goBack } }) {
+export function Login({ navigation }) {
 
   const [visible, setVisible] = useState(false);
   const showModal = () => setVisible(true);
@@ -109,7 +108,7 @@ export function Login({ navigation: { goBack } }) {
   const MobileOrDesktopComponent = () => {
     const { width } = useViewport();
     const breakpoint = 1080;
-    return width < breakpoint ? <View></View> : <SideView flex="1.2"><Poster source={require('../../assets/FotoLogin.jpg')}></Poster></SideView>;
+    return width < breakpoint ? <View></View> : <SideView><Poster source={require('../../assets/FotoLogin.jpg')}></Poster></SideView>;
   };
 
   return (

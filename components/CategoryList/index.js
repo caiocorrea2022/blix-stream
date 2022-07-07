@@ -42,7 +42,7 @@ const CategoryList = ({ category, plan, courses }) => {
             name="chevron-left"
             size={THEME.FONTSIZE.BIG}
             iconStyle={{
-              color: THEME.COLORS.ICON_DRAWER,
+              color: THEME.COLORS.ICON,
               backgroundColor: "rgba(255,255,255,0.3)",
               borderRadius: "5px",
             }}
@@ -76,7 +76,7 @@ const CategoryList = ({ category, plan, courses }) => {
             name="chevron-right"
             size={THEME.FONTSIZE.BIG}
             iconStyle={{
-              color: THEME.COLORS.ICON_DRAWER,
+              color: THEME.COLORS.ICON,
               backgroundColor: "rgba(255,255,255,0.3)",
               borderRadius: "5px",
             }}

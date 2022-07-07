@@ -5,7 +5,7 @@ import THEME from '../../config/theme'
 
 export const Poster = styled.ImageBackground`
     width: 100%;
-    height: ${(Dimensions.get('window').height * 60) / 100}px;
+    height: ${(Dimensions.get('window').height * 70) / 100}px;
 `;
 
 export const Content = styled.View`

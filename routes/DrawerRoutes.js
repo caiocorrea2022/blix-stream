@@ -20,9 +20,9 @@ export function DrawerRoutes() {
             screenOptions={{
                 headerShown: false,
                 drawerStatusBarAnimation: 'fade',
-                drawerActiveBackgroundColor: THEME.COLORS.PRIMARY_800,
-                drawerActiveTintColor: THEME.COLORS.TEXT_ABOUT,
-                drawerInactiveTintColor: THEME.COLORS.TEXT_ABOUT,
+                drawerActiveBackgroundColor: THEME.COLORS.SECONDARY_900,
+                drawerActiveTintColor: THEME.COLORS.BACKGROUND_ABOUT,
+                drawerInactiveTintColor: THEME.COLORS.SECONDARY_900,
                 drawerStyle: {
                     backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
                 },

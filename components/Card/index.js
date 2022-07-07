@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Button } from "react-native-paper";
+import { Card } from "react-native-paper";
 import {
   HorizontalListView,
   HorizontalList,
@@ -16,6 +16,7 @@ import {
 import { Icon } from "react-native-elements";
 import ViewPortProvider from "../../hooks/ViewPortProvider";
 import useViewport from "../../hooks/useViewport";
+import Button from "../Button";
 
 const CardInfo = ({
   array,
@@ -44,7 +45,7 @@ const CardInfo = ({
             name="chevron-left"
             size={THEME.FONTSIZE.BIG}
             iconStyle={{
-              color: THEME.COLORS.ICON_DRAWER,
+              color: THEME.COLORS.ICON,
               backgroundColor: "rgba(255,255,255,0.3)",
               borderRadius: "5px",
             }}
@@ -78,7 +79,7 @@ const CardInfo = ({
             name="chevron-right"
             size={THEME.FONTSIZE.BIG}
             iconStyle={{
-              color: THEME.COLORS.ICON_DRAWER,
+              color: THEME.COLORS.ICON,
               backgroundColor: "rgba(255,255,255,0.3)",
               borderRadius: "5px",
             }}
@@ -126,28 +127,28 @@ const CardInfo = ({
           {array.map((item, index) => (
             <Card key={index} style={cardStyle}>
               <Card.Cover source={{ uri: item.image }} style={cardCoverStyle} />
-                <Card.Content style={cardContentStyle}>
-                  <ViewTitleCategory>
-                    <Title
-                      textAlign="flex-start"
-                      fontSize={titleFontSize}
-                      color={titleColor}
-                      numberOfLines={1}
-                      margin="0rem 0rem 0.4rem 0rem"
-                    >
-                      {item.title}
-                    </Title>
-                  </ViewTitleCategory>
-                  <ViewSmallTextCategory>
-                    <SmallText
-                      textAlign="flex-start"
-                      fontSize={THEME.FONTSIZE.EXTRASMALL}
-                      numberOfLines={subtitleNumberOfLines}
-                    >
-                      {item.infos}
-                    </SmallText>
-                  </ViewSmallTextCategory>
-                  {priceVisible ? (
+              <Card.Content style={cardContentStyle}>
+                <ViewTitleCategory>
+                  <Title
+                    textAlign="flex-start"
+                    fontSize={titleFontSize}
+                    color={titleColor}
+                    numberOfLines={1}
+                    margin="0rem 0rem 0.4rem 0rem"
+                  >
+                    {item.title}
+                  </Title>
+                </ViewTitleCategory>
+                <ViewSmallTextCategory>
+                  <SmallText
+                    textAlign="flex-start"
+                    fontSize={THEME.FONTSIZE.EXTRASMALL}
+                    numberOfLines={subtitleNumberOfLines}
+                  >
+                    {item.infos}
+                  </SmallText>
+                </ViewSmallTextCategory>
+                {priceVisible ? (
                   <ViewPrice>
                     <StandardText
                       fontFamily={THEME.FONTFAMILY.BOLD}
@@ -156,20 +157,17 @@ const CardInfo = ({
                     >
                       {item.price}
                     </StandardText>
-                  </ViewPrice> ) : null }
-                </Card.Content>
+                  </ViewPrice>) : null}
+              </Card.Content>
               <Card.Actions>
                 {buttonVisible ? (
                   <Button
-                    labelStyle={{ color: THEME.COLORS.TEXT_BUTTON }}
-                    style={{
-                      width: "100%",
-                      backgroundColor: THEME.COLORS.PRIMARY_900,
-                    }}
+                    title={"Saiba mais"}
+                    width="100%"
+                    borderRadius={5}
+                    colorbutton={THEME.COLORS.SECONDARY_900}
                     onPress={() => navigation.navigate("ClickCourse", { courseId: item.id })}
-                  >
-                    Saiba mais
-                  </Button>
+                  ></Button>
                 ) : null}
               </Card.Actions>
             </Card>

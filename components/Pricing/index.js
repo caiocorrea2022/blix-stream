@@ -28,14 +28,14 @@ const Pricing = ({ userId }) => {
   const [isLoading, setLoading] = useState(false);
   const navigation = useNavigation();
 
-useEffect(()=>{
-  setLoading(false)
-})
+  useEffect(() => {
+    setLoading(false)
+  })
 
-  const Item = ({ item, onPress, backgroundColor, textColor }) => (
+  const Item = ({ item, onPress, backgroundColor, color }) => (
     <ItemContainer style={[backgroundColor]}>
       <TouchableOpacity onPress={onPress}>
-        <SmallText color={[textColor]}>{item.frequency}</SmallText>
+        <SmallText style={[color]}>{item.frequency}</SmallText>
       </TouchableOpacity>
     </ItemContainer>
   );
@@ -70,7 +70,7 @@ useEffect(()=>{
               }}
               pricingStyle={{
                 fontSize: THEME.FONTSIZE.BIG,
-                color: THEME.COLORS.PRIMARY_900,
+                color: THEME.COLORS.SECONDARY_900,
                 justifyContent: "flex-start",
                 fontFamily: THEME.FONTFAMILY.BOLD,
               }}
@@ -89,9 +89,9 @@ useEffect(()=>{
                 backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
                 borderRadius: "15px",
                 width: windowWidth * 0.6,
-                borderWidth: "2px",
+                borderWidth: "4px",
                 borderStyle: "solid",
-                borderColor: "#1e1e1e",
+                borderColor: THEME.COLORS.TEXT_ABOUT,
                 display: "flex",
                 flexDrection: "column",
               }}
@@ -135,7 +135,7 @@ useEffect(()=>{
               }}
               pricingStyle={{
                 fontSize: THEME.FONTSIZE.BIG,
-                color: THEME.COLORS.PRIMARY_900,
+                color: THEME.COLORS.SECONDARY_900,
                 justifyContent: "flex-start",
                 fontFamily: THEME.FONTFAMILY.BOLD,
               }}
@@ -153,7 +153,7 @@ useEffect(()=>{
               containerStyle={{
                 backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
                 borderRadius: "15px",
-                borderWidth: "2px",
+                borderWidth: "4px",
                 borderStyle: "solid",
                 borderColor: "#1e1e1e",
                 width: cardSize,
@@ -180,9 +180,9 @@ useEffect(()=>{
 
   const renderItem = ({ item, index }) => {
     const backgroundColor =
-      item.id === selectedId ? THEME.COLORS.PRIMARY_900 : THEME.COLORS.PRIMARY_800;
+      item.id === selectedId ? THEME.COLORS.SECONDARY_900 : THEME.COLORS.SECONDARY_800;
     const color =
-      item.id === selectedId ? THEME.COLORS.TEXT_BUTTON : THEME.COLORS.TEXT_ABOUT;
+      item.id === selectedId ? THEME.COLORS.BACKGROUND_ABOUT : THEME.COLORS.TEXT_ABOUT;
     return (
       <Item
         item={item}
@@ -192,7 +192,7 @@ useEffect(()=>{
             setUpsell(upsellPrices[index]);
         }}
         backgroundColor={{ backgroundColor }}
-        textColor={{ color }}
+        color={{ color }}
       />
     );
   };

@@ -27,7 +27,7 @@ const Header = ({ onPress, about, signUp }) => {
         <HeaderRightSide style={{ alignItems: "center" }}>
           {user ? (
             <StandardText
-              color={THEME.COLORS.ICON_HEADER_OVERPHOTO}
+              color={THEME.COLORS.ICON_HEADER}
               margin="0rem 1rem"
               onPress={onPress}
             >
@@ -36,14 +36,14 @@ const Header = ({ onPress, about, signUp }) => {
           ) : (
             <>
               <StandardText
-                color={THEME.COLORS.ICON_HEADER_OVERPHOTO}
+                color={THEME.COLORS.ICON_HEADER}
                 margin="0rem 1rem"
                 onPress={onPress}
               >
                 VER APLICATIVO
               </StandardText>
               <StandardText
-                color={THEME.COLORS.ICON_HEADER_OVERPHOTO}
+                color={THEME.COLORS.ICON_HEADER}
                 margin="0rem 1rem"
                 onPress={() => navigation.navigate("Login")}
               >
@@ -76,7 +76,7 @@ const Header = ({ onPress, about, signUp }) => {
           <Icon
             type="material-community"
             name="menu"
-            color={THEME.COLORS.ICON_HEADER_OVERPHOTO}
+            color={THEME.COLORS.ICON_HEADER}
             size={34}
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
           />

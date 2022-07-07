@@ -28,7 +28,7 @@ export function TermsofUse({ navigation }) {
           type="material-icons"
           name="close"
           size={THEME.FONTSIZE.BIG}
-          color={THEME.COLORS.ICON_DRAWER} />
+          color={THEME.COLORS.PRIMARY_900} />
       </ContentIcon>
     );
   };

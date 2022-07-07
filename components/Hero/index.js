@@ -4,10 +4,12 @@ import THEME from "../../config/theme";
 import Button from "../Button";
 import { Title, SubTitle } from "../../config/theme/globalStyles";
 import {clientName, substitleAbout} from "../../config/data";
+import { View } from "react-native";
 
 const Hero = ({ userId, navigation, button, plan }) => {
   return (
     <Container>
+      <View>
       <Title
         color={THEME.COLORS.TITLE_OVERPHOTO_ABOUT}
         fontFamily={THEME.FONTFAMILY.FONTABOUT}
@@ -20,6 +22,7 @@ const Hero = ({ userId, navigation, button, plan }) => {
       >
         {substitleAbout}
       </SubTitle>
+      </View>
       {button ? (
         plan ? (
           <></>

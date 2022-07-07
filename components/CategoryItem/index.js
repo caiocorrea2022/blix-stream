@@ -28,7 +28,7 @@ const CategoryItem = ({ item, plan, courses }) => {
                         name="lock"
                         size={THEME.FONTSIZE.BIG}
                         iconStyle={{
-                            color: THEME.COLORS.ICON_HEADER_OVERPHOTO,
+                            color: THEME.COLORS.ICON,
                         }}
                         containerStyle={{ flex: 1, alignSelf: "flex-end", justifyContent: "flex-end", padding: "0.2rem" }}
                     />

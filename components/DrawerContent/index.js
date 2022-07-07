@@ -21,24 +21,24 @@ export function DrawerContent(props) {
   }
 
   return (
-    <Container background={THEME.COLORS.BACKGROUND_DRAWER}>
+    <Container>
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
         <DrawerItem
-          label={() => (<SmallText textAlign="flex-start">Fale comigo</SmallText>)}
+          label={() => (<SmallText color={THEME.COLORS.SECONDARY_900} textAlign="flex-start">Fale comigo</SmallText>)}
           onPress={() => Linking.openURL('https://www.google.com')}
         />
       </DrawerContentScrollView>
       {user ?
         <DrawerItem
           label={() => (
-            <SmallText textAlign="flex-start" onPress={logout}>Sair</SmallText>
+            <SmallText color={THEME.COLORS.TERTIARY_900} textAlign="flex-start" onPress={logout}>Sair</SmallText>
           )}
           icon={({ size }) => (
             <Icon
               type="material-community"
               name="logout-variant"
-              color={THEME.COLORS.ICON_DRAWER}
+              color={THEME.COLORS.TERTIARY_900}
               size={size}
               onPress={logout}
             />

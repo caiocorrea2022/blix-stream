@@ -1,5 +1,5 @@
 export const clientName = "EMILY MONTEIRO";
-export const substitleAbout = "Fico muito grato por vê-lo por aqui!\nSeja bem-vindo ao seu novo aplicativo para praticar Yōga.";
+export const substitleAbout = "Seja bem-vindo ao seu novo aplicativo para praticar Yōga.";
 export const clientNameFooter = "EMILY MONTEIRO";
 export const titleMain = "Seja bem-vindo(a)!";
 export const subtitleMain = "Aqui você irá imergir em autoconhecimento.";
@@ -9,7 +9,6 @@ export const aboutTitleCategory = "O QUE VOCÊ VAI ENCONTRAR NO APLICATIVO";
 export const aboutTitleCourses = "CURSOS DISPONÍVEIS";
 export const pricingTitle = "ESCOLHA SEU PLANO";
 export const subtitlePlan = "Teste grátis por 7 dias! Planos com renovação automática com opções de pagamento no boleto ou no cartão de crédito, para praticar onde você desejar!";
-export const googleSheetUrl = 'https://sheet.best/api/sheets/ea18f0f1-e07a-438b-8ec5-ac2c44b1c9ab';
 export const returnUrlCustomerPortal = 'http://loupaz-ec0b1.firebaseapp.com/meuperfil';
 export const returnDomainZoom = 'http://localhost:19006';
 
