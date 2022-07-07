@@ -12,7 +12,14 @@ import Header from "../../components/Header";
 import Hero from "../../components/Hero";
 import CardInfo from "../../components/Card";
 import Pricing from "../../components/Pricing";
-import { categoriesInfo, aboutText, aboutTitle, aboutTitleCategory, aboutTitleCourses } from "../../config/data";
+import {
+  categoriesInfo,
+  aboutText,
+  aboutTitle,
+  aboutTitleCategory,
+  aboutTitleCourses,
+  planInfos,
+} from "../../config/data";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
@@ -21,7 +28,7 @@ import {
   Title,
   SubTitle,
   StandardText,
-  FooterText
+  FooterText,
 } from "../../config/theme/globalStyles";
 import { firestore } from "../../services/firebase/index";
 import THEME from "../../config/theme";
@@ -72,7 +79,7 @@ export function About({ navigation }) {
         <Poster source={require("../../assets/FotoAbout.jpg")}>
           <Header
             about={true}
-            onPress={() => navigation.navigate('Drawer', { screen: 'Aulas' })}
+            onPress={() => navigation.navigate("Drawer", { screen: "Aulas" })}
           />
           <Hero
             navigation={navigation}
@@ -87,7 +94,10 @@ export function About({ navigation }) {
           <SubTitle>{aboutTitle}</SubTitle>
         </ViewText>
         <ViewText>
-          <SmallText textAlign="flex-start" fontFamily={THEME.FONTFAMILY.REGULAR}>
+          <SmallText
+            textAlign="flex-start"
+            fontFamily={THEME.FONTFAMILY.REGULAR}
+          >
             {aboutText}
           </SmallText>
         </ViewText>
@@ -113,7 +123,7 @@ export function About({ navigation }) {
             marginBottom: "0.5rem",
           }}
           cardContentStyle={{
-            flex: '1 1 auto',
+            flex: "1 1 auto",
           }}
           array={categoriesInfo}
           navigation={navigation}
@@ -124,45 +134,52 @@ export function About({ navigation }) {
         <ViewAboutMe>
           <Button
             title={"Visualizar aplicativo"}
-            onPress={() => navigation.navigate('Drawer', { screen: 'Aulas' })}
+            onPress={() => navigation.navigate("Drawer", { screen: "Aulas" })}
           ></Button>
         </ViewAboutMe>
       </ViewSection>
-      <ViewSection>
-        <ViewText>
-          <Title>{aboutTitleCourses}</Title>
-        </ViewText>
-        <CardInfo
-          subtitleNumberOfLines={5}
-          titleFontSize={THEME.FONTSIZE.SMALL}
-          titleColor={THEME.COLORS.TEXT_ABOUT}
-          cardStyle={{
-            width: "18rem",
-            margin: "1rem",
-            display: "flex",
-            flexDrection: "column",
-            backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
-          }}
-          cardCoverStyle={{
-            width: "100%",
-            height: "10rem",
-            borderRadius: "8px",
-            marginBottom: "0.5rem",
-          }}
-          cardContentStyle={{
-            flex: '1 1 auto',
-          }}
-          array={coursesInfo}
-          navigation={navigation}
-          cardWidth={310} //19rem em px
-        ></CardInfo>
-      </ViewSection>
+      {coursesInfo.length > 0 ? (
+        <ViewSection>
+          <ViewText>
+            <Title>{aboutTitleCourses}</Title>
+          </ViewText>
+          <CardInfo
+            subtitleNumberOfLines={5}
+            titleFontSize={THEME.FONTSIZE.SMALL}
+            titleColor={THEME.COLORS.TEXT_ABOUT}
+            cardStyle={{
+              width: "18rem",
+              margin: "1rem",
+              display: "flex",
+              flexDrection: "column",
+              backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
+            }}
+            cardCoverStyle={{
+              width: "100%",
+              height: "10rem",
+              borderRadius: "8px",
+              marginBottom: "0.5rem",
+            }}
+            cardContentStyle={{
+              flex: "1 1 auto",
+            }}
+            array={coursesInfo}
+            navigation={navigation}
+            cardWidth={310} //19rem em px
+          ></CardInfo>
+        </ViewSection>
+      ) : (
+        <></>
+      )}
       {plan ? (
         <></>
       ) : (
-        <ViewSection>
-          <Pricing userId={user}></Pricing>
-        </ViewSection>
+        planInfos.length > 0 ?
+          (<ViewSection>
+            <Pricing userId={user}></Pricing>
+          </ViewSection>):(
+            <></>
+          )
       )}
       <Footer></Footer>
       <ViewCookies>
