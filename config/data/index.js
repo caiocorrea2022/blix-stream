@@ -13,7 +13,6 @@ export const returnUrlCustomerPortal = 'http://loupaz-ec0b1.firebaseapp.com/meup
 export const returnDomainZoom = 'http://localhost:19006';
 
 export const aspectRatioLogoAbout = '1'; // width/height
-export const aspectRatioLogoLogin = '1'; // width/height
 export const aspectRatioLogoMain = '1'; // width/height
 
 export const planFrequency = [

@@ -12,7 +12,7 @@ export const HorizontalList = styled.ScrollView.attrs({
 
 export const HorizontalListView = styled.View`
   flex-basis: auto;
-  padding: 2rem 1rem 0rem 1rem;
+  padding: 2rem 0rem 0rem 1rem;
   overflow-x: hidden;
 `;
 
