@@ -48,7 +48,7 @@ export function DrawerContent(props) {
         <></>
       }
       <Footer>
-        <FooterText fontFamily={THEME.FONTFAMILY.REGULAR} onPress={() => Linking.openURL('https://www.instagram.com/blix.aplicativos/')}>developed by</FooterText>
+        <FooterText fontFamily={THEME.FONTFAMILY.REGULAR} onPress={() => Linking.openURL('https://www.instagram.com/blix.aplicativos/')}>Desenvolvido com ♥ por</FooterText>
         <FooterText margin="0rem 0.3rem" fontFamily={THEME.FONTFAMILY.BOLD} onPress={() => Linking.openURL('https://www.instagram.com/blix.aplicativos/')}>BLIX</FooterText>
       </Footer>
     </Container>

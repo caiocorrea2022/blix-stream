@@ -75,7 +75,7 @@ useEffect(()=>{
               pricingFont={THEME.FONTFAMILY.MEDIUM}
               infoFont={THEME.FONTFAMILY.LIGHT}
               button={{
-                title: "ASSINAR PLANO",
+                title: "ASSINAR",
                 loading: isLoading,
                 color: THEME.COLORS.PRIMARY_900,
                 titleStyle: {
@@ -136,7 +136,7 @@ useEffect(()=>{
               pricingFont={THEME.FONTFAMILY.MEDIUM}
               infoFont={THEME.FONTFAMILY.LIGHT}
               button={{
-                title: "ASSINAR PLANO",
+                title: "ASSINAR",
                 loading: isLoading,
                 color: THEME.COLORS.PRIMARY_900,
                 titleStyle: {

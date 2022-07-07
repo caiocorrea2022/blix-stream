@@ -30,7 +30,7 @@ const Footer = () => {
          <FooterText fontFamily={THEME.FONTFAMILY.REGULAR} margin="0rem 0.5rem" onPress={() => navigation.navigate("TermsofUse")}>Termos de Uso e Privacidade</FooterText>
       </FooterLeftSide>
       <FooterRightSide>
-        <FooterText margin="0rem 0.5rem">Desenvolvido por</FooterText>
+        <FooterText margin="0rem 0.5rem">Desenvolvido com ♥ por</FooterText>
         <TouchableOpacity onPress={() => Linking.openURL("https://www.instagram.com/blix.aplicativos/")}>
           <Logo source={require("./../../assets/blix-color.svg")} ></Logo>
         </TouchableOpacity>
