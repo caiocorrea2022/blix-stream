@@ -89,7 +89,7 @@ const Pricing = ({ userId }) => {
                 backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
                 borderRadius: "15px",
                 width: windowWidth * 0.6,
-                borderWidth: "4px",
+                borderWidth: "2px",
                 borderStyle: "solid",
                 borderColor: THEME.COLORS.TEXT_ABOUT,
                 display: "flex",
@@ -153,7 +153,7 @@ const Pricing = ({ userId }) => {
               containerStyle={{
                 backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
                 borderRadius: "15px",
-                borderWidth: "4px",
+                borderWidth: "2px",
                 borderStyle: "solid",
                 borderColor: "#1e1e1e",
                 width: cardSize,

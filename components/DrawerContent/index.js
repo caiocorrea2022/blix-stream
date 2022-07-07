@@ -4,6 +4,7 @@ import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navi
 import { Icon } from 'react-native-elements'
 import { Footer } from './style';
 import THEME from '../../config/theme';
+import {faleComigoUrl} from '../../config/data'
 import { auth } from '../../services/firebase'
 import { signOut } from "firebase/auth";
 import { useAuth } from "../../context/useAuth";
@@ -26,7 +27,7 @@ export function DrawerContent(props) {
         <DrawerItemList {...props} />
         <DrawerItem
           label={() => (<SmallText color={THEME.COLORS.SECONDARY_900} textAlign="flex-start">Fale comigo</SmallText>)}
-          onPress={() => Linking.openURL('https://www.google.com')}
+          onPress={() => Linking.openURL(faleComigoUrl)}
         />
       </DrawerContentScrollView>
       {user ?

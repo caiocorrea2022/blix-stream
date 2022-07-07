@@ -24,7 +24,7 @@ export function Success({ navigation }) {
           <SmallText color={THEME.COLORS.PRIMARY_900} margin="0rem 0rem 3rem 0rem">Clique no botão abaixo para acessar os conteúdos!</SmallText>
           <Button
             title={"Acesse os conteúdos"}
-            onPress={() => navigation.navigate('Drawer', { screen: 'Aulas' })}>
+            onPress={() => navigation.navigate('Drawer', { screen: 'Aplicativo' })}>
           </Button>
         </>
         :
