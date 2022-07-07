@@ -69,6 +69,7 @@ useEffect(()=>{
               }}
               pricingStyle={{
                 fontSize: THEME.FONTSIZE.STANDARD,
+                color: THEME.COLORS.TEXT_ABOUT,
                 justifyContent: "flex-start",
               }}
               pricingFont={THEME.FONTFAMILY.MEDIUM}

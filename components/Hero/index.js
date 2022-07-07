@@ -2,8 +2,8 @@ import React from "react";
 import { Container } from "./style";
 import THEME from "../../config/theme";
 import Button from "../Button";
-import { Title } from "../../config/theme/globalStyles";
-import {clientName} from "../../config/data";
+import { Title, SubTitle } from "../../config/theme/globalStyles";
+import {clientName, substitleAbout} from "../../config/data";
 
 const Hero = ({ userId, navigation, button, plan }) => {
   return (
@@ -15,6 +15,11 @@ const Hero = ({ userId, navigation, button, plan }) => {
       >
         {clientName}
       </Title>
+      <SubTitle
+        color={THEME.COLORS.TITLE_OVERPHOTO_ABOUT}
+      >
+        {substitleAbout}
+      </SubTitle>
       {button ? (
         plan ? (
           <></>
@@ -25,7 +30,7 @@ const Hero = ({ userId, navigation, button, plan }) => {
             ></Button>
         ) : (
           <Button
-            title={"ASSINAR AGORA"}
+            title={"QUERO FAZER PARTE"}
             onPress={() => navigation.navigate("Plans", { userId })}
           ></Button>
         )

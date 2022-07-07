@@ -1,4 +1,5 @@
-export const clientName = "EMILY MONTEIRO\nAplicativo de Yoga";
+export const clientName = "EMILY MONTEIRO";
+export const substitleAbout = "Fico muito grato por vê-lo por aqui!\nSeja bem-vindo ao seu novo aplicativo para praticar Yôga.";
 export const clientNameFooter = "EMILY MONTEIRO";
 export const titleMain = "Seja bem-vindo(a)!";
 export const subtitleMain = "Aqui você irá imergir em autoconhecimento.";
@@ -14,6 +15,12 @@ export const returnDomainZoom = 'http://localhost:19006';
 
 export const aspectRatioLogoAbout = '1'; // width/height
 export const aspectRatioLogoMain = '1'; // width/height
+
+export const montserrat_300Light = 'Montserrat-Light.ttf';
+export const montserrat_400Regular = 'Montserrat-Regular.ttf';
+export const montserrat_500Medium = 'Montserrat-Medium.ttf';
+export const montserrat_700Bold = 'Montserrat-Bold.ttf';
+export const rajdhani_Medium = 'Rajdhani-Medium.ttf';
 
 export const planFrequency = [
   { id: "1", frequency: "Mensal" },
