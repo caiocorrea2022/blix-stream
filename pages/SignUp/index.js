@@ -163,7 +163,7 @@ export function SignUp({ navigation: { goBack }, route }) {
       <ViewPortProvider>
         <ContainerSideView>
           <VerticalScroll>
-            <Header onPress={() => goBack()} />
+            <Header about={true} signUp={true} />
             <ViewTitle>
               <Title textAlign="flex-start" padding="0rem 0rem 0rem 1rem">Cadastrar</Title>
             </ViewTitle>

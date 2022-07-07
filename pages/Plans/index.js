@@ -9,7 +9,6 @@ export function Plans({ navigation: { goBack }, route }) {
 
   return (
     <Container>
-      <Header onPress={() => goBack()} />
       <Pricing navigation={navigation} userId={userId}></Pricing>
     </Container>
   );

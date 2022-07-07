@@ -118,14 +118,6 @@ export function Login({ navigation: { goBack } }) {
         <ContainerSideView>
           <Container>
             <HeaderContainer style={{ justifyContent: "flex-start", alignItems: "center" }}>
-              <Icon
-                type="material-community"
-                name="chevron-left"
-                color={THEME.COLORS.PRIMARY_900}
-                size={THEME.FONTSIZE.BIG}
-                onPress={() => goBack()}
-              />
-              <TouchableText onPress={() => goBack()} title={'Voltar'} color={THEME.COLORS.PRIMARY_900}></TouchableText>
             </HeaderContainer>
             <ViewImage>
               <Image resizeMode="contain" source={require('./../../assets/LogoLogin.png')}></Image>

@@ -142,7 +142,7 @@ export function ClickCourse ({ route }) {
   return (
     <ViewPortProvider>
       <Container>
-        <Header onPress={() => goBack()} background={THEME.COLORS.BACKGROUND_HEADER} />
+        <Header about={true} background={THEME.COLORS.BACKGROUND_HEADER} />
         <OutsideView></OutsideView>
       </Container>
     </ViewPortProvider>
