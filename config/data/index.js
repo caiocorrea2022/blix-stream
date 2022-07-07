@@ -40,8 +40,11 @@ export const planPrices = [
 export const upsellPrices = [
   ["", "", ""],
   [
+    //Plano A trimestral pago parcelado
     "ou R$150/mês por 3 meses",
+    //Plano B trimestral pago parcelado
     "ou R$160/mês por 3 meses",
+    //Plano C trimestral pago parcelado
     "ou R$170/mês por 3 meses",
   ],
   [

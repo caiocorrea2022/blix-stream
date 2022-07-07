@@ -18,8 +18,8 @@ import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const windowWidth = Dimensions.get('window').width;
-const numColumns = planInfos.length;
-const cardSize = windowWidth * 0.7 / numColumns;
+// const numColumns = planInfos.length;
+const cardSize = windowWidth * 0.23;
 
 const Pricing = ({ userId }) => {
   const [selectedId, setSelectedId] = useState("1");

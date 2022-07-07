@@ -33,7 +33,7 @@ const ListHeader = ({ title, description, pdf, url, navigation, login }) => {
           />
         )}
         <SmallText color={THEME.COLORS.TEXT_MAIN} margin="1rem 0rem">
-          Material em PDF
+          Visualizar PDF
         </SmallText>
       </ContentIcon>
     );
@@ -61,7 +61,7 @@ const ListHeader = ({ title, description, pdf, url, navigation, login }) => {
         )}
 
         <SmallText color={THEME.COLORS.TEXT_MAIN} margin="1rem 0rem">
-          Acessar aula ao vivo
+          Acessar link
         </SmallText>
       </ContentIcon>
     );
@@ -69,7 +69,7 @@ const ListHeader = ({ title, description, pdf, url, navigation, login }) => {
 
   return (
     <Container>
-      <Title color={THEME.COLORS.TITLE_MAIN} textAlign="flex-start">
+      <Title color={THEME.COLORS.TITLE_MAIN} textAlign="flex-start" numberOfLines={2}>
         {title}
       </Title>
       <StandardText
