@@ -5,7 +5,7 @@ import { Image } from "./style";
 import { View } from "react-native";
 import {returnDomainZoom} from "../../config/data"
 
-const Zoom = ({ img, meetingNumber, passWord, className, userName, cardId }) => {
+export function Zoom ({ img, meetingNumber, passWord, className, userName, cardId }) {
   const zoomConfig = {
     zoomSdkKey: Constants.manifest.extra.zoomSdkKey,
     zoomSdkSecret: Constants.manifest.extra.zoomSdkSecret,
@@ -76,9 +76,9 @@ const Zoom = ({ img, meetingNumber, passWord, className, userName, cardId }) => 
           passWord: passWord,
           tk: registrantToken,
           success: (success) => {
-            document
-              .getElementById("zmmtg-root")
-              .style.setProperty("display", "block", "important");
+            // document
+            //   .getElementById("zmmtg-root")
+            //   .style.setProperty("display", "block", "important");
             console.log(success);
           },
           error: (error) => {
@@ -112,5 +112,3 @@ const Zoom = ({ img, meetingNumber, passWord, className, userName, cardId }) => 
     </Image>
   );
 };
-
-export default Zoom;

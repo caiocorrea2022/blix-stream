@@ -20,7 +20,7 @@ import TouchableText from "../../components/TouchableText";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { firestore } from "../../services/firebase";
-import Zoom from "../../components/Zoom";
+import {Zoom} from "../../components/Zoom";
 
 const auth = getAuth();
 
@@ -46,7 +46,7 @@ export function ClickClass({ route, navigation }) {
   const [plan, setPlan] = useState("");
   const [priceId, setPriceId] = useState("");
   const [courseId, setCourseId] = useState("");
-  
+
   const [user, setUser] = useState("");
   const [userPlan, setUserPlan] = useState("");
   const [userPriceIds, setUserPriceIds] = useState([]);
@@ -78,23 +78,23 @@ export function ClickClass({ route, navigation }) {
       setPlan(docSnap.data().plan);
       setCourseId(docSnap.data().courseId);
       setPriceId(docSnap.data().priceId);
-    } 
+    }
   };
 
   const toDate = (seconds) => {
-    const date = new Date(1970, 0 , 1);
+    const date = new Date(1970, 0, 1);
     date.setSeconds(seconds);
     return date;
-}
+  }
 
   const buyItem = () => {
     if (plan) {
       navigation.navigate("Plans", { userId: user });
       return;
     } else {
-        navigation.navigate("ClickCourse", {
-          courseId: courseId,
-        });
+      navigation.navigate("ClickCourse", {
+        courseId: courseId,
+      });
       return;
     }
   };
@@ -144,78 +144,80 @@ export function ClickClass({ route, navigation }) {
 
     return width < breakpoint ? (
       <ContentVideoMobile>
-        {(userPlan >= plan || (userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
-           meetingNumber? (
-            <Zoom
-            img={img}
-            meetingNumber={meetingNumber}
-            passWord={passWord}
-            className={className}
-            userName={userName}
-            cardId={cardId}
-          ></Zoom>
+        {(userPlan >= plan || (userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0))
+          ?
+          (
+            meetingNumber ? (
+              <Zoom
+                img={img}
+                meetingNumber={meetingNumber}
+                passWord={passWord}
+                className={className}
+                userName={userName}
+                cardId={cardId}
+              ></Zoom>
+            ) : (
+              <VideoPlayer video={video} />
+            )
           ) : (
-          <VideoPlayer video={video} />
-          )
-        ) : (
-          <Image source={img} resizeMode="cover">
-            <View
-              style={{
-                backgroundColor: "rgba(0,0,0,0.7)",
-                width: "100%",
-                height: "100%",
-                justifyContent: "center",
-              }}
-            >
-              <Button
-                title={"COMPRAR AGORA"}
-                onPress={() => buyItem()}
-                borderRadius="5px"
-              ></Button>
+            <Image source={img} resizeMode="cover">
               <View
                 style={{
-                  flexDirection: "row",
+                  backgroundColor: "rgba(0,0,0,0.7)",
+                  width: "100%",
+                  height: "100%",
                   justifyContent: "center",
-                  margin: "1rem",
                 }}
               >
-                <StandardText
-                  margin="0rem 0.5rem"
-                  color={THEME.COLORS.TEXT_BUTTON}
+                <Button
+                  title={"COMPRAR AGORA"}
+                  onPress={() => buyItem()}
+                  borderRadius="5px"
+                ></Button>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    margin: "1rem",
+                  }}
                 >
-                  ou
-                </StandardText>
-                <TouchableText
-                  textDecoration="underline"
-                  onPress={() => navigation.navigate("Login")}
-                  title={"Logar"}
-                  color={THEME.COLORS.TEXT_BUTTON}
-                ></TouchableText>
-                <StandardText
-                  margin="0rem 0.5rem"
-                  color={THEME.COLORS.TEXT_BUTTON}
-                >
-                  para continuar
-                </StandardText>
+                  <StandardText
+                    margin="0rem 0.5rem"
+                    color={THEME.COLORS.TEXT_BUTTON}
+                  >
+                    ou
+                  </StandardText>
+                  <TouchableText
+                    textDecoration="underline"
+                    onPress={() => navigation.navigate("Login")}
+                    title={"Logar"}
+                    color={THEME.COLORS.TEXT_BUTTON}
+                  ></TouchableText>
+                  <StandardText
+                    margin="0rem 0.5rem"
+                    color={THEME.COLORS.TEXT_BUTTON}
+                  >
+                    para continuar
+                  </StandardText>
+                </View>
               </View>
-            </View>
-          </Image>
-        )}
+            </Image>
+          )}
       </ContentVideoMobile>
     ) : (
       <ContentVideoDesktop>
         {(userPlan >= plan || (userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
-          meetingNumber? (
+          meetingNumber ? (
             <Zoom
-            img={img}
-            meetingNumber={meetingNumber}
-            passWord={passWord}
-            className={className}
-            userName={userName}
-            cardId={cardId}
-          ></Zoom>
+              img={img}
+              meetingNumber={meetingNumber}
+              passWord={passWord}
+              className={className}
+              userName={userName}
+              cardId={cardId}
+            ></Zoom>
           ) : (
-          <VideoPlayer video={video} />
+            <VideoPlayer video={video} />
           )
         ) : (
           <Image source={img} resizeMode="cover">

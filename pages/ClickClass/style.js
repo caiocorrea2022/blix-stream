@@ -1,4 +1,6 @@
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
+const windowWidth = Dimensions.get('window').width;
 
 export const Image = styled.ImageBackground`
   width: 100%;
@@ -15,8 +17,9 @@ export const ContentVideoDesktop = styled.View`
 `;
 
 export const ContentVideoMobile = styled.View`
-    align-self: center;
-    width: 95%;
+    /* align-self: center; */
+    width: ${windowWidth};
+    align-content: center;
     aspect-ratio: 16/9;
     margin-bottom:2rem;
 `;
