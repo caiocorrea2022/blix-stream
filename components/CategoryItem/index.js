@@ -34,7 +34,7 @@ const CategoryItem = ({ item, plan, courses }) => {
                     />
                 }
             </Image>
-            <SmallText color={THEME.COLORS.TEXT_MAIN} maxWidth="230" textAlign="flex-start" numberOfLines={1}>{item.title}</SmallText>
+            <SmallText fontSize={THEME.FONTSIZE.EXTRASMALL} color={THEME.COLORS.TEXT_MAIN} maxWidth="230" textAlign="flex-start" numberOfLines={2}>{item.title}</SmallText>
         </Touchable>
     )
 }
