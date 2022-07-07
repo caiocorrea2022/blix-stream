@@ -3,6 +3,7 @@ import { Container } from './style';
 import { SmallText } from '../../config/theme/globalStyles';
 import { ActivityIndicator } from 'react-native';
 import THEME from '../../config/theme';
+import {borderRadiusButtons} from '../../config/data'
 
 const Button = ({
   colortitle,
@@ -18,7 +19,7 @@ const Button = ({
       enabled={!isLoading}
       colorbutton={colorbutton ? colorbutton : THEME.COLORS.PRIMARY_900}
       width={width}
-      borderRadius={borderRadius ? borderRadius : "30px"}
+      borderRadius={borderRadius ? borderRadius : borderRadiusButtons}
       style={{ opacity: ( isLoading === true) ? 0.5 : 1}}
       {...rest}
     >

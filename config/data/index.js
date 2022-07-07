@@ -22,6 +22,8 @@ export const montserrat_500Medium = 'Montserrat-Medium.ttf';
 export const montserrat_700Bold = 'Montserrat-Bold.ttf';
 export const rajdhani_Medium = 'Rajdhani-Medium.ttf';
 
+export const borderRadiusButtons = '30px'; 
+
 export const planFrequency = [
   { id: "1", frequency: "Mensal" },
   { id: "2", frequency: "Trimestral" },
