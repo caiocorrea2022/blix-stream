@@ -123,7 +123,7 @@ export function About({ navigation }) {
         ></CardInfo>
         <ViewAboutMe>
           <Button
-            title={"Visualizar conteúdo"}
+            title={"Visualizar aplicativo"}
             onPress={() => navigation.navigate('Drawer', { screen: 'Aulas' })}
           ></Button>
         </ViewAboutMe>

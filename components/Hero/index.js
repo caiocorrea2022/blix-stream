@@ -16,7 +16,7 @@ const Hero = ({ userId, navigation, button, plan }) => {
         {clientName}
       </Title>
       <SubTitle
-        color={THEME.COLORS.TITLE_OVERPHOTO_ABOUT}
+        color={THEME.COLORS.SUBTITLE_OVERPHOTO_ABOUT}
       >
         {substitleAbout}
       </SubTitle>

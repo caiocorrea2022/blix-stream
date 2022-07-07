@@ -62,21 +62,21 @@ export const planInfos = [
     id: 1,
     planType: "PLANO A",
     info: [
-      "✔ +50 Aulas gravadas\n✔ Meditações guiadas"
+      "🗸 +50 Aulas gravadas\n\n🗸 Meditações guiadas"
     ],
   },
   {
     id: 2,
     planType: "PLANO GANESHA",
     info: [
-      "✔ Tudo do Plano A\n✔ Acesso a aulas ao vivo\n✔ Acesso a +100 Aulas gravadas"
+      "🗸 Tudo do Plano A\n\n🗸 Acesso a aulas ao vivo\n\n🗸 Acesso a +100 Aulas gravadas"
     ],
   },
   {
     id:3,
     planType: "PLANO SHIVA",
     info: [
-      "✔ Tudo do Plano B\n✔ Acesso a aulas ao vivo e Lives\n✔ Acesso a todos os conteúdos\n✔ Tudo do Plano B\n✔ Acesso a aulas ao vivo e Lives\n✔ Acesso a todos os conteúdos\n✔ Tudo do Plano B\n✔ Acesso a aulas ao vivo e Lives\n✔ Acesso a todos os conteúdos",
+      "🗸 Tudo do Plano B\n\n🗸 Acesso a aulas ao vivo e Lives\n\n🗸 Acesso a todos os conteúdos\n\n🗸 Tudo do Plano B\n\n🗸 Acesso a aulas ao vivo e Lives\n\n🗸 Acesso a todos os conteúdos\n\n🗸 Tudo do Plano B\n\n🗸 Acesso a aulas ao vivo e Lives\n\n🗸 Acesso a todos os conteúdos",
     ],
   },
 ];

@@ -59,21 +59,21 @@ useEffect(()=>{
               titleStyle={{
                 fontSize: THEME.FONTSIZE.STANDARD,
                 justifyContent: "flex-start",
+                fontFamily: THEME.FONTFAMILY.BOLD,
               }}
-              titleFont={THEME.FONTFAMILY.BOLD}
               infoStyle={{
                 color: THEME.COLORS.TEXT_ABOUT,
                 fontSize: THEME.FONTSIZE.SMALL,
                 textAlign: 'center',
                 flex: '1 1 auto',
+                fontFamily: THEME.FONTFAMILY.LIGHT,
               }}
               pricingStyle={{
-                fontSize: THEME.FONTSIZE.STANDARD,
-                color: THEME.COLORS.TEXT_ABOUT,
+                fontSize: THEME.FONTSIZE.BIG,
+                color: THEME.COLORS.PRIMARY_900,
                 justifyContent: "flex-start",
+                fontFamily: THEME.FONTFAMILY.BOLD,
               }}
-              pricingFont={THEME.FONTFAMILY.MEDIUM}
-              infoFont={THEME.FONTFAMILY.LIGHT}
               button={{
                 title: "ASSINAR",
                 loading: isLoading,
@@ -86,9 +86,12 @@ useEffect(()=>{
                 buttonStyle: { borderRadius: "10px" },
               }}
               containerStyle={{
-                backgroundColor: THEME.COLORS.PRIMARY_800,
+                backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
                 borderRadius: "15px",
                 width: windowWidth * 0.6,
+                borderWidth: "2px",
+                borderStyle: "solid",
+                borderColor: "#1e1e1e",
                 display: "flex",
                 flexDrection: "column",
               }}
@@ -121,20 +124,21 @@ useEffect(()=>{
               ]}
               titleStyle={{
                 fontSize: THEME.FONTSIZE.STANDARD,
+                fontFamily: THEME.FONTFAMILY.BOLD,
               }}
-              titleFont={THEME.FONTFAMILY.BOLD}
               infoStyle={{
                 color: THEME.COLORS.TEXT_ABOUT,
                 fontSize: THEME.FONTSIZE.SMALL,
                 textAlign: 'center',
                 flex: '1 1 auto',
+                fontFamily: THEME.FONTFAMILY.LIGHT,
               }}
               pricingStyle={{
-                fontSize: THEME.FONTSIZE.STANDARD,
+                fontSize: THEME.FONTSIZE.BIG,
+                color: THEME.COLORS.PRIMARY_900,
                 justifyContent: "flex-start",
+                fontFamily: THEME.FONTFAMILY.BOLD,
               }}
-              pricingFont={THEME.FONTFAMILY.MEDIUM}
-              infoFont={THEME.FONTFAMILY.LIGHT}
               button={{
                 title: "ASSINAR",
                 loading: isLoading,
@@ -147,8 +151,11 @@ useEffect(()=>{
                 buttonStyle: { borderRadius: "10px" },
               }}
               containerStyle={{
-                backgroundColor: THEME.COLORS.PRIMARY_800,
+                backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
                 borderRadius: "15px",
+                borderWidth: "2px",
+                borderStyle: "solid",
+                borderColor: "#1e1e1e",
                 width: cardSize,
                 display: "flex",
                 flexDrection: "column",
