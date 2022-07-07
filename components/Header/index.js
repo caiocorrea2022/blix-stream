@@ -57,16 +57,7 @@ const Header = ({ onPress, about }) => {
       <HeaderContainer>
         <HeaderLeftSide>
           {onPress ? (
-            <Row>
-              <Icon
-                type="material-community"
-                name="chevron-left"
-                color={THEME.COLORS.ICON_HEADER}
-                size={THEME.FONTSIZE.BIG}
-                onPress={onPress}
-              />
-              <TouchableText onPress={onPress} title={'Voltar'} color={THEME.COLORS.ICON_HEADER}></TouchableText>
-            </Row>
+            <></>
           ) : (
             <Icon
               type="material-community"
