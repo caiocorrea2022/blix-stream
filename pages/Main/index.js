@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
-import { Poster, Gradient, Content, Hero } from './style';
+import { Poster, Gradient, Content, Hero, Container } from './style';
 import Header from '../../components/Header';
 import CategoryList from '../../components/CategoryList';
 import { getDocs, collection } from "firebase/firestore";
@@ -8,7 +8,7 @@ import { firestore } from "../../services/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import THEME from '../../config/theme';
-import { Title, SubTitle, Container } from '../../config/theme/globalStyles';
+import { Title, SubTitle } from '../../config/theme/globalStyles';
 import { titleMain, subtitleMain } from '../../config/data';
 
 const auth = getAuth();
