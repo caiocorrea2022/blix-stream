@@ -13,6 +13,7 @@ import { StandardText } from "../../config/theme/globalStyles";
 const CategoryList = ({ category, plan, courses }) => {
   const [allCards, setAllCards] = useState([]);
   const [scrollX, setScrollX] = useState(0);
+  let cardWidth = 260
 
   useEffect(() => {
     const findAllCategories = async () => {
@@ -35,7 +36,7 @@ const CategoryList = ({ category, plan, courses }) => {
       <></>
     ) : (
       <>
-        {window.innerWidth < (allCards.length * 240) ? (
+        {window.innerWidth < (allCards.length * cardWidth) ? (
           <Icon
             type="material-community"
             name="chevron-left"
@@ -69,7 +70,7 @@ const CategoryList = ({ category, plan, courses }) => {
       <></>
     ) : (
       <>
-        {window.innerWidth < (allCards.length * 240) ? (
+        {window.innerWidth < (allCards.length * cardWidth) ? (
           <Icon
             type="material-community"
             name="chevron-right"
@@ -86,6 +87,7 @@ const CategoryList = ({ category, plan, courses }) => {
               height: "10rem",
               justifyContent: "center",
               overflow: "hidden",
+              margin: "0rem 1rem",
             }}
             onPress={handleRightArrow}
           />
@@ -106,11 +108,11 @@ const CategoryList = ({ category, plan, courses }) => {
 
   const handleRightArrow = () => {
     let x = scrollX - Math.round(window.innerWidth / 2);
-    let listW = allCards.length * 240;
+    let listW = allCards.length * cardWidth;
     if ((window.innerWidth > listW)) {
       x = 0;
     } else if (((window.innerWidth - listW) > x)) {
-      x = (window.innerWidth - listW) - (23 * allCards.length);
+      x = (window.innerWidth - listW) - (allCards.length);
     }
     setScrollX(x);
   };

@@ -9,7 +9,6 @@ export const Poster = styled.ImageBackground`
 `;
 
 export const Content = styled.View`
-	padding: 0rem 1rem;
     background-color: ${THEME.COLORS.BACKGROUND_MAIN};
 `;
 

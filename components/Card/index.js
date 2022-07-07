@@ -16,7 +16,6 @@ import {
 import { Icon } from "react-native-elements";
 import ViewPortProvider from "../../hooks/ViewPortProvider";
 import useViewport from "../../hooks/useViewport";
-// import { useNavigation } from "@react-navigation/native";
 
 const CardInfo = ({
   array,
@@ -31,7 +30,6 @@ const CardInfo = ({
   subtitleNumberOfLines,
   cardWidth,
 }) => {
-  // const navigation = useNavigation();
   const [scrollX, setScrollX] = useState(0);
   const MobileOrDesktopLeftArrow = () => {
     const { width } = useViewport();
@@ -57,7 +55,6 @@ const CardInfo = ({
               height: "10rem",
               justifyContent: "center",
               overflow: "hidden",
-              margin: "1rem",
             }}
             onPress={handleLeftArrow}
           />
@@ -92,7 +89,6 @@ const CardInfo = ({
               height: "10rem",
               justifyContent: "center",
               overflow: "hidden",
-              margin: "1rem",
             }}
             onPress={handleRightArrow}
           />
@@ -114,10 +110,10 @@ const CardInfo = ({
   const handleRightArrow = () => {
     let x = scrollX - Math.round(window.innerWidth / 2);
     let listW = array.length * cardWidth;
-    if (window.innerWidth > listW) {
+    if ((window.innerWidth > listW)) {
       x = 0;
-    } else if (window.innerWidth - listW > x) {
-      x = window.innerWidth - listW - 36 * array.length;
+    } else if (((window.innerWidth - listW) > x)) {
+      x = (window.innerWidth - listW) - (34 * array.length);
     }
     setScrollX(x);
   };
@@ -137,6 +133,7 @@ const CardInfo = ({
                       fontSize={titleFontSize}
                       color={titleColor}
                       numberOfLines={1}
+                      margin="0rem 0rem 0.4rem 0rem"
                     >
                       {item.title}
                     </Title>
@@ -155,6 +152,7 @@ const CardInfo = ({
                     <StandardText
                       fontFamily={THEME.FONTFAMILY.BOLD}
                       textAlign="flex-start"
+                      margin="0.4rem 0rem 0rem 0rem"
                     >
                       {item.price}
                     </StandardText>

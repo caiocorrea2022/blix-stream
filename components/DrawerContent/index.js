@@ -21,7 +21,7 @@ export function DrawerContent(props) {
   }
 
   return (
-    <Container>
+    <Container background={THEME.COLORS.BACKGROUND_DRAWER}>
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
         <DrawerItem

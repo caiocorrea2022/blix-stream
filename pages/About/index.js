@@ -154,7 +154,7 @@ export function About({ navigation }) {
           }}
           array={coursesInfo}
           navigation={navigation}
-          cardWidth={288} //18rem em px
+          cardWidth={310} //19rem em px
         ></CardInfo>
       </ViewSection>
       {plan ? (
