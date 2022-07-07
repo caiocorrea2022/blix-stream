@@ -33,11 +33,11 @@ export function DrawerRoutes() {
             }}
         >
             <Screen
-                name='Aulas'
+                name='Aplicativo'
                 component={Main}
             />
             <Screen
-                name='Home'
+                name='Tela Inicial'
                 component={About}
             />
             {user ?
