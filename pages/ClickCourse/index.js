@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View } from "react-native";
 import { ContentDesktop, ContentMobile, ContentList, Image, ViewText, ViewButton, Container } from './style';
-import Header from "../../components/Header";
+import HeaderPurchase from "../../components/HeaderPurchase";
 import Button from "../../components/Button";
 import ViewPortProvider from "../../hooks/ViewPortProvider";
 import useViewport from "../../hooks/useViewport";
@@ -142,7 +142,7 @@ export function ClickCourse ({ route }) {
   return (
     <ViewPortProvider>
       <Container>
-        <Header about={true} background={THEME.COLORS.BACKGROUND_HEADER} />
+        <HeaderPurchase signUp={true} background={THEME.COLORS.BACKGROUND_HEADER} />
         <OutsideView></OutsideView>
       </Container>
     </ViewPortProvider>

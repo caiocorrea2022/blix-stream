@@ -9,7 +9,8 @@ import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../../context/useAuth";
 
-const Header = ({ onPress, about, signUp }) => {
+
+const Header = ({ onPress, about}) => {
   const navigation = useNavigation();
   const { user } = useAuth();
 
@@ -21,9 +22,6 @@ const Header = ({ onPress, about, signUp }) => {
           source={require("../../assets/LogoAbout.png")}
         />
       </HeaderLeftSide>
-      {signUp ? (
-        <HeaderRightSide style={{ alignItems: "center" }}></HeaderRightSide>
-      ) : (
         <HeaderRightSide style={{ alignItems: "center" }}>
           {user ? (
             <StandardText
@@ -52,7 +50,6 @@ const Header = ({ onPress, about, signUp }) => {
             </>
           )}
         </HeaderRightSide>
-      )}
     </HeaderContainer>
   ) : (
     <HeaderContainer>
