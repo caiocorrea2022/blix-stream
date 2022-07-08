@@ -49,11 +49,15 @@ export function DrawerContent(props) {
         <></>
       }
       <Footer>
-        <FooterText margin="0rem 0.5rem">Desenvolvido com ♥ por</FooterText>
-        <TouchableOpacity onPress={() => Linking.openURL("https://www.instagram.com/blix.aplicativos/")}>
-          <Logo source={require("./../../assets/blix-color.svg")} ></Logo>
-        </TouchableOpacity>
-        <FooterText fontFamily={THEME.FONTFAMILY.BOLD} margin="0rem 0.5rem" onPress={() => Linking.openURL("https://www.instagram.com/blix.aplicativos/")}>BLIX</FooterText>
+        <FooterText padding="0rem 0.2rem">Desenvolvido com</FooterText>
+        <Icon
+          type="material-community"
+          name="heart"
+          color={THEME.COLORS.TEXT_FOOTER}
+          size={15}
+        />
+        <FooterText padding="0rem 0.2rem">por</FooterText>
+        <FooterText fontFamily={THEME.FONTFAMILY.BOLD} padding="0rem 0.2rem" onPress={() => Linking.openURL("https://www.instagram.com/blix.aplicativos/")}>BLIX</FooterText>
       </Footer>
     </Container>
 

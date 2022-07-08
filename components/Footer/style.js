@@ -5,7 +5,7 @@ export const Container = styled.View`
     width: 100%;
     flex-direction: row;
     background-color: ${THEME.COLORS.BACKGROUND_FOOTER};
-    padding: 1rem;
+    padding: 1rem 0.5rem;
 `;
 
 export const FooterRightSide = styled.View`
@@ -23,8 +23,8 @@ export const FooterLeftSide = styled.View`
 `;
 
 export const Logo = styled.Image`
-    width: 1.3rem;
-    height: 1rem;
+    width: 1.04rem;
+    height: 0.8rem;
 `;
 
 export const FooterLogo = styled.View`

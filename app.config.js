@@ -5,9 +5,9 @@ export default {
         "slug": "blix-stream",
         "version": "1.0.0",
         "orientation": "portrait",
-        "icon": "./assets/logo.png",
+        "icon": "./assets/LogoAbout.png",
         "splash": {
-            "image": "./assets/splash.png",
+            "image": "./assets/LogoAbout.png",
             "resizeMode": "contain",
             "backgroundColor": "#ffffff"
         },
