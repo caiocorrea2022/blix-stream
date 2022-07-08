@@ -13,7 +13,9 @@ const linking = {
           ClickClass: "ClickClass",
           ClickCourse: "ClickCourse",
           PDFView:"PDFView",
-
+          PreLoadStripe: {
+            path: "EditProfile"
+          },
         },
     },
   };
