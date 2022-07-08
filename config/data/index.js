@@ -1,3 +1,5 @@
+
+
 export const clientName = "EMILY MONTEIRO";
 export const substitleAbout = "Seja bem-vindo ao seu novo aplicativo para praticar Yōga.";
 export const clientNameFooter = "EMILY MONTEIRO";
@@ -28,35 +30,64 @@ export const borderRadiusButtons = '30px';
 export const planFrequency = [
   { id: "1", frequency: "Mensal" },
   { id: "2", frequency: "Trimestral" },
-  { id: "3", frequency: "Semestral" },
+  // { id: "3", frequency: "Semestral" },
   { id: "4", frequency: "Anual" },
 ];
 
 export const planPrices = [
-  [{price: "R$197,00/mês", priceId: "price_1LFKx8CmcyIwF9rcptrUJuBI"}, {price: "R$347,00/mês", priceId: "price_1LFLB2CmcyIwF9rcoZDBuj4v"}, {price: "R$500,00/mês", priceId: "price_1LFkOACmcyIwF9rcGGV8TELx"}],
-  [{price: "R$547,00/trimestre", priceId: "price_1LFKpkCmcyIwF9rcHm7cVgUd"}, {price: "R$947,00/trimestre", priceId: "price_1LFLCXCmcyIwF9rcusWSqn6I"}, {price: "R$1.410,00/trimestre", priceId: "price_1LFkNYCmcyIwF9rcajeITdWW"}],
-  [{price: "R$800,00/semestre", priceId: ""}, {price: "R$820,00/semestre", priceId: ""}, {price: "R$850,00/semestre", priceId: ""}],
-  [{price: "R$1.979,00/ano", priceId: "price_1LFL3XCmcyIwF9rcJy8jLFqf"}, {price: "R$3.497,00/ano", priceId: "price_1LFLDaCmcyIwF9rcfb91PhiF"}, {price: "R$4200,00/ano", priceId: "price_1LFkLCCmcyIwF9rc2JUasWWY"}],
+  //Plano A mensal
+  [{price: "R$197,00/mês", priceId: "price_1LFKx8CmcyIwF9rcptrUJuBI"},
+  //Plano B mensal
+  {price: "R$347,00/mês", priceId: "price_1LFLB2CmcyIwF9rcoZDBuj4v"},
+  //Plano C mensal
+  {price: "R$500,00/mês", priceId: "price_1LFkOACmcyIwF9rcGGV8TELx"}],
+
+  //Plano A trimestral parcelado (mensal)
+  [{price: "R$547,00/trimestre", priceId: "price_1LFKpkCmcyIwF9rcHm7cVgUd"},
+  //Plano B trimestral parcelado (mensal)
+  {price: "R$947,00/trimestre", priceId: "price_1LFLCXCmcyIwF9rcusWSqn6I"},
+  //Plano C trimestral parcelado (mensal)
+  {price: "R$1.410,00/trimestre", priceId: "price_1LFkNYCmcyIwF9rcajeITdWW"}],
+
+  //Plano A semestral parcelado (mensal)
+  // [{price: "R$800,00/semestre", priceId: ""}, 
+  //Plano B semestral parcelado (mensal)
+  //{price: "R$820,00/semestre", priceId: ""},
+  //Plano C semestral parcelado (mensal)
+  // {price: "R$850,00/semestre", priceId: ""}],
+
+  //Plano A anual parcelado (mensal)
+  [{price: "R$1.979,00/ano", priceId: "price_1LFL3XCmcyIwF9rcJy8jLFqf"}, 
+  //Plano B anual parcelado (mensal)
+  {price: "R$3.497,00/ano", priceId: "price_1LFLDaCmcyIwF9rcfb91PhiF"},
+  //Plano C anual parcelado (mensal)
+  {price: "R$4200,00/ano", priceId: "price_1LFkLCCmcyIwF9rc2JUasWWY"}],
 ];
 
 export const upsellPrices = [
   ["", "", ""],
   [
-    //Plano A trimestral pago parcelado
+    //Plano A trimestral parcelado (mensal)
     "ou R$150/mês por 3 meses",
-    //Plano B trimestral pago parcelado
+    //Plano B trimestral parcelado (mensal)
     "ou R$160/mês por 3 meses",
-    //Plano C trimestral pago parcelado
+    //Plano C trimestral parcelado (mensal)
     "ou R$170/mês por 3 meses",
   ],
   [
+    //Plano A semestral parcelado (mensal)
     "ou R$150/mês por 6 meses",
+    //Plano B semestral parcelado (mensal)
     "ou R$160/mês por 6 meses",
+    //Plano C semestral parcelado (mensal)
     "ou R$170/mês por 6 meses",
   ],
   [
+    //Plano A anual parcelado (mensal)
     "ou R$150/mês por 12 meses",
+    //Plano B anual parcelado (mensal)
     "ou R$160/mês por 12 meses",
+    //Plano C anual parcelado (mensal)
     "ou R$170/mês por 12 meses",
   ],
 ];

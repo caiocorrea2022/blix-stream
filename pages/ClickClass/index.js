@@ -111,7 +111,6 @@ export function ClickClass({ route, navigation }) {
     });
     console.log("itemId", cardId);
     getCard();
-    // console.log('lenght', meetingNumber.length)
   }, []);
 
   const OutsideView = () => {
@@ -144,7 +143,7 @@ export function ClickClass({ route, navigation }) {
 
     return width < breakpoint ? (
       <ContentVideoMobile>
-        {(userPlan >= plan || (userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0))
+        {(userPlan >= plan || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0))
           ?
           (
             meetingNumber ? (
@@ -206,7 +205,7 @@ export function ClickClass({ route, navigation }) {
       </ContentVideoMobile>
     ) : (
       <ContentVideoDesktop>
-        {(userPlan >= plan || (userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
+        {(userPlan >= plan || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
           meetingNumber ? (
             <Zoom
               img={img}
@@ -273,7 +272,7 @@ export function ClickClass({ route, navigation }) {
 
     return width < breakpoint ? (
       <View>
-        {(userPlan >= plan || (userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
+        {(userPlan >= plan || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
           <FlatList
             data={listVideos}
             renderItem={({ item, index }) => (
@@ -325,7 +324,7 @@ export function ClickClass({ route, navigation }) {
       </View>
     ) : (
       <ContentList>
-        {(userPlan >= plan || (userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
+        {(userPlan >= plan || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
           <FlatList
             data={listVideos}
             renderItem={({ item, index }) => (
