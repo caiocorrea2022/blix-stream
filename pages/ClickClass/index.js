@@ -30,7 +30,7 @@ export function ClickClass({ route, navigation }) {
   } = route.params;
 
   const [video, setVideo] = useState();
-  const [meetingNumber, setMeetingNumber] = useState("123456");
+  const [meetingNumber, setMeetingNumber] = useState("");
   const [userName, setUserName] = useState("");
   const [className, setClassName] = useState("");
   const [passWord, setPassWord] = useState("");
