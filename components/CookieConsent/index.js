@@ -11,7 +11,7 @@ export function Cookie() {
                 color: THEME.COLORS.TEXT_ABOUT,
                 fontSize: THEME.FONTSIZE.EXTRASMALL,
                 fontFamily: THEME.FONTFAMILY.REGULAR,
-                borderRadius: 10,
+                borderRadius: "10px",
                 backgroundColor: THEME.COLORS.PRIMARY_800
             }}
             style={{

@@ -164,7 +164,7 @@ const CardInfo = ({
                   <Button
                     title={"Saiba mais"}
                     width="100%"
-                    borderRadius={5}
+                    borderRadius="5px"
                     colorbutton={THEME.COLORS.SECONDARY_900}
                     onPress={() => navigation.navigate("ClickCourse", { courseId: item.id })}
                   ></Button>

@@ -12,7 +12,8 @@ const linking = {
           Plans: "Plans",
           ClickClass: "ClickClass",
           ClickCourse: "ClickCourse",
-          PDFView:"PDFView"
+          PDFView:"PDFView",
+
         },
     },
   };

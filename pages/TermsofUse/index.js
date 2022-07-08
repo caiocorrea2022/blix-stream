@@ -14,7 +14,7 @@ import THEME from '../../config/theme';
 import { DrawerActions } from '@react-navigation/native';
 import { Title } from "../../config/theme/globalStyles"
 
-export function TermsofUse({ navigation }) {
+export function TermsofUse({ navigation:{goBack}}) {
   const [modalVisible, setModalVisible] = useState(true);
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export function TermsofUse({ navigation }) {
           </ViewText>
           <ViewPressable>
             <Pressable
-              onPress={() => {setModalVisible(!modalVisible), navigation.navigate("About"), navigation.dispatch(DrawerActions.closeDrawer())}}>
+              onPress={() => {setModalVisible(!modalVisible), goBack()}}>
               <Close></Close>
             </Pressable>
           </ViewPressable>
