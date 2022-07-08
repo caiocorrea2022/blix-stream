@@ -2,7 +2,7 @@ import React from 'react';
 import { SmallText } from '../../config/theme/globalStyles';
 import { Touchable } from './style';
 
-const TouchableText = ({ title, color, textDecoration, fontFamily, fontSize, onPress, ...rest }) => {
+const TouchableText = ({ title, color, textDecoration, fontFamily, fontSize, onPress, margin, ...rest }) => {
     return (
         <Touchable {...rest}>
             <SmallText
@@ -11,7 +11,7 @@ const TouchableText = ({ title, color, textDecoration, fontFamily, fontSize, onP
                 onPress={onPress}
                 fontFamily={fontFamily}
                 fontSize={fontSize}
-                margin="0rem 1rem"
+                margin={margin ? margin : margin}
             >{title}
             </SmallText>
         </Touchable>

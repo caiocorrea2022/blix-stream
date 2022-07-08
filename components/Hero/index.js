@@ -14,6 +14,7 @@ const Hero = ({ userId, navigation, button, plan }) => {
         color={THEME.COLORS.TITLE_OVERPHOTO_ABOUT}
         fontFamily={THEME.FONTFAMILY.FONTABOUT}
         fontSize={THEME.FONTSIZE.GIANT}
+        margin="0.5rem"
       >
         {clientName}
       </Title>

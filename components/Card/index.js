@@ -90,6 +90,7 @@ const CardInfo = ({
               height: "10rem",
               justifyContent: "center",
               overflow: "hidden",
+              margin: "1rem",
             }}
             onPress={handleRightArrow}
           />

@@ -241,7 +241,7 @@ export function ClickClass({ route, navigation }) {
                 }}
               >
                 <StandardText
-                  margin="0rem 0.5rem"
+                  margin="0rem 0.2rem"
                   color={THEME.COLORS.TEXT_BUTTON}
                 >
                   ou
@@ -253,7 +253,7 @@ export function ClickClass({ route, navigation }) {
                   color={THEME.COLORS.TEXT_BUTTON}
                 ></TouchableText>
                 <StandardText
-                  margin="0rem 0.5rem"
+                  margin="0rem 0.2rem"
                   color={THEME.COLORS.TEXT_BUTTON}
                 >
                   para continuar

@@ -5,18 +5,18 @@ import THEME from './config/theme';
 import './constants/IMLocalize';
 import { useFonts } from 'expo-font';
 import { AuthContextProvider } from './context/AuthContextProvider';
-import {montserrat_300Light, montserrat_400Regular, montserrat_500Medium, montserrat_700Bold, rajdhani_Medium } from './config/data'
+import {text_Light, text_Regular, text_Medium, text_Bold, title_About } from './config/data'
 
 export default function App() {
 
     const [fontsLoaded] = useFonts({
     //fonte textosApp
-    Montserrat_300Light: require(`./assets/fonts/${montserrat_300Light}`),
-    Montserrat_400Regular: require(`./assets/fonts/${montserrat_400Regular}`),
-    Montserrat_500Medium: require(`./assets/fonts/${montserrat_500Medium}`),
-    Montserrat_700Bold: require(`./assets/fonts/${montserrat_700Bold}`),
+    text_Light: require(`./assets/fonts/${text_Light}`),
+    text_Regular: require(`./assets/fonts/${text_Regular}`),
+    text_Medium: require(`./assets/fonts/${text_Medium}`),
+    text_Bold: require(`./assets/fonts/${text_Bold}`),
     //fonte titleAbout
-    Rajdhani_Medium: require(`./assets/fonts/${rajdhani_Medium}`),
+    title_About: require(`./assets/fonts/${title_About}`),
   });
 
   if (!fontsLoaded) {

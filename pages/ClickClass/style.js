@@ -17,11 +17,11 @@ export const ContentVideoDesktop = styled.View`
 `;
 
 export const ContentVideoMobile = styled.View`
-    /* align-self: center; */
     width: ${windowWidth};
-    align-content: center;
     aspect-ratio: 16/9;
     margin-bottom:2rem;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const ContentList = styled.View`

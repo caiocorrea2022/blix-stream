@@ -1,5 +1,3 @@
-
-
 export const clientName = "EMILY MONTEIRO";
 export const substitleAbout = "Seja bem-vindo ao seu novo aplicativo para praticar Yōga.";
 export const clientNameFooter = "EMILY MONTEIRO";
@@ -19,11 +17,11 @@ export const faleComigoUrl = 'https://www.google.com';
 export const aspectRatioLogoAbout = '1'; // width/height
 export const aspectRatioLogoMain = '1'; // width/height
 
-export const montserrat_300Light = 'Montserrat-Light.ttf';
-export const montserrat_400Regular = 'Montserrat-Regular.ttf';
-export const montserrat_500Medium = 'Montserrat-Medium.ttf';
-export const montserrat_700Bold = 'Montserrat-Bold.ttf';
-export const rajdhani_Medium = 'Rajdhani-Medium.ttf';
+export const text_Light = 'Texto-Light.ttf';
+export const text_Regular = 'Texto-Regular.ttf';
+export const text_Medium = 'Texto-Medium.ttf';
+export const text_Bold = 'Texto-Bold.ttf';
+export const title_About = 'FontePrincipal.ttf';
 
 export const borderRadiusButtons = '30px'; 
 

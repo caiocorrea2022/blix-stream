@@ -35,6 +35,7 @@ const Footer = () => {
           color={THEME.COLORS.TEXT_FOOTER}
           fontFamily={THEME.FONTFAMILY.LIGHT}
           fontSize={THEME.FONTSIZE.EXTRASMALL}
+          margin="0rem 1rem"
         ></TouchableText>
       </FooterLeftSide>
 

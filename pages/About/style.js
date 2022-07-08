@@ -38,4 +38,6 @@ export const ViewCookies = styled.View`
   width: 100%;
   padding: 1rem 0rem;
   z-index: 99999;
+  bottom: 0;
+  left: 0;
 `;

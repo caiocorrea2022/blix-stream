@@ -51,11 +51,11 @@ export default {
   },
 
   FONTFAMILY:{
-    BOLD: "Montserrat_700Bold",
-    MEDIUM: 'Montserrat_500Medium',
-    REGULAR: 'Montserrat_400Regular',
-    LIGHT: 'Montserrat_300Light',
-    FONTABOUT: "Rajdhani_Medium",
+    BOLD: 'text_Bold',
+    MEDIUM: 'text_Medium',
+    REGULAR: 'text_Regular',
+    LIGHT: 'text_Light',
+    FONTABOUT: 'title_About',
   },
 
   FONTSIZE:{
