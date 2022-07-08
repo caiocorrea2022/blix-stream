@@ -6,7 +6,6 @@ import { HeaderContainer, FooterText } from "../../config/theme/globalStyles";
 import { useAuth } from "../../context/useAuth";
 
 const firstStep = "Escolher compra";
-const stepIcon = ">";
 const secondStep = "Cadastrar-se";
 const thirdStep = "Completar pagamento";
 
@@ -14,18 +13,30 @@ const HeaderPurchase = ({ signUp }) => {
   const { user } = useAuth();
 
   return (
-    <HeaderContainer style={{ alignItems: "center" }}>
-      <HeaderLeftSide>
+    <HeaderContainer>
+      <HeaderLeftSide style={{ alignItems: "center" }}>
         <Avatar
           resizeMode="contain"
           source={require("../../assets/LogoAbout.png")}
         />
+        {signUp ? (
         <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
           {firstStep}
         </FooterText>
-        <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
-          {stepIcon}
+        ):(
+          <FooterText fontFamily={THEME.FONTFAMILY.MEDIUM} color={THEME.COLORS.PRIMARY_900} margin="0rem 1rem">
+          {firstStep}
         </FooterText>
+        )
+        }
+        <Icon
+            type="material-community"
+            name="chevron-right"
+            size={THEME.FONTSIZE.SMALL}
+            iconStyle={{
+              color: THEME.COLORS.ICON,
+            }}
+          />
         {user ? (
           <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
             {thirdStep}
@@ -35,9 +46,14 @@ const HeaderPurchase = ({ signUp }) => {
             <FooterText fontFamily={THEME.FONTFAMILY.MEDIUM} color={THEME.COLORS.PRIMARY_900} margin="0rem 1rem">
               {secondStep}
             </FooterText>
-            <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
-              {stepIcon}
-            </FooterText>
+            <Icon
+            type="material-community"
+            name="chevron-right"
+            size={THEME.FONTSIZE.SMALL}
+            iconStyle={{
+              color: THEME.COLORS.ICON,
+            }}
+          />
             <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
               {thirdStep}
             </FooterText>
@@ -47,9 +63,14 @@ const HeaderPurchase = ({ signUp }) => {
             <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
               {secondStep}
             </FooterText>
-            <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
-              {stepIcon}
-            </FooterText>
+            <Icon
+            type="material-community"
+            name="chevron-right"
+            size={THEME.FONTSIZE.SMALL}
+            iconStyle={{
+              color: THEME.COLORS.ICON,
+            }}
+          />
             <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
               {thirdStep}
             </FooterText>

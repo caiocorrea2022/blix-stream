@@ -1,7 +1,8 @@
 import React from "react";
 import Pricing from '../../components/Pricing';
-import Header from '../../components/Header';
+import HeaderPurchase from '../../components/HeaderPurchase';
 import { Container } from './style'
+import Footer from "../../components/Footer";
 
 export function Plans({ navigation: { goBack }, route }) {
   const { userId } = route.params;
@@ -9,7 +10,9 @@ export function Plans({ navigation: { goBack }, route }) {
 
   return (
     <Container>
+     <HeaderPurchase />
       <Pricing navigation={navigation} userId={userId}></Pricing>
+      <Footer></Footer>
     </Container>
   );
 }

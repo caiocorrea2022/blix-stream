@@ -11,14 +11,13 @@ import {
 import THEME from '../../config/theme';
 import { planFrequency, planPrices, planInfos, upsellPrices, subtitlePlan, pricingTitle } from '../../config/data';
 import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
-import { Title, SmallText, StandardText } from '../../config/theme/globalStyles';
+import { Title, SmallText } from '../../config/theme/globalStyles';
 import ViewPortProvider from "../../hooks/ViewPortProvider";
 import useViewport from "../../hooks/useViewport";
 import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const windowWidth = Dimensions.get('window').width;
-// const numColumns = planInfos.length;
 const cardSize = windowWidth * 0.23;
 
 const Pricing = ({ userId }) => {
@@ -44,6 +43,21 @@ const Pricing = ({ userId }) => {
     const { width } = useViewport();
     const breakpoint = 1080;
     return width < breakpoint ? (
+      <>
+      <TitleView>
+          <Title>{pricingTitle}</Title>
+          <SmallText margin="1rem">{subtitlePlan}</SmallText>
+          <FlatList
+            data={planFrequency}
+            renderItem={renderItem}
+            showsVerticalScrollIndicator={false}
+            keyExtractor={(item, index) => index.toString()}
+            extraData={selectedId}
+            numColumns={planFrequency.length}
+            columnWrapperStyle={{ justifyContent: "center" }}
+            style={{ flexGrow: 0 }}
+          />
+        </TitleView>
       <HorizontalListView>
         <HorizontalList horizontal={true}>
           {planInfos.map((item, index) => (
@@ -63,7 +77,7 @@ const Pricing = ({ userId }) => {
               }}
               infoStyle={{
                 color: THEME.COLORS.TEXT_ABOUT,
-                fontSize: THEME.FONTSIZE.SMALL,
+                fontSize: THEME.FONTSIZE.EXTRASMALL,
                 textAlign: 'center',
                 flex: '1 1 auto',
                 fontFamily: THEME.FONTFAMILY.LIGHT,
@@ -109,7 +123,23 @@ const Pricing = ({ userId }) => {
           ))}
         </HorizontalList>
       </HorizontalListView>
+      </>
     ) : (
+      <>
+      <TitleView>
+          <Title>{pricingTitle}</Title>
+          <SmallText margin="1rem 8rem">{subtitlePlan}</SmallText>
+          <FlatList
+            data={planFrequency}
+            renderItem={renderItem}
+            showsVerticalScrollIndicator={false}
+            keyExtractor={(item, index) => index.toString()}
+            extraData={selectedId}
+            numColumns={planFrequency.length}
+            columnWrapperStyle={{ justifyContent: "center" }}
+            style={{ flexGrow: 0 }}
+          />
+        </TitleView>
       <HorizontalListView>
         <HorizontalList horizontal={true}>
           {planInfos.map((item, index) => (
@@ -128,7 +158,7 @@ const Pricing = ({ userId }) => {
               }}
               infoStyle={{
                 color: THEME.COLORS.TEXT_ABOUT,
-                fontSize: THEME.FONTSIZE.SMALL,
+                fontSize: THEME.FONTSIZE.EXTRASMALL,
                 textAlign: 'center',
                 flex: '1 1 auto',
                 fontFamily: THEME.FONTFAMILY.LIGHT,
@@ -174,6 +204,7 @@ const Pricing = ({ userId }) => {
           ))}
         </HorizontalList>
       </HorizontalListView>
+      </>
     )
   };
 
@@ -200,20 +231,6 @@ const Pricing = ({ userId }) => {
   return (
     <ViewPortProvider>
       <Container>
-        <TitleView>
-          <Title>{pricingTitle}</Title>
-          <StandardText margin="1rem">{subtitlePlan}</StandardText>
-          <FlatList
-            data={planFrequency}
-            renderItem={renderItem}
-            showsVerticalScrollIndicator={false}
-            keyExtractor={(item, index) => index.toString()}
-            extraData={selectedId}
-            numColumns={planFrequency.length}
-            columnWrapperStyle={{ justifyContent: "center" }}
-            style={{ flexGrow: 0 }}
-          />
-        </TitleView>
         <MobileOrDesktopCardSize></MobileOrDesktopCardSize>
       </Container>
     </ViewPortProvider>

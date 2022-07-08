@@ -11,7 +11,7 @@ export const VerticalScroll = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: true,
   contentContainerStyle: {
     flexDirection: "column",
-    backgroundColor: THEME.COLORS.BACKGROUND,
+    backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
   },
 })`  
 `;
