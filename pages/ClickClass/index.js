@@ -67,13 +67,13 @@ export function ClickClass({ route, navigation }) {
         setListVideos(docSnap.data().videos);
         setVideo(docSnap.data().videos[0].link);
         setMeetingNumber(docSnap.data().videos[0].meetingNumber);
+        setPdf(docSnap.data().videos[0].pdf);
+        setUrl(docSnap.data().videos[0].url);
         setPassWord(docSnap.data().videos[0].meetingPassword);
         setClassName(docSnap.data().videos[0].title)
       }
       setImg(docSnap.data().img);
       setName(docSnap.data().title);
-      setPdf(docSnap.data().pdf);
-      setUrl(docSnap.data().url);
       setDescription(docSnap.data().description);
       setPlan(docSnap.data().plan);
       setCourseId(docSnap.data().courseId);
@@ -283,6 +283,7 @@ export function ClickClass({ route, navigation }) {
                   setClassName(item.title);
                   setMeetingNumber(item.meetingNumber);
                   setPassWord(item.meetingPassword);
+                  setPdf(item.pdf)
                 }}
                 style={{ margin: 10 }}
               >
@@ -337,6 +338,7 @@ export function ClickClass({ route, navigation }) {
                   setClassName(item.title);
                   setMeetingNumber(item.meetingNumber);
                   setPassWord(item.meetingPassword);
+                  setPdf(item.pdf)
                 }}
                 style={{ margin: 10 }}
               >
