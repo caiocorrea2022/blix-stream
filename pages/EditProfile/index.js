@@ -126,7 +126,7 @@ export function EditProfile({ navigation: { goBack } }) {
         <Provider>
             <Container flex="none">
                 <VerticalScroll>
-                    <Header onPress={() => goBack()} />
+                    <Header onPress2={() => goBack()} />
                     <ViewPlan>
                         <StandardText padding="0rem 0rem 0.5rem 0rem" textAlign="flex-start">DETALHES DO PLANO:</StandardText>
                         <ViewButton>
