@@ -13,6 +13,7 @@ height: 100%;
 aspectRatio: ${aspectRatioLogoMain}; 
 `;
 
+
 export const HeaderRightSide = styled.View`
     flex-direction: row;
     height: 2.5rem;

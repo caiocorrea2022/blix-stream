@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { View } from "react-native";
 import { ContentDesktop, ContentMobile, ContentList, Image, ViewText, ViewButton, Container } from './style';
-import Header from "../../components/Header";
+import HeaderPurchase from "../../components/HeaderPurchase";
 import Button from "../../components/Button";
+import Footer from "../../components/Footer";
 import ViewPortProvider from "../../hooks/ViewPortProvider";
 import useViewport from "../../hooks/useViewport";
 import THEME from '../../config/theme';
@@ -142,8 +143,9 @@ export function ClickCourse ({ route }) {
   return (
     <ViewPortProvider>
       <Container>
-        <Header about={true} background={THEME.COLORS.BACKGROUND_HEADER} />
+        <HeaderPurchase background={THEME.COLORS.BACKGROUND_HEADER} />
         <OutsideView></OutsideView>
+        <Footer></Footer>
       </Container>
     </ViewPortProvider>
   );

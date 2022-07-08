@@ -12,6 +12,8 @@ export const subtitlePlan = "Teste grátis por 7 dias! Planos com renovação au
 export const returnUrlCustomerPortal = 'http://loupaz-ec0b1.firebaseapp.com/meuperfil';
 export const returnDomainZoom = 'http://localhost:19006';
 
+export const faleComigoUrl = 'https://www.google.com';
+
 export const aspectRatioLogoAbout = '1'; // width/height
 export const aspectRatioLogoMain = '1'; // width/height
 

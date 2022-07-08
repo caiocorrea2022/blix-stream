@@ -9,7 +9,8 @@ import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../../context/useAuth";
 
-const Header = ({ onPress, about, signUp }) => {
+
+const Header = ({ onPress, about}) => {
   const navigation = useNavigation();
   const { user } = useAuth();
 
@@ -21,13 +22,10 @@ const Header = ({ onPress, about, signUp }) => {
           source={require("../../assets/LogoAbout.png")}
         />
       </HeaderLeftSide>
-      {signUp ? (
-        <HeaderRightSide style={{ alignItems: "center" }}></HeaderRightSide>
-      ) : (
         <HeaderRightSide style={{ alignItems: "center" }}>
           {user ? (
             <StandardText
-              color={THEME.COLORS.ICON_HEADER}
+              color={THEME.COLORS.ICON_HEADER_ABOUT}
               margin="0rem 1rem"
               onPress={onPress}
             >
@@ -36,14 +34,14 @@ const Header = ({ onPress, about, signUp }) => {
           ) : (
             <>
               <StandardText
-                color={THEME.COLORS.ICON_HEADER}
+                color={THEME.COLORS.ICON_HEADER_ABOUT}
                 margin="0rem 1rem"
                 onPress={onPress}
               >
                 VER APLICATIVO
               </StandardText>
               <StandardText
-                color={THEME.COLORS.ICON_HEADER}
+                color={THEME.COLORS.ICON_HEADER_ABOUT}
                 margin="0rem 1rem"
                 onPress={() => navigation.navigate("Login")}
               >
@@ -52,7 +50,6 @@ const Header = ({ onPress, about, signUp }) => {
             </>
           )}
         </HeaderRightSide>
-      )}
     </HeaderContainer>
   ) : (
     <HeaderContainer>
@@ -62,21 +59,21 @@ const Header = ({ onPress, about, signUp }) => {
             <Icon
               type="material-community"
               name="chevron-left"
-              color={THEME.COLORS.ICON_HEADER}
+              color={THEME.COLORS.ICON_HEADER_CLICKCLASS}
               size={THEME.FONTSIZE.BIG}
               onPress={onPress}
             />
             <TouchableText
               onPress={onPress}
               title={"Voltar"}
-              color={THEME.COLORS.ICON_HEADER}
+              color={THEME.COLORS.ICON_HEADER_CLICKCLASS}
             ></TouchableText>
           </Row>
         ) : (
           <Icon
             type="material-community"
             name="menu"
-            color={THEME.COLORS.ICON_HEADER}
+            color={THEME.COLORS.ICON_HEADER_MAIN}
             size={34}
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
           />

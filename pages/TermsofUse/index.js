@@ -40,10 +40,6 @@ export function TermsofUse({ navigation }) {
         animationType="slide"
         transparent={false}
         visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-          navigation.navigate("Drawer");
-        }}
       >
         <ViewHeading>
         <ViewPressable></ViewPressable>
