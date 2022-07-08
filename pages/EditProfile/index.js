@@ -7,7 +7,7 @@ import { firestore } from '../../services/firebase'
 import 'firebase/functions';
 import { getFunctions, httpsCallable } from "firebase/functions";
 import { Content, ViewText, ViewTextInput, ViewDescription, ViewButton, ViewPlan, ViewHelper, VerticalScroll } from './style';
-import { Container, SmallText, StandardText } from '../../config/theme/globalStyles';
+import { SmallText, StandardText } from '../../config/theme/globalStyles';
 import TextInput from "../../components/TextInput";
 import Button from '../../components/Button';
 import THEME from '../../config/theme';
@@ -30,7 +30,8 @@ export function EditProfile({ navigation }) {
     const [loadingPlan, setLoadingPlan] = useState(false);
     const [loadingSave, setLoadingSave] = useState(false);
     const [visibleAlert, setVisibleAlert] = useState(false);
-    const [message, setMessege] = useState(null)
+    const [message, setMessege] = useState(null);
+    const [plan, setPlan] = useState("");
 
     const showAlert = (message) => {
         setVisibleAlert(true)
@@ -72,6 +73,7 @@ export function EditProfile({ navigation }) {
             setEmail(userProfile.email);
             setCellPhone(userProfile.cellphone);
             setCpf(userProfile.cpf)
+            setPlan(docSnap.data().plan);
         } else {
             console.log("No such document!");
         }
@@ -124,11 +126,9 @@ export function EditProfile({ navigation }) {
     }
     return (
         <Provider>
-            <Container flex="none">
-                <VerticalScroll>
-                    <Header onPress2={() => {
-                        navigation.navigate("Drawer", {screen:"Aplicativo"});
-                    }} />
+            <VerticalScroll>
+                <Header onPress2={() => { navigation.navigate("Drawer", { screen: "Aplicativo" }) }} />
+                {plan ? (
                     <ViewPlan>
                         <StandardText padding="0rem 0rem 0.5rem 0rem" textAlign="flex-start">DETALHES DO PLANO:</StandardText>
                         <ViewButton>
@@ -142,84 +142,86 @@ export function EditProfile({ navigation }) {
                             ></Button>
                         </ViewButton>
                     </ViewPlan>
-                    <Content>
-                        <StandardText padding="1rem 0rem" textAlign="flex-start">EDITAR INFORMAÇÕES DO CADASTRO:</StandardText>
-                        <ViewDescription>
-                            <SmallText textAlign="flex-start">Nome Completo:</SmallText>
-                        </ViewDescription>
-                        <ViewTextInput>
-                            <ViewText>
-                                <TextInput
-                                    placeholder="Nome"
-                                    keyboardType='default'
-                                    returnKeyType='go'
-                                    value={name}
-                                    onChange={({ target: { value } }) => { setName(value); setErrorName(null) }}
-                                    error={!!errorName}
-                                />
-                            </ViewText>
-                            <ViewHelper>
-                                <HelperText type="error" visible={errorName}>{errorName}</HelperText>
-                            </ViewHelper>
-                        </ViewTextInput>
-                        <ViewDescription>
-                            <SmallText textAlign="flex-start">Email:</SmallText>
-                        </ViewDescription>
-                        <ViewTextInput>
-                            <ViewText>
-                                <TextInput
-                                    value={email}
-                                    editable={false}
-                                />
-                            </ViewText>
-                            <ViewHelper></ViewHelper>
-                        </ViewTextInput>
-                        <ViewDescription>
-                            <SmallText textAlign="flex-start">Celular:</SmallText>
-                        </ViewDescription>
-                        <ViewTextInput>
-                            <ViewText>
-                                <TextInput
-                                    placeholder="(DDD)99999-9999"
-                                    keyboardType='default'
-                                    returnKeyType='go'
-                                    value={cellphone}
-                                    onChange={({ target: { value } }) => { setCellPhone(value); setErrorCellphone(null) }}
-                                    error={!!errorCellphone}
-                                />
-                            </ViewText>
-                            <ViewHelper>
-                                <HelperText type="error" visible={errorCellphone}>{errorCellphone}</HelperText>
-                            </ViewHelper>
-                        </ViewTextInput>
-                        <ViewDescription>
-                            <SmallText textAlign="flex-start">CPF:</SmallText>
-                        </ViewDescription>
-                        <ViewTextInput>
-                            <ViewText>
-                                <TextInput
-                                    value={cpf}
-                                    editable={false}
-                                />
-                            </ViewText>
-                            <ViewHelper></ViewHelper>
-                        </ViewTextInput>
-                        {visibleAlert &&
-                            <AlertBox message={message} visible={visibleAlert} onClose={hideAlert}></AlertBox>
-                        }
-                        <ViewButton>
-                            <Button
-                                title={'SALVAR'}
-                                isLoading={loadingSave}
-                                onPress={salvar}
-                                borderRadius="5px"
-                                colorbutton={THEME.COLORS.PRIMARY_800}
-                                colortitle={THEME.COLORS.TEXT_ABOUT}
-                            ></Button>
-                        </ViewButton>
-                    </Content>
-                </VerticalScroll>
-            </Container>
+                ) : (
+                    <></>
+                )}
+                <Content>
+                    <StandardText padding="1rem 0rem" textAlign="flex-start">EDITAR INFORMAÇÕES DO CADASTRO:</StandardText>
+                    <ViewDescription>
+                        <SmallText textAlign="flex-start">Nome Completo:</SmallText>
+                    </ViewDescription>
+                    <ViewTextInput>
+                        <ViewText>
+                            <TextInput
+                                placeholder="Nome"
+                                keyboardType='default'
+                                returnKeyType='go'
+                                value={name}
+                                onChange={({ target: { value } }) => { setName(value); setErrorName(null) }}
+                                error={!!errorName}
+                            />
+                        </ViewText>
+                        <ViewHelper>
+                            <HelperText type="error" visible={errorName}>{errorName}</HelperText>
+                        </ViewHelper>
+                    </ViewTextInput>
+                    <ViewDescription>
+                        <SmallText textAlign="flex-start">Email:</SmallText>
+                    </ViewDescription>
+                    <ViewTextInput>
+                        <ViewText>
+                            <TextInput
+                                value={email}
+                                editable={false}
+                            />
+                        </ViewText>
+                        <ViewHelper></ViewHelper>
+                    </ViewTextInput>
+                    <ViewDescription>
+                        <SmallText textAlign="flex-start">Celular:</SmallText>
+                    </ViewDescription>
+                    <ViewTextInput>
+                        <ViewText>
+                            <TextInput
+                                placeholder="(DDD)99999-9999"
+                                keyboardType='default'
+                                returnKeyType='go'
+                                value={cellphone}
+                                onChange={({ target: { value } }) => { setCellPhone(value); setErrorCellphone(null) }}
+                                error={!!errorCellphone}
+                            />
+                        </ViewText>
+                        <ViewHelper>
+                            <HelperText type="error" visible={errorCellphone}>{errorCellphone}</HelperText>
+                        </ViewHelper>
+                    </ViewTextInput>
+                    <ViewDescription>
+                        <SmallText textAlign="flex-start">CPF:</SmallText>
+                    </ViewDescription>
+                    <ViewTextInput>
+                        <ViewText>
+                            <TextInput
+                                value={cpf}
+                                editable={false}
+                            />
+                        </ViewText>
+                        <ViewHelper></ViewHelper>
+                    </ViewTextInput>
+                    {visibleAlert &&
+                        <AlertBox message={message} visible={visibleAlert} onClose={hideAlert}></AlertBox>
+                    }
+                    <ViewButton>
+                        <Button
+                            title={'SALVAR'}
+                            isLoading={loadingSave}
+                            onPress={salvar}
+                            borderRadius="5px"
+                            colorbutton={THEME.COLORS.PRIMARY_800}
+                            colortitle={THEME.COLORS.TEXT_ABOUT}
+                        ></Button>
+                    </ViewButton>
+                </Content>
+            </VerticalScroll>
         </Provider>
     );
 };

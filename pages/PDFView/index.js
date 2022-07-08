@@ -10,10 +10,7 @@ import {
   ContentIcon,
 } from "./style";
 import THEME from '../../config/theme';
-import { DrawerActions } from '@react-navigation/native';
 import PDF from "../../components/PDF";
-import { Title } from "../../config/theme/globalStyles"
-
 
 export function PDFView({ route, navigation: { goBack } }) {
   const { pdf } = route.params;
