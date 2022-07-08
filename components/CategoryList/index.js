@@ -87,7 +87,6 @@ const CategoryList = ({ category, plan, courses }) => {
               height: "10rem",
               justifyContent: "center",
               overflow: "hidden",
-              margin: "0rem 1rem",
             }}
             onPress={handleRightArrow}
           />

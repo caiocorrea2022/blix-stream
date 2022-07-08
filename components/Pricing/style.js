@@ -1,9 +1,7 @@
 import styled from "styled-components/native";
 import THEME from "../../config/theme";
 
-
 export const Container = styled.View`
-
 `;
 
 export const HorizontalList = styled.ScrollView.attrs({
@@ -30,5 +28,4 @@ export const TitleView = styled.View`
 
 export const HorizontalListView = styled.View`
   flex-basis: "auto";
-  background-color: "green";
 `;

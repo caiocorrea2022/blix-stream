@@ -1,16 +1,9 @@
 import styled from 'styled-components/native'
-import { aspectRatioLogoAbout, aspectRatioLogoMain } from '../../config/data';
 
 export const Avatar = styled.Image`
 width: undefined;
 height: 100%;
-aspectRatio: ${aspectRatioLogoAbout}; 
-`;
-
-export const Avatar2 = styled.Image`
-width: undefined;
-height: 100%;
-aspectRatio: ${aspectRatioLogoMain}; 
+aspect-ratio: ${({ aspectRatio }) => aspectRatio};
 `;
 
 export const HeaderRightSide = styled.View`

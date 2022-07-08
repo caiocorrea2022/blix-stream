@@ -1,9 +1,10 @@
 import React from "react";
-import { HeaderLeftSide, Avatar, Row, Avatar2, HeaderMiddle } from "./style";
+import { HeaderLeftSide, Avatar } from "./style";
 import { Icon } from "react-native-elements";
 import THEME from "../../config/theme";
 import { HeaderContainer, FooterText } from "../../config/theme/globalStyles";
 import { useAuth } from "../../context/useAuth";
+import { aspectRatioLogoAbout } from '../../config/data';
 
 const firstStep = "Escolher compra";
 const secondStep = "Cadastrar-se";
@@ -18,25 +19,26 @@ const HeaderPurchase = ({ signUp }) => {
         <Avatar
           resizeMode="contain"
           source={require("../../assets/LogoAbout.png")}
+          aspectRatio={aspectRatioLogoAbout}
         />
         {signUp ? (
-        <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
-          {firstStep}
-        </FooterText>
-        ):(
+          <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
+            {firstStep}
+          </FooterText>
+        ) : (
           <FooterText fontFamily={THEME.FONTFAMILY.MEDIUM} color={THEME.COLORS.PRIMARY_900} margin="0rem 1rem">
-          {firstStep}
-        </FooterText>
+            {firstStep}
+          </FooterText>
         )
         }
         <Icon
-            type="material-community"
-            name="chevron-right"
-            size={THEME.FONTSIZE.SMALL}
-            iconStyle={{
-              color: THEME.COLORS.ICON,
-            }}
-          />
+          type="material-community"
+          name="chevron-right"
+          size={THEME.FONTSIZE.SMALL}
+          iconStyle={{
+            color: THEME.COLORS.ICON,
+          }}
+        />
         {user ? (
           <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
             {thirdStep}
@@ -47,13 +49,13 @@ const HeaderPurchase = ({ signUp }) => {
               {secondStep}
             </FooterText>
             <Icon
-            type="material-community"
-            name="chevron-right"
-            size={THEME.FONTSIZE.SMALL}
-            iconStyle={{
-              color: THEME.COLORS.ICON,
-            }}
-          />
+              type="material-community"
+              name="chevron-right"
+              size={THEME.FONTSIZE.SMALL}
+              iconStyle={{
+                color: THEME.COLORS.ICON,
+              }}
+            />
             <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
               {thirdStep}
             </FooterText>
@@ -64,13 +66,13 @@ const HeaderPurchase = ({ signUp }) => {
               {secondStep}
             </FooterText>
             <Icon
-            type="material-community"
-            name="chevron-right"
-            size={THEME.FONTSIZE.SMALL}
-            iconStyle={{
-              color: THEME.COLORS.ICON,
-            }}
-          />
+              type="material-community"
+              name="chevron-right"
+              size={THEME.FONTSIZE.SMALL}
+              iconStyle={{
+                color: THEME.COLORS.ICON,
+              }}
+            />
             <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
               {thirdStep}
             </FooterText>
