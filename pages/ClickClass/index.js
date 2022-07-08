@@ -63,11 +63,13 @@ export function ClickClass({ route, navigation }) {
     const docRef = doc(firestore, "categories", "MkYps8Md8G6jDwFyg4VB", "cards", cardId);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      setListVideos(docSnap.data().videos);
-      setVideo(docSnap.data().videos[0].link);
-      setMeetingNumber(docSnap.data().videos[0].meetingNumber);
-      setPassWord(docSnap.data().videos[0].meetingPassword);
-      setClassName(docSnap.data().videos[0].title)
+      if (docSnap.data().videos) {
+        setListVideos(docSnap.data().videos);
+        setVideo(docSnap.data().videos[0].link);
+        setMeetingNumber(docSnap.data().videos[0].meetingNumber);
+        setPassWord(docSnap.data().videos[0].meetingPassword);
+        setClassName(docSnap.data().videos[0].title)
+      }
       setImg(docSnap.data().img);
       setName(docSnap.data().title);
       setPdf(docSnap.data().pdf);
