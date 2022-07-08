@@ -20,14 +20,12 @@ import TouchableText from "../../components/TouchableText";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { firestore } from "../../services/firebase";
-import {Zoom} from "../../components/Zoom";
+import { Zoom } from "../../components/Zoom";
 
 const auth = getAuth();
 
 export function ClickClass({ route, navigation }) {
-  const {
-    cardId,
-  } = route.params;
+  const { cardId } = route.params;
 
   const [video, setVideo] = useState();
   const [meetingNumber, setMeetingNumber] = useState("");
@@ -277,6 +275,7 @@ export function ClickClass({ route, navigation }) {
         {(userPlan >= plan || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
           <FlatList
             data={listVideos}
+            keyExtractor={(item, index) => index.toString()}
             renderItem={({ item, index }) => (
               <TouchableOpacity
                 onPress={() => {
@@ -290,7 +289,7 @@ export function ClickClass({ route, navigation }) {
                 <PlayList {...item}></PlayList>
               </TouchableOpacity>
             )}
-            style={{ marginBottom: "1rem", flexGrow: 0 }}
+            style={{ marginBottom: "0rem", flexGrow: 0 }}
             ListHeaderComponent={
               <ListHeader
                 title={name}
@@ -305,12 +304,13 @@ export function ClickClass({ route, navigation }) {
         ) : (
           <FlatList
             data={listVideos}
+            keyExtractor={(item, index) => index.toString()}
             renderItem={({ item, index }) => (
               <TouchableOpacity style={{ margin: 10 }}>
                 <PlayList {...item}></PlayList>
               </TouchableOpacity>
             )}
-            style={{ marginBottom: "1rem", flexGrow: 0 }}
+            style={{ marginBottom: "0rem", flexGrow: 0 }}
             ListHeaderComponent={
               <ListHeader
                 title={name}
@@ -329,6 +329,7 @@ export function ClickClass({ route, navigation }) {
         {(userPlan >= plan || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
           <FlatList
             data={listVideos}
+            keyExtractor={(item, index) => index.toString()}
             renderItem={({ item, index }) => (
               <TouchableOpacity
                 onPress={() => {
@@ -342,7 +343,7 @@ export function ClickClass({ route, navigation }) {
                 <PlayList {...item}></PlayList>
               </TouchableOpacity>
             )}
-            style={{ marginBottom: "1rem", flexGrow: 0 }}
+            style={{ marginBottom: "0rem", flexGrow: 0 }}
             ListHeaderComponent={
               <ListHeader
                 title={name}
@@ -357,12 +358,13 @@ export function ClickClass({ route, navigation }) {
         ) : (
           <FlatList
             data={listVideos}
+            keyExtractor={(item, index) => index.toString()}
             renderItem={({ item, index }) => (
               <TouchableOpacity style={{ margin: 10 }}>
                 <PlayList {...item}></PlayList>
               </TouchableOpacity>
             )}
-            style={{ marginBottom: "1rem", flexGrow: 0 }}
+            style={{ marginBottom: "0rem", flexGrow: 0 }}
             ListHeaderComponent={
               <ListHeader
                 title={name}

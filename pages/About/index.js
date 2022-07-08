@@ -79,7 +79,7 @@ export function About({ navigation }) {
         <Poster source={require("../../assets/FotoAbout.jpg")}>
           <Header
             about={true}
-            onPress={() => navigation.navigate("Drawer", { screen: "Aplicativo" })}
+            onPress={() => navigation.navigate("Drawer")}
           />
           <Hero
             navigation={navigation}
@@ -134,7 +134,7 @@ export function About({ navigation }) {
         <ViewAboutMe>
           <Button
             title={"Visualizar aplicativo"}
-            onPress={() => navigation.navigate("Drawer", { screen: "Aplicativo" })}
+            onPress={() => navigation.navigate("Drawer")}
           ></Button>
         </ViewAboutMe>
       </ViewSection>

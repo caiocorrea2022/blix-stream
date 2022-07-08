@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { View } from "react-native";
 import HeaderPurchase from "../../components/HeaderPurchase";
 import {
   Content,
@@ -39,15 +38,12 @@ import TouchableText from "../../components/TouchableText";
 import { TextInputMask } from "react-native-masked-text";
 import { appendSpreadsheet } from "../../services/googlesheets";
 
-export function SignUp({ navigation: { goBack }, route }) {
+export function SignUp({ navigation, route }) {
   const { purchaseType, priceId } = route.params;
   const [name, setName] = useState({ value: "", error: "" });
   const [email, setEmail] = useState({ value: "", error: "" });
   const [password, setPassword] = useState({ value: "", error: "" });
-  const [confirmPassword, setConfirmPassword] = useState({
-    value: "",
-    error: "",
-  });
+  const [confirmPassword, setConfirmPassword] = useState({ value: "", error: ""});
   const [cellphone, setCellPhone] = useState({ value: "", error: "" });
   const [cpf, setCpf] = useState({ value: "", error: "" });
   const [loading, setLoading] = useState(false);
@@ -108,16 +104,13 @@ export function SignUp({ navigation: { goBack }, route }) {
       if (password.value !== confirmPassword.value) {
         showAlert("Erro", "As senhas não correspondem.");
       } else if (isSelected === true) {
-        setLoading(true);
+        setLoading(true)
         createUserWithEmailAndPassword(
           auth,
           email.value,
           password.value,
-          cellphone.value,
-          cpf.value
         )
           .then((currentUser) => {
-            console.log("user criado");
             const user = currentUser.user;
             const usersCollectionRef = doc(firestore, "users", user.uid);
             const createUser = async () => {
@@ -129,18 +122,20 @@ export function SignUp({ navigation: { goBack }, route }) {
               });
               console.log("user criado");
               console.log(user);
-            };
-            createUser().then(() => {
-              sendEmailVerification(auth.currentUser).then(() => {
-                signOut(auth).then(() => {
-                  if (purchaseType === "PLAN") {
-                    createCheckoutSession(user.uid, priceId, "subscription", 6);
-                  } else if (purchaseType === "COURSE") {
-                    createCheckoutSession(user.uid, priceId, "payment", 0);
-                  }
-                });
-              });
-            });
+            }
+            createUser()
+              .then(() => {
+                // sendEmailVerification(auth.currentUser).then(() => {
+                signOut(auth)
+                  .then(() => {
+                    if (purchaseType === "PLAN") {
+                      createCheckoutSession(user.uid, priceId, "subscription", 6)
+                    } else if (purchaseType === "COURSE") {
+                      createCheckoutSession(user.uid, priceId, "payment", 0)
+                    }
+                  })
+                // });
+              })
           })
           .catch((error) => {
             setLoading(false);
@@ -165,13 +160,14 @@ export function SignUp({ navigation: { goBack }, route }) {
                 showAlert("Erro:", "Problemas ao cadastrar o usuário.");
                 break;
             }
-          });
+          })
         appendSpreadsheet({
           NomeCompleto: name.value,
           Email: email.value,
           Celular: cellphone.value,
           CPF: cpf.value,
-        });
+        })
+
       } else {
         showAlert(
           "Erro:",
