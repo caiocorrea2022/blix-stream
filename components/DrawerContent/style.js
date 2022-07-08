@@ -8,3 +8,7 @@ export const Footer = styled.View`
     background-color: ${THEME.COLORS.BACKGROUND_FOOTER};
 `;
 
+export const Logo = styled.Image`
+    width: 1.3rem;
+    height: 1rem;
+`;
