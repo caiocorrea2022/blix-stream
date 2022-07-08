@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { PricingCard } from "react-native-elements";
-import { FlatList, TouchableOpacity } from 'react-native';
+import { FlatList, TouchableOpacity, View } from 'react-native';
 import {
   Container,
   TitleView,
@@ -18,6 +18,7 @@ import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 const cardSize = windowWidth * 0.23;
 
 const Pricing = ({ userId }) => {
@@ -43,7 +44,8 @@ const Pricing = ({ userId }) => {
     const { width } = useViewport();
     const breakpoint = 1080;
     return width < breakpoint ? (
-      <>
+      //120 é aprox altura do header + altura do footer em px
+      <View style={{height: windowHeight-120}}> 
       <TitleView>
           <Title>{pricingTitle}</Title>
           <SmallText margin="1rem">{subtitlePlan}</SmallText>
@@ -123,7 +125,7 @@ const Pricing = ({ userId }) => {
           ))}
         </HorizontalList>
       </HorizontalListView>
-      </>
+      </View>
     ) : (
       <>
       <TitleView>
