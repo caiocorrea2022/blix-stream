@@ -48,7 +48,6 @@ export function ResetPassword() {
       })
       .finally(() => {
         setLoading(false);
-
       });
   }
 
