@@ -28,6 +28,23 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+      - name: 'Create env file'
+        run: |
+          touch .env
+          echo REACT_APP_FIREBASE_API_KEY=${{ secrets.API_KEY }} >> .env
+          echo REACT_APP_FIREBASE_AUTH_DOMAIN=${{ secrets.API_KEY }} >> .env
+          echo REACT_APP_FIREBASE_PROJECT_ID=${{ secrets.API_KEY }} >> .env
+          echo REACT_APP_FIREBASE_STORAGE_BUCKET=${{ secrets.API_KEY }} >> .env
+          echo REACT_APP_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.API_KEY }} >> .env
+          echo REACT_APP_FIREBASE_APP_ID=${{ secrets.API_KEY }} >> .env
+          echo REACT_APP_FIREBASE_MEASUREMEMT_ID=${{ secrets.API_KEY }} >> .env
+          echo ZOOM_SDK_KEY=${{ secrets.API_KEY }} >> .env
+          echo ZOOM_SDK_SECRET=${{ secrets.API_KEY }} >> .env
+          echo SPREADSHEET_ID=${{ secrets.API_KEY }} >> .env
+          echo SHEET_ID=${{ secrets.API_KEY }} >> .env
+          echo CLIENT_EMAIL=${{ secrets.API_KEY }} >> .env
+          echo PRIVATE_KEY=${{ secrets.API_KEY }} >> .env
+          cat .env
       - name: Install expo
         uses: expo/expo-github-action@v5
       - name: Install the dependencies
