@@ -11,7 +11,7 @@ export const aboutTitleCategory = "O QUE VOCÊ VAI ENCONTRAR NO APLICATIVO";
 export const aboutTitleCourses = "CURSOS DISPONÍVEIS";
 export const pricingTitle = "ESCOLHA SEU PLANO";
 export const subtitlePlan = "Teste grátis por 7 dias! Planos com renovação automática com opções de pagamento no boleto ou no cartão de crédito, para praticar onde você desejar!";
-export const returnUrlCustomerPortal = 'http://loupaz-ec0b1.firebaseapp.com/meuperfil';
+export const returnUrlCustomerPortal = 'http://localhost:19006/EditProfile';
 export const returnDomainZoom = 'http://localhost:19006';
 
 export const faleComigoUrl = 'https://www.google.com';

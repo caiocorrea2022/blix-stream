@@ -10,6 +10,8 @@ import { Plans } from "../pages/Plans";
 import { TermsofUse } from "../pages/TermsofUse";
 import { DrawerRoutes } from "./DrawerRoutes";
 import { About } from "../pages/About";
+import { EditProfile } from "../pages/EditProfile";
+import { PreLoadStripe } from "../context/loadStripe";
 
 const { Screen, Navigator } = createNativeStackNavigator();
 
@@ -28,6 +30,8 @@ export function AuthRoutes() {
       <Screen name="TermsofUse" component={TermsofUse} />
       <Screen name="PDFView" component={PDFView} />
       <Screen name="Success" component={Success} />
+      <Screen name="EditProfile" component={EditProfile} />
+      <Screen name="PreLoadStripe" component={PreLoadStripe} />
     </Navigator>
   );
 }

@@ -71,12 +71,12 @@ export function Login({ navigation }) {
           signInWithEmailAndPassword(auth, email.value, password.value)
             .then((userCredential) => {
               const user = userCredential.user;
-              if (user.emailVerified === false) {
-                showAlert("Erro:", "E-mail não verificado. Confira sua caixa de entrada.")
-                setLoading(false)
-              } else {
+              // if (user.emailVerified === false) {
+              //   showAlert("Erro:", "E-mail não verificado. Confira sua caixa de entrada.")
+              //   setLoading(false)
+              // } else {
                 navigation.navigate('Drawer')
-              }
+              // }
             })
             .catch((error) => {
               setLoading(false);

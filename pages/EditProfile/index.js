@@ -19,7 +19,7 @@ import { HelperText } from 'react-native-paper';
 const auth = getAuth();
 const functions = getFunctions();
 
-export function EditProfile({ navigation: { goBack } }) {
+export function EditProfile({ navigation }) {
     const [name, setName] = useState('');
     const [errorName, setErrorName] = useState('')
     const [email, setEmail] = useState('');
@@ -126,7 +126,9 @@ export function EditProfile({ navigation: { goBack } }) {
         <Provider>
             <Container flex="none">
                 <VerticalScroll>
-                    <Header onPress2={() => goBack()} />
+                    <Header onPress2={() => {
+                        navigation.navigate("Drawer", {screen:"Aplicativo"});
+                    }} />
                     <ViewPlan>
                         <StandardText padding="0rem 0rem 0.5rem 0rem" textAlign="flex-start">DETALHES DO PLANO:</StandardText>
                         <ViewButton>
