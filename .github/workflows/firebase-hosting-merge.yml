@@ -7,20 +7,6 @@ name: Deploy to Firebase Hosting on merge
     branches:
       - master
 
-#criado automático
-# jobs:
-#   build_and_deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - run: npm ci && npm run build
-#       - uses: FirebaseExtended/action-hosting-deploy@v0
-#         with:
-#           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-#           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BLIX_STREAM }}'
-#           channelId: live
-#           projectId: blix-stream
-
 jobs:
   build:
     name: Build and deploy
@@ -58,3 +44,10 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BLIX_STREAM }}'
           channelId: live
           projectId: blix-stream
+      - name: 'deploy functions'
+        uses: 'google-github-actions/deploy-cloud-functions@v0'
+        with:
+          name: 'my-function'
+          runtime: 'nodejs16'
+          env_vars:
+            - STRIPE_SECTRET_KEY: '${{ secrets.STRIPE_SECTRET_KEY }}'

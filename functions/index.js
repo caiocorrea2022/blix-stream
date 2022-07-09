@@ -70,7 +70,7 @@ exports.userTrigger = functions.firestore
                     value: user.CPF,
                 },
                 headers: {
-                    'Authorization': 'Bearer sk_test_51K1wAiCmcyIwF9rcDllUmRHt47Sf8pzFwglHfcrHN6Zy8GdSnl3RFPl8yoPoOJbFXs18LK8eCHavE9oQilLFqzbk00dR3pma24'
+                    'Authorization': `Bearer ${process.env.STRIPE_SECTRET_KEY}`
                 },
             }, (err, res, body) => {
                 const info = JSON.parse(body)
@@ -118,7 +118,7 @@ exports.paymentTrigger = functions.firestore
                             from_subscription: subId
                         },
                         headers: {
-                            'Authorization': 'Bearer sk_test_51K1wAiCmcyIwF9rcDllUmRHt47Sf8pzFwglHfcrHN6Zy8GdSnl3RFPl8yoPoOJbFXs18LK8eCHavE9oQilLFqzbk00dR3pma24'
+                            'Authorization':  `Bearer ${process.env.STRIPE_SECTRET_KEY}`
                         }
                     }, (err, res, body) => {
 
@@ -136,7 +136,7 @@ exports.paymentTrigger = functions.firestore
                                 'phases[0][items][0][quantity]': 1,
                             },
                             headers: {
-                                'Authorization': 'Bearer sk_test_51K1wAiCmcyIwF9rcDllUmRHt47Sf8pzFwglHfcrHN6Zy8GdSnl3RFPl8yoPoOJbFXs18LK8eCHavE9oQilLFqzbk00dR3pma24'
+                                'Authorization':  `Bearer ${process.env.STRIPE_SECTRET_KEY}`
                             },
                         }, (err, res, body) => {
                             const info = JSON.parse(body)
