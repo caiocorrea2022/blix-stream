@@ -1,29 +1,26 @@
-name: Deploy firebase functions
-'on':
+name: deploy
+on:
   push:
     branches:
-      - master
-
+      - main
 jobs:
-  job_id:
+  main:
     runs-on: ubuntu-latest
-    permissions:
-      contents: 'read'
-      id-token: 'write'
-
     steps:
-    - uses: actions/checkout@v3
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v2
 
-    - id: 'auth'
-      uses: 'google-github-actions/auth@v0'
-      with:
-        credentials_json: '${{ secrets.SERVICE_ACCOUNT_JSON }}'
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
 
+      - name: 📥 Download deps
+        working-directory: functions
+        run: npm install
 
-    - id: 'deploy'
-      uses: 'google-github-actions/deploy-cloud-functions@v0'
-      with:
-        name: 'my-function'
-        runtime: 'nodejs16'
-        env_vars: STRIPE_SECTRET_KEY='${{ secrets.STRIPE_SECTRET_KEY }}'
-        project_id: blix-stream
+      - name: 🚀 Deploy
+        run: npx firebase-tools deploy --token "$FIREBASE_TOKEN"
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          STRIPE_SECTRET_KEY: ${{ secrets.STRIPE_SECTRET_KEY }}
