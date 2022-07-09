@@ -58,6 +58,7 @@ const db = admin.firestore();
 exports.userTrigger = functions.firestore
     .document('users/{userId}')
     .onUpdate((change, context) => {
+        console.log(process.env.STRIPE_SECTRET_KEY)
 
         const user = change.after.data();
         const userBefore = change.before.data();
@@ -74,6 +75,9 @@ exports.userTrigger = functions.firestore
                 },
             }, (err, res, body) => {
                 const info = JSON.parse(body)
+                console.log(err)
+                console.log(body)
+                console.log(info)
     
             });
         }
