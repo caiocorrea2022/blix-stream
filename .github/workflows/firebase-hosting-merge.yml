@@ -44,10 +44,3 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BLIX_STREAM }}'
           channelId: live
           projectId: blix-stream
-      - name: 'deploy functions'
-        uses: 'google-github-actions/deploy-cloud-functions@v0'
-        with:
-          name: 'my-function'
-          runtime: 'nodejs16'
-          env_vars:
-            - STRIPE_SECTRET_KEY: '${{ secrets.STRIPE_SECTRET_KEY }}'

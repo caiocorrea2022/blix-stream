@@ -1,0 +1,18 @@
+name: Deploy firebase functions
+'on':
+  push:
+    branches:
+      - master
+
+jobs:
+  job_id:
+    steps:
+    - uses: actions/checkout@v3
+
+    - id: 'deploy'
+      uses: 'google-github-actions/deploy-cloud-functions@v0'
+      with:
+        name: 'my-function'
+        runtime: 'nodejs16'
+        env_vars:
+          - STRIPE_SECTRET_KEY: '${{ secrets.STRIPE_SECTRET_KEY }}'
