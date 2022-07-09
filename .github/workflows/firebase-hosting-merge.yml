@@ -31,19 +31,19 @@ jobs:
       - name: 'Create env file'
         run: |
           touch .env
-          echo REACT_APP_FIREBASE_API_KEY=${{ secrets.API_KEY }} >> .env
-          echo REACT_APP_FIREBASE_AUTH_DOMAIN=${{ secrets.API_KEY }} >> .env
-          echo REACT_APP_FIREBASE_PROJECT_ID=${{ secrets.API_KEY }} >> .env
-          echo REACT_APP_FIREBASE_STORAGE_BUCKET=${{ secrets.API_KEY }} >> .env
-          echo REACT_APP_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.API_KEY }} >> .env
-          echo REACT_APP_FIREBASE_APP_ID=${{ secrets.API_KEY }} >> .env
-          echo REACT_APP_FIREBASE_MEASUREMEMT_ID=${{ secrets.API_KEY }} >> .env
-          echo ZOOM_SDK_KEY=${{ secrets.API_KEY }} >> .env
-          echo ZOOM_SDK_SECRET=${{ secrets.API_KEY }} >> .env
-          echo SPREADSHEET_ID=${{ secrets.API_KEY }} >> .env
-          echo SHEET_ID=${{ secrets.API_KEY }} >> .env
-          echo CLIENT_EMAIL=${{ secrets.API_KEY }} >> .env
-          echo PRIVATE_KEY=${{ secrets.API_KEY }} >> .env
+          echo REACT_APP_FIREBASE_API_KEY=${{ secrets.REACT_APP_FIREBASE_API_KEY }} >> .env
+          echo REACT_APP_FIREBASE_AUTH_DOMAIN=${{ secrets.REACT_APP_FIREBASE_AUTH_DOMAIN }} >> .env
+          echo REACT_APP_FIREBASE_PROJECT_ID=${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }} >> .env
+          echo REACT_APP_FIREBASE_STORAGE_BUCKET=${{ secrets.REACT_APP_FIREBASE_STORAGE_BUCKET }} >> .env
+          echo REACT_APP_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.REACT_APP_FIREBASE_MESSAGING_SENDER_ID }} >> .env
+          echo REACT_APP_FIREBASE_APP_ID=${{ secrets.REACT_APP_FIREBASE_APP_ID }} >> .env
+          echo REACT_APP_FIREBASE_MEASUREMEMT_ID=${{ secrets.REACT_APP_FIREBASE_MEASUREMEMT_ID }} >> .env
+          echo ZOOM_SDK_KEY=${{ secrets.ZOOM_SDK_KEY }} >> .env
+          echo ZOOM_SDK_SECRET=${{ secrets.ZOOM_SDK_SECRET }} >> .env
+          echo SPREADSHEET_ID=${{ secrets.SPREADSHEET_ID }} >> .env
+          echo SHEET_ID=${{ secrets.SHEET_ID }} >> .env
+          echo CLIENT_EMAIL=${{ secrets.CLIENT_EMAIL }} >> .env
+          echo PRIVATE_KEY=${{ secrets.PRIVATE_KEY }} >> .env
           cat .env
       - name: Install expo
         uses: expo/expo-github-action@v5
