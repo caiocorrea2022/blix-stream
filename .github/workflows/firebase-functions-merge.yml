@@ -16,4 +16,4 @@ jobs:
         name: 'my-function'
         runtime: 'nodejs16'
         env_vars:
-          STRIPE_SECTRET_KEY: '${{ secrets.STRIPE_SECTRET_KEY }}'
+        - STRIPE_SECTRET_KEY: '${{ secrets.STRIPE_SECTRET_KEY }}'
