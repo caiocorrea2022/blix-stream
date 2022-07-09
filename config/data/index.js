@@ -1,4 +1,4 @@
-export const clientName = "YOGALAYA";
+export const clientName = "Yogalaya";
 export const substitleAbout = "Seja bem-vindo ao seu novo aplicativo para praticar Yōga.";
 export const clientNameFooter = "YOGALAYA";
 export const titleMain = "Yogalaya";
@@ -14,8 +14,8 @@ export const returnDomainZoom = 'http://localhost:19006';
 
 export const faleComigoUrl = 'https://api.whatsapp.com/send?phone=5521995503234';
 
-export const aspectRatioLogoAbout = '3'; // width/height
-export const aspectRatioLogoMain = '1'; // width/height
+export const aspectRatioLogoAbout = '4'; // width/height
+export const aspectRatioLogoMain = '1.5'; // width/height
 
 export const text_Light = 'Texto-Light.ttf';
 export const text_Regular = 'Texto-Regular.ttf';
@@ -23,7 +23,7 @@ export const text_Medium = 'Texto-Medium.ttf';
 export const text_Bold = 'Texto-Bold.ttf';
 export const title_About = 'FontePrincipal.ttf';
 
-export const borderRadiusButtons = '30px'; 
+export const borderRadiusButtons = '5px'; 
 
 export const planFrequency = [
   { id: "1", frequency: "Mensal" },
@@ -38,7 +38,7 @@ export const planPrices = [
   //Plano B mensal
   {price: "R$347,00/mês", priceId: "price_1LCRI1CqHOHg9sSb0dwodBmR"},
   //Plano C mensal
-  // {price: "R$500,00/mês", priceId: "price_1LFkOACmcyIwF9rcGGV8TELx"}
+  // {price: "R$/mês", priceId: ""}
 ],
 
   //Plano A trimestral à vista (mensal)
@@ -46,7 +46,7 @@ export const planPrices = [
   //Plano B trimestral à vista (mensal)
   {price: "R$947,00/trimestre", priceId: "price_1LGSu7CqHOHg9sSbWw1smBa2"},
   //Plano C trimestral à vista (mensal)
-  // {price: "R$1.410,00/trimestre", priceId: "price_1LFkNYCmcyIwF9rcajeITdWW"}
+  // {price: "R$/trimestre", priceId: ""}
 ],
 
   //Plano A semestral à vista (mensal)
@@ -54,7 +54,7 @@ export const planPrices = [
   //Plano B semestral à vista (mensal)
   {price: "R$1.897,00/semestre", priceId: "price_1LGSx9CqHOHg9sSbaFCSd2AA"},
   //Plano C semestral à vista (mensal)
-  // {price: "R$850,00/semestre", priceId: ""}
+  // {price: "R$/semestre", priceId: ""}
 ],
 
   //Plano A anual à vista (mensal)
@@ -62,7 +62,7 @@ export const planPrices = [
   //Plano B anual à vista (mensal)
   {price: "R$3.497,00/ano", priceId: "price_1LGSzCCqHOHg9sSbaqiTvIaO"},
   //Plano C anual à vista (mensal)
-  // {price: "R$4200,00/ano", priceId: "price_1LFkLCCmcyIwF9rc2JUasWWY"}
+  // {price: "R$/ano", priceId: ""}
 ],
 ];
 
@@ -74,7 +74,7 @@ export const upsellPrices = [
     //Plano B trimestral parcelado (mensal)
     "ou 3x de R$329,66/mês",
     //Plano C trimestral parcelado (mensal)
-    // "ou R$170/mês por 3 meses",
+    // "ou R$/mês por 3 meses",
   ],
   [
     //Plano A semestral parcelado (mensal)
@@ -82,7 +82,7 @@ export const upsellPrices = [
     //Plano B semestral parcelado (mensal)
     "ou 6x R$329,83/mês",
     //Plano C semestral parcelado (mensal)
-    // "ou R$170/mês por 6 meses",
+    // "ou R$/mês por 6 meses",
   ],
   [
     //Plano A anual parcelado (mensal)
@@ -90,7 +90,7 @@ export const upsellPrices = [
     //Plano B anual parcelado (mensal)
     "ou 12x de R$299,91/mês",
     //Plano C anual parcelado (mensal)
-    // "ou R$170/mês por 12 meses",
+    // "ou R$/mês por 12 meses",
   ],
 ];
 
@@ -111,9 +111,9 @@ export const planInfos = [
   },
   // {
   //   id:3,
-  //   planType: "PLANO SHIVA",
+  //   planType: "",
   //   info: [
-  //     "- Tudo do Plano B\n\n- Acesso a aulas ao vivo e Lives\n\n- Acesso a todos os conteúdos\n\n- Tudo do Plano B\n\n- Acesso a aulas ao vivo e Lives\n\n- Acesso a todos os conteúdos\n\n- Tudo do Plano B\n\n- Acesso a aulas ao vivo e Lives\n\n- Acesso a todos os conteúdos",
+  //     "",
   //   ],
   // },
 ];
