@@ -14,12 +14,19 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16
+          
+      - name: 'Create env file'
+        working-directory: functions
+        run: |
+          touch .env
+          echo STRIPE_SECTRET_KEY=${{ secrets.STRIPE_SECTRET_KEY }} >> .env
+          cat .env    
 
       - name: 📥 Download deps
         working-directory: functions
         run: npm install
 
       - name: 🚀 Deploy
-        run: npx firebase-tools deploy --only functions --token "$FIREBASE_TOKEN" --set-env-vars STRIPE_SECTRET_KEY=${{ secrets.STRIPE_SECTRET_KEY }}
+        run: npx firebase-tools deploy --only functions --token "$FIREBASE_TOKEN"
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
