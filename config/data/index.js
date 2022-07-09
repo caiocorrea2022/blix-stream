@@ -418,7 +418,7 @@ export const footerSocialData = [
     name: "instagram",
     link: "https://www.instagram.com/vidaveda.yoga/",
   },
-  {
+  // {
   //   type: "material-community",
   //   name: "youtube",
   //   link: "https://www.youtube.com",
