@@ -1,9 +1,9 @@
-export const clientName = "EMILY MONTEIRO";
+export const clientName = "YOGALAYA";
 export const substitleAbout = "Seja bem-vindo ao seu novo aplicativo para praticar Yōga.";
-export const clientNameFooter = "EMILY MONTEIRO";
-export const titleMain = "Seja bem-vindo(a)!";
-export const subtitleMain = "Aqui você irá imergir em autoconhecimento.";
-export const aboutText = "Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Qui illum nobis ut modi Quis vel veniam voluptatibus et numquam sint ad voluptas repellendus est enim illum vel animi omnis! Ex animi asperiores qui nemo assumenda et corrupti necessitatibus quo accusantium impedit ea optio molestiae et sint dolorum?\n\nAt omnis internos ut incidunt modi ea sint. Ad inventore quidem id illo fugit id explicabo sunt. Qui nihil ducimus ad tempora eveniet qui quia dicta eum rerum aliquid?Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia.Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Qui illum nobis ut modi Quis vel veniam voluptatibus et numquam sint ad voluptas repellendus est enim illum vel animi omnis! Ex animi asperiores qui nemo assumenda et corrupti necessitatibus quo accusantium impedit ea optio molestiae et sint dolorum?\n\nAt omnis internos ut incidunt modi ea sint. Ad inventore quidem id illo fugit id explicabo sunt. Qui nihil ducimus ad tempora eveniet qui quia dicta eum rerum aliquid?Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. Lorem ipsum dolor sit amet. In saepe beatae nam autem quasi et ullam quia. ";
+export const clientNameFooter = "YOGALAYA";
+export const titleMain = "Yogalaya";
+export const subtitleMain = "Yoga para muito além das posturas.";
+export const aboutText = "Professor de yoga da linhagem de Krishnamacharya, o sistematizador do Ashtanga Vinyasa Yoga. Caio baseia seu ensino e estudo nos textos clássicos, como Yogasūtra de Patañjali, Haṭhayoga Pradīpikā e Bhagavad Gītā. Também é formado em Swásthya Yoga. Hoje é o idealizador e professor do Yogalaya - A Escola de Yoga do Vida Veda.";
 export const aboutTitle = "QUEM EU ESTOU";
 export const aboutTitleCategory = "O QUE VOCÊ VAI ENCONTRAR NO APLICATIVO";
 export const aboutTitleCourses = "CURSOS DISPONÍVEIS";
@@ -12,9 +12,9 @@ export const subtitlePlan = "Teste grátis por 7 dias! Planos com renovação au
 export const returnUrlCustomerPortal = 'http://localhost:19006/EditProfile';
 export const returnDomainZoom = 'http://localhost:19006';
 
-export const faleComigoUrl = 'https://www.google.com';
+export const faleComigoUrl = 'https://api.whatsapp.com/send?phone=5521995503234';
 
-export const aspectRatioLogoAbout = '1'; // width/height
+export const aspectRatioLogoAbout = '3'; // width/height
 export const aspectRatioLogoMain = '1'; // width/height
 
 export const text_Light = 'Texto-Light.ttf';
@@ -28,265 +28,321 @@ export const borderRadiusButtons = '30px';
 export const planFrequency = [
   { id: "1", frequency: "Mensal" },
   { id: "2", frequency: "Trimestral" },
-  // { id: "3", frequency: "Semestral" },
+  { id: "3", frequency: "Semestral" },
   { id: "4", frequency: "Anual" },
 ];
 
 export const planPrices = [
   //Plano A mensal
-  [{price: "R$197,00/mês", priceId: "price_1LFKx8CmcyIwF9rcptrUJuBI"},
+  [{price: "R$197,00/mês", priceId: "price_1LCSeDCqHOHg9sSbFrQuJ1WQ"},
   //Plano B mensal
-  {price: "R$347,00/mês", priceId: "price_1LFLB2CmcyIwF9rcoZDBuj4v"},
+  {price: "R$347,00/mês", priceId: "price_1LCRI1CqHOHg9sSb0dwodBmR"},
   //Plano C mensal
-  {price: "R$500,00/mês", priceId: "price_1LFkOACmcyIwF9rcGGV8TELx"}],
+  // {price: "R$500,00/mês", priceId: "price_1LFkOACmcyIwF9rcGGV8TELx"}
+],
 
-  //Plano A trimestral parcelado (mensal)
-  [{price: "R$547,00/trimestre", priceId: "price_1LFKpkCmcyIwF9rcHm7cVgUd"},
-  //Plano B trimestral parcelado (mensal)
-  {price: "R$947,00/trimestre", priceId: "price_1LFLCXCmcyIwF9rcusWSqn6I"},
-  //Plano C trimestral parcelado (mensal)
-  {price: "R$1.410,00/trimestre", priceId: "price_1LFkNYCmcyIwF9rcajeITdWW"}],
+  //Plano A trimestral à vista (mensal)
+  [{price: "R$547,00/trimestre", priceId: "price_1LGTC8CqHOHg9sSbXplunbD4"},
+  //Plano B trimestral à vista (mensal)
+  {price: "R$947,00/trimestre", priceId: "price_1LGSu7CqHOHg9sSbWw1smBa2"},
+  //Plano C trimestral à vista (mensal)
+  // {price: "R$1.410,00/trimestre", priceId: "price_1LFkNYCmcyIwF9rcajeITdWW"}
+],
 
-  //Plano A semestral parcelado (mensal)
-  // [{price: "R$800,00/semestre", priceId: ""}, 
-  //Plano B semestral parcelado (mensal)
-  //{price: "R$820,00/semestre", priceId: ""},
-  //Plano C semestral parcelado (mensal)
-  // {price: "R$850,00/semestre", priceId: ""}],
+  //Plano A semestral à vista (mensal)
+  [{price: "R$1.097,00/semestre", priceId: "price_1LGTEjCqHOHg9sSbf4adVyEv"}, 
+  //Plano B semestral à vista (mensal)
+  {price: "R$1.897,00/semestre", priceId: "price_1LGSx9CqHOHg9sSbaFCSd2AA"},
+  //Plano C semestral à vista (mensal)
+  // {price: "R$850,00/semestre", priceId: ""}
+],
 
-  //Plano A anual parcelado (mensal)
-  [{price: "R$1.979,00/ano", priceId: "price_1LFL3XCmcyIwF9rcJy8jLFqf"}, 
-  //Plano B anual parcelado (mensal)
-  {price: "R$3.497,00/ano", priceId: "price_1LFLDaCmcyIwF9rcfb91PhiF"},
-  //Plano C anual parcelado (mensal)
-  {price: "R$4200,00/ano", priceId: "price_1LFkLCCmcyIwF9rc2JUasWWY"}],
+  //Plano A anual à vista (mensal)
+  [{price: "R$1.979,00/ano", priceId: "price_1LGTGZCqHOHg9sSbHCfrXesK"}, 
+  //Plano B anual à vista (mensal)
+  {price: "R$3.497,00/ano", priceId: "price_1LGSzCCqHOHg9sSbaqiTvIaO"},
+  //Plano C anual à vista (mensal)
+  // {price: "R$4200,00/ano", priceId: "price_1LFkLCCmcyIwF9rc2JUasWWY"}
+],
 ];
 
 export const upsellPrices = [
   ["", "", ""],
   [
     //Plano A trimestral parcelado (mensal)
-    "ou R$150/mês por 3 meses",
+    "ou 3x de R$193/mês",
     //Plano B trimestral parcelado (mensal)
-    "ou R$160/mês por 3 meses",
+    "ou 3x de R$329,66/mês",
     //Plano C trimestral parcelado (mensal)
-    "ou R$170/mês por 3 meses",
+    // "ou R$170/mês por 3 meses",
   ],
   [
     //Plano A semestral parcelado (mensal)
-    "ou R$150/mês por 6 meses",
+    "ou 6x de R$189,83/mês",
     //Plano B semestral parcelado (mensal)
-    "ou R$160/mês por 6 meses",
+    "ou 6x R$329,83/mês",
     //Plano C semestral parcelado (mensal)
-    "ou R$170/mês por 6 meses",
+    // "ou R$170/mês por 6 meses",
   ],
   [
     //Plano A anual parcelado (mensal)
-    "ou R$150/mês por 12 meses",
+    "ou 12x de R$166,41/mês",
     //Plano B anual parcelado (mensal)
-    "ou R$160/mês por 12 meses",
+    "ou 12x de R$299,91/mês",
     //Plano C anual parcelado (mensal)
-    "ou R$170/mês por 12 meses",
+    // "ou R$170/mês por 12 meses",
   ],
 ];
 
 export const planInfos = [
   {
     id: 1,
-    planType: "PLANO A",
+    planType: "PLANO BÁSICO",
     info: [
-      "- +50 Aulas gravadas\n\n- Meditações guiadas"
+      "- +Aulas Práticas nível Básico\n\n- Aulas de Cultura e Mitologia Hindu\n\n- Aulas de Respiração e Alongamento"
     ],
   },
   {
     id: 2,
-    planType: "PLANO GANESHA",
+    planType: "PLANO COMPLETO",
     info: [
-      "- Tudo do Plano A\n\n- Acesso a aulas ao vivo\n\n- Acesso a +100 Aulas gravadas"
+      "- Aulas Práticas nível Básico\n\n- Aulas Práticas nível Intermediário\n\n- Aulas Práticas nível Avançado\n\n- Aulas de Cultura e Mitologia Hindu\n\n- Aulas sobre os Livros Clássicos do Yoga\n\n- Aulas de Meditação\n\n- Aulas de Respiração e Alongamento"
     ],
   },
-  {
-    id:3,
-    planType: "PLANO SHIVA",
-    info: [
-      "- Tudo do Plano B\n\n- Acesso a aulas ao vivo e Lives\n\n- Acesso a todos os conteúdos\n\n- Tudo do Plano B\n\n- Acesso a aulas ao vivo e Lives\n\n- Acesso a todos os conteúdos\n\n- Tudo do Plano B\n\n- Acesso a aulas ao vivo e Lives\n\n- Acesso a todos os conteúdos",
-    ],
-  },
+  // {
+  //   id:3,
+  //   planType: "PLANO SHIVA",
+  //   info: [
+  //     "- Tudo do Plano B\n\n- Acesso a aulas ao vivo e Lives\n\n- Acesso a todos os conteúdos\n\n- Tudo do Plano B\n\n- Acesso a aulas ao vivo e Lives\n\n- Acesso a todos os conteúdos\n\n- Tudo do Plano B\n\n- Acesso a aulas ao vivo e Lives\n\n- Acesso a todos os conteúdos",
+  //   ],
+  // },
 ];
+
+const nomeFornecedor = "Blix";
+
+const clausula5_4 = "5.4. O Fornecedor do Serviço e o Cliente poderão ajustar valores e qualidades de fornecimento, com adesão a Planos (exemplificativamente) anuais, trimestrais ou mensais.";
+const clausula5_5 = "5.5. O pagamento será realizado pelo cliente, por meio de link ou Boleto disponibilizado pelo Fornecedor do Serviço.";
+const clausula5_6 = "5.6. O não pagamento da primeira parcela ajustada será entendido como cancelamento automático da contratação e restabelecerá as partes ao seu status original;";
+const clausula5_7 = "5.7. O não pagamento de parcelas previamente ajustadas, após a contratação, constituirá o inadimplente, imediatamente em mora e acarretará no cancelamento imediato do serviço;";
+const clausula5_8 = "5.8. O Cliente declara estar ciente de que, em nenhuma hipótese, haverá devolução do valor pago antecipadamente.";
+const clausula5_9_1 = "5.9.1 O Fornecedor se resguarda, em caso de inadimplemento pelo Cliente, ao direito de suspender, interromper, cancelar ou inviabilizar, de qualquer forma, a utilização do serviço.";
+const clausula5_9_2 = "5.9.2 Os valores inadimplidos serão atualizados, até seu pagamento mediante correção monetária e incidência de juros legais.";
 
 export const privacyData = [
   {
-    subtitle: "SEÇÃO 1 - INFORMAÇÕES GERAIS",
+    subtitle: "1. OBJETO (ESCOPO DO SERVIÇO)",
     paragraphs: [
       {
-        text: "A presente Política de Privacidade contém informações sobre coleta, uso, armazenamento, tratamento e proteção dos dados pessoais dos usuários e visitantes do site https://blix.digital , com a finalidade de demonstrar absoluta transparência quanto ao assunto e esclarecer a todos interessados sobre os tipos de dados que são coletados, os motivos da coleta e a forma como os usuários podem gerenciar ou excluir as suas informações pessoais.",
+        text: `1.1. Os presentes Termos e Condições de Uso são aplicáveis a todos os Usuários (Clientes) dos serviços de mídia on-line e distribuição de conteúdo fornecido por ${nomeFornecedor}, por meio de APP mobile, web site e streaming voltado para a prática de Yoga.`,
       },
       {
-        text: "Esta Política de Privacidade aplica-se a todos os usuários e visitantes do site e integra os Termos e Condições Gerais de Uso do site, devidamente inscrita no CNPJ sob o nº 45.589.960/0001-41, situado em Rua Jari 359, apto 301 - bloco D, Passo da Areia, Porto Alegre, RS, doravante nominada prestador de serviço.",
+        text: "1.2. Trata-se de um acordo legal entre o Fornecedor do Serviço e seus clientes, que vincula as partes e tem, para todos os fins, força de contrato. Assim, nos termos aqui delineados, estabelecem-se os direitos e deveres que devem ser observados antes, durante e após a relação comercial;",
       },
       {
-        text: "O presente documento foi elaborado em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei 13.709/18), o Marco Civil da Internet (Lei 12.965/14) (e o Regulamento da UE n. 2016/6790). Ainda, o documento poderá ser atualizado em decorrência de eventual atualização normativa, razão pela qual se convida o usuário a consultar periodicamente esta seção.",
+        text: "1.3. Para que possa utilizar quaisquer dos serviços disponibilizados, o Cliente declara expressamente ter lido, compreendido e anuído com todos os termos e condições aqui estabelecidos.",
+      },
+      {
+        text: "1.4. É importante considerar, também, que o conteúdo dos presentes termos pode ser modificado periodicamente, visando ao aperfeiçoamento do serviço. Caberá, assim, ao Cliente revisar as politicas de forma regular, as quais serão, em todos os casos, sempre publicitadas da forma usual.",
       },
     ],
   },
   {
     subtitle:
-      "SEÇÃO 2 - COMO RECOLHEMOS OS DADOS PESSOAIS DO USUÁRIO E DO VISITANTE?",
+      "2. UTILIZAÇÃO DO SERVIÇO",
     paragraphs: [
       {
-        text: "Os dados pessoais do usuário e visitante são recolhidos pela plataforma da seguinte forma:",
+        text: "2.1. Os Clientes que utilizarem de qualquer forma os serviços devem ter, pelo menos, 18 (dezoito) anos de idade.",
       },
       {
-        text: "Quando o usuário acessa dentro do site a funcionalidade de entrar em contato com a empresa que está sob a seção “Fale Conosco”, esses dados de identificação básica são recolhidos. Esses dados são os dados de identificação básicos. A partir deles, podemos identificar o usuário e o visitante para retornar a mensagem enviada, além de garantir uma maior segurança e bem-estar às suas necessidades. Ficam cientes os usuários e visitantes de que o conteúdo da mensagem não fica visível para os demais usuários da plataforma.",
+        text: "2.2. O Fornecedor do Serviço não exige que os acessos, pelos Clientes, sejam realizados em qualquer local específico. Ao acessar os Serviços, o Cliente é o único responsável pelo cumprimento das leis e regulamentos do local de sua jurisdição.",
+      },
+      {
+        text: "2.3. Os Serviços podem e devem ser utilizados unicamente para fins legais, relacionados ao streaming e compartilhamento de conteúdo didático da prática de Yoga. É expressamente vedado qualquer uso do material compartilhado, para quaisquer outros fins que não aqueles formalizados nos presentes Termos de Uso.",
+      },
+      {
+        text: "2.4. Será concedida ao Cliente, pelo Fornecedor, uma licença limitada e não exclusiva para acessar e utilizar os serviços ou o conteúdo digital para seus próprios fins pessoais e, nunca, comerciais. Nisso está incluído o direito de visualizar o conteúdo disponibilizado no web site ou no APP.",
+      },
+      {
+        text: "2.5. O Cliente é o único responsável por decidir se os serviços oferecidos são adequados para seus próprios fins, se atendem às suas necessidades e por, eventualmente, solicitar o cancelamento, desde que respeitados os ajustes de preço e obrigações estabelecidas com o Fornecedor.",
+      },
+      {
+        text: "2.6. O Cliente não pode violar ou tentar violar a segurança do Serviço, incluindo, de forma exemplificativa, sem limitação, (i) acessar dados a ele não destinados ou logar em servidor ou conta não autorizada; (ii) verificar ou testar a vulnerabilidade do sistema ou rede ou, de qualquer forma, violar medidas de segurança ou autenticação; (iii) utilizar-se de robôs, tentar ou prejudicar o serviço por disseminação de vírus, sobrecarga, “inundação”, “spam”, “mailbombing” ou “travamento” ou qualquer prática similar.",
+      },
+      {
+        text: "2.7. Eventuais violações da segurança ou conduta inadequada poderão resultar em responsabilização civil ou criminal.",
       },
     ],
   },
   {
     subtitle:
-      "SEÇÃO 3 - QUAIS DADOS PESSOAIS RECOLHEMOS SOBRE O USUÁRIO E VISITANTE?",
+      "3. DADOS PESSOAIS E POLÍTICAS DE PRIVACIDADE",
     paragraphs: [
       {
-        text: "Os dados pessoais do usuário e visitante recolhidos são os seguintes:",
+        text: "3.1. O Cliente é o responsável pelas informações pessoais inseridas ou utilizadas para a contratação dos serviços. Com a disponibilização destas informações, será outorgado, automaticamente, o consentimento expresso para o tratamento de seus dados pelo fornecedor dos serviços e seus parceiros, desde que dentro do escopo e finalidades formalizadas nos presentes Termos de Uso.",
       },
       {
-        text: "Dados pessoais como email, nome completo, telefone e uma mensagem a ser enviada. Eles só são coletados quando o usuário preenche o formulário de contato sob a seção “Fale Conosco” e aciona a funcionalidade de enviá-los.",
+        text: "3.2. O Fornecedor do Serviço se reserva ao direito de decidir se as informações inseridas pelos Clientes são apropriadas/adequadas e estão em conformidade com os Termos de Uso, suas políticas, as políticas do desenvolvedor, leis e regulamentos aplicáveis.",
+      },
+      {
+        text: "3.3. Ao Cliente será exigido forneça certas informações, como (exemplificativamente) nome, data de nascimento e endereço de e-mail válido. Essas informações necessitam ser fidedignas	 e mantidas atualizadas.",
+      },
+      {
+        text: "3.4. O Cliente é responsável por manter a confidencialidade de seus dados de acesso, incluindo nome de usuário e senha.",
+      },
+      {
+        text: "3.5. O cliente se responsabiliza, integralmente, pelo uso indevido de seus dados de acesso decorrente de desídia, fornecimento (consciente ou não) ou qualquer forma de não atendimento à cláusula anterior.",
+      },
+      {
+        text: "3.6. Se ocorrer qualquer suspeita de que outra pessoa está utilizando indevidamente a sua conta, o Cliente deve, imediatamente, buscar reestabelecer uma senha segura ou, sendo o caso, comunicar o Fornecedor dos serviços, para as medidas necessárias.",
+      },
+      {
+        text: "3.7. O Cliente consente em receber comunicações eletrônicas do Fornecedor, incluindo e-mails, mensagens por aplicativos de conversa, telefone, marketing, transações e outras informações relacionadas aos Serviços e à sua conta.",
       },
     ],
   },
   {
     subtitle:
-      "SEÇÃO 3 - PARA QUE FINALIDADES UTILIZAMOS OS DADOS PESSOAIS DO USUÁRIO E VISITANTE?",
+      "4. RESPONSABILIDADES DE FORNECIMENTO (responsabilidades do Fornecedor)",
     paragraphs: [
       {
-        text: "Os dados pessoais do usuário e do visitante coletados e armazenados pelo site https://blix.digital  tem por finalidade:",
+        text: "4.1. O Fornecedor do serviço deverá disponibilizar o acesso ao ambiente virtual das aulas online de Yoga por meio de login e senha, gerados após confirmação do cumprimento dos pré-requisitos por parte do Cliente.",
       },
       {
-        text: "O contato direto entre cliente e prestador de serviço através da troca de emails com o intuito de esclarecer qualquer dúvida sobre o conteúdo apresentado na plataforma, iniciar negociações e melhorar a experiência dos usuários de forma a facilitar a conclusão do negócio.",
+        text: "4.2. O acesso ao Serviço funcionará normalmente 24 horas por dia e 07 dias por semana.  Podem ocorrer pequenas interrupções de forma temporária para ajustes, manutenção, alteração de servidores, falhas operacionais ou em razão de força maior.",
       },
       {
-        text: "O tratamento de dados pessoais para finalidades não previstas nesta Política de Privacidade somente ocorrerá mediante comunicação prévia ao usuário, de modo que os direitos e obrigações aqui previstos permanecem aplicáveis.",
+        text: "4.3. O Fornecedor realizará os melhores esforços e iniciativas para manter os serviços em operação sem interrupções, nos termos acima referidos. Não obstante, nenhuma hipótese garante a disponibilidade e continuidade permanente do serviço. Eventuais indisponibilidades ou a descontinuação permanente do Serviço não geram qualquer direito de indenização ao Cliente, salvo aquelas relacionadas a valores pagos de forma antecipada, nos termos ajustados entre os contratantes.",
+      },
+      {
+        text: "4.3. O Fornecedor realizará os melhores esforços e iniciativas para manter os serviços em operação sem interrupções, nos termos acima referidos. Não obstante, nenhuma hipótese garante a disponibilidade e continuidade permanente do serviço. Eventuais indisponibilidades ou a descontinuação permanente do Serviço não geram qualquer direito de indenização ao Cliente, salvo aquelas relacionadas a valores pagos de forma antecipada, nos termos ajustados entre os contratantes.",
+      },
+      {
+        text: "4.4. Considerando a existência de variáveis​​, como velocidade de conexão e download, localização, etc., o Fornecedor não garante a resolução e qualidade do conteúdo digital durante qualquer transmissão.",
       },
     ],
   },
   {
-    subtitle: "SEÇÃO 4 - POR QUANTO TEMPO OS DADOS PESSOAIS FICAM ARMAZENADOS?",
+    subtitle: "5. ASSINATURAS, CANCELAMENTOS, PAGAMENTOS E COBRANÇAS",
     paragraphs: [
       {
-        text: "Os dados pessoais do usuário e visitante são armazenados pela plataforma durante o período necessário para a prestação do serviço ou o cumprimento das finalidades previstas no presente documento, conforme o disposto no inciso I do artigo 15 da Lei 13.709/18.",
+        text: "5.1. Ao adquirir um plano de pagamento ou serviço, o Cliente concorda expressamente em relação à cobrança em conformidade com o plano selecionado e modo/tempo de pagamento designado.",
       },
       {
-        text: "Os dados podem ser removidos ou anonimizados a pedido do usuário, excetuando os casos em que a lei oferecer outro tratamento.",
+        text: "5.2. Os recibos serão enviados assim que a cobrança for bem-sucedida na conta de e-mail registrada. A assinatura continuará em vigor, a menos que o Cliente a cancele, encerre sua conta ou se torne inadimplente.",
       },
       {
-        text: "Ainda, os dados pessoais dos usuários apenas podem ser conservados após o término de seu tratamento nas seguintes hipóteses previstas no artigo 16 da referida lei:",
+        text: "5.3. Cabe ao Cliente cancelar, formalmente, sua assinatura, antes da próxima cobrança para evitar o faturamento.",
       },
       {
-        text: "I - cumprimento de obrigação legal ou regulatória pelo controlador;",
+        text: `${clausula5_4}`,
       },
       {
-        text: "II - estudo por órgão de pesquisa, garantida, sempre que possível, a anonimização dos dados pessoais;",
+        text: `${clausula5_5}`,
       },
       {
-        text: "III - transferência a terceiro, desde que respeitados os requisitos de tratamento de dados dispostos nesta Lei;",
+        text: `${clausula5_6}`,
       },
       {
-        text: "IV - uso exclusivo do controlador, vedado seu acesso por terceiro, e desde que anonimizados os dados.",
+        text: `${clausula5_7}`,
+      },
+      {
+        text: `${clausula5_8}`,
+      },
+      {
+        text: `${clausula5_9_1}`,
+      },
+      {
+        text: `${clausula5_9_2}`,
       },
     ],
   },
   {
-    subtitle: "SEÇÃO 5 - SEGURANÇA DOS DADOS PESSOAIS ARMAZENADOS",
+    subtitle: "6. DECLARAÇÃO DE CIÊNCIA E RESPONSABILIDADES EXPRESSAS DO CLIENTE",
     paragraphs: [
       {
-        text: "A plataforma se compromete a aplicar as medidas técnicas e organizativas aptas a proteger os dados pessoais de acessos não autorizados e de situações de destruição, perda, alteração, comunicação ou difusão de tais dados.",
+        text: "6.1. Para realização de qualquer atividade física, incluindo aquelas que são escopo do presente Serviço (prática de Yoga), é necessário que o Cliente realize as devidas consultas médicas com antecedência, para verificar se está apto ou não para a execução das atividades;",
       },
       {
-        text: "A plataforma não se exime de responsabilidade por culpa exclusiva de terceiro, como em caso de ataque de hackers ou crackers, ou culpa exclusiva do usuário, como no caso em que ele mesmo transfere seus dados a terceiros. O site se compromete a comunicar o usuário em caso de alguma violação de segurança dos seus dados pessoais",
+        text: "6.2. Tal precaução é necessária a TODOS OS CLIENTES, mas, em especial, àqueles com deficiências de qualquer natureza (físicas, motoras ou mentais) ou, ainda, com histórico de doenças preexistentes ou lesões de qualquer natureza.",
       },
       {
-        text: "Os dados pessoais armazenados são tratados com confidencialidade, dentro dos limites legais. No entanto, podemos divulgar suas informações pessoais caso sejamos obrigados pela lei para fazê-lo ou se você violar nossos Termos de Serviço.",
+        text: "6.3. Ao aderir aos presentes Termos de uso, o Cliente atesta, reconhece e declara que está física e mentalmente apto à prática de exercícios físicos, isentando o Fornecedor de qualquer responsabilidade relacionada a lesões ou danos de toda espécie ocorridos pela pratica de atividade de Yoga.",
+      },
+      {
+        text: "6.4. O cliente deverá informar ao Fornecedor do Serviço, de forma prévia, a existência de qualquer problema de saúde ou contraindicação médica.",
+      },
+      {
+        text: "6.5. Antes de iniciar a prática da Yoga ou contratar o Serviço oferecido pelo Fornecedor, o Cliente deve, além da consulta médica, ter ciência e respeitar suas limitações de qualquer natureza, assim como, de suas condições pessoais, relacionadas a peso, altura, estilo de vida, sedentarismo e hábitos de qualquer espécie",
+      },
+      {
+        text: "6.6. Também é necessário ao cliente que pesquise previamente quanto aos diferentes métodos existentes relacionados à prática de Yoga e qual melhor se aplica a si, que avalie conscientemente a expectativa do que almeja e é possível ser buscado como resultado.",
+      },
+      {
+        text: "6.7. Os serviços oferecidos não se destinam ou confundem, de forma alguma, como aconselhamento médico ou como substituto de tratamento médico.",
+      },
+      {
+        text: "6.8. O Fornecedor do Serviço não será responsável, de forma alguma, por qualquer resultado não atingido pelo Cliente. A responsabilidade do Fornecedor consiste, unicamente, na prestação de informações, aulas, instruções e orientações de seu método, de forma online.",
+      },
+      {
+        text: "6.9. O Cliente é responsável em relação aos equipamentos e software necessários para utilização do serviço, seguindo os requisitos exigidos e com acesso à internet. Também é responsável por todo o equipamento necessário, incluindo roupas, tapete, etc. e pela segurança e adequação do ambiente físico no qual realizará a prática;",
       },
     ],
   },
   {
-    subtitle: "SEÇÃO 6 - COMPARTILHAMENTO DOS DADOS",
+    subtitle: "7. PROPRIEDADE INTELECTUAL",
     paragraphs: [
       {
-        text: "Os dados coletados dos usuários não serão compartilhados pela plataforma, ficando para uso exclusivo do controlador.",
+        text: `7.1. A ${nomeFornecedor} e quaisquer outras marcas ou nomes comerciais e quaisquer variações dos mesmos, são e devem permanecer como propriedades exclusivas do Fornecedor, sendo proibido qualquer uso não autorizado.`,
+      },
+      {
+        text: "7.2. O Cliente não pode vender ou modificar o conteúdo dos Serviços ou mídia/material didático disponibilizado, sendo também vedada a reprodução, execução e exibição pública, assim como a distribuição ou utilização dos Serviços de qualquer forma ou para qualquer finalidade, que não aquela estabelecida nos presentes termos de Uso.",
+      },
+      {
+        text: "7.3. O Cliente concorda, expressamente, que o Fornecedor possui, detém e retém todos os direitos sobre os Serviços oferecidos, sendo o conteúdo de propriedade e controle exclusivo do fornecedor.",
+      },
+      {
+        text: "7.4. Todo o material disponibilizado é protegido por direitos autorais, marcas comerciais e outras propriedades intelectuais comuns e estatutárias e legais.",
       },
     ],
   },
   {
     subtitle:
-      "SEÇÃO 7- OS DADOS PESSOAIS ARMAZENADOS SERÃO TRANSFERIDOS A TERCEIROS?",
+      "8. ISENÇÕES DE RESPONSABILIDADE DA EMPRESA DESENVOLVEDORA",
     paragraphs: [
       {
-        text: "Os dados pessoais (não) podem ser compartilhados (com terceiros) (com as seguintes pessoas (físicas) (jurídicas): GOOGLE BRASIL INTERNET LTDA, CPF/CNPJ 06.990.590/0001-23.",
+        text: "8.1. O serviço será viabilizado, pelo Fornecedor, pela sua contratação própria e sem transferência de obrigações ao Cliente, do software/plataforma adequadas, perante a empresa Desenvolvedora.",
       },
       {
-        text: "Os terceiros indicados recebem os dados na medida do necessário para permitir que eles realizem os serviços contratados.",
+        text: "8.2. Em relação ao presente serviço, a desenvolvedora do software é a BLIX SOLUÇÕES EM TECNOLOGIA, inscrita no CNPJ/MF sob o n° 43.589.960/0001-41.",
       },
       {
-        text: "Com relação aos fornecedores de serviços terceirizados como provedores de email, informamos que cada qual tem sua própria política de privacidade. Desse modo, recomendamos a leitura das suas políticas de privacidade para compreensão de quais informações pessoais serão usadas por esses fornecedores. O provedor de email associado a plataforma é o EmailJS e suas políticas podem ser encontradas no endereço https://www.emailjs.com/.",
+        text: "8.3. A relação estabelecida entre o Fornecedor do serviço e a empresa Desenvolvedora é simplesmente comercial, de contratação de serviços com Termos de Uso específicos. Não são, entre si, empregados, associados, subcontratados representantes, fiadores, seguradores ou garantidores uma da outra.",
       },
       {
-        text: "Os fornecedores podem ser localizados ou possuir instalações localizadas em países diferentes. Nessas condições, os dados pessoais transferidos podem se sujeitar às leis de jurisdições nas quais o fornecedor de serviço ou suas instalações estão localizados.",
+        text: "8.4. A empresa Desenvolvedora não será, em qualquer hipótese, responsável pelo relacionamento comercial ou de prestação de serviços mantido entre Fornecedores dos serviços e seus Clientes. Apenas o Fornecedor e nunca a Desenvolvedora será responsável por cumprir as obrigações inerentes à relação comercial mantida com seus clientes, incluindo sem limitação, todos os danos, prejuízos, acidentes e ocorrências na prestação dos serviços.",
       },
       {
-        text: "Ao acessar nossos serviços e prover suas informações, você está consentindo o processamento, transferência e armazenamento desta informação em outros países.",
-      },
-      {
-        text: "Ao ser redirecionado para um aplicativo ou site de terceiros, você não será mais regido por essa Política de Privacidade ou pelos Termos de Serviço da nossa plataforma. Não somos responsáveis pelas práticas de privacidade de outros sites e lhe incentivamos a ler as declarações de privacidade deles.",
+        text: "8.5. A empresa Desenvolvedora não é prestadora dos serviços de aulas online ou disponibilizar qualquer conteúdo didático. Tais serviços são prestados pelos Fornecedores de forma independente e autônoma. Nesses termos, a desenvolvedora não garante nem se responsabiliza quanto à qualidade da prestação dos serviços prestados pelo Fornecedor aos seus Clientes, do material divulgado ou problemas oriundos de demora ou de má prestação.",
       },
     ],
   },
   {
-    subtitle: "SEÇÃO 8 – COOKIES OU DADOS DE NAVEGAÇÃO",
+    subtitle: "9. CONDIÇÕES GERAIS",
     paragraphs: [
       {
-        text: "Os cookies referem-se a arquivos de texto enviados pela plataforma ao computador do usuário e visitante e que nele ficam armazenados, com informações relacionadas à navegação no site. Tais informações são relacionadas aos dados de acesso como local e horário de acesso e são armazenadas pelo navegador do usuário e visitante para que o servidor da plataforma possa lê-las posteriormente a fim de personalizar os serviços da plataforma.",
+        text: "9.1. Os serviços serão fornecidos “tal como estão”, sem garantia de qualquer tipo.",
       },
       {
-        text: "O usuário e o visitante da plataforma https://blix.digital  manifesta conhecer e aceitar que pode ser utilizado um sistema de coleta de dados de navegação mediante à utilização de cookies.",
+        text: "9.2 Fornecedor e Consumidor isentam-se quanto a quaisquer garantias e condições relativas aos serviços, expressas ou implícitas, incluindo condições de comercialização, de qualidade satisfatória ou adequação a um propósito específico;",
       },
       {
-        text: "O cookie persistente permanece no disco rígido do usuário e visitante depois que o navegador é fechado e será usado pelo navegador em visitas subsequentes ao site. Os cookies persistentes podem ser removidos seguindo as instruções do seu navegador. Já o cookie de sessão é temporário e desaparece depois que o navegador é fechado. É possível redefinir seu navegador da web para recusar todos os cookies, porém alguns recursos da plataforma podem não funcionar corretamente se a capacidade de aceitar cookies estiver desabilitada.",
-      },
-    ],
-  },
-  {
-    subtitle: "SEÇÃO 9 - CONSENTIMENTO",
-    paragraphs: [
-      {
-        text: "Ao utilizar os serviços e fornecer as informações pessoais na plataforma, o usuário está consentindo com a presente Política de Privacidade.",
+        text: "9.3. O Fornecedor do serviço não garante que estes atenderão aos requisitos do Cliente ou serão benéficos, que a prestação dos serviços será ininterrupta ou sem erros.",
       },
       {
-        text: "O usuário tem direito de retirar o seu consentimento ou solicitar a exclusão dos seus dados a qualquer tempo, para tanto deve entrar em contato através do e-mail blix.aplicativos@gmail.com  ou por correio enviado ao seguinte endereço: Rua Jari 359, apto 301 - bloco D, Passo da Areia, Porto Alegre, RS",
-      },
-    ],
-  },
-  {
-    subtitle: "SEÇÃO 10 - ALTERAÇÕES PARA ESSA POLÍTICA DE PRIVACIDADE",
-    paragraphs: [
-      {
-        text: "Reservamos o direito de modificar essa Política de Privacidade a qualquer momento, então, é recomendável que o usuário e visitante revise-a com frequência.",
+        text: "9.4. A transmissão de dados ou informações pela internet ou em outras redes publicamente acessíveis nunca pode ser considerada 100% segura e está sujeita a perdas, intercepção, alterações ou divulgações indevidas. Assim, o fornecedor não assume qualquer responsabilidade por quaisquer danos que os Clientes possam sofrer em decorrência de qualquer transmissão na internet ou rede publicamente acessível.",
       },
       {
-        text: "As alterações e esclarecimentos vão surtir efeito imediatamente após sua publicação na plataforma. Quando realizadas alterações os usuários serão notificados. Ao utilizar o serviço ou fornecer informações pessoais após eventuais modificações, o usuário e visitante demonstra sua concordância com as novas normas.",
-      },
-      {
-        text: "Diante da fusão ou venda da plataforma à outra empresa os dados dos usuários podem ser transferidos para os novos proprietários para que haja permanência dos serviços oferecidos.",
-      },
-    ],
-  },
-  {
-    subtitle: "SEÇÃO 11 – JURISDIÇÃO PARA RESOLUÇÃO DE CONFLITOS",
-    paragraphs: [
-      {
-        text: "Para a solução de controvérsias decorrentes do presente instrumento será aplicado integralmente o Direito brasileiro",
-      },
-      {
-        text: "Os eventuais litígios deverão ser apresentados no foro da comarca em que se encontra a sede da empresa.",
+        text: "Como condição de participação e contratação do serviço, o Cliente declara que leu e compreendeu os presentes TERMOS na íntegra, assumindo responsabilidade exclusiva pela prática on-line das aulas e demais disposições ajustadas.",
       },
     ],
   },
@@ -295,82 +351,82 @@ export const privacyData = [
 
 export const categoriesInfo = [
   {
-    title: "Hath Yoga",
-    infos: "Lorem ipsum dolor sit amet",
+    title: "Fundamentos e Dicas",
+    infos: "Nessa área você encontra os fundamentos para entender como aplicar técnicas simples que trarão maior qualidade de vida e consciência física, mental e emocional.",
     image: require("./../../assets/FotoCategoria1.jpg"),
   },
   {
-    title: "Meditações",
-    infos: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error. ",
+    title: "Aulas Práticas",
+    infos: "As aulas práticas são o momento de experimentar o que o conhecimento do yoga nos oferece. Por meio de técnicas milenares como āsanas (técnicas corporais), prāṇāyāmas (técnicas de respiração) e meditação.",
     image: require("./../../assets/FotoCategoria2.jpg"),
   },
   {
-    title: "Aulas ao Vivo",
-    infos: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit!",
+    title: "Aulas Teóricas",
+    infos: "A teoria é fundamental para que consigamos levar a prática para níveis muito mais profundos. Aqui estudamos a cultura em que surgiu o Yoga e os livros clássicos que baseiam todo esse conhecimento transformador.",
     image: require("./../../assets/FotoCategoria3.jpg"),
   },
   {
-    title: "Tutoriais",
-    infos: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumend.",
+    title: "Respiração e Alongamento",
+    infos: "Nessa área você encontra práticas rápidas para utilizar em qualquer lugar e momento do seu dia. Uma pausa revigorante na sua rotina de trabalho, um instante para cuidar do seu corpo, um momento para trazer mais estabilidade para os seus pensamentos.",
     image: require("./../../assets/FotoCategoria4.jpg"),
   },
   {
-    title: "Relaxamento",
-    infos: "lit repudiandae et atque praesentium.",
+    title: "Meditação",
+    infos: "A meditação é uma prática milenar incrível para aumentar o foco, a concentração e a atenção. Além disso tem a potência de nos levar para estados mais expandidos de consciência e nos trazer mais autoconhecimento.",
     image: require("./../../assets/FotoCategoria5.jpg"),
   },
-  {
-    title: "Jornadas",
-    infos: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste!",
-    image: require("./../../assets/FotoCategoria6.jpg"),
-  },
-  {
-    title: "Hath Yoga",
-    infos: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos.",
-    image: require("./../../assets/FotoCategoria1.jpg"),
-  },
-  {
-    title: "Meditações",
-    infos: "lit repudiandae et atque praesentium.",
-    image: require("./../../assets/FotoCategoria2.jpg"),
-  },
-  {
-    title: "Aulas ao Vivo",
-    infos: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit!",
-    image: require("./../../assets/FotoCategoria3.jpg"),
-  },
-  {
-    title: "Tutoriais",
-    infos: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumend.",
-    image: require("./../../assets/FotoCategoria4.jpg"),
-  },
-  {
-    title: "Relaxamento",
-    infos: "lit repudiandae et atque praesentium.",
-    image: require("./../../assets/FotoCategoria5.jpg"),
-  },
-  {
-    title: "Jornadas",
-    infos: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste!",
-    image: require("./../../assets/FotoCategoria6.jpg"),
-  },
+  // {
+  //   title: "Jornadas",
+  //   infos: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste!",
+  //   image: require("./../../assets/FotoCategoria6.jpg"),
+  // },
+  // {
+  //   title: "Hath Yoga",
+  //   infos: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit deserunt in officia libero eos.",
+  //   image: require("./../../assets/FotoCategoria1.jpg"),
+  // },
+  // {
+  //   title: "Meditações",
+  //   infos: "lit repudiandae et atque praesentium.",
+  //   image: require("./../../assets/FotoCategoria2.jpg"),
+  // },
+  // {
+  //   title: "Aulas ao Vivo",
+  //   infos: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumenda aut impedit!",
+  //   image: require("./../../assets/FotoCategoria3.jpg"),
+  // },
+  // {
+  //   title: "Tutoriais",
+  //   infos: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste assumend.",
+  //   image: require("./../../assets/FotoCategoria4.jpg"),
+  // },
+  // {
+  //   title: "Relaxamento",
+  //   infos: "lit repudiandae et atque praesentium.",
+  //   image: require("./../../assets/FotoCategoria5.jpg"),
+  // },
+  // {
+  //   title: "Jornadas",
+  //   infos: "Lorem ipsum dolor sit amet. Qui harum quos est illum quasi et itaque veritatis et error repellat sit quam cumque. Aut numquam corporis non iste!",
+  //   image: require("./../../assets/FotoCategoria6.jpg"),
+  // },
 ];
 
 export const footerSocialData = [
   {
     type: "material-community",
     name: "instagram",
-    link: "https://www.instagram.com",
+    link: "https://www.instagram.com/vidaveda.yoga/",
   },
   {
-    type: "material-community",
-    name: "youtube",
-    link: "https://www.youtube.com",
-  },
+  //   type: "material-community",
+  //   name: "youtube",
+  //   link: "https://www.youtube.com",
+  // },
 
-  {
-    type: "material-community",
-    name: "whatsapp",
-    link: "https://wa.me/message/KWKSZPRGPD2YI1",
-  },
+   {
+     type: "material-community",
+     name: "whatsapp",
+     link: "https://api.whatsapp.com/send?phone=5521995503234",
+   },
 ];
