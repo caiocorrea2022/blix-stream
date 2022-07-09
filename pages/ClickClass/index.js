@@ -25,7 +25,7 @@ import { Zoom } from "../../components/Zoom";
 const auth = getAuth();
 
 export function ClickClass({ route, navigation }) {
-  const { cardId } = route.params;
+  const { cardId, categoryId } = route.params;
 
   const [video, setVideo] = useState();
   const [meetingNumber, setMeetingNumber] = useState("");
@@ -60,7 +60,7 @@ export function ClickClass({ route, navigation }) {
   };
 
   const getCard = async () => {
-    const docRef = doc(firestore, "categories", "MkYps8Md8G6jDwFyg4VB", "cards", cardId);
+    const docRef = doc(firestore, "categories", categoryId, "cards", cardId);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       if (docSnap.data().videos) {
