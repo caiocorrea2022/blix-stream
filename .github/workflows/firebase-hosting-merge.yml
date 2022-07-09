@@ -57,4 +57,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VIDA_VEDA_YOGA_A1D2A }}'
           channelId: live
-          projectId: blix-stream
+          projectId:  vida-veda-yoga-a1d2a
