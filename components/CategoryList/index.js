@@ -126,7 +126,7 @@ const CategoryList = ({ category, plan, courses }) => {
             data={allCards}
             style={{ marginLeft: scrollX }}
             renderItem={({ item }) => (
-              <CategoryItem item={item} plan={plan} courses={courses} />
+              <CategoryItem categoryId={category.id} item={item} plan={plan} courses={courses} />
             )}
             horizontal
             showsHorizontalScrollIndicator={false}
