@@ -17,6 +17,7 @@ import { Icon } from "react-native-elements";
 import ViewPortProvider from "../../hooks/ViewPortProvider";
 import useViewport from "../../hooks/useViewport";
 import Button from "../Button";
+import { TouchableOpacity, View } from "react-native";
 
 const CardInfo = ({
   array,
@@ -39,26 +40,32 @@ const CardInfo = ({
       <></>
     ) : (
       <>
-        {window.innerWidth < (array.length * cardWidth) ? (
-          <Icon
-            type="material-community"
-            name="chevron-left"
-            size={THEME.FONTSIZE.BIG}
-            iconStyle={{
-              color: THEME.COLORS.ICON,
-              backgroundColor: "rgba(255,255,255,0.3)",
-              borderRadius: "5px",
-            }}
-            containerStyle={{
-              position: "absolute",
-              left: 0,
-              zIndex: 99,
-              height: "10rem",
-              justifyContent: "center",
-              overflow: "hidden",
-            }}
+        {window.innerWidth < array.length * cardWidth ? (
+          <TouchableOpacity
             onPress={handleLeftArrow}
-          />
+            style={{ zIndex: 99 }}
+          >
+            <Icon
+              type="material-community"
+              name="chevron-left"
+              size={THEME.FONTSIZE.BIG}
+              iconStyle={{
+                color: THEME.COLORS.ICON,
+                backgroundColor: "rgba(255,255,255,0.3)",
+                borderRadius: "5px",
+              }}
+              containerStyle={{
+                position: "absolute",
+                left: 0,
+                zIndex: 99,
+                height: "10rem",
+                justifyContent: "center",
+                overflow: "hidden",
+                marginLeft: "0.5rem",
+                cursor: "pointer",
+              }}
+            />
+          </TouchableOpacity>
         ) : (
           <></>
         )}
@@ -73,27 +80,34 @@ const CardInfo = ({
       <></>
     ) : (
       <>
-        {window.innerWidth < (array.length * cardWidth) ? (
-          <Icon
-            type="material-community"
-            name="chevron-right"
-            size={THEME.FONTSIZE.BIG}
-            iconStyle={{
-              color: THEME.COLORS.ICON,
-              backgroundColor: "rgba(255,255,255,0.3)",
-              borderRadius: "5px",
-            }}
-            containerStyle={{
-              position: "absolute",
-              right: 0,
-              zIndex: 99,
-              height: "10rem",
-              justifyContent: "center",
-              overflow: "hidden",
-              margin: "1rem",
-            }}
-            onPress={handleRightArrow}
-          />
+        {window.innerWidth < array.length * cardWidth ? (
+          // <TouchableOpacity
+          //   onPress={handleRightArrow}
+          //   style={{ zIndex: 99, backgroundColor: "red", flex: 1 }}
+          // >
+            <Icon
+              type="material-community"
+              name="chevron-right"
+              size={THEME.FONTSIZE.BIG}
+              iconStyle={{
+                color: THEME.COLORS.ICON,
+                backgroundColor: "rgba(255,255,255,0.3)",
+                borderRadius: "5px",
+              }}
+              containerStyle={{
+                position: "absolute",
+                right: 0,
+                zIndex: 99,
+                height: "10rem",
+                justifyContent: "center",
+                overflow: "hidden",
+                marginRight: "0.5rem",
+                cursor: "pointer",
+              }}
+              onPress={handleRightArrow}
+            />
+            
+          // </TouchableOpacity>
         ) : (
           <></>
         )}
@@ -112,10 +126,10 @@ const CardInfo = ({
   const handleRightArrow = () => {
     let x = scrollX - Math.round(window.innerWidth / 2);
     let listW = array.length * cardWidth;
-    if ((window.innerWidth > listW)) {
+    if (window.innerWidth > listW) {
       x = 0;
-    } else if (((window.innerWidth - listW) > x)) {
-      x = (window.innerWidth - listW) - (34 * array.length);
+    } else if (window.innerWidth - listW > x) {
+      x = window.innerWidth - listW - 34 * array.length;
     }
     setScrollX(x);
   };
@@ -158,7 +172,8 @@ const CardInfo = ({
                     >
                       {item.price}
                     </StandardText>
-                  </ViewPrice>) : null}
+                  </ViewPrice>
+                ) : null}
               </Card.Content>
               <Card.Actions>
                 {buttonVisible ? (
@@ -167,7 +182,9 @@ const CardInfo = ({
                     width="100%"
                     borderRadius="5px"
                     colorbutton={THEME.COLORS.SECONDARY_900}
-                    onPress={() => navigation.navigate("ClickCourse", { courseId: item.id })}
+                    onPress={() =>
+                      navigation.navigate("ClickCourse", { courseId: item.id })
+                    }
                   ></Button>
                 ) : null}
               </Card.Actions>

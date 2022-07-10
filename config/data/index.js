@@ -34,18 +34,18 @@ export const planFrequency = [
 
 export const planPrices = [
   //Plano A mensal
-  [{price: "R$197,00/mês", priceId: "price_1LFKx8CmcyIwF9rcptrUJuBI"},
+  [{price: "R$197,00 por mês", priceId: "price_1LFKx8CmcyIwF9rcptrUJuBI"},
   //Plano B mensal
-  {price: "R$347,00/mês", priceId: "price_1LFLB2CmcyIwF9rcoZDBuj4v"},
+  {price: "R$347,00 por mês", priceId: "price_1LFLB2CmcyIwF9rcoZDBuj4v"},
   //Plano C mensal
-  {price: "R$500,00/mês", priceId: "price_1LFkOACmcyIwF9rcGGV8TELx"}],
+  {price: "R$500,00 por mês", priceId: "price_1LFkOACmcyIwF9rcGGV8TELx"}],
 
   //Plano A trimestral parcelado (mensal)
-  [{price: "R$547,00/trimestre", priceId: "price_1LFKpkCmcyIwF9rcHm7cVgUd"},
+  [{price: "R$547,00 por trimestre", priceId: "price_1LFKpkCmcyIwF9rcHm7cVgUd"},
   //Plano B trimestral parcelado (mensal)
-  {price: "R$947,00/trimestre", priceId: "price_1LFLCXCmcyIwF9rcusWSqn6I"},
+  {price: "R$947,00 por trimestre", priceId: "price_1LFLCXCmcyIwF9rcusWSqn6I"},
   //Plano C trimestral parcelado (mensal)
-  {price: "R$1.410,00/trimestre", priceId: "price_1LFkNYCmcyIwF9rcajeITdWW"}],
+  {price: "R$1.410,00 por trimestre", priceId: "price_1LFkNYCmcyIwF9rcajeITdWW"}],
 
   //Plano A semestral parcelado (mensal)
   // [{price: "R$800,00/semestre", priceId: ""}, 
@@ -55,11 +55,11 @@ export const planPrices = [
   // {price: "R$850,00/semestre", priceId: ""}],
 
   //Plano A anual parcelado (mensal)
-  [{price: "R$1.979,00/ano", priceId: "price_1LFL3XCmcyIwF9rcJy8jLFqf"}, 
+  [{price: "R$1.979,00 por ano", priceId: "price_1LFL3XCmcyIwF9rcJy8jLFqf"}, 
   //Plano B anual parcelado (mensal)
-  {price: "R$3.497,00/ano", priceId: "price_1LFLDaCmcyIwF9rcfb91PhiF"},
+  {price: "R$3.497,00 por ano", priceId: "price_1LFLDaCmcyIwF9rcfb91PhiF"},
   //Plano C anual parcelado (mensal)
-  {price: "R$4200,00/ano", priceId: "price_1LFkLCCmcyIwF9rc2JUasWWY"}],
+  {price: "R$4200,00 por ano", priceId: "price_1LFkLCCmcyIwF9rc2JUasWWY"}],
 ];
 
 export const upsellPrices = [

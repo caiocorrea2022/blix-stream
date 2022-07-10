@@ -75,9 +75,6 @@ export function About({ navigation }) {
   return (
     <SafeAreaView>
       <Container>
-        <ViewCookies>
-          <Cookie debug={true}></Cookie>
-        </ViewCookies>
         <Section>
           <Poster source={require("../../assets/FotoAbout.jpg")}>
             <Header
@@ -100,7 +97,7 @@ export function About({ navigation }) {
             <StandardText
               textAlign="flex-start"
               fontFamily={THEME.FONTFAMILY.REGULAR}
-              style={{lineHeight:"2"}}
+              style={{ lineHeight: "2" }}
             >
               {aboutText}
             </StandardText>
@@ -177,18 +174,20 @@ export function About({ navigation }) {
         )}
         {plan ? (
           <></>
+        ) : planInfos.length > 0 ? (
+          <ViewSection>
+            <Pricing userId={user}></Pricing>
+          </ViewSection>
         ) : (
-          planInfos.length > 0 ?
-            (<ViewSection>
-              <Pricing userId={user}></Pricing>
-            </ViewSection>) : (
-              <></>
-            )
+          <></>
         )}
         <View>
           <Footer></Footer>
         </View>
       </Container>
+      <ViewCookies>
+        <Cookie debug={true}></Cookie>
+      </ViewCookies>
     </SafeAreaView>
   );
 }
