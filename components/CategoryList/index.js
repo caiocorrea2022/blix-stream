@@ -13,7 +13,7 @@ import { StandardText } from "../../config/theme/globalStyles";
 const CategoryList = ({ category, plan, courses }) => {
   const [allCards, setAllCards] = useState([]);
   const [scrollX, setScrollX] = useState(0);
-  let cardWidth = 260
+  let cardWidth = 356 //largura card 21rem + padding 1rem
 
   useEffect(() => {
     const findAllCategories = async () => {
@@ -50,7 +50,8 @@ const CategoryList = ({ category, plan, courses }) => {
               position: "absolute",
               left: 0,
               zIndex: 99,
-              height: "10rem",
+              height: "14rem",
+              //aprox altura do card
               justifyContent: "center",
               overflow: "hidden",
             }}
@@ -84,7 +85,7 @@ const CategoryList = ({ category, plan, courses }) => {
               position: "absolute",
               right: 0,
               zIndex: 99,
-              height: "10rem",
+              height: "14rem",
               justifyContent: "center",
               overflow: "hidden",
             }}
