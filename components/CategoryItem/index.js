@@ -5,10 +5,10 @@ import THEME from '../../config/theme';
 import { Icon } from 'react-native-elements'
 import { SmallText } from '../../config/theme/globalStyles';
 
-const CategoryItem = ({ item, plan, courses }) => {
+const CategoryItem = ({ categoryId, item, plan, courses }) => {
     const navigation = useNavigation();
     const onCardPress = () => {
-        navigation.navigate('ClickClass', { cardId:item.id })
+        navigation.navigate('ClickClass', { cardId:item.id, categoryId: categoryId })
     }
 
     const toDate = (seconds) => {

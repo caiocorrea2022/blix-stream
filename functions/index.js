@@ -58,6 +58,7 @@ const db = admin.firestore();
 exports.userTrigger = functions.firestore
     .document('users/{userId}')
     .onUpdate((change, context) => {
+        console.log(process.env.STRIPE_SECTRET_KEY)
 
         const user = change.after.data();
         const userBefore = change.before.data();
@@ -70,10 +71,13 @@ exports.userTrigger = functions.firestore
                     value: user.CPF,
                 },
                 headers: {
-                    'Authorization': 'Bearer sk_test_51K1wAiCmcyIwF9rcDllUmRHt47Sf8pzFwglHfcrHN6Zy8GdSnl3RFPl8yoPoOJbFXs18LK8eCHavE9oQilLFqzbk00dR3pma24'
+                    'Authorization': `Bearer ${process.env.STRIPE_SECTRET_KEY}`
                 },
             }, (err, res, body) => {
                 const info = JSON.parse(body)
+                console.log(err)
+                console.log(body)
+                console.log(info)
     
             });
         }
@@ -118,7 +122,7 @@ exports.paymentTrigger = functions.firestore
                             from_subscription: subId
                         },
                         headers: {
-                            'Authorization': 'Bearer sk_test_51K1wAiCmcyIwF9rcDllUmRHt47Sf8pzFwglHfcrHN6Zy8GdSnl3RFPl8yoPoOJbFXs18LK8eCHavE9oQilLFqzbk00dR3pma24'
+                            'Authorization':  `Bearer ${process.env.STRIPE_SECTRET_KEY}`
                         }
                     }, (err, res, body) => {
 
@@ -136,7 +140,7 @@ exports.paymentTrigger = functions.firestore
                                 'phases[0][items][0][quantity]': 1,
                             },
                             headers: {
-                                'Authorization': 'Bearer sk_test_51K1wAiCmcyIwF9rcDllUmRHt47Sf8pzFwglHfcrHN6Zy8GdSnl3RFPl8yoPoOJbFXs18LK8eCHavE9oQilLFqzbk00dR3pma24'
+                                'Authorization':  `Bearer ${process.env.STRIPE_SECTRET_KEY}`
                             },
                         }, (err, res, body) => {
                             const info = JSON.parse(body)

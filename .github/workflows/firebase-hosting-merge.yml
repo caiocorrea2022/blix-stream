@@ -7,20 +7,6 @@ name: Deploy to Firebase Hosting on merge
     branches:
       - master
 
-#criado automático
-# jobs:
-#   build_and_deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - run: npm ci && npm run build
-#       - uses: FirebaseExtended/action-hosting-deploy@v0
-#         with:
-#           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-#           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BLIX_STREAM }}'
-#           channelId: live
-#           projectId: blix-stream
-
 jobs:
   build:
     name: Build and deploy
@@ -28,12 +14,29 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+      - name: 'Create env file'
+        run: |
+          touch .env
+          echo REACT_APP_FIREBASE_API_KEY=${{ secrets.REACT_APP_FIREBASE_API_KEY }} >> .env
+          echo REACT_APP_FIREBASE_AUTH_DOMAIN=${{ secrets.REACT_APP_FIREBASE_AUTH_DOMAIN }} >> .env
+          echo REACT_APP_FIREBASE_PROJECT_ID=${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }} >> .env
+          echo REACT_APP_FIREBASE_STORAGE_BUCKET=${{ secrets.REACT_APP_FIREBASE_STORAGE_BUCKET }} >> .env
+          echo REACT_APP_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.REACT_APP_FIREBASE_MESSAGING_SENDER_ID }} >> .env
+          echo REACT_APP_FIREBASE_APP_ID=${{ secrets.REACT_APP_FIREBASE_APP_ID }} >> .env
+          echo REACT_APP_FIREBASE_MEASUREMEMT_ID=${{ secrets.REACT_APP_FIREBASE_MEASUREMEMT_ID }} >> .env
+          echo ZOOM_SDK_KEY=${{ secrets.ZOOM_SDK_KEY }} >> .env
+          echo ZOOM_SDK_SECRET=${{ secrets.ZOOM_SDK_SECRET }} >> .env
+          echo SPREADSHEET_ID=${{ secrets.SPREADSHEET_ID }} >> .env
+          echo SHEET_ID=${{ secrets.SHEET_ID }} >> .env
+          echo CLIENT_EMAIL=${{ secrets.CLIENT_EMAIL }} >> .env
+          echo PRIVATE_KEY=${{ secrets.PRIVATE_KEY }} >> .env
+          cat .env
       - name: Install expo
         uses: expo/expo-github-action@v5
       - name: Install the dependencies
         run: 'npm install'
       - name: Build the dependencies
-        run: 'npx expo optimize && expo build:web'
+        run: 'npx expo-optimize && expo build:web'
       - name: Deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -41,3 +44,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BLIX_STREAM }}'
           channelId: live
           projectId: blix-stream
+
