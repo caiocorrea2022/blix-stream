@@ -144,7 +144,7 @@ export function ClickCourse({ route }) {
 
   return (
     <ViewPortProvider>
-      <SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>
         <View style={{ backgroundColor: THEME.COLORS.BACKGROUND_ABOUT, justifyContent: "space-between", flex: 1 }}>
           <HeaderPurchase background={THEME.COLORS.BACKGROUND_HEADER} />
           <OutsideView></OutsideView>
