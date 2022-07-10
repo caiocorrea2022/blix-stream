@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import Constants from "expo-constants";
-import {returnDomainZoom} from "../../config/data"
+import { returnDomainZoom } from "../../config/data";
 
-
-export function Zoom ({route}) {
-  const { meetingNumber, passWord, userName, cardId, categoryId  } = route.params;
+export function Zoom({ route }) {
+  const { meetingNumber, passWord, userName, cardId, categoryId } =
+    route.params;
   const zoomConfig = {
     zoomSdkKey: Constants.manifest.extra.zoomSdkKey,
     zoomSdkSecret: Constants.manifest.extra.zoomSdkSecret,
@@ -18,7 +18,7 @@ export function Zoom ({route}) {
   var role = 0;
 
   useEffect(() => {
-    const { ZoomMtg} = require("@zoomus/websdk");
+    const { ZoomMtg } = require("@zoomus/websdk");
     require("@zoomus/websdk/dist/css/react-select.css");
     require("@zoomus/websdk/dist/css/bootstrap.css");
     ZoomMtg.setZoomJSLib("https://source.zoom.us/2.5.0/lib", "/av");
@@ -91,26 +91,5 @@ export function Zoom ({route}) {
     });
   }
 
-  return (
-    <></>
-  );
-};
-
-
-    // <Image source={img} resizeMode="cover">
-    //   <View
-    //     style={{
-    //       backgroundColor: "rgba(0,0,0,0.7)",
-    //       width: "100%",
-    //       height: "100%",
-    //       justifyContent: "center",
-    //     }}
-    //   >
-    //     <Button
-    //       title={`Acessar ${className} ao Vivo`}
-    //       onPress={() => {
-    //         joinmeeting();
-    //       }}
-    //     ></Button>
-    //   </View>
-    // </Image>
+  return <></>;
+}

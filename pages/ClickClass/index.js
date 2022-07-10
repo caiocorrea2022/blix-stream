@@ -160,7 +160,8 @@ export function ClickClass({ route, navigation }) {
                   }}
                 >
                   <Button
-                    title={`Acessar ${className} ao Vivo`}
+                    title={`Acessar ao vivo\n${className}`}
+                    fontSize={THEME.FONTSIZE.SMALL}
                     onPress={() => {
                       navigation.navigate("Zoom", { meetingNumber: meetingNumber, passWord: passWord, userName: userName, cardId: cardId, categoryId: categoryId });
                     }}

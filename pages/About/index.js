@@ -140,20 +140,6 @@ export function About({ navigation }) {
             cardWidth={192} //12rem em px
           ></CardInfo>
           </ViewSection>
-          <ViewAboutMe>
-            <ViewText>
-              <SubTitle>{aboutTitle}</SubTitle>
-            </ViewText>
-            <ViewText>
-              <StandardText
-                textAlign="flex-start"
-                fontFamily={THEME.FONTFAMILY.REGULAR}
-                style={{ lineHeight: "2" }}
-              >
-                {aboutText}
-              </StandardText>
-            </ViewText>
-          </ViewAboutMe>
           {coursesInfo.length > 0 ? (
           <ViewSection>
           <ViewText>
