@@ -72,6 +72,8 @@ export function About({ navigation }) {
         setUser(user.uid);
         getUsers(user.uid);
         setLogin(true);
+      } else {
+        setIsLoading(false);
       }
     });
   }, []);

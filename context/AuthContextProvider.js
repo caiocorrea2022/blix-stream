@@ -16,6 +16,8 @@ export function AuthContextProvider({children}) {
                     id: uid,
                 })
                 setLoading(false);
+            } else {
+                setLoading(false);
             }
         })
 
