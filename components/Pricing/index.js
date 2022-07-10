@@ -16,7 +16,6 @@ import useViewport from "../../hooks/useViewport";
 import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 const cardSize = windowWidth * 0.23;
 

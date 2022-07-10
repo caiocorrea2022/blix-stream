@@ -160,7 +160,8 @@ export function ClickClass({ route, navigation }) {
                   }}
                 >
                   <Button
-                    title={`Acessar ${className} ao Vivo`}
+                    title={`Acessar ao vivo\n${className}`}
+                    fontSize={THEME.FONTSIZE.SMALL}
                     onPress={() => {
                       navigation.navigate("Zoom", { meetingNumber: meetingNumber, passWord: passWord, userName: userName, cardId: cardId, categoryId: categoryId });
                     }}
@@ -168,7 +169,7 @@ export function ClickClass({ route, navigation }) {
                 </View>
               </Image>
             ) : (
-              <VideoPlayer video={video} />
+              video ?  <VideoPlayer video={video} /> : <Image source={img} resizeMode="cover">  </Image> 
             )
           ) : (
             <Image source={img} resizeMode="cover">
@@ -239,7 +240,7 @@ export function ClickClass({ route, navigation }) {
               </View>
             </Image>
           ) : (
-            <VideoPlayer video={video} />
+            video ?  <VideoPlayer video={video} /> : <Image source={img} resizeMode="cover">  </Image> 
           )
         ) : (
           <Image source={img} resizeMode="cover">

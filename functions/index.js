@@ -2,6 +2,7 @@ const functions = require("firebase-functions");
 const admin = require('firebase-admin');
 const data = require("./data");
 const request = require('request');
+const { google } = require('googleapis');
 // const paypal = require("@paypal/checkout-server-sdk");
 
 admin.initializeApp();
@@ -54,6 +55,44 @@ const db = admin.firestore();
 //     return response.result;
 // });
 
+exports.userCreateSheets = functions.firestore
+    .document('users/{userId}')
+    .onCreate((snap, context) => {
+
+        const user = snap.data();
+
+        var credentials = require("./credentials.json");
+        var jwt = new google.auth.JWT(
+            credentials.client_email, null, credentials.private_key,
+            ['https://www.googleapis.com/auth/spreadsheets']
+        );
+
+        var apiKeyFile = require("./api_key.json");
+        var apiKey = apiKeyFile.key;
+        var spreadsheetId = '18VgasxIwJSkZqOZbFckU2fKDw91hPR30BeMC-PCWanM';
+        var range = 'A1';
+        var row = [user.Nome_Completo, user.Email, user.Celular, user.CPF];
+
+        const sheets = google.sheets({ version: 'v4' });
+        sheets.spreadsheets.values.append({
+            spreadsheetId: spreadsheetId,
+            range: range,
+            auth: jwt,
+            key: apiKey,
+            valueInputOption: 'RAW',
+            resource: { values: [row] }
+        }, function (err, result) {
+            console.log(result)
+            if (err) {
+                console.log(err)
+                throw err;
+            }
+            else {
+                console.log('Updated sheet: ' + result.data.updates.updatedRange);
+            }
+        });
+    });
+
 
 exports.userTrigger = functions.firestore
     .document('users/{userId}')
@@ -63,8 +102,8 @@ exports.userTrigger = functions.firestore
         const user = change.after.data();
         const userBefore = change.before.data();
 
-        if(userBefore.stripeId != user.stripeId) {
-    
+        if (userBefore.stripeId != user.stripeId) {
+
             request.post(`https://api.stripe.com/v1/customers/${user.stripeId}/tax_ids`, {
                 form: {
                     type: 'br_cpf',
@@ -78,10 +117,10 @@ exports.userTrigger = functions.firestore
                 console.log(err)
                 console.log(body)
                 console.log(info)
-    
+
             });
         }
-       
+
     });
 
 
@@ -97,7 +136,7 @@ exports.paymentTrigger = functions.firestore
         //get userId
         const userId = context.params.docId;
 
-        //stripe subscritpion 
+        //stripe subscritpion
         if (newValue && context.params.paymentType == 'subscriptions') {
 
             if (newValue.status === 'active') {
@@ -122,7 +161,7 @@ exports.paymentTrigger = functions.firestore
                             from_subscription: subId
                         },
                         headers: {
-                            'Authorization':  `Bearer ${process.env.STRIPE_SECTRET_KEY}`
+                            'Authorization': `Bearer ${process.env.STRIPE_SECTRET_KEY}`
                         }
                     }, (err, res, body) => {
 
@@ -140,7 +179,7 @@ exports.paymentTrigger = functions.firestore
                                 'phases[0][items][0][quantity]': 1,
                             },
                             headers: {
-                                'Authorization':  `Bearer ${process.env.STRIPE_SECTRET_KEY}`
+                                'Authorization': `Bearer ${process.env.STRIPE_SECTRET_KEY}`
                             },
                         }, (err, res, body) => {
                             const info = JSON.parse(body)
@@ -151,14 +190,14 @@ exports.paymentTrigger = functions.firestore
 
             } else {
 
-                //Set plan = 0, no plan active 
+                //Set plan = 0, no plan active
                 db.doc(`users/${userId}`).set({
                     plan: '0'
                 }, { merge: true });
             }
         }
 
-   
+
 
         //stripe payment (course)
         if (newValue && context.params.paymentType == 'payments') {
@@ -173,7 +212,7 @@ exports.paymentTrigger = functions.firestore
                 date.setMonth(date.getMonth() + 6)
 
                 db.doc(`users/${userId}`).set({
-                    courses: admin.firestore.FieldValue.arrayUnion({priceId: priceId, dueDate: date})
+                    courses: admin.firestore.FieldValue.arrayUnion({ priceId: priceId, dueDate: date })
                 }, { merge: true });
             }
         }

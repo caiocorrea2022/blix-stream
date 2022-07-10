@@ -35,7 +35,6 @@ import { HelperText } from "react-native-paper";
 import { Title, SideView } from "../../config/theme/globalStyles";
 import TouchableText from "../../components/TouchableText";
 import { TextInputMask } from "react-native-masked-text";
-import { appendSpreadsheet } from "../../services/googlesheets";
 import { SafeAreaView } from "react-native";
 
 export function SignUp({ navigation, route }) {
@@ -146,12 +145,6 @@ export function SignUp({ navigation, route }) {
                 break;
             }
           });
-        // appendSpreadsheet({
-        //   NomeCompleto: name.value,
-        //   Email: email.value,
-        //   Celular: cellphone.value,
-        //   CPF: cpf.value,
-        // })
       } else {
         showAlert(
           "Erro:",
