@@ -22,11 +22,11 @@ const HeaderPurchase = ({ signUp }) => {
           aspectRatio={aspectRatioLogoAbout}
         />
         {signUp ? (
-          <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
+          <FooterText color={THEME.COLORS.ICON_HEADER}>
             {firstStep}
           </FooterText>
         ) : (
-          <FooterText fontFamily={THEME.FONTFAMILY.MEDIUM} color={THEME.COLORS.PRIMARY_900} margin="0rem 1rem">
+          <FooterText fontFamily={THEME.FONTFAMILY.MEDIUM} color={THEME.COLORS.PRIMARY_900}>
             {firstStep}
           </FooterText>
         )
@@ -37,15 +37,16 @@ const HeaderPurchase = ({ signUp }) => {
           size={THEME.FONTSIZE.SMALL}
           iconStyle={{
             color: THEME.COLORS.ICON,
+            marginHorizontal: "0.2rem"
           }}
         />
         {user ? (
-          <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
+          <FooterText color={THEME.COLORS.ICON_HEADER}>
             {thirdStep}
           </FooterText>
         ) : signUp ? (
           <>
-            <FooterText fontFamily={THEME.FONTFAMILY.MEDIUM} color={THEME.COLORS.PRIMARY_900} margin="0rem 1rem">
+            <FooterText fontFamily={THEME.FONTFAMILY.MEDIUM} color={THEME.COLORS.PRIMARY_900}>
               {secondStep}
             </FooterText>
             <Icon
@@ -56,13 +57,13 @@ const HeaderPurchase = ({ signUp }) => {
                 color: THEME.COLORS.ICON,
               }}
             />
-            <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
+            <FooterText color={THEME.COLORS.ICON_HEADER}>
               {thirdStep}
             </FooterText>
           </>
         ) : (
           <>
-            <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
+            <FooterText color={THEME.COLORS.ICON_HEADER}>
               {secondStep}
             </FooterText>
             <Icon
@@ -71,9 +72,10 @@ const HeaderPurchase = ({ signUp }) => {
               size={THEME.FONTSIZE.SMALL}
               iconStyle={{
                 color: THEME.COLORS.ICON,
+                marginHorizontal: "0.2rem"
               }}
             />
-            <FooterText color={THEME.COLORS.ICON_HEADER} margin="0rem 1rem">
+            <FooterText color={THEME.COLORS.ICON_HEADER}>
               {thirdStep}
             </FooterText>
           </>

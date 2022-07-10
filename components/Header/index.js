@@ -2,7 +2,7 @@ import React from "react";
 import { HeaderLeftSide, HeaderRightSide, Avatar, Row } from "./style";
 import { Icon } from "react-native-elements";
 import THEME from "../../config/theme";
-import { HeaderContainer, StandardText } from "../../config/theme/globalStyles";
+import { HeaderContainer, SmallText} from "../../config/theme/globalStyles";
 import { DrawerActions } from "@react-navigation/native";
 import TouchableText from "../../components/TouchableText";
 import { TouchableOpacity } from "react-native";
@@ -25,29 +25,29 @@ const Header = ({ ClickClass, about, onPress2, onPress}) => {
       </HeaderLeftSide>
         <HeaderRightSide style={{ alignItems: "center" }}>
           {user ? (
-            <StandardText
+            <SmallText
               color={THEME.COLORS.ICON_HEADER_ABOUT}
               margin="0rem 1rem"
               onPress={onPress}
             >
-              ACESSAR APLICATIVO
-            </StandardText>
+              Acessar Conteúdo
+            </SmallText>
           ) : (
             <>
-              <StandardText
+              <SmallText
                 color={THEME.COLORS.ICON_HEADER_ABOUT}
                 margin="0rem 1rem"
                 onPress={onPress}
               >
-                VER APLICATIVO
-              </StandardText>
-              <StandardText
+                Visualizar Conteúdo
+              </SmallText>
+              <SmallText
                 color={THEME.COLORS.ICON_HEADER_ABOUT}
                 margin="0rem 1rem"
                 onPress={() => navigation.navigate("Login")}
               >
-                LOGIN
-              </StandardText>
+                Login
+              </SmallText>
             </>
           )}
         </HeaderRightSide>
@@ -80,7 +80,7 @@ const Header = ({ ClickClass, about, onPress2, onPress}) => {
             type="material-community"
             name="menu"
             color={THEME.COLORS.ICON_HEADER_MAIN}
-            size={34}
+            size="34px"
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
           />
         )}

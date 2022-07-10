@@ -34,6 +34,7 @@ import { firestore } from "../../services/firebase/index";
 import THEME from "../../config/theme";
 import Button from "../../components/Button";
 import { Cookie } from "../../components/CookieConsent";
+import { SafeAreaView, View } from "react-native";
 
 const auth = getAuth();
 
@@ -74,81 +75,48 @@ export function About({ navigation }) {
   }, []);
 
   return (
-    <Container>
-      <Section>
-        <Poster source={require("../../assets/FotoAbout.jpg")}>
-          <Header
-            about={true}
-            onPress={() => navigation.navigate("Drawer")}
-          />
-          <Hero
-            navigation={navigation}
-            button={true}
-            userId={user}
-            plan={plan}
-          ></Hero>
-        </Poster>
-      </Section>
-      <ViewAboutMe>
-        <ViewText>
-          <SubTitle>{aboutTitle}</SubTitle>
-        </ViewText>
-        <ViewText>
-          <SmallText
-            textAlign="flex-start"
-            fontFamily={THEME.FONTFAMILY.REGULAR}
-          >
-            {aboutText}
-          </SmallText>
-        </ViewText>
-      </ViewAboutMe>
-      <ViewSection>
-        <ViewText>
-          <Title>{aboutTitleCategory}</Title>
-        </ViewText>
-        <CardInfo
-          titleFontSize={THEME.FONTSIZE.EXTRASMALL}
-          titleColor={THEME.COLORS.TEXT_ABOUT}
-          cardStyle={{
-            width: "12rem",
-            margin: "1rem",
-            display: "flex",
-            flexDrection: "column",
-            backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
-          }}
-          cardCoverStyle={{
-            width: "100%",
-            height: "7rem",
-            borderRadius: "8px",
-            marginBottom: "0.5rem",
-          }}
-          cardContentStyle={{
-            flex: "1 1 auto",
-          }}
-          array={categoriesInfo}
-          navigation={navigation}
-          buttonVisible={false}
-          priceVisible={false}
-          cardWidth={192} //12rem em px
-        ></CardInfo>
+    <SafeAreaView>
+      <Container>
+        <ViewCookies>
+          <Cookie debug={true}></Cookie>
+        </ViewCookies>
+        <Section>
+          <Poster source={require("../../assets/FotoAbout.jpg")}>
+            <Header
+              about={true}
+              onPress={() => navigation.navigate("Drawer")}
+            />
+            <Hero
+              navigation={navigation}
+              button={true}
+              userId={user}
+              plan={plan}
+            ></Hero>
+          </Poster>
+        </Section>
         <ViewAboutMe>
-          <Button
-            title={"Visualizar aplicativo"}
-            onPress={() => navigation.navigate("Drawer")}
-          ></Button>
+          <ViewText>
+            <SubTitle>{aboutTitle}</SubTitle>
+          </ViewText>
+          <ViewText>
+            <StandardText
+              textAlign="flex-start"
+              fontFamily={THEME.FONTFAMILY.REGULAR}
+              style={{lineHeight:"2"}}
+            >
+              {aboutText}
+            </StandardText>
+          </ViewText>
         </ViewAboutMe>
-      </ViewSection>
-      {coursesInfo.length > 0 ? (
         <ViewSection>
           <ViewText>
-            <Title>{aboutTitleCourses}</Title>
+            <Title>{aboutTitleCategory}</Title>
           </ViewText>
           <CardInfo
-            subtitleNumberOfLines={5}
-            titleFontSize={THEME.FONTSIZE.SMALL}
+            titleFontSize={THEME.FONTSIZE.EXTRASMALL}
             titleColor={THEME.COLORS.TEXT_ABOUT}
             cardStyle={{
-              width: "18rem",
+              width: "12rem",
               margin: "1rem",
               display: "flex",
               flexDrection: "column",
@@ -156,35 +124,73 @@ export function About({ navigation }) {
             }}
             cardCoverStyle={{
               width: "100%",
-              height: "10rem",
+              height: "7rem",
               borderRadius: "8px",
               marginBottom: "0.5rem",
             }}
             cardContentStyle={{
               flex: "1 1 auto",
             }}
-            array={coursesInfo}
+            array={categoriesInfo}
             navigation={navigation}
-            cardWidth={310} //19rem em px
+            buttonVisible={false}
+            priceVisible={false}
+            cardWidth={192} //12rem em px
           ></CardInfo>
+          <ViewAboutMe>
+            <Button
+              title={"VISUALIZAR APLICATIVO"}
+              onPress={() => navigation.navigate("Drawer")}
+            ></Button>
+          </ViewAboutMe>
         </ViewSection>
-      ) : (
-        <></>
-      )}
-      {plan ? (
-        <></>
-      ) : (
-        planInfos.length > 0 ?
-          (<ViewSection>
-            <Pricing userId={user}></Pricing>
-          </ViewSection>):(
-            <></>
-          )
-      )}
-      <Footer></Footer>
-      <ViewCookies>
-        <Cookie debug={true}></Cookie>
-      </ViewCookies>
-    </Container>
+        {coursesInfo.length > 0 ? (
+          <ViewSection>
+            <ViewText>
+              <Title>{aboutTitleCourses}</Title>
+            </ViewText>
+            <CardInfo
+              subtitleNumberOfLines={5}
+              titleFontSize={THEME.FONTSIZE.SMALL}
+              titleColor={THEME.COLORS.TEXT_ABOUT}
+              cardStyle={{
+                width: "18rem",
+                margin: "1rem",
+                display: "flex",
+                flexDrection: "column",
+                backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
+              }}
+              cardCoverStyle={{
+                width: "100%",
+                height: "10rem",
+                borderRadius: "8px",
+                marginBottom: "0.5rem",
+              }}
+              cardContentStyle={{
+                flex: "1 1 auto",
+              }}
+              array={coursesInfo}
+              navigation={navigation}
+              cardWidth={310} //19rem em px
+            ></CardInfo>
+          </ViewSection>
+        ) : (
+          <></>
+        )}
+        {plan ? (
+          <></>
+        ) : (
+          planInfos.length > 0 ?
+            (<ViewSection>
+              <Pricing userId={user}></Pricing>
+            </ViewSection>) : (
+              <></>
+            )
+        )}
+        <View>
+          <Footer></Footer>
+        </View>
+      </Container>
+    </SafeAreaView>
   );
 }

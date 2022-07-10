@@ -17,7 +17,7 @@ const ListHeader = ({ title, description, pdf, url, navigation, login }) => {
           <Icon
             type="material-icons"
             name="picture-as-pdf"
-            size={28}
+            size="28px"
             color={THEME.COLORS.TEXT_MAIN}
             onPress={() => {
               navigation.navigate("PDFView", { pdf: pdf });
@@ -27,7 +27,7 @@ const ListHeader = ({ title, description, pdf, url, navigation, login }) => {
           <Icon
             type="material-icons"
             name="picture-as-pdf"
-            size={28}
+            size="28px"
             color={THEME.COLORS.TEXT_MAIN}
             onPress={() => {}}
           />
@@ -46,7 +46,7 @@ const ListHeader = ({ title, description, pdf, url, navigation, login }) => {
           <Icon
             type="material-icons"
             name="link"
-            size={28}
+            size="28px"
             color={THEME.COLORS.TEXT_MAIN}
             onPress={() => Linking.openURL(url)}
           />
@@ -54,7 +54,7 @@ const ListHeader = ({ title, description, pdf, url, navigation, login }) => {
           <Icon
             type="material-icons"
             name="link"
-            size={28}
+            size="28px"
             color={THEME.COLORS.TEXT_MAIN}
             onPress={() => {}}
           />
