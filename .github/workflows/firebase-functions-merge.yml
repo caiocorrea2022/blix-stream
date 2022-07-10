@@ -22,19 +22,21 @@ jobs:
           echo STRIPE_SECTRET_KEY=${{ secrets.STRIPE_SECTRET_KEY }} >> .env
           cat .env    
 
-      - name: 'Create credentials file'
-        working-directory: functions
-        run: |
-          touch credentials.json
-          echo ${{ secrets.SHEETS_CREDENTIALS }} >> credentials.json
-          cat credentials.json
+      - name: create credentials
+        id: create-credentials
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "credentials.json"
+          json: ${{ secrets.SHEETS_CREDENTIALS }}
+          dir: 'functions/'    
 
-      - name: 'Create api_key file'
-        working-directory: functions
-        run: |
-          touch api_key.json
-          echo ${{ secrets.SHEETS_API_KEY }} >> api_key.json
-          cat api_key.json                   
+      - name: create api_key
+        id: create-api-key
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "api_key.json"
+          json: ${{ secrets.SHEETS_API_KEY }}
+          dir: 'functions/'                   
 
       - name: 📥 Download deps
         working-directory: functions
