@@ -20,7 +20,6 @@ import TouchableText from "../../components/TouchableText";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { firestore } from "../../services/firebase";
-// import { Zoom } from "../../components/Zoom";
 
 const auth = getAuth();
 
@@ -143,20 +142,13 @@ export function ClickClass({ route, navigation }) {
 
     return width < breakpoint ? (
       <ContentVideoMobile>
-        {(userPlan >= plan || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0))
+        {(userPlan >= plan 
+        || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0) 
+        || (plan == null && priceId == null) )
           ?
           (
             meetingNumber ? (
-              // <Zoom
-              //   img={img}
-              //   meetingNumber={meetingNumber}
-              //   passWord={passWord}
-              //   className={className}
-              //   userName={userName}
-              //   cardId={cardId}
-              //   categoryId={categoryId}
-              // ></Zoom>
-              <Image source={img} resizeMode="cover">
+                  <Image source={img} resizeMode="cover">
               <View
                 style={{
                   backgroundColor: "rgba(0,0,0,0.7)",
@@ -223,17 +215,10 @@ export function ClickClass({ route, navigation }) {
       </ContentVideoMobile>
     ) : (
       <ContentVideoDesktop>
-        {(userPlan >= plan || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
+        {(userPlan >= plan 
+        || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)
+        || (plan == null && priceId == null)) ? (
           meetingNumber ? (
-            // <Zoom
-            //   img={img}
-            //   meetingNumber={meetingNumber}
-            //   passWord={passWord}
-            //   className={className}
-            //   userName={userName}
-            //   cardId={cardId}
-            //   categoryId={categoryId}
-            // ></Zoom>
             <Image source={img} resizeMode="cover">
             <View
               style={{
@@ -308,7 +293,9 @@ export function ClickClass({ route, navigation }) {
 
     return width < breakpoint ? (
       <View>
-        {(userPlan >= plan || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
+        {(userPlan >= plan 
+        || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)
+        || (plan == null && priceId == null) ) ? (
           <FlatList
             data={listVideos}
             keyExtractor={(item, index) => index.toString()}
@@ -363,7 +350,9 @@ export function ClickClass({ route, navigation }) {
       </View>
     ) : (
       <ContentList>
-        {(userPlan >= plan || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
+        {(userPlan >= plan 
+        || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)
+        || (plan == null && priceId == null) ) ? (
           <FlatList
             data={listVideos}
             keyExtractor={(item, index) => index.toString()}
