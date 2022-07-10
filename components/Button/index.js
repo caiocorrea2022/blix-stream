@@ -1,9 +1,9 @@
-import React from 'react';
-import { Container } from './style';
-import { StandardText } from '../../config/theme/globalStyles';
-import { ActivityIndicator } from 'react-native';
-import THEME from '../../config/theme';
-import {borderRadiusButtons} from '../../config/data'
+import React from "react";
+import { Container } from "./style";
+import { StandardText } from "../../config/theme/globalStyles";
+import { ActivityIndicator } from "react-native";
+import THEME from "../../config/theme";
+import { borderRadiusButtons } from "../../config/data";
 
 const Button = ({
   colortitle,
@@ -11,6 +11,8 @@ const Button = ({
   colorbutton,
   title,
   width,
+  fontFamily,
+  fontSize,
   isLoading = false,
   ...rest
 }) => {
@@ -20,14 +22,24 @@ const Button = ({
       colorbutton={colorbutton ? colorbutton : THEME.COLORS.PRIMARY_900}
       width={width}
       borderRadius={borderRadius ? borderRadius : borderRadiusButtons}
-      style={{ opacity: ( isLoading === true) ? 0.5 : 1}}
+      style={{ opacity: isLoading === true ? 0.5 : 1 }}
       {...rest}
     >
-      {isLoading
-        ? <ActivityIndicator color={THEME.COLORS.TEXT_BUTTON} />
-        : <StandardText fontFamily={THEME.FONTFAMILY.BOLD} style={{ color: colortitle ? colortitle : THEME.COLORS.TEXT_BUTTON }}>{title}</StandardText>}
+      {isLoading ? (
+        <ActivityIndicator color={THEME.COLORS.TEXT_BUTTON} />
+      ) : (
+        <StandardText
+          style={{
+            color: colortitle ? colortitle : THEME.COLORS.TEXT_BUTTON,
+            fontFamily: fontFamily ? fontFamily : THEME.FONTFAMILY.BOLD,
+            fontSize: fontSize ? fontSize : THEME.FONTFAMILY.MEDIUM,
+          }}
+        >
+          {title}
+        </StandardText>
+      )}
     </Container>
-  )
-}
+  );
+};
 
 export default Button;

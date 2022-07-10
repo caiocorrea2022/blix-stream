@@ -162,7 +162,6 @@ export function Login({ navigation }) {
                   title={'ENTRAR'}
                   isLoading={loading}
                   onPress={onLoginPressed}
-                  width="60%"
                 ></Button>
               </ViewButton>
               <TouchableText onPress={showModal} title={'RECUPERAR SENHA'}></TouchableText>

@@ -80,25 +80,66 @@ export function About({ navigation }) {
 
   return (isLoading ?
     (<ActivityIndicator style={{ flex: 1, backgroundColor:THEME.COLORS.BACKGROUND_ABOUT }} color={THEME.COLORS.PRIMARY_800}/>) : (
-      <SafeAreaView>
-        <Container>
-          <ViewCookies>
-            <Cookie debug={true}></Cookie>
-          </ViewCookies>
-          <Section>
-            <Poster source={require("../../assets/FotoAbout.jpg")}>
-              <Header
-                about={true}
-                onPress={() => navigation.navigate("Drawer")}
-              />
-              <Hero
-                navigation={navigation}
-                button={true}
-                userId={user}
-                plan={plan}
-              ></Hero>
-            </Poster>
-          </Section>
+    <SafeAreaView>
+      <Container>
+        <Section>
+          <Poster source={require("../../assets/FotoAbout.jpg")}>
+            <Header
+              about={true}
+              onPress={() => navigation.navigate("Drawer")}
+            />
+            <Hero
+              navigation={navigation}
+              button={true}
+              userId={user}
+              plan={plan}
+            ></Hero>
+          </Poster>
+        </Section>
+        <ViewAboutMe>
+          <ViewText>
+            <SubTitle>{aboutTitle}</SubTitle>
+          </ViewText>
+          <ViewText>
+            <StandardText
+              textAlign="flex-start"
+              fontFamily={THEME.FONTFAMILY.REGULAR}
+              style={{ lineHeight: "2" }}
+            >
+              {aboutText}
+            </StandardText>
+          </ViewText>
+        </ViewAboutMe>
+        <ViewSection>
+          <ViewText>
+            <Title>{aboutTitleCategory}</Title>
+          </ViewText>
+          <CardInfo
+            titleFontSize={THEME.FONTSIZE.EXTRASMALL}
+            titleColor={THEME.COLORS.TEXT_ABOUT}
+            cardStyle={{
+              width: "12rem",
+              margin: "1rem",
+              display: "flex",
+              flexDrection: "column",
+              backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
+            }}
+            cardCoverStyle={{
+              width: "100%",
+              height: "7rem",
+              borderRadius: "8px",
+              marginBottom: "0.5rem",
+            }}
+            cardContentStyle={{
+              flex: "1 1 auto",
+            }}
+            array={categoriesInfo}
+            navigation={navigation}
+            buttonVisible={false}
+            priceVisible={false}
+            cardWidth={192} //12rem em px
+          ></CardInfo>
+          </ViewSection>
           <ViewAboutMe>
             <ViewText>
               <SubTitle>{aboutTitle}</SubTitle>
@@ -113,48 +154,12 @@ export function About({ navigation }) {
               </StandardText>
             </ViewText>
           </ViewAboutMe>
-          <ViewSection>
-            <ViewText>
-              <Title>{aboutTitleCategory}</Title>
-            </ViewText>
-            <CardInfo
-              titleFontSize={THEME.FONTSIZE.EXTRASMALL}
-              titleColor={THEME.COLORS.TEXT_ABOUT}
-              cardStyle={{
-                width: "12rem",
-                margin: "1rem",
-                display: "flex",
-                flexDrection: "column",
-                backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
-              }}
-              cardCoverStyle={{
-                width: "100%",
-                height: "7rem",
-                borderRadius: "8px",
-                marginBottom: "0.5rem",
-              }}
-              cardContentStyle={{
-                flex: "1 1 auto",
-              }}
-              array={categoriesInfo}
-              navigation={navigation}
-              buttonVisible={false}
-              priceVisible={false}
-              cardWidth={192} //12rem em px
-            ></CardInfo>
-            <ViewAboutMe>
-              <Button
-                title={"VISUALIZAR APLICATIVO"}
-                onPress={() => navigation.navigate("Drawer")}
-              ></Button>
-            </ViewAboutMe>
-          </ViewSection>
           {coursesInfo.length > 0 ? (
-            <ViewSection>
-              <ViewText>
-                <Title>{aboutTitleCourses}</Title>
-              </ViewText>
-              <CardInfo
+          <ViewSection>
+          <ViewText>
+            <Title>{aboutTitleCourses}</Title>
+          </ViewText>
+          <CardInfo
                 subtitleNumberOfLines={5}
                 titleFontSize={THEME.FONTSIZE.SMALL}
                 titleColor={THEME.COLORS.TEXT_ABOUT}
@@ -179,24 +184,27 @@ export function About({ navigation }) {
                 cardWidth={310} //19rem em px
               ></CardInfo>
             </ViewSection>
-          ) : (
-            <></>
-          )}
-          {plan ? (
-            <></>
-          ) : (
-            planInfos.length > 0 ?
-              (<ViewSection>
-                <Pricing userId={user}></Pricing>
-              </ViewSection>) : (
-                <></>
-              )
-          )}
-          <View>
-            <Footer></Footer>
-          </View>
-        </Container>
-      </SafeAreaView>
+        ) : (
+          <></>
+        )}
+        {plan ? (
+          <></>
+        ) : (
+          planInfos.length > 0 ?
+            (<ViewSection>
+              <Pricing userId={user}></Pricing>
+            </ViewSection>) : (
+              <></>
+            )
+        )}
+        <View>
+          <Footer></Footer>
+        </View>
+      </Container>
+      <ViewCookies>
+        <Cookie debug={true}></Cookie>
+      </ViewCookies>
+    </SafeAreaView>
     )
   );
 }
