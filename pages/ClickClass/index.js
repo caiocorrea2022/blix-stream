@@ -20,7 +20,7 @@ import TouchableText from "../../components/TouchableText";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { firestore } from "../../services/firebase";
-import { Zoom } from "../../components/Zoom";
+// import { Zoom } from "../../components/Zoom";
 
 const auth = getAuth();
 
@@ -147,15 +147,32 @@ export function ClickClass({ route, navigation }) {
           ?
           (
             meetingNumber ? (
-              <Zoom
-                img={img}
-                meetingNumber={meetingNumber}
-                passWord={passWord}
-                className={className}
-                userName={userName}
-                cardId={cardId}
-                categoryId={categoryId}
-              ></Zoom>
+              // <Zoom
+              //   img={img}
+              //   meetingNumber={meetingNumber}
+              //   passWord={passWord}
+              //   className={className}
+              //   userName={userName}
+              //   cardId={cardId}
+              //   categoryId={categoryId}
+              // ></Zoom>
+              <Image source={img} resizeMode="cover">
+              <View
+                style={{
+                  backgroundColor: "rgba(0,0,0,0.7)",
+                  width: "100%",
+                  height: "100%",
+                  justifyContent: "center",
+                }}
+              >
+                <Button
+                  title={`Acessar ${className} ao Vivo`}
+                  onPress={() => {
+                    navigation.navigate("Zoom", { meetingNumber: meetingNumber, passWord:passWord, userName:userName, cardId:cardId, categoryId:categoryId });
+                  }}
+                ></Button>
+              </View>
+            </Image>
             ) : (
               <VideoPlayer video={video} />
             )
@@ -208,15 +225,32 @@ export function ClickClass({ route, navigation }) {
       <ContentVideoDesktop>
         {(userPlan >= plan || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)) ? (
           meetingNumber ? (
-            <Zoom
-              img={img}
-              meetingNumber={meetingNumber}
-              passWord={passWord}
-              className={className}
-              userName={userName}
-              cardId={cardId}
-              categoryId={categoryId}
-            ></Zoom>
+            // <Zoom
+            //   img={img}
+            //   meetingNumber={meetingNumber}
+            //   passWord={passWord}
+            //   className={className}
+            //   userName={userName}
+            //   cardId={cardId}
+            //   categoryId={categoryId}
+            // ></Zoom>
+            <Image source={img} resizeMode="cover">
+            <View
+              style={{
+                backgroundColor: "rgba(0,0,0,0.7)",
+                width: "100%",
+                height: "100%",
+                justifyContent: "center",
+              }}
+            >
+              <Button
+                title={`Acessar ${className} ao Vivo`}
+                onPress={() => {
+                  navigation.navigate("Zoom", { meetingNumber: meetingNumber, passWord:passWord, userName:userName, cardId:cardId, categoryId:categoryId });
+                }}
+              ></Button>
+            </View>
+          </Image>
           ) : (
             <VideoPlayer video={video} />
           )

@@ -16,6 +16,7 @@ const linking = {
           PreLoadStripe: {
             path: "EditProfile"
           },
+          Zoom: "Zoom",
         },
     },
   };
