@@ -24,11 +24,9 @@ import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
   Section,
-  SmallText,
   Title,
   SubTitle,
   StandardText,
-  FooterText,
 } from "../../config/theme/globalStyles";
 import { firestore } from "../../services/firebase/index";
 import THEME from "../../config/theme";

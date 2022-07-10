@@ -6,8 +6,8 @@ import Button from '../../../components/Button';
 import { auth } from '../../../services/firebase';
 import { sendPasswordResetEmail } from "firebase/auth";
 import { HelperText } from 'react-native-paper';
-import THEME from '../../../config/theme';
 import { SubTitle } from '../../../config/theme/globalStyles';
+import { SafeAreaView } from "react-native";
 
 export function ResetPassword() {
   const [email, setEmail] = useState({ value: '', error: '' });
@@ -52,58 +52,60 @@ export function ResetPassword() {
   }
 
   return (
-    <Container>
-      <SubTitle textAlign="flex-start" margin="0rem 0rem 2rem 0rem">Redefina a sua senha:</SubTitle>
-      <ViewTextInput>
-        <ViewText>
-          <TextInput
-            label="Email"
-            returnKeyType="next"
-            value={email.value}
-            onChangeText={text => setEmail({ value: text, error: '' })}
-            error={!!email.error}
-            autoCapitalize="none"
-            autoCompleteType="email"
-            textContentType="emailAddress"
-            keyboardType="email-address"
-          />
-        </ViewText>
-        <ViewHelper>
-          <HelperText type="error" visible={email.error}>{email.error}</HelperText>
-        </ViewHelper>
-      </ViewTextInput>
-      <ViewButton>
-        <Button
-          title={'Enviar'}
-          isLoading={loading}
-          onPress={onResetPressed}
-        ></Button>
-      </ViewButton>
-      <ViewButton>
-        {
-          error && (
-            <FormMessage
-              variants={messageVariants}
-              initial="hidden"
-              animate="animate"
-              error
-            >
-              {error}
-            </FormMessage>
-          )
-        }
-        {
-          result && (
-            <FormMessage
-              variants={messageVariants}
-              initial="hidden"
-              animate="animate"
-            >
-              {result}
-            </FormMessage>
-          )
-        }
-      </ViewButton>
-    </Container >
+    <SafeAreaView>
+      <Container>
+        <SubTitle textAlign="flex-start" margin="0rem 0rem 2rem 0rem">Redefina a sua senha:</SubTitle>
+        <ViewTextInput>
+          <ViewText>
+            <TextInput
+              label="Email"
+              returnKeyType="next"
+              value={email.value}
+              onChangeText={text => setEmail({ value: text, error: '' })}
+              error={!!email.error}
+              autoCapitalize="none"
+              autoCompleteType="email"
+              textContentType="emailAddress"
+              keyboardType="email-address"
+            />
+          </ViewText>
+          <ViewHelper>
+            <HelperText type="error" visible={email.error}>{email.error}</HelperText>
+          </ViewHelper>
+        </ViewTextInput>
+        <ViewButton>
+          <Button
+            title={'Enviar'}
+            isLoading={loading}
+            onPress={onResetPressed}
+          ></Button>
+        </ViewButton>
+        <ViewButton>
+          {
+            error && (
+              <FormMessage
+                variants={messageVariants}
+                initial="hidden"
+                animate="animate"
+                error
+              >
+                {error}
+              </FormMessage>
+            )
+          }
+          {
+            result && (
+              <FormMessage
+                variants={messageVariants}
+                initial="hidden"
+                animate="animate"
+              >
+                {result}
+              </FormMessage>
+            )
+          }
+        </ViewButton>
+      </Container >
+    </SafeAreaView>
   );
 }

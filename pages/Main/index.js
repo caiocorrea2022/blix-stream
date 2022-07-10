@@ -10,6 +10,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import THEME from '../../config/theme';
 import { Title, SubTitle } from '../../config/theme/globalStyles';
 import { titleMain, subtitleMain } from '../../config/data';
+import { SafeAreaView } from "react-native";
 
 const auth = getAuth();
 
@@ -45,25 +46,27 @@ export function Main({ navigation, route }) {
   }, []);
 
   return (
-    <Container background={THEME.COLORS.BACKGROUND_MAIN}>
-      <Poster source={require('../../assets/FotoMain.jpg')}>
-        <Gradient
-          locations={[0, 0.2, 0.7, 1]}
-          colors={THEME.COLORS.GRADIENT_MAIN}>
-          <Header navigation={navigation} />
-          <Hero>
-            <Title color={THEME.COLORS.TITLE_MAIN} textAlign="flex-start" margin="0.5rem 0rem">{titleMain}</Title>
-            <SubTitle color={THEME.COLORS.TITLE_MAIN} textAlign="flex-start">{subtitleMain}</SubTitle>
-          </Hero>
-        </Gradient>
-      </Poster>
-      <Content>
-        <FlatList
-          data={allCategories}
-          showsHorizontalScrollIndicator={false}
-          renderItem={({ item }) => <CategoryList category={item} plan={plan} courses={courses} />}
-        />
-      </Content>
-    </Container>
+    <SafeAreaView>
+      <Container background={THEME.COLORS.BACKGROUND_MAIN}>
+        <Poster source={require('../../assets/FotoMain.jpg')}>
+          <Gradient
+            locations={[0, 0.2, 0.7, 1]}
+            colors={THEME.COLORS.GRADIENT_MAIN}>
+            <Header navigation={navigation} />
+            <Hero>
+              <Title color={THEME.COLORS.TITLE_MAIN} textAlign="flex-start" margin="0.5rem 0rem">{titleMain}</Title>
+              <SubTitle color={THEME.COLORS.TITLE_MAIN} textAlign="flex-start">{subtitleMain}</SubTitle>
+            </Hero>
+          </Gradient>
+        </Poster>
+        <Content>
+          <FlatList
+            data={allCategories}
+            showsHorizontalScrollIndicator={false}
+            renderItem={({ item }) => <CategoryList category={item} plan={plan} courses={courses} />}
+          />
+        </Content>
+      </Container>
+    </SafeAreaView>
   );
 }

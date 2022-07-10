@@ -27,7 +27,7 @@ export const Container = styled.View`
 `;
 export const HeaderContainer = styled.View`
     background-color: ${({ background }) => (background ? background : THEME.COLORS.BACKGROUND_HEADER)};
-    flex-direction: row;
+    flex-direction: ${({ flexDirection }) => (flexDirection ? flexDirection : 'row')};
     justify-content: ${({ justifyContent }) => (justifyContent ? justifyContent : 'space-between')};
     width: 100%;
     padding: ${({ padding }) => (padding ? padding : '0.7rem')};

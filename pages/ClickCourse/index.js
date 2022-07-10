@@ -14,9 +14,10 @@ import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { firestore } from "../../services/firebase/index";
 import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from "react-native";
 
-export function ClickCourse ({ route }) {
-  const {courseId } = route.params;
+export function ClickCourse({ route }) {
+  const { courseId } = route.params;
   const [userId, setUserId] = useState("");
   const [title, setTitle] = useState("");
   const [footerText, setFooterText] = useState("");
@@ -49,13 +50,13 @@ export function ClickCourse ({ route }) {
     const docRef = doc(firestore, "courses", courseId);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-        setTitle(docSnap.data().title);
-        setImage(docSnap.data().image);
-        setInfos(docSnap.data().infos);
-        setSmallText(docSnap.data().smallText);
-        setFooterText(docSnap.data().footerText);
-        setPrice(docSnap.data().price);
-        setPriceId(docSnap.data().priceId);
+      setTitle(docSnap.data().title);
+      setImage(docSnap.data().image);
+      setInfos(docSnap.data().infos);
+      setSmallText(docSnap.data().smallText);
+      setFooterText(docSnap.data().footerText);
+      setPrice(docSnap.data().price);
+      setPriceId(docSnap.data().priceId);
     }
   };
 
@@ -142,11 +143,13 @@ export function ClickCourse ({ route }) {
 
   return (
     <ViewPortProvider>
-      <Container>
-        <HeaderPurchase background={THEME.COLORS.BACKGROUND_HEADER} />
-        <OutsideView></OutsideView>
-        <Footer></Footer>
-      </Container>
+      <SafeAreaView>
+        <View style={{ backgroundColor: THEME.COLORS.BACKGROUND_ABOUT, justifyContent: "space-between", flex: 1 }}>
+          <HeaderPurchase background={THEME.COLORS.BACKGROUND_HEADER} />
+          <OutsideView></OutsideView>
+          <Footer></Footer>
+        </View>
+      </SafeAreaView>
     </ViewPortProvider>
   );
 };

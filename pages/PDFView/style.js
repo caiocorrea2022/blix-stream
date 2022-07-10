@@ -9,10 +9,10 @@ export const ViewText = styled.View`
 `;
 
 export const ViewHeading = styled.View`
-	flex: 0.5;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 `;
 
 export const ContentIcon = styled.View`
@@ -20,18 +20,9 @@ export const ContentIcon = styled.View`
   margin: 0rem 1rem;
 `;
 
-export const ViewVerticalScroll = styled.View`
-  flex:7;
+export const Container = styled.View`
+  
 `;
-
-export const VerticalScroll = styled.ScrollView.attrs({
-    showsVerticalScrollIndicator: true,
-    contentContainerStyle: {
-      flexDirection: "column",
-      flexGrowth: 1,
-    },
-  })`  
-  `;
 
 export const ViewPressable = styled.View`
 width: 10%;

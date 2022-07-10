@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Pressable, View } from "react-native";
+import { Modal, Pressable, SafeAreaView } from "react-native";
 import { Icon } from "react-native-elements";
 import {
   ViewText,
   ViewPressable,
-  ViewVerticalScroll,
-  VerticalScroll,
   ViewHeading,
   ContentIcon,
+  Container,
 } from "./style";
 import THEME from '../../config/theme';
 import PDF from "../../components/PDF";
@@ -34,7 +33,7 @@ export function PDFView({ route, navigation: { goBack } }) {
   };
 
   return (
-    <View>
+    <SafeAreaView>
       <Modal
         styles={{ flex: 1, flexDirection: "column" }}
         animationType="slide"
@@ -53,17 +52,17 @@ export function PDFView({ route, navigation: { goBack } }) {
             <Pressable
               onPress={() => {
                 setModalVisible(!modalVisible),
-                goBack();
+                  goBack();
               }}
             >
               <Close></Close>
             </Pressable>
           </ViewPressable>
         </ViewHeading>
-        <ViewVerticalScroll>
+        <Container>
           <PDF pdf={pdf}></PDF>
-        </ViewVerticalScroll>
+        </Container>
       </Modal>
-    </View>
+    </SafeAreaView>
   );
 }

@@ -38,7 +38,8 @@ export const Container = styled.ScrollView.attrs({
   contentContainerStyle: {
     flexDirection: "column",
     backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
-    flexBasis: "auto",
+    flexGrow:1,
+    marginBottom:"6rem",
   },
 })`  
 `;

@@ -3,7 +3,7 @@ import { Icon } from "react-native-elements";
 import { ContentIcon, Container, Content } from "./style";
 import THEME from "../../config/theme";
 import {
-  SmallText,
+  FooterText,
   StandardText,
   Title,
 } from "../../config/theme/globalStyles";
@@ -32,9 +32,9 @@ const ListHeader = ({ title, description, pdf, url, navigation, login }) => {
             onPress={() => {}}
           />
         )}
-        <SmallText color={THEME.COLORS.TEXT_MAIN} margin="1rem 0rem">
+        <FooterText color={THEME.COLORS.TEXT_MAIN} margin="1rem 0rem">
           Visualizar PDF
-        </SmallText>
+        </FooterText>
       </ContentIcon>
     );
   };
@@ -60,9 +60,9 @@ const ListHeader = ({ title, description, pdf, url, navigation, login }) => {
           />
         )}
 
-        <SmallText color={THEME.COLORS.TEXT_MAIN} margin="1rem 0rem">
+        <FooterText color={THEME.COLORS.TEXT_MAIN} margin="1rem 0rem">
           Acessar link
-        </SmallText>
+        </FooterText>
       </ContentIcon>
     );
   };

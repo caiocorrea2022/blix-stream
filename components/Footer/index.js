@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Logo, FooterLeftSide, FooterRightSide, ContainerMobile } from "./style";
+import { Container, Logo, FooterLeftSide, FooterRightSide, ContainerMobile, ViewFooter } from "./style";
 import { FooterText } from "../../config/theme/globalStyles";
 import THEME from "../../config/theme";
 import { footerSocialData, clientNameFooter } from "../../config/data";
@@ -109,7 +109,7 @@ const Footer = () => {
   const navigation = useNavigation();
   return (
     <ViewPortProvider>
-      <MobileOrDesktopComponent></MobileOrDesktopComponent>
+        <MobileOrDesktopComponent></MobileOrDesktopComponent>
     </ViewPortProvider>
 
   );

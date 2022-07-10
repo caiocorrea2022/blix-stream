@@ -5,16 +5,15 @@ import Privacy from "../../components/Privacy";
 import {
   ViewText,
   ViewPressable,
-  ViewVerticalScroll,
   VerticalScroll,
   ViewHeading,
   ContentIcon,
 } from "./style";
 import THEME from '../../config/theme';
-import { DrawerActions } from '@react-navigation/native';
-import { Title } from "../../config/theme/globalStyles"
+import { SubTitle } from "../../config/theme/globalStyles"
+import { SafeAreaView } from "react-native";
 
-export function TermsofUse({ navigation:{goBack}}) {
+export function TermsofUse({ navigation: { goBack } }) {
   const [modalVisible, setModalVisible] = useState(true);
 
   useEffect(() => {
@@ -34,31 +33,31 @@ export function TermsofUse({ navigation:{goBack}}) {
   };
 
   return (
-    <View>
-      <Modal
-        styles={{ flex: 1, flexDirection: "column" }}
-        animationType="slide"
-        transparent={false}
-        visible={modalVisible}
-      >
-        <ViewHeading>
-        <ViewPressable></ViewPressable>
-          <ViewText>
-            <Title>TERMOS DE USO E POLÍTICA DE PRIVACIDADE</Title>
-          </ViewText>
-          <ViewPressable>
-            <Pressable
-              onPress={() => {setModalVisible(!modalVisible), goBack()}}>
-              <Close></Close>
-            </Pressable>
-          </ViewPressable>
-        </ViewHeading>
-        <ViewVerticalScroll>
+    <SafeAreaView>
+      <View>
+        <Modal
+          styles={{ flex: 1, flexDirection: "column" }}
+          animationType="slide"
+          transparent={false}
+          visible={modalVisible}
+        >
+          <ViewHeading>
+            <ViewPressable></ViewPressable>
+            <ViewText>
+              <SubTitle>TERMOS DE USO E POLÍTICA DE PRIVACIDADE</SubTitle>
+            </ViewText>
+            <ViewPressable>
+              <Pressable
+                onPress={() => { setModalVisible(!modalVisible), goBack() }}>
+                <Close></Close>
+              </Pressable>
+            </ViewPressable>
+          </ViewHeading>
           <VerticalScroll>
             <Privacy></Privacy>
           </VerticalScroll>
-        </ViewVerticalScroll>
-      </Modal>
-    </View>
+        </Modal>
+      </View>
+    </SafeAreaView>
   );
 }

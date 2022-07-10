@@ -36,3 +36,9 @@ export const Logo = styled.Image`
 export const FooterLogo = styled.View`
     justify-content:${({ justifyContent }) => justifyContent};
 `;
+
+export const ViewFooter = styled.View`
+  position: fixed;
+  width:100%;
+  bottom: 0;
+`;

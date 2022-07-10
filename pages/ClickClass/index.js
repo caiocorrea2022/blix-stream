@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FlatList, TouchableOpacity } from "react-native";
-import { View } from "react-native";
+import { View, SafeAreaView } from "react-native";
 import {
   ContentVideoDesktop,
   ContentVideoMobile,
@@ -8,7 +8,6 @@ import {
   Image,
 } from "./style";
 import VideoPlayer from "../../components/VideoPlayer";
-import Header from "../../components/Header";
 import PlayList from "../../components/PlayList";
 import ViewPortProvider from "../../hooks/ViewPortProvider";
 import useViewport from "../../hooks/useViewport";
@@ -287,12 +286,11 @@ export function ClickClass({ route, navigation }) {
                   setPassWord(item.meetingPassword);
                   setPdf(item.pdf)
                 }}
-                style={{ margin: 10 }}
               >
                 <PlayList {...item}></PlayList>
               </TouchableOpacity>
             )}
-            style={{ marginBottom: "0rem", flexGrow: 0 }}
+            style={{ flexGrow: 0 }}
             ListHeaderComponent={
               <ListHeader
                 title={name}
@@ -309,11 +307,11 @@ export function ClickClass({ route, navigation }) {
             data={listVideos}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item, index }) => (
-              <TouchableOpacity style={{ margin: 10 }}>
+              <TouchableOpacity style={{ margin: "0.5rem" }}>
                 <PlayList {...item}></PlayList>
               </TouchableOpacity>
             )}
-            style={{ marginBottom: "0rem", flexGrow: 0 }}
+            style={{ flexGrow: 0 }}
             ListHeaderComponent={
               <ListHeader
                 title={name}
@@ -342,12 +340,11 @@ export function ClickClass({ route, navigation }) {
                   setPassWord(item.meetingPassword);
                   setPdf(item.pdf)
                 }}
-                style={{ margin: 10 }}
               >
                 <PlayList {...item}></PlayList>
               </TouchableOpacity>
             )}
-            style={{ marginBottom: "0rem", flexGrow: 0 }}
+            style={{ flexGrow: 0 }}
             ListHeaderComponent={
               <ListHeader
                 title={name}
@@ -364,11 +361,11 @@ export function ClickClass({ route, navigation }) {
             data={listVideos}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item, index }) => (
-              <TouchableOpacity style={{ margin: 10 }}>
+              <TouchableOpacity style={{ margin: "0.5rem" }}>
                 <PlayList {...item}></PlayList>
               </TouchableOpacity>
             )}
-            style={{ marginBottom: "0rem", flexGrow: 0 }}
+            style={{ flexGrow: 0 }}
             ListHeaderComponent={
               <ListHeader
                 title={name}
@@ -387,9 +384,11 @@ export function ClickClass({ route, navigation }) {
 
   return (
     <ViewPortProvider>
-      <Container background={THEME.COLORS.BACKGROUND_MAIN}>
-        <OutsideView></OutsideView>
-      </Container>
+      <SafeAreaView>
+        <Container background={THEME.COLORS.BACKGROUND_MAIN}>
+          <OutsideView></OutsideView>
+        </Container>
+      </SafeAreaView>
     </ViewPortProvider>
   );
 }

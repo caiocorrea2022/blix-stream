@@ -17,6 +17,7 @@ import useViewport from "../../hooks/useViewport";
 import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 const cardSize = windowWidth * 0.23;
 
@@ -83,6 +84,7 @@ const Pricing = ({ userId }) => {
                   fontFamily: THEME.FONTFAMILY.LIGHT,
                 }}
                 pricingStyle={{
+                  numberOfLines: 2,
                   fontSize: THEME.FONTSIZE.BIG,
                   color: THEME.COLORS.SECONDARY_900,
                   justifyContent: "flex-start",
@@ -164,6 +166,7 @@ const Pricing = ({ userId }) => {
                   fontFamily: THEME.FONTFAMILY.LIGHT,
                 }}
                 pricingStyle={{
+                  numberOfLines: 2,
                   fontSize: THEME.FONTSIZE.BIG,
                   color: THEME.COLORS.SECONDARY_900,
                   justifyContent: "flex-start",
@@ -230,9 +233,9 @@ const Pricing = ({ userId }) => {
 
   return (
     <ViewPortProvider>
-      <Container>
-        <MobileOrDesktopCardSize></MobileOrDesktopCardSize>
-      </Container>
+        <Container>
+          <MobileOrDesktopCardSize></MobileOrDesktopCardSize>
+        </Container>
     </ViewPortProvider>
   );
 };
