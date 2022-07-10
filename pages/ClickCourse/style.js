@@ -11,7 +11,7 @@ export const ContentMobile = styled.View`
 `;
 
 export const Image = styled.Image`
-  aspect-Ratio: 16/9;
+  aspect-ratio: 16/9;
   width: 100%;
   border-radius: 10px;
   padding: 1rem;

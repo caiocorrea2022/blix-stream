@@ -34,9 +34,11 @@ const CategoryItem = ({ categoryId, item, plan, courses }) => {
                     />
                 }
             </Image>
-            <SmallText fontSize={THEME.FONTSIZE.EXTRASMALL} color={THEME.COLORS.TEXT_MAIN} maxWidth="230px" textAlign="flex-start" numberOfLines={2}>{item.title}</SmallText>
+            <SmallText fontSize={THEME.FONTSIZE.EXTRASMALL} color={THEME.COLORS.TEXT_MAIN} maxWidth="21rem" textAlign="flex-start" numberOfLines={2}>{item.title}</SmallText>
         </Touchable>
     )
 }
+
+//masWidth do SmallText é a largura do cardItem
 
 export default CategoryItem
