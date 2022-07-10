@@ -169,7 +169,7 @@ export function ClickClass({ route, navigation }) {
                 </View>
               </Image>
             ) : (
-              <VideoPlayer video={video} />
+              video ?  <VideoPlayer video={video} /> : <Image source={img} resizeMode="cover">  </Image> 
             )
           ) : (
             <Image source={img} resizeMode="cover">
@@ -240,7 +240,7 @@ export function ClickClass({ route, navigation }) {
               </View>
             </Image>
           ) : (
-            <VideoPlayer video={video} />
+            video ?  <VideoPlayer video={video} /> : <Image source={img} resizeMode="cover">  </Image> 
           )
         ) : (
           <Image source={img} resizeMode="cover">
