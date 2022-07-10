@@ -31,7 +31,6 @@ import {
 import { setDoc, doc } from "firebase/firestore";
 import { auth, firestore } from "../../services/firebase";
 import { AlertBox } from "../../components/AlertBox";
-import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
 import { HelperText } from "react-native-paper";
 import { Title, SideView } from "../../config/theme/globalStyles";
 import TouchableText from "../../components/TouchableText";
@@ -43,7 +42,7 @@ export function SignUp({ navigation, route }) {
   const [name, setName] = useState({ value: "", error: "" });
   const [email, setEmail] = useState({ value: "", error: "" });
   const [password, setPassword] = useState({ value: "", error: "" });
-  const [confirmPassword, setConfirmPassword] = useState({ value: "", error: ""});
+  const [confirmPassword, setConfirmPassword] = useState({ value: "", error: "" });
   const [cellphone, setCellPhone] = useState({ value: "", error: "" });
   const [cpf, setCpf] = useState({ value: "", error: "" });
   const [loading, setLoading] = useState(false);
@@ -109,37 +108,14 @@ export function SignUp({ navigation, route }) {
           auth,
           email.value,
           password.value,
-        )
-          .then((currentUser) => {
-            const user = currentUser.user;
-            const usersCollectionRef = doc(firestore, "users", user.uid);
-            const createUser = async () => {
-              await setDoc(usersCollectionRef, {
-                Nome_Completo: name.value,
-                Email: email.value,
-                Celular: cellphone.value,
-                CPF: getRawValue(cpf.value),
-              });
-              console.log("user criado");
-              console.log(user);
-            }
-            createUser()
-              .then(() => {
-                // sendEmailVerification(auth.currentUser).then(() => {
-                signOut(auth)
-                  .then(() => {
-                    if (purchaseType === "PLAN") {
-                      createCheckoutSession(user.uid, priceId, "subscription", 6)
-                    } else if (purchaseType === "COURSE") {
-                      createCheckoutSession(user.uid, priceId, "payment", 0)
-                    }
-                  })
-                // });
-              })
-          })
+        ).then((currentUser) => {
+          console.log('cheguei');
+          setLoading(false);
+          navigation.navigate('CheckoutLoader', { name: name.value, email: email.value, phone: cellphone.value, cpf: getRawValue(cpf.value), userid: currentUser.user.uid, priceId: priceId, purchaseType: purchaseType })
+        })
           .catch((error) => {
             setLoading(false);
-            console.error(error);
+            console.error('erro:', error);
             switch (error.code) {
               case "auth/email-already-in-use":
                 showAlert(
@@ -161,12 +137,12 @@ export function SignUp({ navigation, route }) {
                 break;
             }
           })
-        appendSpreadsheet({
-          NomeCompleto: name.value,
-          Email: email.value,
-          Celular: cellphone.value,
-          CPF: cpf.value,
-        })
+        // appendSpreadsheet({
+        //   NomeCompleto: name.value,
+        //   Email: email.value,
+        //   Celular: cellphone.value,
+        //   CPF: cpf.value,
+        // })
 
       } else {
         showAlert(

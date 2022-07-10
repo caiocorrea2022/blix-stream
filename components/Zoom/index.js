@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import Constants from "expo-constants";
-import Button from "../Button";
-import { Image } from "./style";
-import { View } from "react-native";
 import {returnDomainZoom} from "../../config/data"
 
 
-export function Zoom ({ img, meetingNumber, passWord, className, userName, cardId, categoryId }) {
+export function Zoom ({route}) {
+  const { meetingNumber, passWord, userName, cardId, categoryId  } = route.params;
   const zoomConfig = {
     zoomSdkKey: Constants.manifest.extra.zoomSdkKey,
     zoomSdkSecret: Constants.manifest.extra.zoomSdkSecret,
@@ -30,6 +28,7 @@ export function Zoom ({ img, meetingNumber, passWord, className, userName, cardI
     ZoomMtg.i18n.load("pt-PT");
     ZoomMtg.i18n.reload("pt-PT");
     document.getElementById("zmmtg-root").style.display = "none";
+    joinmeeting();
   });
 
   function joinmeeting() {
@@ -93,22 +92,25 @@ export function Zoom ({ img, meetingNumber, passWord, className, userName, cardI
   }
 
   return (
-    <Image source={img} resizeMode="cover">
-      <View
-        style={{
-          backgroundColor: "rgba(0,0,0,0.7)",
-          width: "100%",
-          height: "100%",
-          justifyContent: "center",
-        }}
-      >
-        <Button
-          title={`Acessar ${className} ao Vivo`}
-          onPress={() => {
-            joinmeeting();
-          }}
-        ></Button>
-      </View>
-    </Image>
+    <></>
   );
 };
+
+
+    // <Image source={img} resizeMode="cover">
+    //   <View
+    //     style={{
+    //       backgroundColor: "rgba(0,0,0,0.7)",
+    //       width: "100%",
+    //       height: "100%",
+    //       justifyContent: "center",
+    //     }}
+    //   >
+    //     <Button
+    //       title={`Acessar ${className} ao Vivo`}
+    //       onPress={() => {
+    //         joinmeeting();
+    //       }}
+    //     ></Button>
+    //   </View>
+    // </Image>

@@ -35,7 +35,7 @@ module.exports = {
         iterations: 12
     },
     // anual pago à vista
-    "price_1LFL3XCmcyIwF9rcJy8jLFqf": {
+    "price_1LFkDZCmcyIwF9rcfxcca9Sb": {
         plan: 4,
         iterations: 1
     },

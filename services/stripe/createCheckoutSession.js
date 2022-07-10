@@ -4,13 +4,13 @@ import {returnDomainZoom} from '../../config/data';
 
 
 //iterations == 0 no iterations will be made (monthly payment)
-export async function createCheckoutSession(uid, priceId, mode, iterations) {
+export async function createCheckoutSession(uid, priceId, mode) {
   const checkoutSessionRef = await addDoc(collection(firestore, `users/${uid}/checkout_sessions`), {
     price: priceId,
     mode: mode,
     allow_promotion_codes: true,
     billing_address_collection: "auto",
-    success_url: `${returnDomainZoom}/Success?session_id={CHECKOUT_SESSION_ID}&price_id=${priceId}&mode=${mode}&iterations=${iterations}&uid=${uid}`,
+    success_url: `${returnDomainZoom}/Success?session_id={CHECKOUT_SESSION_ID}`,
     // success_url: window.location.origin,
     cancel_url: window.location.origin,
   }); 
