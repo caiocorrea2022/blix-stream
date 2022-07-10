@@ -182,7 +182,7 @@ export function SignUp({ navigation, route }) {
       <VerticalScroll>
         <HeaderPurchase signUp={true} />
         <ViewTitle>
-          <Title textAlign="flex-start" padding="1rem 0rem 0rem 1rem">
+          <Title fontSize={THEME.FONTSIZE.MEDIUM} textAlign="flex-start" padding="1rem 0rem 0rem 1rem">
             Criar uma conta
           </Title>
         </ViewTitle>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from './style';
-import { SmallText } from '../../config/theme/globalStyles';
+import { StandardText } from '../../config/theme/globalStyles';
 import { ActivityIndicator } from 'react-native';
 import THEME from '../../config/theme';
 import {borderRadiusButtons} from '../../config/data'
@@ -25,7 +25,7 @@ const Button = ({
     >
       {isLoading
         ? <ActivityIndicator color={THEME.COLORS.TEXT_BUTTON} />
-        : <SmallText style={{ color: colortitle ? colortitle : THEME.COLORS.TEXT_BUTTON }}>{title}</SmallText>}
+        : <StandardText fontFamily={THEME.FONTFAMILY.BOLD} style={{ color: colortitle ? colortitle : THEME.COLORS.TEXT_BUTTON }}>{title}</StandardText>}
     </Container>
   )
 }

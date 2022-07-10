@@ -134,7 +134,7 @@ const CardInfo = ({
                     textAlign="flex-start"
                     fontSize={titleFontSize}
                     color={titleColor}
-                    numberOfLines={1}
+                    numberOfLines={2}
                     margin="0rem 0rem 0.4rem 0rem"
                   >
                     {item.title}

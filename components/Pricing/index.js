@@ -18,7 +18,6 @@ import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 const cardSize = windowWidth * 0.23;
 
 const Pricing = ({ userId }) => {
@@ -44,9 +43,8 @@ const Pricing = ({ userId }) => {
     const { width } = useViewport();
     const breakpoint = 1080;
     return width < breakpoint ? (
-      //120 é aprox altura do header + altura do footer em px
-      <View style={{height: windowHeight-120}}> 
-      <TitleView>
+      <View>
+        <TitleView>
           <Title>{pricingTitle}</Title>
           <SmallText margin="1rem">{subtitlePlan}</SmallText>
           <FlatList
@@ -60,75 +58,75 @@ const Pricing = ({ userId }) => {
             style={{ flexGrow: 0 }}
           />
         </TitleView>
-      <HorizontalListView>
-        <HorizontalList horizontal={true}>
-          {planInfos.map((item, index) => (
-            <PricingCard
-              key={item.id}
-              color={THEME.COLORS.TEXT_ABOUT}
-              title={item.planType}
-              price={option[index].price}
-              info={[
-                upsell[index],
-                item.info
-              ]}
-              titleStyle={{
-                fontSize: THEME.FONTSIZE.STANDARD,
-                justifyContent: "flex-start",
-                fontFamily: THEME.FONTFAMILY.BOLD,
-              }}
-              infoStyle={{
-                color: THEME.COLORS.TEXT_ABOUT,
-                fontSize: THEME.FONTSIZE.EXTRASMALL,
-                textAlign: 'center',
-                flex: '1 1 auto',
-                fontFamily: THEME.FONTFAMILY.LIGHT,
-              }}
-              pricingStyle={{
-                fontSize: THEME.FONTSIZE.BIG,
-                color: THEME.COLORS.SECONDARY_900,
-                justifyContent: "flex-start",
-                fontFamily: THEME.FONTFAMILY.BOLD,
-              }}
-              button={{
-                title: "ASSINAR",
-                loading: isLoading,
-                color: THEME.COLORS.PRIMARY_900,
-                titleStyle: {
-                  color: THEME.COLORS.TEXT_BUTTON,
+        <HorizontalListView>
+          <HorizontalList horizontal={true}>
+            {planInfos.map((item, index) => (
+              <PricingCard
+                key={item.id}
+                color={THEME.COLORS.TEXT_ABOUT}
+                title={item.planType}
+                price={option[index].price}
+                info={[
+                  upsell[index],
+                  item.info
+                ]}
+                titleStyle={{
+                  fontSize: THEME.FONTSIZE.STANDARD,
+                  justifyContent: "flex-start",
                   fontFamily: THEME.FONTFAMILY.BOLD,
-                  fontSize: THEME.FONTSIZE.MEDIUM,
-                },
-                buttonStyle: { borderRadius: "10px" },
-              }}
-              containerStyle={{
-                backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
-                borderRadius: "15px",
-                width: windowWidth * 0.6,
-                borderWidth: "2px",
-                borderStyle: "solid",
-                borderColor: THEME.COLORS.TEXT_ABOUT,
-                display: "flex",
-                flexDrection: "column",
-              }}
-              wrapperStyle={{
-                flex: 1,
-              }}
-              onButtonPress={() => {
-                setLoading(true)
-                userId
-                  ? createCheckoutSession(userId, option[index].priceId, "subscription", option[index].iterations)
-                  : navigation.navigate("SignUp", { purchaseType: 'PLAN', priceId: option[index].priceId })
-              }
-              }
-            />
-          ))}
-        </HorizontalList>
-      </HorizontalListView>
+                }}
+                infoStyle={{
+                  color: THEME.COLORS.TEXT_ABOUT,
+                  fontSize: THEME.FONTSIZE.EXTRASMALL,
+                  textAlign: 'center',
+                  flex: '1 1 auto',
+                  fontFamily: THEME.FONTFAMILY.LIGHT,
+                }}
+                pricingStyle={{
+                  fontSize: THEME.FONTSIZE.BIG,
+                  color: THEME.COLORS.SECONDARY_900,
+                  justifyContent: "flex-start",
+                  fontFamily: THEME.FONTFAMILY.BOLD,
+                }}
+                button={{
+                  title: "ASSINAR",
+                  loading: isLoading,
+                  color: THEME.COLORS.PRIMARY_900,
+                  titleStyle: {
+                    color: THEME.COLORS.TEXT_BUTTON,
+                    fontFamily: THEME.FONTFAMILY.BOLD,
+                    fontSize: THEME.FONTSIZE.MEDIUM,
+                  },
+                  buttonStyle: { borderRadius: "10px" },
+                }}
+                containerStyle={{
+                  backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
+                  borderRadius: "15px",
+                  width: windowWidth * 0.6,
+                  borderWidth: "2px",
+                  borderStyle: "solid",
+                  borderColor: THEME.COLORS.TEXT_ABOUT,
+                  display: "flex",
+                  flexDrection: "column",
+                }}
+                wrapperStyle={{
+                  flex: 1,
+                }}
+                onButtonPress={() => {
+                  setLoading(true)
+                  userId
+                    ? createCheckoutSession(userId, option[index].priceId, "subscription", option[index].iterations)
+                    : navigation.navigate("SignUp", { purchaseType: 'PLAN', priceId: option[index].priceId })
+                }
+                }
+              />
+            ))}
+          </HorizontalList>
+        </HorizontalListView>
       </View>
     ) : (
       <>
-      <TitleView>
+        <TitleView>
           <Title>{pricingTitle}</Title>
           <SmallText margin="1rem 8rem">{subtitlePlan}</SmallText>
           <FlatList
@@ -142,70 +140,70 @@ const Pricing = ({ userId }) => {
             style={{ flexGrow: 0 }}
           />
         </TitleView>
-      <HorizontalListView>
-        <HorizontalList horizontal={true}>
-          {planInfos.map((item, index) => (
-            <PricingCard
-              key={item.id}
-              color={THEME.COLORS.TEXT_ABOUT}
-              title={item.planType}
-              price={option[index].price}
-              info={[
-                upsell[index],
-                item.info
-              ]}
-              titleStyle={{
-                fontSize: THEME.FONTSIZE.STANDARD,
-                fontFamily: THEME.FONTFAMILY.BOLD,
-              }}
-              infoStyle={{
-                color: THEME.COLORS.TEXT_ABOUT,
-                fontSize: THEME.FONTSIZE.EXTRASMALL,
-                textAlign: 'center',
-                flex: '1 1 auto',
-                fontFamily: THEME.FONTFAMILY.LIGHT,
-              }}
-              pricingStyle={{
-                fontSize: THEME.FONTSIZE.BIG,
-                color: THEME.COLORS.SECONDARY_900,
-                justifyContent: "flex-start",
-                fontFamily: THEME.FONTFAMILY.BOLD,
-              }}
-              button={{
-                title: "ASSINAR",
-                loading: isLoading,
-                color: THEME.COLORS.PRIMARY_900,
-                titleStyle: {
-                  color: THEME.COLORS.TEXT_BUTTON,
+        <HorizontalListView>
+          <HorizontalList horizontal={true}>
+            {planInfos.map((item, index) => (
+              <PricingCard
+                key={item.id}
+                color={THEME.COLORS.TEXT_ABOUT}
+                title={item.planType}
+                price={option[index].price}
+                info={[
+                  upsell[index],
+                  item.info
+                ]}
+                titleStyle={{
+                  fontSize: THEME.FONTSIZE.STANDARD,
                   fontFamily: THEME.FONTFAMILY.BOLD,
-                  fontSize: THEME.FONTSIZE.MEDIUM,
-                },
-                buttonStyle: { borderRadius: "10px" },
-              }}
-              containerStyle={{
-                backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
-                borderRadius: "15px",
-                borderWidth: "2px",
-                borderStyle: "solid",
-                borderColor: "#1e1e1e",
-                width: cardSize,
-                display: "flex",
-                flexDrection: "column",
-              }}
-              wrapperStyle={{
-                flex: 1,
-              }}
-              onButtonPress={() => {
-                setLoading(true)
-                userId
-                  ? createCheckoutSession(userId, option[index].priceId, "subscription", option[index].iterations)
-                  : navigation.navigate("SignUp", { purchaseType: 'PLAN', priceId: option[index].priceId })
-              }
-              }
-            />
-          ))}
-        </HorizontalList>
-      </HorizontalListView>
+                }}
+                infoStyle={{
+                  color: THEME.COLORS.TEXT_ABOUT,
+                  fontSize: THEME.FONTSIZE.EXTRASMALL,
+                  textAlign: 'center',
+                  flex: '1 1 auto',
+                  fontFamily: THEME.FONTFAMILY.LIGHT,
+                }}
+                pricingStyle={{
+                  fontSize: THEME.FONTSIZE.BIG,
+                  color: THEME.COLORS.SECONDARY_900,
+                  justifyContent: "flex-start",
+                  fontFamily: THEME.FONTFAMILY.BOLD,
+                }}
+                button={{
+                  title: "ASSINAR",
+                  loading: isLoading,
+                  color: THEME.COLORS.PRIMARY_900,
+                  titleStyle: {
+                    color: THEME.COLORS.TEXT_BUTTON,
+                    fontFamily: THEME.FONTFAMILY.BOLD,
+                    fontSize: THEME.FONTSIZE.MEDIUM,
+                  },
+                  buttonStyle: { borderRadius: "10px" },
+                }}
+                containerStyle={{
+                  backgroundColor: THEME.COLORS.BACKGROUND_ABOUT,
+                  borderRadius: "15px",
+                  borderWidth: "2px",
+                  borderStyle: "solid",
+                  borderColor: "#1e1e1e",
+                  width: cardSize,
+                  display: "flex",
+                  flexDrection: "column",
+                }}
+                wrapperStyle={{
+                  flex: 1,
+                }}
+                onButtonPress={() => {
+                  setLoading(true)
+                  userId
+                    ? createCheckoutSession(userId, option[index].priceId, "subscription", option[index].iterations)
+                    : navigation.navigate("SignUp", { purchaseType: 'PLAN', priceId: option[index].priceId })
+                }
+                }
+              />
+            ))}
+          </HorizontalList>
+        </HorizontalListView>
       </>
     )
   };

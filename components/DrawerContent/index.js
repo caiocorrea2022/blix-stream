@@ -54,7 +54,7 @@ export function DrawerContent(props) {
           type="material-community"
           name="heart"
           color={THEME.COLORS.TEXT_FOOTER}
-          size={15}
+          size="12px"
         />
         <FooterText padding="0rem 0.2rem">por</FooterText>
         <FooterText fontFamily={THEME.FONTFAMILY.BOLD} padding="0rem 0.2rem" onPress={() => Linking.openURL("https://www.instagram.com/blix.aplicativos/")}>BLIX</FooterText>

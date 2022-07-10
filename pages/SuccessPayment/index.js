@@ -17,7 +17,7 @@ export function Success({ navigation }) {
         type="material-icons"
         name="check-circle-outline"
         color={THEME.COLORS.PRIMARY_900}
-        size={60}
+        size="60px"
       />
       {user ?
         <>
