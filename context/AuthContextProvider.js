@@ -1,4 +1,3 @@
-
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../services/firebase";
 
@@ -6,6 +5,7 @@ export const AuthContext = createContext();
 
 export function AuthContextProvider({children}) {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
@@ -15,6 +15,7 @@ export function AuthContextProvider({children}) {
                 setUser({
                     id: uid,
                 })
+                setLoading(false);
             }
         })
 
@@ -24,7 +25,7 @@ export function AuthContextProvider({children}) {
     }, [])
 
     return (
-        <AuthContext.Provider value={{ user }}>
+        <AuthContext.Provider value={{ user, loading }}>
             {children}
         </AuthContext.Provider>
     );
