@@ -10,3 +10,9 @@ export const HeaderLeftSide = styled.View`
     flex-direction: row;
     height: 2.5rem;
 `;
+
+export const ContainerMobile = styled.View`
+    width:100%;
+    padding: 1rem 0.5rem;
+    background-color: green;
+    `;
