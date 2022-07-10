@@ -60,11 +60,11 @@ export default {
 
   FONTSIZE:{
     GIANT: RFValue(50, 980), //USADA 1X NO TÍTULO DA TELA ABOUT
-    EXTRABIG: RFValue(24, 980), //USADA 1X NA TELA DE LOGIN
-    BIG: RFValue(20, 980),
-    STANDARD: RFValue(18, 980),
-    MEDIUM: RFValue(16, 980),
-    SMALL: RFValue(14, 980), 
-    EXTRASMALL: RFValue(12, 980),
+    EXTRABIG: RFValue(30, 980), //USADA 1X NA TELA DE LOGIN
+    BIG: 24,
+    STANDARD: 20,
+    MEDIUM: 18,
+    SMALL: 16,
+    EXTRASMALL: 13,
   }
 };

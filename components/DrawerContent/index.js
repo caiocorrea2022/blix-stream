@@ -1,8 +1,8 @@
 import React from 'react';
-import { Linking, TouchableOpacity } from 'react-native';
+import { Linking } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import { Icon } from 'react-native-elements'
-import { Footer, Logo } from './style';
+import { Footer } from './style';
 import THEME from '../../config/theme';
 import { faleComigoUrl } from '../../config/data'
 import { auth } from '../../services/firebase'
@@ -33,7 +33,7 @@ export function DrawerContent(props) {
       {user ?
         <DrawerItem
           label={() => (
-            <SmallText color={THEME.COLORS.TERTIARY_900} textAlign="flex-start" onPress={logout}>Sair</SmallText>
+            <SmallText color={THEME.COLORS.TERTIARY_900} textAlign="flex-start" onPress={logout}>Logout</SmallText>
           )}
           icon={({ size }) => (
             <Icon
@@ -54,7 +54,7 @@ export function DrawerContent(props) {
           type="material-community"
           name="heart"
           color={THEME.COLORS.TEXT_FOOTER}
-          size={15}
+          size="12px"
         />
         <FooterText padding="0rem 0.2rem">por</FooterText>
         <FooterText fontFamily={THEME.FONTFAMILY.BOLD} padding="0rem 0.2rem" onPress={() => Linking.openURL("https://www.instagram.com/blix.aplicativos/")}>BLIX</FooterText>

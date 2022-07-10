@@ -20,7 +20,7 @@ const CategoryItem = ({ categoryId, item, plan, courses }) => {
     return (
         <Touchable onPress={onCardPress}>
             <Image source={{ uri: item.img }}>
-                {plan >= item.plan || (courses?.length > 0 && courses?.filter(course => course.priceId == item.priceId && toDate(course.dueDate.seconds) > new Date()).length > 0) ?
+                {plan >= item.plan || (courses?.length > 0 && courses?.filter(course => course.priceId == item.priceId && toDate(course.dueDate.seconds) > new Date()).length > 0) || (item.plan == null && item.priceId == null) ?
                     <div></div>
                     :
                     <Icon
@@ -34,9 +34,11 @@ const CategoryItem = ({ categoryId, item, plan, courses }) => {
                     />
                 }
             </Image>
-            <SmallText fontSize={THEME.FONTSIZE.EXTRASMALL} color={THEME.COLORS.TEXT_MAIN} maxWidth="230px" textAlign="flex-start" numberOfLines={2}>{item.title}</SmallText>
+            <SmallText fontSize={THEME.FONTSIZE.EXTRASMALL} color={THEME.COLORS.TEXT_MAIN} maxWidth="21rem" textAlign="flex-start" numberOfLines={2}>{item.title}</SmallText>
         </Touchable>
     )
 }
+
+//masWidth do SmallText é a largura do cardItem
 
 export default CategoryItem

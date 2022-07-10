@@ -3,7 +3,7 @@ import { Icon } from "react-native-elements";
 import { ContentIcon, Container, Content } from "./style";
 import THEME from "../../config/theme";
 import {
-  SmallText,
+  FooterText,
   StandardText,
   Title,
 } from "../../config/theme/globalStyles";
@@ -17,7 +17,7 @@ const ListHeader = ({ title, description, pdf, url, navigation, login }) => {
           <Icon
             type="material-icons"
             name="picture-as-pdf"
-            size={28}
+            size="28px"
             color={THEME.COLORS.TEXT_MAIN}
             onPress={() => {
               navigation.navigate("PDFView", { pdf: pdf });
@@ -27,14 +27,14 @@ const ListHeader = ({ title, description, pdf, url, navigation, login }) => {
           <Icon
             type="material-icons"
             name="picture-as-pdf"
-            size={28}
+            size="28px"
             color={THEME.COLORS.TEXT_MAIN}
             onPress={() => {}}
           />
         )}
-        <SmallText color={THEME.COLORS.TEXT_MAIN} margin="1rem 0rem">
+        <FooterText color={THEME.COLORS.TEXT_MAIN} margin="1rem 0rem">
           Visualizar PDF
-        </SmallText>
+        </FooterText>
       </ContentIcon>
     );
   };
@@ -46,7 +46,7 @@ const ListHeader = ({ title, description, pdf, url, navigation, login }) => {
           <Icon
             type="material-icons"
             name="link"
-            size={28}
+            size="28px"
             color={THEME.COLORS.TEXT_MAIN}
             onPress={() => Linking.openURL(url)}
           />
@@ -54,15 +54,15 @@ const ListHeader = ({ title, description, pdf, url, navigation, login }) => {
           <Icon
             type="material-icons"
             name="link"
-            size={28}
+            size="28px"
             color={THEME.COLORS.TEXT_MAIN}
             onPress={() => {}}
           />
         )}
 
-        <SmallText color={THEME.COLORS.TEXT_MAIN} margin="1rem 0rem">
+        <FooterText color={THEME.COLORS.TEXT_MAIN} margin="1rem 0rem">
           Acessar link
-        </SmallText>
+        </FooterText>
       </ContentIcon>
     );
   };

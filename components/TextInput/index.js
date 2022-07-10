@@ -5,10 +5,10 @@ import THEME from '../../config/theme';
 const TextInput = ({ ...rest }) => (
   <Input
     style={{ backgroundColor: THEME.COLORS.BACKGROUND_ABOUT, fontFamily: THEME.FONTFAMILY.REGULAR, fontSize: THEME.FONTSIZE.SMALL}}
-    underlineColor={THEME.COLORS.PRIMARY_800}
-    outlineColor={THEME.COLORS.TEXT_ABOUT}
+    mode='outlined'
+    outlineColor={THEME.COLORS.PRIMARY_800}
     selectionColor={THEME.COLORS.TEXT_ABOUT}
-    activeUnderlineColor={THEME.COLORS.PRIMARY_900}
+    activeOutlineColor={THEME.COLORS.PRIMARY_900}
     placeholderTextColor={THEME.COLORS.TEXT_ABOUT}
     theme={{
       colors: {

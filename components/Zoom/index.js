@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import Constants from "expo-constants";
-import Button from "../Button";
-import { Image } from "./style";
-import { View } from "react-native";
 import {returnDomainZoom} from "../../config/data"
 
-export function Zoom ({ img, meetingNumber, passWord, className, userName, cardId }) {
+
+export function Zoom ({route}) {
+  const { meetingNumber, passWord, userName, cardId, categoryId  } = route.params;
   const zoomConfig = {
     zoomSdkKey: Constants.manifest.extra.zoomSdkKey,
     zoomSdkSecret: Constants.manifest.extra.zoomSdkSecret,
@@ -13,13 +12,15 @@ export function Zoom ({ img, meetingNumber, passWord, className, userName, cardI
 
   const KJUR = require("jsrsasign");
   var sdkKey = zoomConfig.zoomSdkKey;
-  var leaveUrl = `${returnDomainZoom}/ClickClass?cardId=${cardId}`;
+  var leaveUrl = `${returnDomainZoom}/ClickClass?cardId=${cardId}&categoryId=${categoryId}`;
   var userEmail = "";
   var registrantToken = "";
   var role = 0;
 
   useEffect(() => {
     const { ZoomMtg} = require("@zoomus/websdk");
+    require("@zoomus/websdk/dist/css/react-select.css");
+    require("@zoomus/websdk/dist/css/bootstrap.css");
     ZoomMtg.setZoomJSLib("https://source.zoom.us/2.5.0/lib", "/av");
     ZoomMtg.preLoadWasm();
     ZoomMtg.prepareJssdk();
@@ -27,6 +28,7 @@ export function Zoom ({ img, meetingNumber, passWord, className, userName, cardI
     ZoomMtg.i18n.load("pt-PT");
     ZoomMtg.i18n.reload("pt-PT");
     document.getElementById("zmmtg-root").style.display = "none";
+    joinmeeting();
   });
 
   function joinmeeting() {
@@ -76,9 +78,6 @@ export function Zoom ({ img, meetingNumber, passWord, className, userName, cardI
           passWord: passWord,
           tk: registrantToken,
           success: (success) => {
-            // document
-            //   .getElementById("zmmtg-root")
-            //   .style.setProperty("display", "block", "important");
             console.log(success);
           },
           error: (error) => {
@@ -93,22 +92,25 @@ export function Zoom ({ img, meetingNumber, passWord, className, userName, cardI
   }
 
   return (
-    <Image source={img} resizeMode="cover">
-      <View
-        style={{
-          backgroundColor: "rgba(0,0,0,0.7)",
-          width: "100%",
-          height: "100%",
-          justifyContent: "center",
-        }}
-      >
-        <Button
-          title={`Acessar ${className} ao Vivo`}
-          onPress={() => {
-            joinmeeting();
-          }}
-        ></Button>
-      </View>
-    </Image>
+    <></>
   );
 };
+
+
+    // <Image source={img} resizeMode="cover">
+    //   <View
+    //     style={{
+    //       backgroundColor: "rgba(0,0,0,0.7)",
+    //       width: "100%",
+    //       height: "100%",
+    //       justifyContent: "center",
+    //     }}
+    //   >
+    //     <Button
+    //       title={`Acessar ${className} ao Vivo`}
+    //       onPress={() => {
+    //         joinmeeting();
+    //       }}
+    //     ></Button>
+    //   </View>
+    // </Image>

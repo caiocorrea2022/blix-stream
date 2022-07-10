@@ -8,16 +8,22 @@ export const Container = styled.View`
     padding: 1rem 0.5rem;
 `;
 
+export const ContainerMobile = styled.View`
+    width:100%;
+    background-color: ${THEME.COLORS.BACKGROUND_FOOTER};
+    padding: 1rem 0.5rem;
+`;
+
 export const FooterRightSide = styled.View`
-    width:50%;
-    justify-content: flex-end;
+    width: ${({ width }) => width};
+    justify-content:${({ justifyContent }) => justifyContent};
     flex-direction: row;
     align-items: center;
 `;
 
 export const FooterLeftSide = styled.View`
-    width:50%;
-    justify-content: flex-start;
+    width: ${({ width }) => width};
+    justify-content:${({ justifyContent }) => justifyContent};
     flex-direction: row;
     align-items: center;
 `;
@@ -28,5 +34,11 @@ export const Logo = styled.Image`
 `;
 
 export const FooterLogo = styled.View`
-    justify-content: flex-start;
+    justify-content:${({ justifyContent }) => justifyContent};
+`;
+
+export const ViewFooter = styled.View`
+  position: fixed;
+  width:100%;
+  bottom: 0;
 `;

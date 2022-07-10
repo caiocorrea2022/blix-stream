@@ -9,7 +9,6 @@ import {
   ViewImage,
   ViewText,
   ViewHelper,
-  ViewTitle,
   Poster
 } from './style';
 import { emailValidator, passwordValidator } from '../../utils';
@@ -23,7 +22,7 @@ import THEME from '../../config/theme';
 import ViewPortProvider from '../../hooks/ViewPortProvider';
 import useViewport from '../../hooks/useViewport';
 import { HelperText } from 'react-native-paper';
-import { MainTitle, ContainerSideView, SideView, HeaderContainer, Container } from '../../config/theme/globalStyles';
+import { ContainerSideView, SideView, HeaderContainer, Container } from '../../config/theme/globalStyles';
 
 const auth = getAuth();
 
