@@ -103,12 +103,15 @@ export function ClickClass({ route, navigation }) {
       if (user) {
         console.log(user.uid);
         setUser(user.uid);
-        getUsers(user.uid);
+        getUsers(user.uid)
+          .then(() => {
+            getCard();
+          });
+      } else {
         getCard();
       }
     });
-    console.log("itemId", cardId);
-    getCard();
+
   }, []);
 
   const OutsideView = () => {
@@ -141,29 +144,29 @@ export function ClickClass({ route, navigation }) {
 
     return width < breakpoint ? (
       <ContentVideoMobile>
-        {(userPlan >= plan 
-        || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0) 
-        || (plan == null && priceId == null) )
+        {(userPlan >= plan
+          || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)
+          || (plan == null && priceId == null))
           ?
           (
             meetingNumber ? (
-                  <Image source={img} resizeMode="cover">
-              <View
-                style={{
-                  backgroundColor: "rgba(0,0,0,0.7)",
-                  width: "100%",
-                  height: "100%",
-                  justifyContent: "center",
-                }}
-              >
-                <Button
-                  title={`Acessar ${className} ao Vivo`}
-                  onPress={() => {
-                    navigation.navigate("Zoom", { meetingNumber: meetingNumber, passWord:passWord, userName:userName, cardId:cardId, categoryId:categoryId });
+              <Image source={img} resizeMode="cover">
+                <View
+                  style={{
+                    backgroundColor: "rgba(0,0,0,0.7)",
+                    width: "100%",
+                    height: "100%",
+                    justifyContent: "center",
                   }}
-                ></Button>
-              </View>
-            </Image>
+                >
+                  <Button
+                    title={`Acessar ${className} ao Vivo`}
+                    onPress={() => {
+                      navigation.navigate("Zoom", { meetingNumber: meetingNumber, passWord: passWord, userName: userName, cardId: cardId, categoryId: categoryId });
+                    }}
+                  ></Button>
+                </View>
+              </Image>
             ) : (
               <VideoPlayer video={video} />
             )
@@ -214,27 +217,27 @@ export function ClickClass({ route, navigation }) {
       </ContentVideoMobile>
     ) : (
       <ContentVideoDesktop>
-        {(userPlan >= plan 
-        || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)
-        || (plan == null && priceId == null)) ? (
+        {(userPlan >= plan
+          || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)
+          || (plan == null && priceId == null)) ? (
           meetingNumber ? (
             <Image source={img} resizeMode="cover">
-            <View
-              style={{
-                backgroundColor: "rgba(0,0,0,0.7)",
-                width: "100%",
-                height: "100%",
-                justifyContent: "center",
-              }}
-            >
-              <Button
-                title={`Acessar ${className} ao Vivo`}
-                onPress={() => {
-                  navigation.navigate("Zoom", { meetingNumber: meetingNumber, passWord:passWord, userName:userName, cardId:cardId, categoryId:categoryId });
+              <View
+                style={{
+                  backgroundColor: "rgba(0,0,0,0.7)",
+                  width: "100%",
+                  height: "100%",
+                  justifyContent: "center",
                 }}
-              ></Button>
-            </View>
-          </Image>
+              >
+                <Button
+                  title={`Acessar ${className} ao Vivo`}
+                  onPress={() => {
+                    navigation.navigate("Zoom", { meetingNumber: meetingNumber, passWord: passWord, userName: userName, cardId: cardId, categoryId: categoryId });
+                  }}
+                ></Button>
+              </View>
+            </Image>
           ) : (
             <VideoPlayer video={video} />
           )
@@ -292,9 +295,9 @@ export function ClickClass({ route, navigation }) {
 
     return width < breakpoint ? (
       <View>
-        {(userPlan >= plan 
-        || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)
-        || (plan == null && priceId == null) ) ? (
+        {(userPlan >= plan
+          || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)
+          || (plan == null && priceId == null)) ? (
           <FlatList
             data={listVideos}
             keyExtractor={(item, index) => index.toString()}
@@ -348,9 +351,9 @@ export function ClickClass({ route, navigation }) {
       </View>
     ) : (
       <ContentList>
-        {(userPlan >= plan 
-        || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)
-        || (plan == null && priceId == null) ) ? (
+        {(userPlan >= plan
+          || (userPriceIds && userPriceIds.length > 0 && userPriceIds.filter(course => course.priceId == priceId && toDate(course.dueDate.seconds) >= new Date()).length > 0)
+          || (plan == null && priceId == null)) ? (
           <FlatList
             data={listVideos}
             keyExtractor={(item, index) => index.toString()}
@@ -407,11 +410,9 @@ export function ClickClass({ route, navigation }) {
 
   return (
     <ViewPortProvider>
-      <SafeAreaView>
-        <Container background={THEME.COLORS.BACKGROUND_MAIN}>
-          <OutsideView></OutsideView>
-        </Container>
-      </SafeAreaView>
+      <Container background={THEME.COLORS.BACKGROUND_MAIN}>
+        <OutsideView></OutsideView>
+      </Container>
     </ViewPortProvider>
   );
 }
