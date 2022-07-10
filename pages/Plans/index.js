@@ -4,14 +4,13 @@ import HeaderPurchase from '../../components/HeaderPurchase';
 import { Container } from './style'
 import Footer from "../../components/Footer";
 
-export function Plans({ navigation: { goBack }, route }) {
+export function Plans({ route }) {
   const { userId } = route.params;
-  console.log('userIdPlan', userId);
 
   return (
     <Container>
      <HeaderPurchase />
-      <Pricing navigation={navigation} userId={userId}></Pricing>
+      <Pricing userId={userId}></Pricing>
       <Footer></Footer>
     </Container>
   );
