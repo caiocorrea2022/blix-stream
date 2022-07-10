@@ -22,6 +22,22 @@ jobs:
           echo STRIPE_SECTRET_KEY=${{ secrets.STRIPE_SECTRET_KEY }} >> .env
           cat .env    
 
+      - name: create credentials
+        id: create-credentials
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "credentials.json"
+          json: ${{ secrets.SHEETS_CREDENTIALS }}
+          dir: 'functions/'    
+
+      - name: create api_key
+        id: create-api-key
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "api_key.json"
+          json: ${{ secrets.SHEETS_API_KEY }}
+          dir: 'functions/'                   
+
       - name: 📥 Download deps
         working-directory: functions
         run: npm install
