@@ -154,6 +154,7 @@ export function ClickClass({ route, navigation }) {
                 className={className}
                 userName={userName}
                 cardId={cardId}
+                categoryId={categoryId}
               ></Zoom>
             ) : (
               <VideoPlayer video={video} />
@@ -214,6 +215,7 @@ export function ClickClass({ route, navigation }) {
               className={className}
               userName={userName}
               cardId={cardId}
+              categoryId={categoryId}
             ></Zoom>
           ) : (
             <VideoPlayer video={video} />
@@ -386,11 +388,6 @@ export function ClickClass({ route, navigation }) {
   return (
     <ViewPortProvider>
       <Container background={THEME.COLORS.BACKGROUND_MAIN}>
-        <Header
-          onPress={() => {
-            navigation.navigate("Drawer");
-          }}
-        />
         <OutsideView></OutsideView>
       </Container>
     </ViewPortProvider>

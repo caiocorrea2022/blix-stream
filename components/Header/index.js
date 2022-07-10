@@ -10,7 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../../context/useAuth";
 import { aspectRatioLogoAbout, aspectRatioLogoMain } from '../../config/data';
 
-const Header = ({ onPress, about, onPress2}) => {
+const Header = ({ ClickClass, about, onPress2, onPress}) => {
   const navigation = useNavigation();
   const { user } = useAuth();
 
@@ -55,21 +55,8 @@ const Header = ({ onPress, about, onPress2}) => {
   ) : (
     <HeaderContainer>
       <HeaderLeftSide>
-        {onPress ? (
-          <Row>
-            <Icon
-              type="material-community"
-              name="chevron-left"
-              color={THEME.COLORS.ICON_HEADER_CLICKCLASS}
-              size={THEME.FONTSIZE.BIG}
-              onPress={onPress}
-            />
-            <TouchableText
-              onPress={onPress}
-              title={"Voltar"}
-              color={THEME.COLORS.ICON_HEADER_CLICKCLASS}
-            ></TouchableText>
-          </Row>
+        {ClickClass ? (
+          <></> 
         )
          : 
          onPress2? (

@@ -5,7 +5,8 @@ import { Image } from "./style";
 import { View } from "react-native";
 import {returnDomainZoom} from "../../config/data"
 
-export function Zoom ({ img, meetingNumber, passWord, className, userName, cardId }) {
+
+export function Zoom ({ img, meetingNumber, passWord, className, userName, cardId, categoryId }) {
   const zoomConfig = {
     zoomSdkKey: Constants.manifest.extra.zoomSdkKey,
     zoomSdkSecret: Constants.manifest.extra.zoomSdkSecret,
@@ -13,13 +14,15 @@ export function Zoom ({ img, meetingNumber, passWord, className, userName, cardI
 
   const KJUR = require("jsrsasign");
   var sdkKey = zoomConfig.zoomSdkKey;
-  var leaveUrl = `${returnDomainZoom}/ClickClass?cardId=${cardId}`;
+  var leaveUrl = `${returnDomainZoom}/ClickClass?cardId=${cardId}&categoryId=${categoryId}`;
   var userEmail = "";
   var registrantToken = "";
   var role = 0;
 
   useEffect(() => {
     const { ZoomMtg} = require("@zoomus/websdk");
+    require("@zoomus/websdk/dist/css/react-select.css");
+    require("@zoomus/websdk/dist/css/bootstrap.css");
     ZoomMtg.setZoomJSLib("https://source.zoom.us/2.5.0/lib", "/av");
     ZoomMtg.preLoadWasm();
     ZoomMtg.prepareJssdk();
@@ -76,9 +79,6 @@ export function Zoom ({ img, meetingNumber, passWord, className, userName, cardI
           passWord: passWord,
           tk: registrantToken,
           success: (success) => {
-            // document
-            //   .getElementById("zmmtg-root")
-            //   .style.setProperty("display", "block", "important");
             console.log(success);
           },
           error: (error) => {
