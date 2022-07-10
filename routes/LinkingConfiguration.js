@@ -17,6 +17,7 @@ const linking = {
             path: "EditProfile"
           },
           Zoom: "Zoom",
+          CheckoutLoader: "CheckoutLoader",
         },
     },
   };

@@ -13,6 +13,7 @@ import { About } from "../pages/About";
 import { EditProfile } from "../pages/EditProfile";
 import { PreLoadStripe } from "../context/loadStripe";
 import { Zoom } from "../components/Zoom";
+import { CheckoutLoader } from "../pages/CheckoutLoader";
 
 const { Screen, Navigator } = createNativeStackNavigator();
 
@@ -32,6 +33,7 @@ export function AppRoutes() {
       <Screen name="EditProfile" component={EditProfile} />
       <Screen name="PreLoadStripe" component={PreLoadStripe} />
       <Screen name="Zoom" component={Zoom} />
+      <Screen name="CheckoutLoader" component={CheckoutLoader} />
     </Navigator>
   );
 }

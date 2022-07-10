@@ -10,7 +10,6 @@ import {
 } from "./style";
 import THEME from '../../config/theme';
 import { planFrequency, planPrices, planInfos, upsellPrices, subtitlePlan, pricingTitle } from '../../config/data';
-import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
 import { Title, SmallText } from '../../config/theme/globalStyles';
 import ViewPortProvider from "../../hooks/ViewPortProvider";
 import useViewport from "../../hooks/useViewport";
@@ -115,7 +114,7 @@ const Pricing = ({ userId }) => {
                 onButtonPress={() => {
                   setLoading(true)
                   userId
-                    ? createCheckoutSession(userId, option[index].priceId, "subscription", option[index].iterations)
+                    ? navigation.navigate('CheckoutLoader', { userid: userId, priceId: option[index].priceId, purchaseType: "PLAN" })
                     : navigation.navigate("SignUp", { purchaseType: 'PLAN', priceId: option[index].priceId })
                 }
                 }
@@ -196,7 +195,7 @@ const Pricing = ({ userId }) => {
                 onButtonPress={() => {
                   setLoading(true)
                   userId
-                    ? createCheckoutSession(userId, option[index].priceId, "subscription", option[index].iterations)
+                    ? navigation.navigate('CheckoutLoader', { userid: userId, priceId: option[index].priceId, purchaseType: "PLAN" })
                     : navigation.navigate("SignUp", { purchaseType: 'PLAN', priceId: option[index].priceId })
                 }
                 }

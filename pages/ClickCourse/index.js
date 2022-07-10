@@ -8,15 +8,14 @@ import ViewPortProvider from "../../hooks/ViewPortProvider";
 import useViewport from "../../hooks/useViewport";
 import THEME from '../../config/theme';
 import { FooterText, SmallText, Title, MainTitle } from "../../config/theme/globalStyles";
-import { createCheckoutSession } from "../../services/stripe/createCheckoutSession";
 import { auth } from '../../services/firebase'
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { firestore } from "../../services/firebase/index";
 import { useNavigation } from '@react-navigation/native';
 
-export function ClickCourse ({ route }) {
-  const {courseId } = route.params;
+export function ClickCourse({ route }) {
+  const { courseId } = route.params;
   const [userId, setUserId] = useState("");
   const [title, setTitle] = useState("");
   const [footerText, setFooterText] = useState("");
@@ -49,13 +48,13 @@ export function ClickCourse ({ route }) {
     const docRef = doc(firestore, "courses", courseId);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-        setTitle(docSnap.data().title);
-        setImage(docSnap.data().image);
-        setInfos(docSnap.data().infos);
-        setSmallText(docSnap.data().smallText);
-        setFooterText(docSnap.data().footerText);
-        setPrice(docSnap.data().price);
-        setPriceId(docSnap.data().priceId);
+      setTitle(docSnap.data().title);
+      setImage(docSnap.data().image);
+      setInfos(docSnap.data().infos);
+      setSmallText(docSnap.data().smallText);
+      setFooterText(docSnap.data().footerText);
+      setPrice(docSnap.data().price);
+      setPriceId(docSnap.data().priceId);
     }
   };
 
@@ -101,7 +100,7 @@ export function ClickCourse ({ route }) {
             onPress={() => {
               setLoading(true);
               userId
-                ? createCheckoutSession(userId, priceId, "payment", 0)
+                ?  navigation.navigate('CheckoutLoader', { userid: userId, priceId: priceId, purchaseType: "COURSE" })
                 : navigation.navigate("SignUp", { purchaseType: 'COURSE', priceId: priceId })
             }}
           >
@@ -121,7 +120,9 @@ export function ClickCourse ({ route }) {
             isLoading={loading}
             onPress={() => {
               userId
-                ? (setLoading(true), createCheckoutSession(userId, priceId, "payment", 0))
+                ? (setLoading(true),
+                  navigation.navigate('CheckoutLoader', { userid: userId, priceId: priceId, purchaseType: "COURSE" })
+                )
                 : navigation.navigate("SignUp", { purchaseType: 'COURSE', priceId: priceId })
             }}
           ></Button>
